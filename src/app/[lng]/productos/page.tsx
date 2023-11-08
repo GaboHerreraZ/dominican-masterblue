@@ -1,6 +1,5 @@
 import { Product } from "@/domain/model/product";
 import ProductService from "@/service/productService";
-import React from "react";
 
 const setProduct = async () => {
   const { createProduct } = ProductService();
