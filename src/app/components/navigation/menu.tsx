@@ -14,7 +14,7 @@ import { usePathname } from "next/navigation";
 import { MenuNav } from "@/app/components/navigation/navigation";
 import { DropDownMenuItem } from "./dropDownItem";
 import { TextMenuItem } from "./textItem";
-import { InstagramIcon } from "@/app/utils/iconsUtils";
+import { FacebookIcon, InstagramIcon } from "@/app/utils/iconsUtils";
 
 export const Menu = ({
   menuItems,
@@ -61,13 +61,20 @@ export const Menu = ({
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className=" lg:flex">
+        <NavbarItem className="flex gap-2">
           <Link
             href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
             target="_blank"
             about="Instagram"
           >
             {<InstagramIcon fill="currentColor" size={20} />}
+          </Link>
+          <Link
+            href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
+            target="_blank"
+            about="Facebook"
+          >
+            <FacebookIcon fill="currentColor" size={21} />
           </Link>
         </NavbarItem>
       </NavbarContent>

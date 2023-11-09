@@ -6,6 +6,7 @@ import { Arsenal } from "next/font/google";
 import React from "react";
 import { Providers } from "./provider";
 import Navigation from "@/app/components/navigation/navigation";
+import { WhatsAppLink } from "@/app/utils/iconsUtils";
 
 const arsenal = Arsenal({
   subsets: ["latin", "latin-ext"],
@@ -36,6 +37,7 @@ export default async function RootLayout({
         <Providers>
           <Navigation lng={lng} />
           {children}
+          <WhatsAppLink lng={lng} />
         </Providers>
       </body>
     </html>
