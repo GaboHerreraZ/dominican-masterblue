@@ -1,7 +1,7 @@
-function ServicePage({ id }: { id: string }) {
+function ServicePage() {
   return (
     <div>
-      <h1>Service by ID: {id}</h1>
+      <h1>Service by ID</h1>
       {/* Add your service by ID content here */}
     </div>
   );
