@@ -7,7 +7,12 @@ import { Link } from "@nextui-org/link";
 
 export const Product = () => {
   return (
-    <Card shadow="sm" isPressable onPress={() => console.log("item pressed")}>
+    <Card
+      className="w-[300px]"
+      shadow="sm"
+      isPressable
+      onPress={() => console.log("item pressed")}
+    >
       <CardBody className="overflow-visible p-0">
         <Image
           alt={"mesas"}
