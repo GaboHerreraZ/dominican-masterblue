@@ -51,7 +51,12 @@ export const Banner = () => {
     <div className="h-[500px">
       <Slider {...settings} className="h-full">
         <div className="h-[500px] relative">
-          <Image src={interiores} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={interiores}
+            layout="fill"
+            objectFit="cover"
+          />
           {/**
            * <div className="absolute flex flex-col justify-center p-10 h-full self-center">
             <p>Comedores</p>
@@ -61,19 +66,44 @@ export const Banner = () => {
         </div>
 
         <div className="h-[500px]">
-          <Image src={mejoras} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={mejoras}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="h-[500px]">
-          <Image src={interiores} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={interiores}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="h-[500px]">
-          <Image src={mejoras} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={mejoras}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="h-[500px]">
-          <Image src={interiores} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={interiores}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
         <div className="h-[500px]">
-          <Image src={mejoras} layout="fill" objectFit="cover" />
+          <Image
+            alt="imagen-prueba"
+            src={mejoras}
+            layout="fill"
+            objectFit="cover"
+          />
         </div>
       </Slider>
     </div>

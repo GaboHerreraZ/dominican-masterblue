@@ -20,7 +20,12 @@ export const CardService = () => {
           Your checklist for better sleep
         </h4>
       </CardHeader>
-      <Image src={interiores} layout="fill" objectFit="cover" />
+      <Image
+        alt="imagen-prueba"
+        src={interiores}
+        layout="fill"
+        objectFit="cover"
+      />
       <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
         <div className="flex flex-grow gap-2 ">
           <div className="flex flex-col">

@@ -12,6 +12,7 @@ export const ContactSection = async ({ lng }: { lng: string }) => {
       <section className="flex flex-col h-full md:flex-row ">
         <div className="flex justify-center relative">
           <Image
+            alt="imagen-prueba"
             className="absolute hover:scale-110  transition-all duration-500 ease-in-out "
             src={interiores}
             layout="intrinsic"
