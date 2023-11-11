@@ -14,7 +14,7 @@ export const Home = async ({ lng }: { lng: string }) => {
         <p className="italic text-center m-0 text-4xl ">
           {t("serviceDescription")}
         </p>
-        <h4 className="mb-7 m-0 text-center font-bold text-2xl">
+        <h4 className="mb-7 m-0 text-center font-bold text-2xl text-master-900">
           {t("service")}
         </h4>
         <Services />
@@ -24,7 +24,7 @@ export const Home = async ({ lng }: { lng: string }) => {
         <p className="italic text-center m-0 text-4xl ">
           {t("productDescription")}
         </p>
-        <h4 className="mb-7 m-0 text-center font-bold text-2xl">
+        <h4 className="mb-7 m-0 text-center font-bold text-2xl text-master-900">
           {t("product")}
         </h4>
         <section className="mx-20">

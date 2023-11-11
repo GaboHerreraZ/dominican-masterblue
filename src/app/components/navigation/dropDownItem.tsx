@@ -17,15 +17,15 @@ export const DropDownMenuItem = ({
   title: string;
   items?: MenuNav[];
 }) => {
-  const path = usePathname().split("/");
+  const path = usePathname();
 
   return (
-    <Dropdown>
+    <Dropdown backdrop="blur">
       <NavbarItem>
         <DropdownTrigger>
           <Button
             disableRipple
-            className="text-base hover:scale-110 duration-500 hover:bg-gray-100 py-1 px-2 hover:rounded-md  bg-transparent "
+            className="text-master-900 text-base hover:scale-110 duration-500 py-1 px-2 hover:rounded-md  bg-transparent "
             endContent={<ChevronDownIcon fill="currentColor" size={16} />}
           >
             {title}
@@ -34,7 +34,7 @@ export const DropDownMenuItem = ({
       </NavbarItem>
       <DropdownMenu
         aria-label="List Products"
-        className="w-[340px]"
+        className="w-[350px]"
         itemClasses={{
           base: "gap-4",
         }}
@@ -45,39 +45,12 @@ export const DropDownMenuItem = ({
             description={item.description}
             startContent={item.icon}
           >
-            {item.title}
+            <span className="text-master-900 underline font-bold">
+              {item.title}
+            </span>
           </DropdownItem>
         ))}
       </DropdownMenu>
     </Dropdown>
   );
 };
-
-/*< <DropdownItem
-key="usage_metrics"
-description="Real-time metrics to debug issues. Slow query added? We’ll show you exactly where."
-startContent={icons.activity}
->
-Usage Metrics
-</DropdownItem>
-<DropdownItem
-key="production_ready"
-description="ACME runs on ACME, join us and others serving requests at web scale."
-startContent={icons.flash}
->
-Production Ready
-</DropdownItem>
-<DropdownItem
-key="99_uptime"
-description="Applications stay on the grid with high availability and high uptime guarantees."
-startContent={icons.server}
->
-+99% Uptime
-</DropdownItem>
-<DropdownItem
-key="supreme_support"
-description="Overcome any challenge with a supporting team ready to respond."
-startContent={icons.user}
->
-+Supreme Support
-</DropdownItem>*/

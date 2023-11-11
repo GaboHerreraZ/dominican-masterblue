@@ -8,7 +8,7 @@ export const ContactSection = async ({ lng }: { lng: string }) => {
   const { t } = await useTranslation(lng, "home");
 
   return (
-    <section className="py-5 bg-red-50">
+    <section className="py-5 bg-master-100/50">
       <section className="flex flex-col h-full md:flex-row ">
         <div className="flex justify-center relative">
           <Image
@@ -27,7 +27,7 @@ export const ContactSection = async ({ lng }: { lng: string }) => {
         </div>
         <article className="flex items-center justify-center ">
           <span className="self-start">
-            <LeftQuoteIcon fill="current" size={100} />
+            <LeftQuoteIcon fill="#091A7A" size={100} />
           </span>
           <div className="mt-10 md:m-0">
             <p className="flex italic text-xl md:text-3xl lg:text-3xl text-center">
@@ -36,7 +36,7 @@ export const ContactSection = async ({ lng }: { lng: string }) => {
             <p className="text-end text-xl font-bold">- Kelly Wearstler</p>
           </div>
           <span className="self-end">
-            <RightQuoteIcon fill="current" size={100} />
+            <RightQuoteIcon fill="#091A7A" size={100} />
           </span>
         </article>
       </section>

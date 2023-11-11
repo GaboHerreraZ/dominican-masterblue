@@ -9,10 +9,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        master: {
+          100: "#D6E4FF",
+          200: "#ADC8FF",
+          300: "#84A9FF",
+          400: "#6690FF",
+          500: "#3366FF",
+          600: "#254EDB",
+          700: "#1939B7",
+          800: "#102693",
+          900: "#091A7A",
+          DEFAULT: "#091A7A",
+        },
+      },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        footer: "url('../../../public/img/jpg/footer.jpg')",
       },
     },
   },

@@ -19,55 +19,79 @@ export default async function Navigation({ lng }: { lng: string }) {
   const menuItems: MenuNav[] = [
     {
       title: t("about-us"),
-      link: "/sobre-nosotros",
+      link: `/${lng}/sobre-nosotros`,
       type: "text",
     },
     {
       title: t("services"),
-      link: "/servicios",
+      link: `/${lng}/servicios`,
       type: "dropdown",
       items: [
         {
           title: t("paint"),
-          link: "/servicios/pintura",
+          link: `/${lng}/servicios/pintura`,
           description: t("paintDescription"),
-          icon: <PaintIcon fill="currentColor" size={20} />,
+          icon: (
+            <PaintIcon className="text-warning" fill="currentColor" size={20} />
+          ),
         },
         {
           title: t("remodeling"),
-          link: "/servicios/remodelacion",
+          link: `/${lng}/servicios/remodelacion`,
           description: t("remodelingDescription"),
-          icon: <RemodelingIcon fill="currentColor" size={18} />,
+          icon: (
+            <RemodelingIcon
+              className="text-success"
+              fill="currentColor"
+              size={18}
+            />
+          ),
+        },
+        {
+          title: t("remodeling"),
+          link: `/${lng}/servicios/remodelacion`,
+          description: t("remodelingDescription"),
+          icon: (
+            <RemodelingIcon
+              className="text-danger"
+              fill="currentColor"
+              size={18}
+            />
+          ),
         },
       ],
     },
     {
       title: t("products"),
-      link: "/productos",
+      link: `/${lng}/productos`,
       type: "dropdown",
       items: [
         {
           title: t("desk"),
           link: "/productos/escritorios",
           description: t("deskDescription"),
-          icon: <DeskIcon fill="currentColor" size={20} />,
+          icon: (
+            <DeskIcon className="text-danger" fill="currentColor" size={20} />
+          ),
         },
         {
           title: t("chair"),
           link: "/productos/sillas",
           description: t("chairDescription"),
-          icon: <ChairIcon fill="currentColor" size={18} />,
+          icon: (
+            <ChairIcon className="text-success" fill="currentColor" size={18} />
+          ),
         },
       ],
     },
     {
       title: t("faqs"),
-      link: "/faqs",
+      link: `/${lng}/faqs`,
       type: "text",
     },
     {
       title: t("contact"),
-      link: "/contacto",
+      link: `/${lng}/contacto`,
       type: "text",
     },
   ];

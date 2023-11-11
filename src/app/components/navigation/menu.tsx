@@ -24,9 +24,8 @@ export const Menu = ({
   message: string;
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const path = usePathname().split("/");
-
-  console.log("path", path);
+  const path: string = usePathname();
+  console.log(path);
 
   return (
     <Navbar
@@ -34,7 +33,7 @@ export const Menu = ({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
-        item: ["data-[active=true]:bg-gray-100 py-1 px-2 rounded-md"],
+        item: ["data-[active=true]: text-master-900 py-1 px-2 rounded-md"],
       }}
     >
       <NavbarContent className="sm:hidden" justify="start">
@@ -67,14 +66,22 @@ export const Menu = ({
             target="_blank"
             about="Instagram"
           >
-            {<InstagramIcon fill="currentColor" size={20} />}
+            <InstagramIcon
+              className="fill-current hover:fill-yellow-700"
+              fill="currentColor"
+              size={20}
+            />
           </Link>
           <Link
             href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
             target="_blank"
             about="Facebook"
           >
-            <FacebookIcon fill="currentColor" size={21} />
+            <FacebookIcon
+              className="fill-current hover:fill-blue-600"
+              fill="currentColor"
+              size={21}
+            />
           </Link>
         </NavbarItem>
       </NavbarContent>
@@ -82,10 +89,7 @@ export const Menu = ({
       <NavbarMenu className="text-center pt-10 gap-8 ">
         {menuItems.map((item, idx) => {
           return (
-            <NavbarMenuItem
-              isActive={path.includes(item.link.slice(1, item.link.length))}
-              key={idx}
-            >
+            <NavbarMenuItem isActive={path === item.link} key={idx}>
               <Link color="foreground" href={item.link}>
                 {item.title}
               </Link>

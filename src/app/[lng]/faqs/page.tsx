@@ -1,23 +1,19 @@
-"use client";
-import { Accordion, AccordionItem } from "@nextui-org/accordion";
-export default function FaqsPage() {
-  console.log("que pedo?");
-  const sizes = ["sm", "md", "lg"];
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-  return (
-    <>
-      <Accordion>
-        <AccordionItem key="1" aria-label="Accordion 1" title="Accordion 1">
-          {defaultContent}
-        </AccordionItem>
-        <AccordionItem key="2" aria-label="Accordion 2" title="Accordion 2">
-          {defaultContent}
-        </AccordionItem>
-        <AccordionItem key="3" aria-label="Accordion 3" title="Accordion 3">
-          {defaultContent}
-        </AccordionItem>
-      </Accordion>
-    </>
-  );
+import { FaqsComponent } from "@/app/components/faqs/faqs";
+import { useTranslation } from "@/app/i18n";
+import { Faqs } from "@/domain/model/faq";
+
+export default async function FaqsPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+  console.log(lng);
+  const { t } = await useTranslation(lng, "faqs");
+
+  const faqs: Faqs = {
+    title: t("titleDescription"),
+    description: t("title"),
+  };
+
+  return <FaqsComponent faqs={faqs} />;
 }

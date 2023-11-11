@@ -7,7 +7,7 @@ export const CardService = () => {
   return (
     <Card
       isFooterBlurred
-      className="w-[180px] h-[200px] md:w-[200px] md:h-[230px] lg:w-[250px] lg:h-[280px] m-5 col-span-12 sm:col-span-7 card-custom "
+      className=" w-[180px] h-[200px] md:w-[200px] md:h-[230px] lg:w-[250px] lg:h-[280px] m-5 col-span-12 sm:col-span-7 card-custom "
     >
       <CardHeader
         title="Card title"
