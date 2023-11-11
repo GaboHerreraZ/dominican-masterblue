@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .title-master {
+    @apply bg-gradient-to-r from-master-900 via-master-700 to-master-400 bg-clip-text  text-transparent;
+  }
+}
+
 .arrow {
   border: solid black;
   border-width: 0 3px 3px 0;

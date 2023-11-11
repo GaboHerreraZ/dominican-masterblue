@@ -33,7 +33,7 @@ export const Menu = ({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
-        item: ["data-[active=true]: text-master-900 py-1 px-2 rounded-md"],
+        item: ["data-[active=true]: title-master"],
       }}
     >
       <NavbarContent className="sm:hidden" justify="start">
@@ -60,14 +60,14 @@ export const Menu = ({
       </NavbarContent>
 
       <NavbarContent justify="end">
-        <NavbarItem className="flex gap-2">
+        <NavbarItem isActive={false} className="flex gap-2">
           <Link
             href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
             target="_blank"
             about="Instagram"
           >
             <InstagramIcon
-              className="fill-current hover:fill-yellow-700"
+              className="fill-master-900 hover:fill-yellow-700"
               fill="currentColor"
               size={20}
             />
@@ -78,7 +78,7 @@ export const Menu = ({
             about="Facebook"
           >
             <FacebookIcon
-              className="fill-current hover:fill-blue-600"
+              className="fill-master-900  hover:fill-blue-600"
               fill="currentColor"
               size={21}
             />

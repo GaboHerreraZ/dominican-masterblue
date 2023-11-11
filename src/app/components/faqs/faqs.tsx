@@ -2,6 +2,8 @@
 import { QuestionIcon } from "@/app/utils/iconsUtils";
 import { Faqs } from "@/domain/model/faq";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import Image from "next/legacy/image";
+import mejoras from "../../../../public/img/jpg/mejoras.jpg";
 
 export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
   const defaultContent =
@@ -9,6 +11,21 @@ export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
 
   return (
     <section>
+      <header className="h-[350px] relative ">
+        <Image
+          alt="imagen-prueba"
+          src={mejoras}
+          layout="fill"
+          objectFit="cover"
+        />
+        <div className="absolute bg-white bg-opacity-70 h-full w-full"></div>
+        <div className="absolute flex flex-col items-center justify-center w-full h-full">
+          <h4 className="text-master-900 font-bold text-4xl">FAQs</h4>
+          <p className="text-2xl text-master-900">
+            &quot;{faqs.subtitle}&quot;
+          </p>
+        </div>
+      </header>
       <section className="m-20">
         <p className="text-center">
           <QuestionIcon className="w-full" fill="#091A7A" size={50} />

@@ -6,5 +6,6 @@ export interface Faq {
 export interface Faqs {
   title: string;
   description: string;
+  subtitle: string;
   faqs?: Faq[];
 }

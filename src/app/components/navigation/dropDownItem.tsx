@@ -25,10 +25,12 @@ export const DropDownMenuItem = ({
         <DropdownTrigger>
           <Button
             disableRipple
-            className="text-master-900 text-base hover:scale-110 duration-500 py-1 px-2 hover:rounded-md  bg-transparent "
-            endContent={<ChevronDownIcon fill="currentColor" size={16} />}
+            radius="none"
+            className="relative group text-base  duration-500  px-2 h-[30px] bg-transparent "
+            endContent={<ChevronDownIcon fill="#091A7A" size={16} />}
           >
-            {title}
+            <span className="title-master ">{title}</span>
+            <span className="absolute -bottom-1 left-0 w-0 h-[6px] bg-gradient-to-r from-master-900 via-master-700 to-master-400 transition-all group-hover:w-full"></span>
           </Button>
         </DropdownTrigger>
       </NavbarItem>

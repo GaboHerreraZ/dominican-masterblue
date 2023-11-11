@@ -7,12 +7,12 @@ export default async function FaqsPage({
 }: {
   params: { lng: string };
 }) {
-  console.log(lng);
   const { t } = await useTranslation(lng, "faqs");
 
   const faqs: Faqs = {
     title: t("titleDescription"),
     description: t("title"),
+    subtitle: t("subtitle"),
   };
 
   return <FaqsComponent faqs={faqs} />;

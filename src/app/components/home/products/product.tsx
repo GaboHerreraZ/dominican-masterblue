@@ -8,7 +8,8 @@ import { Link } from "@nextui-org/link";
 export const Product = () => {
   return (
     <Card
-      className="w-[300px]"
+      radius="none"
+      className="w-[300px] hover:scale-105 "
       shadow="sm"
       isPressable
       onPress={() => console.log("item pressed")}
