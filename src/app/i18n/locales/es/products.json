@@ -1,0 +1,18 @@
+{
+  "filterBy": "Filtrar por",
+  "noNofilterSelected": "Ningún filtro seleccionado",
+  "orderBy": "Ordernar por",
+  "category": "Categoría",
+  "categoryDescription": "Seleccione categoría",
+  "price": "Precio",
+  "colors": "Colores",
+  "colorDescription": "Seleccione colores",
+  "recently": "Reciente",
+  "lowPrice": "Precio más bajo",
+  "highPrice": "Precio más alto",
+  "material": "Material",
+  "avilableColors": "Colores Disponibles",
+  "size": "Dimensiones",
+  "seeMore": "Ver más",
+  "": "See details"
+}
