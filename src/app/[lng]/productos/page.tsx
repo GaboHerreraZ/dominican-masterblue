@@ -1,44 +1,34 @@
+import { ProductContainer } from "@/app/components/product/productContainer";
 import { Product } from "@/domain/model/product";
 import ProductService from "@/service/productService";
+import { ProductStoreInitializer } from "@/store/productStoreInitializer";
+import { useProductStore } from "@/store/useProductStore";
 
-const setProduct = async () => {
-  const { createProduct } = ProductService();
-  const product: Product = {
-    id: "1",
-    name: "Product 1",
-    description: "Description 1",
-    price: 100,
-    image: "image",
-  };
-  return await createProduct(product);
+const product: Product = {
+  id: "1",
+  name: "Product 1",
+  description: "Description 1",
+  price: 100,
+  image: "image",
 };
 
 const getProducts = async () => {
   const { getProducts } = ProductService();
-  return getProducts();
+  const response = await getProducts();
+  return response;
 };
 
-const getById = async () => {
-  const { getProductById } = ProductService();
-  return getProductById();
-};
-
-const update = async () => {
-  const { update } = ProductService();
-  return update();
-};
-
-const deletete = async () => {
-  const { deleteProduct } = ProductService();
-  return deleteProduct();
-};
-
-export default async function ProductsPage() {
-  const response = await deletete();
+export default async function ProductsPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+  const products = await getProducts();
+  useProductStore.setState({ products });
   return (
     <div>
-      <h1>Products</h1>
-      {/* Add your product list here */}
+      <ProductStoreInitializer products={products} />
+      <ProductContainer lng={lng} />
     </div>
   );
 }

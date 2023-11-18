@@ -1,8 +1,0 @@
-.center div {
-  transition: all 0.3s ease;
-}
-
-.center .slick-center .card-custom {
-  opacity: 1;
-  transform: scale(1.08);
-}

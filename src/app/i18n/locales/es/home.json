@@ -1,9 +1,24 @@
 {
-  "service": "Explora todos nuestros servicios",
+  "service": "Explora nuestros servicios",
   "serviceDescription": "Transformamos espacios, creamos sueños.",
   "productDescription": "Simplifica tu espacio con elegancia.",
   "product": "Explora nuestra colección de productos",
-  "contact": "Contáctanos",
-  "contactTitle": "Ven y conocenos",
-  "contactDescription": "Diseñar un espacio es como componer una melodía; cada elemento debe armonizar para crear una experiencia única."
+  "seeMore": "Ver más",
+  "interiorDesign": "Diseño de interiores",
+  "interiorDesingDescriptions": "Bienvenido a nuestro Oasis de Diseño de Interiores, donde cada espacio cuenta una historia única. Sumérgete en un mundo de estilo y sofisticación mientras redefinimos el arte de la decoración del hogar.",
+  "restoration": "Restauración",
+  "restorationDescription": "Embárquese en un viaje de transformación con nuestra Excelencia en Restauración. Eleve el alma de su restaurante, reviva el corazón de su cocina, rejuvenezca el espíritu de su hotel y reinvente el espacio de trabajo de su oficina.",
+  "architectureRender": "Arquitectura Render 3D",
+  "architectureRenderDescription": "Ingresa a un reino visionario con nuestros renders 3D de arquitectura. Sumérgete en un tapiz digital que da vida a los planos y transforma conceptos en una realidad impresionante.",
+  "contactDescription": "Diseñar un espacio es como componer una melodía; cada elemento debe armonizar para crear una experiencia única.",
+  "projectTitle": "Explora nuestros servicios",
+  "projectDescription": "Donde la Creatividad Toma Forma",
+  "kitchen": "Cocinas",
+  "office": "Oficinas",
+  "house": "Casas",
+  "hotel": "Hoteles",
+  "chair": "Sillas",
+  "dinningRoom": "Comedores",
+  "furniture": "Muebles",
+  "closet": "Closets"
 }

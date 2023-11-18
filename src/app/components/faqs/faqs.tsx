@@ -20,7 +20,7 @@ export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
         />
         <div className="absolute bg-white bg-opacity-70 h-full w-full"></div>
         <div className="absolute flex flex-col items-center justify-center w-full h-full">
-          <h4 className="text-master-900 font-bold text-4xl">FAQs</h4>
+          <h4 className="title-master font-bold text-4xl">FAQs</h4>
           <p className="text-2xl text-master-900">
             &quot;{faqs.subtitle}&quot;
           </p>
@@ -28,7 +28,7 @@ export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
       </header>
       <section className="m-20">
         <p className="text-center">
-          <QuestionIcon className="w-full" fill="#091A7A" size={50} />
+          <QuestionIcon fill="#091A7A" size={50} />
         </p>
         <p className="italic text-center m-0 text-4xl ">{faqs.description}</p>
         <h4 className="mb-7 m-0 text-center font-bold text-master-900 text-2xl">

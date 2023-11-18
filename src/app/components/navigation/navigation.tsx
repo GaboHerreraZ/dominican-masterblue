@@ -18,6 +18,11 @@ export default async function Navigation({ lng }: { lng: string }) {
 
   const menuItems: MenuNav[] = [
     {
+      title: t("home"),
+      link: `/${lng}`,
+      type: "text",
+    },
+    {
       title: t("about-us"),
       link: `/${lng}/sobre-nosotros`,
       type: "text",
@@ -31,33 +36,19 @@ export default async function Navigation({ lng }: { lng: string }) {
           title: t("paint"),
           link: `/${lng}/servicios/pintura`,
           description: t("paintDescription"),
-          icon: (
-            <PaintIcon className="text-warning" fill="currentColor" size={20} />
-          ),
+          icon: <PaintIcon fill="#f6b03f" size={20} />,
         },
         {
           title: t("remodeling"),
           link: `/${lng}/servicios/remodelacion`,
           description: t("remodelingDescription"),
-          icon: (
-            <RemodelingIcon
-              className="text-success"
-              fill="currentColor"
-              size={18}
-            />
-          ),
+          icon: <RemodelingIcon fill="#35d078" size={18} />,
         },
         {
           title: t("remodeling"),
           link: `/${lng}/servicios/remodelacion`,
           description: t("remodelingDescription"),
-          icon: (
-            <RemodelingIcon
-              className="text-danger"
-              fill="currentColor"
-              size={18}
-            />
-          ),
+          icon: <RemodelingIcon fill="#f21260" size={18} />,
         },
       ],
     },
@@ -70,17 +61,13 @@ export default async function Navigation({ lng }: { lng: string }) {
           title: t("desk"),
           link: "/productos/escritorios",
           description: t("deskDescription"),
-          icon: (
-            <DeskIcon className="text-danger" fill="currentColor" size={20} />
-          ),
+          icon: <DeskIcon fill="#f64d88" size={20} />,
         },
         {
           title: t("chair"),
           link: "/productos/sillas",
           description: t("chairDescription"),
-          icon: (
-            <ChairIcon className="text-success" fill="currentColor" size={18} />
-          ),
+          icon: <ChairIcon fill="#35d078" size={18} />,
         },
       ],
     },

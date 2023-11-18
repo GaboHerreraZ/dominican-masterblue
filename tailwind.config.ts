@@ -28,6 +28,20 @@ const config: Config = {
       },
     },
   },
-  plugins: [nextui()],
+  plugins: [
+    nextui({
+      prefix: "nextui",
+      defaultTheme: "light",
+      themes: {
+        light: {
+          colors: {
+            primary: {
+              DEFAULT: "#091a7ab3",
+            },
+          },
+        },
+      },
+    }),
+  ],
 };
 export default config;

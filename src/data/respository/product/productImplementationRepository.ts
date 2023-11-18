@@ -6,7 +6,7 @@ export class ProductImplementationRepository implements ProductRepository {
   constructor(private db: Db<Product>) {}
 
   async create(product: Product): Promise<boolean> {
-    await this.db.addDocument(product);
+    const response = await this.db.addDocument(product);
     return true;
   }
 

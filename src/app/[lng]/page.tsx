@@ -5,7 +5,6 @@ export default async function Home({
 }: {
   params: { lng: string };
 }) {
-  console.log("lng", lng);
   const { t } = await useTranslation(lng);
   return <HomeDefault lng={lng} />;
 }

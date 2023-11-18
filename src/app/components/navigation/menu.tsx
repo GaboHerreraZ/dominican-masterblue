@@ -25,7 +25,6 @@ export const Menu = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const path: string = usePathname();
-  console.log(path);
 
   return (
     <Navbar
@@ -33,7 +32,10 @@ export const Menu = ({
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
       classNames={{
-        item: ["data-[active=true]: title-master"],
+        item: [
+          "data-[active=true]:font-bold",
+          "data-[active=true]:text-master-900/70",
+        ],
       }}
     >
       <NavbarContent className="sm:hidden" justify="start">
@@ -52,7 +54,12 @@ export const Menu = ({
       <NavbarContent className="hidden sm:flex gap-10" justify="center">
         {menuItems.map((item, idx) =>
           item.type === "dropdown" ? (
-            <DropDownMenuItem key={idx} title={item.title} items={item.items} />
+            <DropDownMenuItem
+              key={idx}
+              link={item.link}
+              title={item.title}
+              items={item.items}
+            />
           ) : (
             <TextMenuItem key={idx} item={item} />
           )
@@ -66,22 +73,14 @@ export const Menu = ({
             target="_blank"
             about="Instagram"
           >
-            <InstagramIcon
-              className="fill-master-900 hover:fill-yellow-700"
-              fill="currentColor"
-              size={20}
-            />
+            <InstagramIcon fill="#091a7ab3" size={20} />
           </Link>
           <Link
             href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
             target="_blank"
             about="Facebook"
           >
-            <FacebookIcon
-              className="fill-master-900  hover:fill-blue-600"
-              fill="currentColor"
-              size={21}
-            />
+            <FacebookIcon fill="#091a7ab3" size={21} />
           </Link>
         </NavbarItem>
       </NavbarContent>

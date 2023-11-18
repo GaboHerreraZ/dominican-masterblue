@@ -57,12 +57,6 @@ export const Banner = () => {
             layout="fill"
             objectFit="cover"
           />
-          {/**
-           * <div className="absolute flex flex-col justify-center p-10 h-full self-center">
-            <p>Comedores</p>
-            <Button>Ver</Button>
-          </div>
-           */}
         </div>
 
         <div className="h-[500px]">

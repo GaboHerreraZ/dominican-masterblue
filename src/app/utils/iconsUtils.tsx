@@ -7,7 +7,6 @@ export const InstagramIcon = ({
   size,
   height,
   width,
-  ...props
 }: {
   fill: string;
   size: number;
@@ -20,7 +19,6 @@ export const InstagramIcon = ({
       height={size || height || 30}
       viewBox="0 0 24 24"
       fill={fill}
-      {...props}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -28,19 +26,16 @@ export const InstagramIcon = ({
         clipRule="evenodd"
         d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
         fill={fill}
-        {...props}
       />
       <path
         d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
         fill={fill}
-        {...props}
       />
       <path
         fillRule="evenodd"
         clipRule="evenodd"
         d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
         fill={fill}
-        {...props}
       />
     </svg>
   );
@@ -51,9 +46,7 @@ export const FacebookIcon = ({
   size,
   height,
   width,
-  ...props
 }: {
-  className: string;
   fill: string;
   size: number;
   height?: number;
@@ -61,7 +54,6 @@ export const FacebookIcon = ({
 }) => {
   return (
     <svg
-      {...props}
       fill={fill}
       width={size || width || 30}
       height={size || height || 30}
@@ -191,7 +183,7 @@ export const WhatsAppLink = async ({ lng }: { lng: string }) => {
       <Link
         href=""
         target="_blank"
-        className="fixed bottom-5 right-5 animate-bounce"
+        className="fixed bottom-5 right-5 animate-bounce z-50"
       >
         <WhatsAppIcon size={40} />
       </Link>
@@ -199,28 +191,25 @@ export const WhatsAppLink = async ({ lng }: { lng: string }) => {
   );
 };
 
-export const QuestionIcon = async ({
+export const QuestionIcon = ({
   fill,
   size,
   height,
   width,
-  ...props
 }: {
   fill: string;
   size: number;
   height?: number;
   width?: string;
-  props: any;
 }) => {
   return (
     <svg
       width={size || width || 30}
       height={size || height || 30}
       viewBox="0 0 1024 1024"
-      className="icon"
+      className="icon w-full"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
     >
       <path
         d="M215.412 747.654c0 20.425 16.557 36.983 36.983 36.983h30.761-30.761c-20.425 0-36.983 16.558-36.983 36.983v30.761-30.761c0-20.425-16.558-36.983-36.983-36.983h-30.761 30.761c20.424-0.001 36.983-16.558 36.983-36.983v-30.761 30.761z"
@@ -283,7 +272,7 @@ export const QuestionIcon = async ({
   );
 };
 
-export const LocationIcon = async ({
+export const LocationIcon = ({
   fill,
   size,
   height,
@@ -322,7 +311,7 @@ export const LocationIcon = async ({
   );
 };
 
-export const PhoneIcon = async ({
+export const PhoneIcon = ({
   fill,
   size,
   height,
@@ -351,7 +340,7 @@ export const PhoneIcon = async ({
   );
 };
 
-export const ScheduleIcon = async ({
+export const ScheduleIcon = ({
   fill,
   size,
   height,
@@ -373,6 +362,40 @@ export const ScheduleIcon = async ({
     >
       <path d="M11 6.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z" />
       <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+    </svg>
+  );
+};
+
+export const FilterIcon = ({
+  fill,
+  size,
+  height,
+  width,
+}: {
+  fill: string;
+  size: number;
+  height?: number;
+  width?: string;
+}) => {
+  return (
+    <svg
+      width={size || width || 30}
+      height={size || height || 30}
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+      strokeWidth="3"
+      stroke={fill}
+      fill="none"
+    >
+      <line x1="50.69" y1="32" x2="56.32" y2="32" />
+      <line x1="7.68" y1="32" x2="38.69" y2="32" />
+      <line x1="26.54" y1="15.97" x2="56.32" y2="15.97" />
+      <line x1="7.68" y1="15.97" x2="14.56" y2="15.97" />
+      <line x1="35" y1="48.03" x2="56.32" y2="48.03" />
+      <line x1="7.68" y1="48.03" x2="23" y2="48.03" />
+      <circle cx="20.55" cy="15.66" r="6" />
+      <circle cx="44.69" cy="32" r="6" />
+      <circle cx="29" cy="48.03" r="6" />
     </svg>
   );
 };
