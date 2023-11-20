@@ -33,7 +33,7 @@ export default async function RootLayout({
     >
       <body>
         <Providers>
-          <PageLayout lng="lng">{children}</PageLayout>
+          <PageLayout lng={lng}>{children}</PageLayout>
         </Providers>
       </body>
     </html>
