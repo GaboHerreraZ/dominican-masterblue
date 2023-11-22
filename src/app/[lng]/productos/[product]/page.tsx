@@ -7,7 +7,7 @@ export async function generateStaticParams() {
   const { getProducts } = ProductService();
   const response = await getProducts();
   const params = response.map((product) => ({
-    params: { id: product.id },
+    params: { product: product.id },
   }));
 
   return params;
@@ -15,7 +15,9 @@ export async function generateStaticParams() {
 
 const getProductById = async (id: string) => {
   const { products } = useProductStore.getState();
+  console.log("product", products);
   const product = products.find((product) => product.id === id);
+  console.log("product", product);
   return product;
 };
 
@@ -25,6 +27,7 @@ export default async function ProductPage({
   params: { lng: string; product: string };
 }) {
   const { lng, product } = params;
+  console.log("product id", product);
   const productById = (await getProductById(product)) as Product;
   return <ProductDetail product={productById} />;
 }

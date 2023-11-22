@@ -10,11 +10,11 @@ import { create } from "zustand";
 
 interface ProductState {
   products: Product[];
-  setProduct: (products: Product) => Promise<boolean>;
+  setProduct: (products: Product) => Promise<void>;
   getProducts: () => void;
   getProductById: (productId: string) => Promise<Product | null>;
-  updateProduct: (product: Product) => Promise<boolean>;
-  deleteProduct: (productId: string) => Promise<boolean>;
+  updateProduct: (product: Product) => Promise<void>;
+  deleteProduct: (productId: string) => Promise<void>;
 }
 
 export const useProductStore = create<ProductState>()((set) => {
@@ -34,15 +34,30 @@ export const useProductStore = create<ProductState>()((set) => {
     products: [],
     getProducts: async () => {
       const products = await getProductsUseCase.execute();
-      set({ products });
+      set(() => ({ products }));
     },
-    setProduct: async (product: Product) =>
-      await createProductsUseCase.execute(product),
+    setProduct: async (product: Product) => {
+      const response = await createProductsUseCase.execute(product);
+      const newProduct = { ...product, id: response };
+      set((state) => ({ products: [...state.products, newProduct] }));
+    },
     getProductById: async (productId: string) =>
       await getProductByIdUseCase.execute(productId),
-    updateProduct: async (product: Product) =>
+    updateProduct: async (product: Product) => {
       await updateProductUseCase.execute(product),
-    deleteProduct: async (productId: string) =>
+        set((state) => ({
+          products: state.products.map((item) =>
+            item.id === product.id ? product : item
+          ),
+        }));
+    },
+    deleteProduct: async (productId: string) => {
       await deleteProductUseCase.execute(productId),
+        set((state) => ({
+          products: state.products.filter(
+            (product) => product.id !== productId
+          ),
+        }));
+    },
   };
 });

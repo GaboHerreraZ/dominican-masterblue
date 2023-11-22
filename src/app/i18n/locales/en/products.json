@@ -14,5 +14,9 @@
   "availableColors": "Available Colours",
   "size": "Dimensions",
   "seeMore": "See more",
-  "seeDetails": "See details"
+  "seeDetails": "See details",
+  "titleListProducts": "List of Products",
+  "newProduct": "Add Product",
+  "active": "Active",
+  "inactive": "Inactive"
 }

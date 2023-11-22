@@ -14,5 +14,9 @@
   "avilableColors": "Colores Disponibles",
   "size": "Dimensiones",
   "seeMore": "Ver más",
-  "": "See details"
+  "seeDetails": "See details",
+  "titleListProducts": "Lista de productos",
+  "newProduct": "Agregar producto",
+  "active": "Activo",
+  "inactive": "Inactivo"
 }

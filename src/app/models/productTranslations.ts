@@ -1,4 +1,6 @@
 export interface ProductTranslations {
+  title?: string;
+  newProduct?: string;
   filterBy?: string;
   noNofilterSelected?: string;
   orderBy?: string;
@@ -11,4 +13,6 @@ export interface ProductTranslations {
   lowPrice?: string;
   highPrice?: string;
   seeMore?: string;
+  active?: string;
+  inactive?: string;
 }

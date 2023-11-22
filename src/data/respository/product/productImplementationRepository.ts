@@ -5,9 +5,9 @@ import { ProductRepository } from "@/domain/repository/productRepository";
 export class ProductImplementationRepository implements ProductRepository {
   constructor(private db: Db<Product>) {}
 
-  async create(product: Product): Promise<boolean> {
+  async create(product: Product): Promise<string> {
     const response = await this.db.addDocument(product);
-    return true;
+    return response.id;
   }
 
   async update(product: Product, id: string): Promise<boolean> {
@@ -23,15 +23,14 @@ export class ProductImplementationRepository implements ProductRepository {
   async findAll(): Promise<Product[]> {
     const response = await this.db.getDocuments();
     const products: Product[] = [];
-    response.forEach((doc) => {
-      products.push(doc.data() as Product);
-    });
+    response.forEach((doc) =>
+      products.push({ id: doc.id, ...doc.data() } as Product)
+    );
     return products;
   }
 
   async findById(id: string): Promise<any> {
     const response = await this.db.getDocument(id);
-    response.data();
-    return response.data() as Product;
+    return { id: response.id, ...response.data() } as Product;
   }
 }

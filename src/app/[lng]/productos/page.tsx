@@ -1,16 +1,7 @@
 import { ProductContainer } from "@/app/components/product/productContainer";
-import { Product } from "@/domain/model/product";
 import ProductService from "@/service/productService";
 import { ProductStoreInitializer } from "@/store/productStoreInitializer";
 import { useProductStore } from "@/store/useProductStore";
-
-const product: Product = {
-  id: "1",
-  name: "Product 1",
-  description: "Description 1",
-  price: 100,
-  image: "image",
-};
 
 const getProducts = async () => {
   const { getProducts } = ProductService();
@@ -24,6 +15,7 @@ export default async function ProductsPage({
   params: { lng: string };
 }) {
   const products = await getProducts();
+  console.log("products", products);
   useProductStore.setState({ products });
   return (
     <div>

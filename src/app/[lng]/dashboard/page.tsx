@@ -3,5 +3,6 @@ export default function DashBoard({
 }: {
   params: { lng: string };
 }) {
+  console.log("lng", lng);
   return <>Página principal dashboard</>;
 }

@@ -4,7 +4,6 @@ import { ReactNode } from "react";
 import Navigation from "@/app/components/navigation/navigation";
 import { Footer } from "@/app/components/footer/footer";
 import { usePathname } from "next/navigation";
-import { DashBoardLayout } from "@/app/components/dashboard/dashBoardLayout";
 
 export const PageLayout = ({
   children,
@@ -18,7 +17,7 @@ export const PageLayout = ({
   return (
     <>
       {path.includes("login") || path.includes("dashboard") ? (
-        <DashBoardLayout lng={lng}>{children}</DashBoardLayout>
+        <>{children}</>
       ) : (
         <>
           <Navigation lng={lng} />
