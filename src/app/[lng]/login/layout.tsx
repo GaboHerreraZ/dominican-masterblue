@@ -7,7 +7,5 @@ export default function PageLayout({
   params: { lng: string };
   children: React.ReactNode;
 }) {
-  console.log("lng", lng);
-
   return <LoginLayout lng={lng}>{children}</LoginLayout>;
 }

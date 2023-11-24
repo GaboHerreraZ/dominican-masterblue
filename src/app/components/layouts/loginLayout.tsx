@@ -7,9 +7,5 @@ export const LoginLayout = ({
   lng: string;
   children: ReactNode;
 }) => {
-  return (
-    <section className="w-full min-h-screen flex place-items-center place-content-center ">
-      {children}
-    </section>
-  );
+  return <section className="w-full min-h-screen">{children}</section>;
 };

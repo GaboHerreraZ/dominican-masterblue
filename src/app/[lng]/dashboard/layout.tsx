@@ -10,7 +10,7 @@ export default function PageLayout({
 }) {
   return (
     <ProtectedRoute>
-      <DashBoardLayout lng={lng}>{children}</DashBoardLayout>;
+      <DashBoardLayout lng={lng}>{children}</DashBoardLayout>
     </ProtectedRoute>
   );
 }

@@ -31,7 +31,7 @@ export const Sidebar = ({
   );
 
   const className =
-    "bg-black/70 w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:relative top-0 bottom-0 left-0 z-40";
+    "bg-[#091a7ab3] w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:relative top-0 bottom-0 left-0 z-40";
   const appendClass = show ? " ml-0" : " ml-[-250px] md:ml-0";
 
   return (

@@ -3,15 +3,17 @@ import { Product } from "@/domain/model/product";
 import { ProductRepository } from "@/domain/repository/productRepository";
 
 export class ProductImplementationRepository implements ProductRepository {
-  constructor(private db: Db<Product>) {}
+  constructor(private db: Db<Omit<Product, "id">>) {}
 
   async create(product: Product): Promise<string> {
-    const response = await this.db.addDocument(product);
+    const { id, ...newProduct } = product;
+    const response = await this.db.addDocument(newProduct);
     return response.id;
   }
 
-  async update(product: Product, id: string): Promise<boolean> {
-    await this.db.updateDocument(product, id);
+  async update(product: Product, uid: string): Promise<boolean> {
+    const { id, ...updateProduct } = product;
+    await this.db.updateDocument(updateProduct, uid);
     return true;
   }
 

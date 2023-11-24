@@ -19,7 +19,7 @@ export default async function ProductsPage({
   useProductStore.setState({ products });
   return (
     <div>
-      <ProductStoreInitializer products={products} />
+      <ProductStoreInitializer products={products} translations={{}} />
       <ProductContainer lng={lng} />
     </div>
   );

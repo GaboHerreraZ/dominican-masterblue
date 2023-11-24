@@ -16,18 +16,18 @@ import { Tooltip } from "@nextui-org/tooltip";
 import { Chip } from "@nextui-org/chip";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { ProductTranslations } from "@/app/models/productTranslations";
+import { useProductStore } from "@/store/useProductStore";
 
 export const ProductsTable = ({
   products,
   lng,
-  translations,
 }: {
   products: Product[];
   lng: string;
-  translations: ProductTranslations;
 }) => {
   const listColumns: any[] = columns[lng];
+
+  const translations = useProductStore((state) => state.translations);
 
   const renderCell = useCallback((product: Product, columnKey: Key) => {
     const cellValue = product[columnKey as keyof Product];

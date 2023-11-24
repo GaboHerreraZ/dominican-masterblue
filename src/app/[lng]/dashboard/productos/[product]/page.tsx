@@ -1,8 +1,10 @@
 import ProductService from "@/service/productService";
-import { useProductStore } from "@/store/useProductStore";
+import { ProductDetailDashboard } from "@/app/components/dashboard/product/productDetail";
+import { Product } from "@/domain/model/product";
+import { ProductTranslations } from "@/app/models/productTranslations";
+import GetTranslations from "@/app/utils/translationsPage";
 
 export async function generateStaticParams() {
-  const { products } = useProductStore.getState();
   const { getProducts } = ProductService();
 
   const response = await getProducts();
@@ -14,10 +16,18 @@ export async function generateStaticParams() {
   return params;
 }
 
-const getProductById = async (id: string) => {
-  const { products } = useProductStore.getState();
-  const product = products.find((product) => product.id === id);
-  return product;
+const GetProductById = async (id: string): Promise<Product> => {
+  const { getProductById } = ProductService();
+  return id === "nuevo"
+    ? ({ id: "nuevo" } as Product)
+    : await getProductById(id);
+};
+
+const GetTranslationsProduct = async (
+  lng: string
+): Promise<ProductTranslations> => {
+  const { GetProductTranslations } = GetTranslations();
+  return await GetProductTranslations(lng);
 };
 
 export default async function ProductDetail({
@@ -25,8 +35,14 @@ export default async function ProductDetail({
 }: {
   params: { lng: string; product: string };
 }) {
-  const productDetail = await getProductById(product);
+  const productDetail = await GetProductById(product);
   console.log("productDetail", productDetail);
+  const translations = await GetTranslationsProduct(lng);
 
-  return <h1>{productDetail?.englishName}</h1>;
+  return (
+    <ProductDetailDashboard
+      product={productDetail}
+      translations={translations}
+    />
+  );
 }

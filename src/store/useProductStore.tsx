@@ -1,3 +1,4 @@
+import { ProductTranslations } from "@/app/models/productTranslations";
 import { Db } from "@/data/dataSource/db";
 import { ProductImplementationRepository } from "@/data/respository/product/productImplementationRepository";
 import { Product } from "@/domain/model/product";
@@ -10,7 +11,8 @@ import { create } from "zustand";
 
 interface ProductState {
   products: Product[];
-  setProduct: (products: Product) => Promise<void>;
+  translations: ProductTranslations;
+  setProduct: (products: Product) => Promise<string>;
   getProducts: () => void;
   getProductById: (productId: string) => Promise<Product | null>;
   updateProduct: (product: Product) => Promise<void>;
@@ -18,7 +20,7 @@ interface ProductState {
 }
 
 export const useProductStore = create<ProductState>()((set) => {
-  const productDb = new Db<Product>("products");
+  const productDb = new Db<Omit<Product, "id">>("products");
   const productImplementation = new ProductImplementationRepository(productDb);
 
   const createProductsUseCase = new CreateProductUseCase(productImplementation);
@@ -31,6 +33,7 @@ export const useProductStore = create<ProductState>()((set) => {
   const deleteProductUseCase = new DeleteProductUseCase(productImplementation);
 
   return {
+    translations: {},
     products: [],
     getProducts: async () => {
       const products = await getProductsUseCase.execute();
@@ -40,6 +43,7 @@ export const useProductStore = create<ProductState>()((set) => {
       const response = await createProductsUseCase.execute(product);
       const newProduct = { ...product, id: response };
       set((state) => ({ products: [...state.products, newProduct] }));
+      return response;
     },
     getProductById: async (productId: string) =>
       await getProductByIdUseCase.execute(productId),

@@ -57,54 +57,61 @@ export const Login = () => {
   }, []);
 
   return (
-    <section className="shadow-md p-4 ">
+    <section className="flex h-screen w-full">
       {/* {errorsLog && <h1>Gonorreaaaaaa</h1>} */}
-      <form
-        className="grid grid-cols-1 justify-center items-center gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <Input
-          {...register("email", { required: true })}
-          isRequired
-          type="email"
-          variant="underlined"
-          color="primary"
-          label="Email"
-          placeholder="Enter your email"
-          errorMessage={errors.email ? "Please enter a valid email" : ""}
-          isInvalid={errors.email ? true : false}
-        />
-        <Input
-          isRequired
-          type={isVisible ? "text" : "password"}
-          {...register("password", { required: true })}
-          className="max-w-xs"
-          variant="underlined"
-          color="primary"
-          label="Password"
-          placeholder="Enter your password"
-          errorMessage={errors.password ? "Please enter a valid password" : ""}
-          isInvalid={errors.email ? true : false}
-          endContent={
-            <button
-              className="focus:outline-none"
-              type="button"
-              onClick={toggleVisibility}
-            >
-              {isVisible ? <EyeSlashFilledIcon /> : <EyeFilledIcon />}
-            </button>
-          }
-        />
-        <Button
-          type="submit"
-          color="primary"
-          size="sm"
-          radius="none"
-          variant="bordered"
+      <section className=" bg-master-900/70 md:flex md:place-content-center md:place-items-center hidden w-1/2">
+        <h4 className="font-bold">LOGO</h4>
+      </section>
+      <section className="flex place-content-center place-items-center  w-full md:w-1/2">
+        <form
+          className="shadow-md p-4 grid grid-cols-1 justify-center items-center gap-4"
+          onSubmit={handleSubmit(onSubmit)}
         >
-          Login
-        </Button>
-      </form>
+          <Input
+            {...register("email", { required: true })}
+            isRequired
+            type="email"
+            variant="underlined"
+            color="primary"
+            label="Email"
+            placeholder="Enter your email"
+            errorMessage={errors.email ? "Please enter a valid email" : ""}
+            isInvalid={errors.email ? true : false}
+          />
+          <Input
+            isRequired
+            type={isVisible ? "text" : "password"}
+            {...register("password", { required: true })}
+            className="max-w-xs"
+            variant="underlined"
+            color="primary"
+            label="Password"
+            placeholder="Enter your password"
+            errorMessage={
+              errors.password ? "Please enter a valid password" : ""
+            }
+            isInvalid={errors.email ? true : false}
+            endContent={
+              <button
+                className="focus:outline-none"
+                type="button"
+                onClick={toggleVisibility}
+              >
+                {isVisible ? <EyeSlashFilledIcon /> : <EyeFilledIcon />}
+              </button>
+            }
+          />
+          <Button
+            type="submit"
+            color="primary"
+            size="sm"
+            radius="none"
+            variant="bordered"
+          >
+            Login
+          </Button>
+        </form>
+      </section>
     </section>
   );
 };
