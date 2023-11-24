@@ -15,7 +15,6 @@ export default async function ProductsPage({
   params: { lng: string };
 }) {
   const products = await getProducts();
-  console.log("products", products);
   useProductStore.setState({ products });
   return (
     <div>

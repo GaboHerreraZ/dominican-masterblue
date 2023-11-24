@@ -27,14 +27,12 @@ export const ProductForm: React.FC<ProductFormProps> = async ({ product }) => {
   const navigation = useRouter();
 
   const onSubmit: SubmitHandler<Product> = async (data) => {
-    console.log(isValid);
     if (!isValid) {
       return;
     }
 
     if (product.id === "nuevo") {
       const response = await createProduct(data);
-      console.log("create", response);
       navigation.push(`/dashboard/productos/${response}`);
       return;
     }

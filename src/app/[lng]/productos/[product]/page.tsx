@@ -15,9 +15,7 @@ export async function generateStaticParams() {
 
 const getProductById = async (id: string) => {
   const { products } = useProductStore.getState();
-  console.log("product", products);
   const product = products.find((product) => product.id === id);
-  console.log("product", product);
   return product;
 };
 
@@ -27,7 +25,6 @@ export default async function ProductPage({
   params: { lng: string; product: string };
 }) {
   const { lng, product } = params;
-  console.log("product id", product);
   const productById = (await getProductById(product)) as Product;
   return <ProductDetail product={productById} />;
 }

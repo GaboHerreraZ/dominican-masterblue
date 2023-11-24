@@ -3,6 +3,9 @@ import { ProductDetailDashboard } from "@/app/components/dashboard/product/produ
 import { Product } from "@/domain/model/product";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import GetTranslations from "@/app/utils/translationsPage";
+import { cache } from "react";
+
+export const revalidate = 20;
 
 export async function generateStaticParams() {
   const { getProducts } = ProductService();
@@ -16,12 +19,13 @@ export async function generateStaticParams() {
   return params;
 }
 
-const GetProductById = async (id: string): Promise<Product> => {
+const GetProductById = cache(async (id: string): Promise<Product> => {
   const { getProductById } = ProductService();
+  console.log("GetProductById");
   return id === "nuevo"
     ? ({ id: "nuevo" } as Product)
     : await getProductById(id);
-};
+});
 
 const GetTranslationsProduct = async (
   lng: string
@@ -36,7 +40,6 @@ export default async function ProductDetail({
   params: { lng: string; product: string };
 }) {
   const productDetail = await GetProductById(product);
-  console.log("productDetail", productDetail);
   const translations = await GetTranslationsProduct(lng);
 
   return (
