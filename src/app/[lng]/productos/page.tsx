@@ -1,12 +1,21 @@
 import { ProductContainer } from "@/app/components/product/productContainer";
+import { ProductTranslations } from "@/app/models/productTranslations";
+import GetTranslations from "@/app/utils/translationsPage";
 import ProductService from "@/service/productService";
 import { ProductStoreInitializer } from "@/store/productStoreInitializer";
 import { useProductStore } from "@/store/useProductStore";
 
-const getProducts = async () => {
-  const { getProducts } = ProductService();
-  const response = await getProducts();
+const GetProducts = async () => {
+  const { findAll } = ProductService();
+  const response = await findAll();
   return response;
+};
+
+const GetTranslationsProduct = async (
+  lng: string
+): Promise<ProductTranslations> => {
+  const { GetProductTranslations } = GetTranslations();
+  return await GetProductTranslations(lng);
 };
 
 export default async function ProductsPage({
@@ -14,11 +23,13 @@ export default async function ProductsPage({
 }: {
   params: { lng: string };
 }) {
-  const products = await getProducts();
+  const products = await GetProducts();
+  const translations = await GetTranslationsProduct(lng);
+
   useProductStore.setState({ products });
   return (
     <div>
-      <ProductStoreInitializer products={products} translations={{}} />
+      <ProductStoreInitializer products={products} />
       <ProductContainer lng={lng} />
     </div>
   );

@@ -1,6 +1,6 @@
 import { Credential } from "@/domain/model/credential";
 import { AuthRepository } from "@/domain/repository/authRepository";
-import { auth } from "@/firebase";
+import { auth } from "@/lib/firebase";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 export class AuthImplementationRepository implements AuthRepository {

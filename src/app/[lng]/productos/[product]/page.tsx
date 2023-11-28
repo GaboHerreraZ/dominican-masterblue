@@ -4,8 +4,8 @@ import ProductService from "@/service/productService";
 import { useProductStore } from "@/store/useProductStore";
 
 export async function generateStaticParams() {
-  const { getProducts } = ProductService();
-  const response = await getProducts();
+  const { findAll } = ProductService();
+  const response = await findAll();
   const params = response.map((product) => ({
     params: { product: product.id },
   }));

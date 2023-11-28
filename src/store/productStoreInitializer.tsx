@@ -2,18 +2,11 @@
 import { Product } from "@/domain/model/product";
 import { useRef } from "react";
 import { useProductStore } from "./useProductStore";
-import { ProductTranslations } from "@/app/models/productTranslations";
-export function ProductStoreInitializer({
-  products,
-  translations,
-}: {
-  products: Product[];
-  translations: ProductTranslations;
-}) {
+export function ProductStoreInitializer({ products }: { products: Product[] }) {
   const initialized = useRef(false);
 
   if (!initialized.current) {
-    useProductStore.setState({ products, translations });
+    useProductStore.setState({ products });
     initialized.current = true;
   }
 

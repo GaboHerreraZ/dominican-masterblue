@@ -4,9 +4,6 @@ import { useProductStore } from "@/store/useProductStore";
 import { Button } from "@nextui-org/react";
 
 export const ProductDetail = ({ product }: { product: Product }) => {
-  const { products, setProduct, deleteProduct, updateProduct, getProductById } =
-    useProductStore();
-
   /* const handleNewProductButton = async () => {
     const newProduct: Product = {
       id: "101",

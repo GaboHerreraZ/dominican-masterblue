@@ -10,26 +10,26 @@ import {
 } from "@nextui-org/table";
 
 import { columns } from "@/app/components/dashboard/product/const";
-import { useCallback, Key } from "react";
-import { DeleteIcon, EditIcon } from "@/app/utils/iconsUtils";
+import { Key } from "react";
+import { EditIcon } from "@/app/utils/iconsUtils";
 import { Tooltip } from "@nextui-org/tooltip";
 import { Chip } from "@nextui-org/chip";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { useProductStore } from "@/store/useProductStore";
+import { ProductTranslations } from "@/app/models/productTranslations";
 
 export const ProductsTable = ({
   products,
   lng,
+  translations,
 }: {
   products: Product[];
   lng: string;
+  translations: ProductTranslations;
 }) => {
   const listColumns: any[] = columns[lng];
 
-  const translations = useProductStore((state) => state.translations);
-
-  const renderCell = useCallback((product: Product, columnKey: Key) => {
+  const renderCell = (product: Product, columnKey: Key) => {
     const cellValue = product[columnKey as keyof Product];
 
     switch (columnKey) {
@@ -60,17 +60,12 @@ export const ProductsTable = ({
                 </Link>
               </span>
             </Tooltip>
-            <Tooltip placement="right" color="danger" content="Delete product">
-              <span className="text-lg text-danger cursor-pointer active:opacity-50">
-                <DeleteIcon />
-              </span>
-            </Tooltip>
           </div>
         );
       default:
         return cellValue;
     }
-  }, []);
+  };
 
   return (
     <section className="mt-10 p-5 md:p-10">

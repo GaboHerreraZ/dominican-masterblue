@@ -1,38 +1,27 @@
-import { Db } from "@/data/dataSource/db";
 import { Product } from "@/domain/model/product";
 import { ProductRepository } from "@/domain/repository/productRepository";
+import apiService from "@/lib/apiService";
 
 export class ProductImplementationRepository implements ProductRepository {
-  constructor(private db: Db<Omit<Product, "id">>) {}
-
-  async create(product: Product): Promise<string> {
+  async create(product: Product): Promise<Product> {
     const { id, ...newProduct } = product;
-    const response = await this.db.addDocument(newProduct);
-    return response.id;
+    return await apiService.post<Product>("product", newProduct);
   }
 
   async update(product: Product, uid: string): Promise<boolean> {
     const { id, ...updateProduct } = product;
-    await this.db.updateDocument(updateProduct, uid);
-    return true;
+    return await apiService.put<boolean>(`product/${uid}`, updateProduct);
   }
 
   async delete(id: string): Promise<boolean> {
-    await this.db.deleteDocument(id);
-    return true;
+    return await apiService.delete<boolean>(`product/${id}`);
   }
 
   async findAll(): Promise<Product[]> {
-    const response = await this.db.getDocuments();
-    const products: Product[] = [];
-    response.forEach((doc) =>
-      products.push({ id: doc.id, ...doc.data() } as Product)
-    );
-    return products;
+    return await apiService.get<Product[]>("product", {});
   }
 
   async findById(id: string): Promise<any> {
-    const response = await this.db.getDocument(id);
-    return { id: response.id, ...response.data() } as Product;
+    return await apiService.get<Product>(`product/${id}`);
   }
 }

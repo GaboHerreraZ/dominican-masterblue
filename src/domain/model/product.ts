@@ -13,7 +13,7 @@ export interface Product {
   width?: number;
   quantity: number;
   colors?: string[];
-  linkYoutube?: string;
+  youTubeLink?: string;
   category?: string;
-  image?: string[];
+  images?: string[];
 }

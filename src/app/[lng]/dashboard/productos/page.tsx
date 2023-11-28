@@ -4,17 +4,11 @@ import GetTranslations from "@/app/utils/translationsPage";
 import ProductService from "@/service/productService";
 import { ProductStoreInitializer } from "@/store/productStoreInitializer";
 import { useProductStore } from "@/store/useProductStore";
-import { cache } from "react";
 
-export const revalidate = 20;
-
-const getProducts = cache(async () => {
-  const { getProducts } = ProductService();
-
-  const response = await getProducts();
-  console.log("getProducts", response);
-  return response;
-});
+const GetProducts = async () => {
+  const { findAll } = ProductService();
+  return await findAll();
+};
 
 const GetTranslationsProduct = async (
   lng: string
@@ -28,23 +22,19 @@ export default async function Products({
 }: {
   params: { lng: string };
 }) {
-  const productsPromise = getProducts();
-  const translationsPromise = GetTranslationsProduct(lng);
-
-  const [products, translations] = await Promise.all([
-    productsPromise,
-    translationsPromise,
-  ]);
+  const products = await GetProducts();
+  const translations = await GetTranslationsProduct(lng);
 
   useProductStore.setState({ products });
 
   return (
     <>
-      <ProductStoreInitializer
-        products={products}
+      <ProductStoreInitializer products={products} />
+      <ProductsTable
         translations={translations}
+        products={products}
+        lng={lng}
       />
-      <ProductsTable products={products} lng={lng} />
     </>
   );
 }
