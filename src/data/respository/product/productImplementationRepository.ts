@@ -18,7 +18,7 @@ export class ProductImplementationRepository implements ProductRepository {
   }
 
   async findAll(): Promise<Product[]> {
-    return await apiService.get<Product[]>("product", {});
+    return await apiService.get<Product[]>("product", { cache: "no-store" });
   }
 
   async findById(id: string): Promise<any> {

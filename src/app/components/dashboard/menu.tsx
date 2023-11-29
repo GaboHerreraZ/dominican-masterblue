@@ -26,25 +26,16 @@ export const Menu = ({ lng }: { lng: string }) => {
           classNames={{
             subtitle: "text-slate-400 text-[10px]",
           }}
-          startContent={<ProductsIcon size={20} />}
+          startContent={<ProductsIcon size={30} color="currentColor" />}
         >
           <ul className="z-40 text-xs text-white py-2 px-4 bg-black/30  ">
-            <li className="flex items-center gap-1 mb-4">
+            <li className="flex items-center gap-1 ">
               <ListProductsIcon size={20} />
               <Link
                 className="hover:underline"
                 href={`/${lng}/dashboard/productos`}
               >
                 List of products
-              </Link>
-            </li>
-            <li className="flex items-center gap-1 ">
-              <AddProductIcon size={20} />
-              <Link
-                className="hover:underline"
-                href={`/${lng}/dashboard/productos/nuevo`}
-              >
-                Producto nuevo
               </Link>
             </li>
           </ul>

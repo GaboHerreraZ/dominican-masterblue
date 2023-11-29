@@ -3,6 +3,7 @@ import { ReactNode, useState } from "react";
 import { Sidebar } from "@/app/components/dashboard/sidebar";
 import { Button } from "@nextui-org/button";
 import { BarsIcon } from "@/app/utils/iconsUtils";
+import { BreadcrumbsPage } from "@/app/components/dashboard/breadcrumbs/breadcrumbs";
 
 export const DashBoardLayout = ({
   children,
@@ -30,7 +31,10 @@ export const DashBoardLayout = ({
           </Button>
         </div>
         <Sidebar lng={lng} show={show} setter={setShow} />
-        <main className="grid p-15 w-full min-h-screen">{children}</main>
+        <main className="w-full min-h-screen">
+          <BreadcrumbsPage lng={lng} />
+          {children}
+        </main>
       </div>
     </div>
   );

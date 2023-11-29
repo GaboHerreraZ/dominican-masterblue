@@ -6,7 +6,6 @@ interface ApiConfig {
   method?: HttpMethod;
   body?: Record<string, any>;
   headers?: Record<string, string>;
-  tag?: string;
   [key: string]: any;
 }
 
@@ -24,7 +23,6 @@ class ApiService {
       method,
       headers: requestHeaders,
       ...customConfig,
-      cache: "no-store",
     };
 
     if (method !== "GET") {

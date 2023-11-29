@@ -68,7 +68,7 @@ export const ProductsTable = ({
   };
 
   return (
-    <section className="mt-10 p-5 md:p-10">
+    <section className="p-5 mt-5 md:px-5 md:py-0">
       <header className="flex w-full justify-between">
         <h4 className="text-3xl text-master-900/70 pb-5 uppercase font-bold">
           {translations.title}

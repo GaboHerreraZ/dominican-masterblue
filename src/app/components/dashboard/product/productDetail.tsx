@@ -15,7 +15,7 @@ export const ProductDetailDashboard = ({
   translations: ProductTranslations;
 }) => {
   return (
-    <div className="mt-10 md:mt-0 p-5">
+    <div className="mt-10 md:mt-5 px-5">
       <header className="mb-5">
         <h1 className="text-2xl font-bold text-master-900/70 ">
           {translations.productDetail}
