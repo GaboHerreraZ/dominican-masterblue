@@ -22,8 +22,13 @@ export default async function Products({
 }: {
   params: { lng: string };
 }) {
-  const products = await GetProducts();
-  const translations = await GetTranslationsProduct(lng);
+  const productsPromise = GetProducts();
+  const translationsPromise = GetTranslationsProduct(lng);
+
+  const [products, translations] = await Promise.all([
+    productsPromise,
+    translationsPromise,
+  ]);
 
   useProductStore.setState({ products });
 

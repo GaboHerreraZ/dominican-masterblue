@@ -37,9 +37,12 @@ export default async function ProductDetail({
 }: {
   params: { lng: string; product: string };
 }) {
-  const productDetail = await GetProductById(product);
-
-  const translations = await GetTranslationsProduct(lng);
+  const productDetailPromise = GetProductById(product);
+  const translationsPromise = GetTranslationsProduct(lng);
+  const [productDetail, translations] = await Promise.all([
+    productDetailPromise,
+    translationsPromise,
+  ]);
 
   return (
     <>
