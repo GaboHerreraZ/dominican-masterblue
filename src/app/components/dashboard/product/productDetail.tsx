@@ -46,7 +46,7 @@ export const ProductDetailDashboard = ({
               </div>
             }
           >
-            {/* <ProductForm product={product} translations={translations} /> */}
+            <ProductForm product={product} translations={translations} />
           </Tab>
           <Tab
             key="photos"
