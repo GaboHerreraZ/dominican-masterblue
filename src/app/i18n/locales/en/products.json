@@ -51,5 +51,15 @@
   "updatedOk": "The product has been updated successfully",
   "deletedOk": "The product has been deleted successfully",
   "deleteMessage": "Are you sure you want to delete the product?",
-  "titleDeleteModal": "Product "
+  "titleDeleteModal": "Product ",
+  "fillOutGeneralInformation": "Please, Fill out the general information.",
+  "errorUploadingImages": "Error uploading images",
+  "imageSizeTooLarge": "Image is larger than 350kb",
+  "imagesUploaded": "Images uploaded",
+  "markAsMain": "Mark as principal",
+  "isDragActive": "Drop your media files here",
+  "dragDescription": "Drag and drop some files here, or click to select files",
+  "maxImages": "Maximum images uploaded.",
+  "deleteImageOk": "The image has been deleted successfully",
+  "markAsMainOk": "The image has been marked as main successfully"
 }

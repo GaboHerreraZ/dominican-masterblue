@@ -15,5 +15,6 @@ export interface Product {
   colors?: string[];
   youTubeLink?: string;
   category?: string;
-  images?: string[];
+  images?: { name: string; url: string }[];
+  mainImage?: string;
 }

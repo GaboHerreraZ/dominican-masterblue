@@ -1,5 +1,273 @@
+import { ProductTranslations } from "@/app/models/productTranslations";
 import { Product } from "@/domain/model/product";
+import { Button } from "@nextui-org/button";
+import { useDropzone } from "react-dropzone";
+import { useState, useCallback } from "react";
+import Image from "next/legacy/image";
+import { CloseIcon, DeleteIcon, SaveIcon } from "@/app/utils/iconsUtils";
+import { storage } from "@/lib/firebase";
+import {
+  UploadTask,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
+import { Progress } from "@nextui-org/progress";
+import toast from "react-hot-toast";
+import { useProductStore } from "@/store/useProductStore";
 
-export const ProductImages = ({ product }: { product: Product }) => {
-  return <div>ProductImages</div>;
+type ProductFile = File & {
+  preview: string;
+};
+
+export const ProductImages = ({
+  product,
+  setSelected,
+  translations,
+}: {
+  product: Product;
+  setSelected: any;
+  translations: ProductTranslations;
+}) => {
+  const [productState, setProduct] = useState<Product>(product);
+
+  const [files, setFiles] = useState<ProductFile[]>([]);
+
+  const [urls, setUrls] = useState<{ name: string; url: string }[]>(
+    product.images || []
+  );
+  const [progress, setProgress] = useState(0);
+
+  const deleteImageStore = useProductStore((state) => state.deleteImage);
+  const markMainImageStore = useProductStore((state) => state.markImage);
+
+  function fileSizeValidator(file: File) {
+    if (file.size > 350000) {
+      toast.error(translations.imageSizeTooLarge);
+      return {
+        code: "size-too-large",
+        message: translations.imageSizeTooLarge,
+      };
+    }
+
+    return null;
+  }
+
+  const deletePreview = (file: ProductFile) => {
+    setFiles((fileState) => {
+      const newFiles = fileState.filter((f) => f.name !== file.name);
+      return [...newFiles];
+    });
+  };
+
+  const onDrop = useCallback((acceptedFiles: any) => {
+    const newFiles: ProductFile[] = acceptedFiles.map((file: File) =>
+      Object.assign(file, {
+        preview: URL.createObjectURL(file),
+      })
+    );
+
+    setFiles((files) => [...files, ...newFiles]);
+  }, []);
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    validator: fileSizeValidator,
+    accept: {
+      "image/jpeg": [],
+      "image/png": [],
+    },
+    maxFiles: 5,
+  });
+
+  const handleUpload = useCallback(
+    async (e: any) => {
+      e.preventDefault();
+      const uploadPromises: UploadTask[] = [];
+      files.map(async (image: ProductFile) => {
+        const imageRef = ref(storage, `products/${product.id}/${image.name}`);
+        const uploadTask = uploadBytesResumable(imageRef, image);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            setProgress(progress);
+          },
+          null,
+          () => {
+            deletePreview(image);
+            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              setUrls((urls) => [
+                ...urls,
+                { name: image.name, url: downloadURL },
+              ]);
+
+              setProduct((product) => ({
+                ...product,
+                images: [...urls, { name: image.name, url: downloadURL }],
+              }));
+            });
+          }
+        );
+
+        uploadPromises.push(uploadTask);
+      });
+
+      try {
+        await Promise.all(uploadPromises);
+      } catch (error) {
+        toast.error(translations.errorUploadingImages);
+      }
+    },
+    [files]
+  );
+
+  const deleteImage = async (name: string) => {
+    const response = await deleteImageStore(product.id, name);
+    setUrls((urls) => [...urls.filter((u) => u.name !== name)]);
+    if (response) toast.success(translations.deleteImageOk);
+  };
+
+  const markMainImage = async (url: string) => {
+    const urlUpdated = url.replace(
+      "https://firebasestorage.googleapis.com",
+      ""
+    );
+    const response = await markMainImageStore(product.id, urlUpdated);
+    if (response) {
+      toast.success(translations.markAsMainOk);
+      setProduct((product) => ({ ...product, mainImage: url }));
+    }
+  };
+
+  return (
+    <section className="flex h-[500px]">
+      <div className="block  w-1/2  ">
+        <div className="w-full  h-[100px] border-dashed border-1 border-master-900/70 ">
+          {urls?.length === 6 ? (
+            <p className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70">
+              {translations.maxImages}
+            </p>
+          ) : (
+            <div
+              {...getRootProps()}
+              className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70"
+            >
+              <input {...getInputProps()} />
+              {isDragActive ? (
+                <p className="text-center text-xl">
+                  {translations.isDragActive}
+                </p>
+              ) : (
+                <p className="text-center text-xl">
+                  {translations.dragDescription}
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+        {progress > 0 && progress < 100 && (
+          <Progress
+            aria-label="Downloading..."
+            size="md"
+            value={progress}
+            color="primary"
+            showValueLabel={true}
+            className="w-full mt-2"
+          />
+        )}
+        <Button
+          isDisabled={urls?.length === 6}
+          className="mt-2"
+          color="primary"
+          variant="bordered"
+          radius="none"
+          size="sm"
+          onClick={handleUpload}
+          startContent={<SaveIcon size={15} />}
+        >
+          {translations.saveProduct}
+        </Button>
+        <div className="flex flex-wrap gap-2 overflow-y-auto w-full mt-5 ">
+          {files.map((f: ProductFile, i: number) => {
+            return (
+              <div key={i} className="flex flex-col  items-center  gap-1">
+                <Button
+                  className="self-center"
+                  variant="light"
+                  radius="full"
+                  isIconOnly
+                  onClick={() => deletePreview(f)}
+                  size="sm"
+                >
+                  <CloseIcon size={20} />
+                </Button>
+                <Image
+                  layout="intrinsic"
+                  objectFit="cover"
+                  key={f.name}
+                  alt="image-to-download"
+                  width={100}
+                  height={100}
+                  src={f.preview}
+                />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+      <div className="flex flex-col place-items-center w-1/2 px-5">
+        <h4 className="text-center p-2 text-master-900/70 font-bold italic text-lg">
+          {translations.imagesUploaded}
+        </h4>
+        <div className="flex flex-wrap justify-center">
+          {urls.map((url, i) => {
+            return (
+              <div
+                key={i}
+                className={`relative group w-[150px] h-[150px]  ${
+                  productState.mainImage === url.url
+                    ? "border-4 border-master-900/70"
+                    : ""
+                }  `}
+              >
+                <Image
+                  key={i}
+                  src={url.url}
+                  layout="fill"
+                  objectFit="cover"
+                  className="absolute"
+                ></Image>
+                <div className="absolute  place-items-center w-full h-full bg-black/70 hidden group-hover:grid top-0 z-1">
+                  <Button
+                    className="self-center"
+                    variant="shadow"
+                    color="danger"
+                    radius="none"
+                    size="sm"
+                    onClick={() => deleteImage(url.name)}
+                    startContent={<DeleteIcon size={10} />}
+                  >
+                    {translations.deleteProduct}
+                  </Button>
+                  <Button
+                    className="self-center"
+                    variant="shadow"
+                    color="primary"
+                    radius="none"
+                    size="sm"
+                    onClick={() => markMainImage(url.url)}
+                    startContent={<DeleteIcon size={10} />}
+                  >
+                    {translations.markAsMain}
+                  </Button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
 };

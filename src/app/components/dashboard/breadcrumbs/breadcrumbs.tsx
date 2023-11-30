@@ -31,7 +31,9 @@ export const BreadcrumbsPage = ({ lng }: { lng: string }) => {
             startContent={routes[path] ? routes[path].icon : <></>}
           >
             {routes[path] ? (
-              <Link href={`/dashboard/${routes[path].link}`}>{path}</Link>
+              <Link prefetch={true} href={`/dashboard/${routes[path].link}`}>
+                {path}
+              </Link>
             ) : (
               path
             )}

@@ -58,6 +58,16 @@ export default function GetTranslations() {
       deleteOk: t("deleteOk"),
       deleteMessage: t("deleteMessage"),
       titleDeleteModal: t("titleDeleteModal"),
+      fillOutGeneralInformation: t("fillOutGeneralInformation"),
+      errorUploadingImages: t("errorUploadingImages"),
+      imageSizeTooLarge: t("imageSizeTooLarge"),
+      imagesUploaded: t("imagesUploaded"),
+      markAsMain: t("markAsMain"),
+      isDragActive: t("isDragActive"),
+      dragDescription: t("dragDescription"),
+      maxImages: t("maxImages"),
+      deleteImageOk: t("deleteImageOk"),
+      markAsMainOk: t("markAsMainOk"),
     };
 
     return productTranslations;

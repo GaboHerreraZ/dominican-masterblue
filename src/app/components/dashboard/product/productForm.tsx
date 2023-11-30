@@ -1,7 +1,6 @@
 import { Product } from "@/domain/model/product";
 import { Input, Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Divider } from "@nextui-org/divider";
 import { Switch } from "@nextui-org/switch";
@@ -10,9 +9,9 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ModalButton } from "@/app/utils/modal";
 import { DeleteIcon, SaveIcon } from "@/app/utils/iconsUtils";
-import { revalidateTag } from "next/cache";
 import { ProductTranslations } from "@/app/models/productTranslations";
-
+import { useState } from "react";
+import { useSWRConfig } from "swr";
 interface ProductFormProps {
   product: Product;
   translations: ProductTranslations;
@@ -22,12 +21,15 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   product,
   translations,
 }) => {
+  const { mutate } = useSWRConfig();
+
   const {
     formState: { errors, isValid },
     register,
     handleSubmit,
     setValue,
   } = useForm<Product>({ defaultValues: product });
+  const [state, setState] = useState(product.state);
 
   const updateProduct = useProductStore((state) => state.update);
   const createProduct = useProductStore((state) => state.create);
@@ -60,6 +62,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     const response = await updateProduct(data);
     if (response) {
       toast.success(translations.updatedOk || "");
+      mutate(product.id);
     }
   };
 
@@ -90,12 +93,15 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           </ModalButton>
           <Switch
             defaultSelected={product.state}
-            onChange={(e: any) => setValue("state", e.target.checked)}
+            onChange={(e: any) => {
+              setValue("state", e.target.checked);
+              setState(e.target.checked);
+            }}
             size="sm"
             color="success"
           >
             <span className="text-small italic font-bold text-master-900/70">
-              {product.state ? translations.active : translations.inactive}
+              {state ? translations.active : translations.inactive}
             </span>
           </Switch>
         </header>

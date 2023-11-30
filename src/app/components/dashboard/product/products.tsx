@@ -55,7 +55,10 @@ export const ProductsTable = ({
           <div className="relative flex items-center gap-2">
             <Tooltip content="Edit product" placement="left">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
-                <Link href={`/dashboard/productos/${product.id}`}>
+                <Link
+                  prefetch={true}
+                  href={`/dashboard/productos/${product.id}`}
+                >
                   <EditIcon />
                 </Link>
               </span>
@@ -63,7 +66,7 @@ export const ProductsTable = ({
           </div>
         );
       default:
-        return cellValue;
+        return <>{cellValue}</>;
     }
   };
 
@@ -91,7 +94,7 @@ export const ProductsTable = ({
           )}
         </TableHeader>
         <TableBody items={products}>
-          {(item) => (
+          {(item: Product) => (
             <TableRow key={item.id}>
               {(columnKey) => (
                 <TableCell>{renderCell(item, columnKey)}</TableCell>

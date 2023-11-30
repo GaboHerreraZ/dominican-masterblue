@@ -419,24 +419,17 @@ export const BarsIcon = ({ size }: { size: number }) => {
 export const CloseIcon = ({ size }: { size: number }) => {
   return (
     <svg
-      width={size || 30}
-      height={size || 30}
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="24" height="24" fill="white" />
       <path
-        d="M7 17L16.8995 7.10051"
-        stroke="#525ea2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7 7.00001L16.8995 16.8995"
-        stroke="#525ea2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10.9393 12L6.9696 15.9697L8.03026 17.0304L12 13.0607L15.9697 17.0304L17.0304 15.9697L13.0607 12L17.0303 8.03039L15.9696 6.96973L12 10.9393L8.03038 6.96973L6.96972 8.03039L10.9393 12Z"
+        fill="#080341"
       />
     </svg>
   );
@@ -460,17 +453,17 @@ export const ProductsIcon = ({
       <rect x="43.93" y="68.27" width="36.07" height="7.99" rx="2" ry="2" />
       <path
         d="M33.82,76.26h-4a2,2,0,0,1-2-2v-4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v4A1.9,1.9,0,0,1,33.82,76.26Z"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
       <path
         d="M33.82,58.41h-4a2,2,0,0,1-2-2v-4a2,2,0,0,1,2-2h4a2,2,0,0,1,2,2v4A1.9,1.9,0,0,1,33.82,58.41Z"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
       <rect x="43.93" y="50.42" width="36.07" height="7.99" rx="2" ry="2" />
       <rect x="49.92" y="32.57" width="30.08" height="7.99" rx="2" ry="2" />
       <path
         d="M47.55,26.33l-2.12-2.12a1.44,1.44,0,0,0-2.12,0L30.08,37.32l-5.37-5.24a1.44,1.44,0,0,0-2.12,0L20.47,34.2a1.44,1.44,0,0,0,0,2.12l7.36,7.36a3,3,0,0,0,4.24,0L47.55,28.46A1.69,1.69,0,0,0,47.55,26.33Z"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
     </svg>
   );
@@ -763,12 +756,12 @@ export const HomeIcon = ({ size }: { size: number }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g clip-path="url(#clip0_15_3)">
+    <g clipPath="url(#clip0_15_3)">
       <rect width="24" height="24" fill="white" />
       <path
         d="M9 21H4C3.44772 21 3 20.5523 3 20V12.4142C3 12.149 3.10536 11.8946 3.29289 11.7071L11.2929 3.70711C11.6834 3.31658 12.3166 3.31658 12.7071 3.70711L20.7071 11.7071C20.8946 11.8946 21 12.149 21 12.4142V20C21 20.5523 20.5523 21 20 21H15M9 21H15M9 21V15C9 14.4477 9.44772 14 10 14H14C14.5523 14 15 14.4477 15 15V21"
         stroke="currentColor"
-        stroke-linejoin="round"
+        strokeLinejoin="round"
       />
     </g>
     <defs>

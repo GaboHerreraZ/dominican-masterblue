@@ -18,10 +18,22 @@ export class ProductImplementationRepository implements ProductRepository {
   }
 
   async findAll(): Promise<Product[]> {
-    return await apiService.get<Product[]>("product", { cache: "no-store" });
+    return await apiService.get<Product[]>("product");
   }
 
-  async findById(id: string): Promise<any> {
+  async findById(id: string): Promise<Product> {
     return await apiService.get<Product>(`product/${id}`);
+  }
+
+  async deleteImage(id: string, image: string): Promise<boolean> {
+    return await apiService.delete<boolean>(
+      `product/deleteImage/${id}/${encodeURIComponent(image)}`
+    );
+  }
+
+  async markImage(id: string, image: string): Promise<boolean> {
+    return await apiService.get<boolean>(
+      `product/markImage/${id}/${encodeURIComponent(image)}`
+    );
   }
 }

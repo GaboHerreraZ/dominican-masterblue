@@ -5,17 +5,17 @@ import ProductService from "@/service/productService";
 import { ProductStoreInitializer } from "@/store/productStoreInitializer";
 import { useProductStore } from "@/store/useProductStore";
 
-const GetProducts = async () => {
+async function GetProducts() {
   const { findAll } = ProductService();
   return await findAll();
-};
+}
 
-const GetTranslationsProduct = async (
+async function GetTranslationsProduct(
   lng: string
-): Promise<ProductTranslations> => {
+): Promise<ProductTranslations> {
   const { GetProductTranslations } = GetTranslations();
   return await GetProductTranslations(lng);
-};
+}
 
 export default async function Products({
   params: { lng },

@@ -49,4 +49,14 @@ export interface ProductTranslations {
   deleteOk?: string;
   deleteMessage: string;
   titleDeleteModal: string;
+  fillOutGeneralInformation: string;
+  markAsMain: string;
+  imagesUploaded: string;
+  imageSizeTooLarge: string;
+  errorUploadingImages: string;
+  isDragActive: string;
+  dragDescription: string;
+  maxImages: string;
+  deleteImageOk: string;
+  markAsMainOk: string;
 }
