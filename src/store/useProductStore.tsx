@@ -18,8 +18,8 @@ interface ProductState {
   update: (product: Product) => Promise<boolean>;
   delete: (productId: string) => Promise<boolean>;
   findById: (productId: string) => Promise<Product>;
-  deleteImage: (productId: string, image: string) => Promise<boolean>;
-  markImage: (productId: string, image: string) => Promise<boolean>;
+  deleteImage: (image: string) => Promise<boolean>;
+  markImage: (image: string, name: string) => Promise<boolean>;
 }
 
 export const useProductStore = create<ProductState>()(() => {
@@ -63,9 +63,9 @@ export const useProductStore = create<ProductState>()(() => {
       if (productId === "nuevo") return { id: "nuevo" } as Product;
       return await findByIdProductUseCase.execute(productId);
     },
-    deleteImage: async (productId: string, image: string) =>
-      await deleteImageProductUseCase.execute({ id: productId, image }),
-    markImage: async (productId: string, image: string) =>
-      await markImageProductUseCase.execute({ id: productId, image }),
+    deleteImage: async (image: string) =>
+      await deleteImageProductUseCase.execute(image),
+    markImage: async (image: string, name: string) =>
+      await markImageProductUseCase.execute({ image, name }),
   };
 });

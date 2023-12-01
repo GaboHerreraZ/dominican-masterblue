@@ -12,9 +12,10 @@ export interface Product {
   length?: number;
   width?: number;
   quantity: number;
-  colors?: string[];
+  colors?: { color: string }[];
   youTubeLink?: string;
   category?: string;
   images?: { name: string; url: string }[];
   mainImage?: string;
+  urlImage: string;
 }

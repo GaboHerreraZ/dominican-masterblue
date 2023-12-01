@@ -68,6 +68,9 @@ export default function GetTranslations() {
       maxImages: t("maxImages"),
       deleteImageOk: t("deleteImageOk"),
       markAsMainOk: t("markAsMainOk"),
+      seeVideo: t("seeVideo"),
+      editProductTooltip: t("editProductTooltip"),
+      availableColors: t("availableColors"),
     };
 
     return productTranslations;

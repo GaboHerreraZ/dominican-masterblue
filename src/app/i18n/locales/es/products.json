@@ -61,5 +61,7 @@
   "dragDescription": "Arrastre y suelte algunos archivos aquí, o haga clic para seleccionar archivos",
   "maxImages": "Máximo de imágenes cargadas",
   "deleteImageOk": "La imagen ha sido eliminada correctamente",
-  "markAsMainOk": "La imagen ha sido marcada como principal"
+  "markAsMainOk": "La imagen ha sido marcada como principal",
+  "seeVideo": "Ver video",
+  "editProductTooltip": "Editar producto"
 }

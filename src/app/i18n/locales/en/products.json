@@ -61,5 +61,7 @@
   "dragDescription": "Drag and drop some files here, or click to select files",
   "maxImages": "Maximum images uploaded.",
   "deleteImageOk": "The image has been deleted successfully",
-  "markAsMainOk": "The image has been marked as main successfully"
+  "markAsMainOk": "The image has been marked as main successfully",
+  "seeVideo": "See video",
+  "editProductTooltip": "Edit product"
 }

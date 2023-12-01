@@ -25,15 +25,17 @@ export class ProductImplementationRepository implements ProductRepository {
     return await apiService.get<Product>(`product/${id}`);
   }
 
-  async deleteImage(id: string, image: string): Promise<boolean> {
+  async deleteImage(image: string): Promise<boolean> {
     return await apiService.delete<boolean>(
-      `product/deleteImage/${id}/${encodeURIComponent(image)}`
+      `product/deleteImage/${encodeURIComponent(image)}`
     );
   }
 
-  async markImage(id: string, image: string): Promise<boolean> {
+  async markImage(image: string, name: string): Promise<boolean> {
     return await apiService.get<boolean>(
-      `product/markImage/${id}/${encodeURIComponent(image)}`
+      `product/markImage/${encodeURIComponent(image)}/${encodeURIComponent(
+        name
+      )}`
     );
   }
 }

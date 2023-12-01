@@ -26,20 +26,6 @@ export default async function ProductDetail({
 }: {
   params: { lng: string; product: string };
 }) {
-  // const productDetailPromise = GetProductById(product);
   const translations = await GetTranslationsProduct(lng);
-  /*  const [productDetail, translations] = await Promise.all([
-    productDetailPromise,
-    translationsPromise,
-  ]); */
-
-  return (
-    <>
-      <ProductDetailDashboard
-        id={product}
-        translations={translations}
-        // product={productDetail}
-      />
-    </>
-  );
+  return <ProductDetailDashboard id={product} translations={translations} />;
 }

@@ -59,4 +59,7 @@ export interface ProductTranslations {
   maxImages: string;
   deleteImageOk: string;
   markAsMainOk: string;
+  seeVideo: string;
+  editProductTooltip: string;
+  availableColors: string;
 }

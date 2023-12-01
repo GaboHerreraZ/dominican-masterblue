@@ -1,3 +1,4 @@
+"use client";
 import { Product } from "@/domain/model/product";
 import { ProductForm } from "@/app/components/dashboard/product/productForm";
 import { ProductImages } from "@/app/components/dashboard/product/productImages";
@@ -7,14 +8,22 @@ import { Chip } from "@nextui-org/chip";
 import { useState } from "react";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import { Button } from "@nextui-org/button";
+import { useProductStore } from "@/store/useProductStore";
+import useSWR from "swr";
 export const ProductTabs = ({
-  product,
+  id,
   translations,
 }: {
-  product: Product;
+  id: string;
   translations: ProductTranslations;
 }) => {
   const [selected, setSelected] = useState("data");
+
+  const findById = useProductStore((state) => state.findById);
+  const { data: product } = useSWR<Product>(id, findById, { suspense: true });
+  if (!product) {
+    return;
+  }
 
   return (
     <Tabs
@@ -68,11 +77,7 @@ export const ProductTabs = ({
             </Button>
           </div>
         ) : (
-          <ProductImages
-            translations={translations}
-            product={product}
-            setSelected={setSelected}
-          />
+          <ProductImages translations={translations} product={product} />
         )}
       </Tab>
     </Tabs>

@@ -1,8 +1,4 @@
-"use client";
-import { Product } from "@/domain/model/product";
 import { ProductTranslations } from "@/app/models/productTranslations";
-import useSWR from "swr";
-import { useProductStore } from "@/store/useProductStore";
 import { ProductTabs } from "@/app/components/dashboard/product/productTabs";
 
 export const ProductDetailDashboard = ({
@@ -14,12 +10,6 @@ export const ProductDetailDashboard = ({
   id: string;
   translations: ProductTranslations;
 }) => {
-  const findById = useProductStore((state) => state.findById);
-  const { data } = useSWR<Product>(id, findById, { suspense: true });
-  if (!data) {
-    return;
-  }
-
   return (
     <div className="mt-10 md:mt-5 px-5">
       <header className="mb-5">
@@ -31,7 +21,7 @@ export const ProductDetailDashboard = ({
         </p>
       </header>
       <section className="flex w-full flex-col ">
-        <ProductTabs product={data} translations={translations} />
+        <ProductTabs id={id} translations={translations} />
       </section>
     </div>
   );

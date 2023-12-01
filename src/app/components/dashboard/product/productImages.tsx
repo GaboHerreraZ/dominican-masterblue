@@ -15,6 +15,7 @@ import {
 import { Progress } from "@nextui-org/progress";
 import toast from "react-hot-toast";
 import { useProductStore } from "@/store/useProductStore";
+import { useSWRConfig } from "swr";
 
 type ProductFile = File & {
   preview: string;
@@ -22,21 +23,18 @@ type ProductFile = File & {
 
 export const ProductImages = ({
   product,
-  setSelected,
   translations,
 }: {
   product: Product;
-  setSelected: any;
   translations: ProductTranslations;
 }) => {
   const [productState, setProduct] = useState<Product>(product);
-
   const [files, setFiles] = useState<ProductFile[]>([]);
-
-  const [urls, setUrls] = useState<{ name: string; url: string }[]>(
-    product.images || []
-  );
   const [progress, setProgress] = useState(0);
+
+  console.log(productState);
+
+  const { mutate } = useSWRConfig();
 
   const deleteImageStore = useProductStore((state) => state.deleteImage);
   const markMainImageStore = useProductStore((state) => state.markImage);
@@ -98,14 +96,16 @@ export const ProductImages = ({
           () => {
             deletePreview(image);
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              setUrls((urls) => [
-                ...urls,
-                { name: image.name, url: downloadURL },
-              ]);
-
+              console.log("downloadURL", downloadURL);
               setProduct((product) => ({
                 ...product,
-                images: [...urls, { name: image.name, url: downloadURL }],
+                images: [
+                  ...(product.images || []),
+                  {
+                    name: `products/${product.id}/${image.name}`,
+                    url: downloadURL,
+                  },
+                ],
               }));
             });
           }
@@ -116,6 +116,7 @@ export const ProductImages = ({
 
       try {
         await Promise.all(uploadPromises);
+        mutate(product.id);
       } catch (error) {
         toast.error(translations.errorUploadingImages);
       }
@@ -124,20 +125,31 @@ export const ProductImages = ({
   );
 
   const deleteImage = async (name: string) => {
-    const response = await deleteImageStore(product.id, name);
-    setUrls((urls) => [...urls.filter((u) => u.name !== name)]);
-    if (response) toast.success(translations.deleteImageOk);
+    const response = await deleteImageStore(name);
+    if (response) {
+      setProduct((product) => ({
+        ...product,
+        images: product.images?.filter((i) => i.name !== name),
+      }));
+      mutate(product.id);
+      toast.success(translations.deleteImageOk);
+    }
   };
 
-  const markMainImage = async (url: string) => {
-    const urlUpdated = url.replace(
+  const markMainImage = async (image: { url: string; name: string }) => {
+    const urlUpdated = image.url.replace(
       "https://firebasestorage.googleapis.com",
       ""
     );
-    const response = await markMainImageStore(product.id, urlUpdated);
+    const response = await markMainImageStore(urlUpdated, image.name);
     if (response) {
       toast.success(translations.markAsMainOk);
-      setProduct((product) => ({ ...product, mainImage: url }));
+      mutate(product.id);
+      setProduct((product) => ({
+        ...product,
+        mainImage: image.name,
+        urlImage: image.url,
+      }));
     }
   };
 
@@ -145,7 +157,7 @@ export const ProductImages = ({
     <section className="flex h-[500px]">
       <div className="block  w-1/2  ">
         <div className="w-full  h-[100px] border-dashed border-1 border-master-900/70 ">
-          {urls?.length === 6 ? (
+          {productState.images?.length === 6 ? (
             <p className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70">
               {translations.maxImages}
             </p>
@@ -178,7 +190,7 @@ export const ProductImages = ({
           />
         )}
         <Button
-          isDisabled={urls?.length === 6}
+          isDisabled={product.images?.length === 6}
           className="mt-2"
           color="primary"
           variant="bordered"
@@ -222,12 +234,12 @@ export const ProductImages = ({
           {translations.imagesUploaded}
         </h4>
         <div className="flex flex-wrap justify-center">
-          {urls.map((url, i) => {
+          {productState.images?.map((url, i) => {
             return (
               <div
                 key={i}
                 className={`relative group w-[150px] h-[150px]  ${
-                  productState.mainImage === url.url
+                  productState.mainImage === url.name
                     ? "border-4 border-master-900/70"
                     : ""
                 }  `}
@@ -257,7 +269,7 @@ export const ProductImages = ({
                     color="primary"
                     radius="none"
                     size="sm"
-                    onClick={() => markMainImage(url.url)}
+                    onClick={() => markMainImage(url)}
                     startContent={<DeleteIcon size={10} />}
                   >
                     {translations.markAsMain}

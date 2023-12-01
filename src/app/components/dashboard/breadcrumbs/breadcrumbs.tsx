@@ -24,7 +24,12 @@ export const BreadcrumbsPage = ({ lng }: { lng: string }) => {
 
   return (
     <div className="px-5 mt-5">
-      <Breadcrumbs underline="focus" color="primary" radius="none">
+      <Breadcrumbs
+        underline="focus"
+        variant="light"
+        color="primary"
+        radius="none"
+      >
         {pathNames.map((path) => (
           <BreadcrumbItem
             key={path}

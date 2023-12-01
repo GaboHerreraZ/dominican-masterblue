@@ -17,28 +17,62 @@ import { Chip } from "@nextui-org/chip";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import { ProductTranslations } from "@/app/models/productTranslations";
+import Image from "next/image";
+import noImage from "../../../../../public/img/png/no-image.png";
+import { useProductStore } from "@/store/useProductStore";
+import useSWR from "swr";
 
 export const ProductsTable = ({
-  products,
   lng,
   translations,
 }: {
-  products: Product[];
   lng: string;
   translations: ProductTranslations;
 }) => {
+  const findAll = useProductStore((state) => state.findAll);
+  const { data: products } = useSWR<Product[]>("productTable", findAll);
+
+  if (!products) return;
+
   const listColumns: any[] = columns[lng];
 
   const renderCell = (product: Product, columnKey: Key) => {
     const cellValue = product[columnKey as keyof Product];
 
     switch (columnKey) {
+      case "mainImage":
+        return (
+          <Image
+            aria-label={product.spanishName}
+            priority={true}
+            alt={product.id}
+            src={product.urlImage || noImage}
+            width={80}
+            height={80}
+          />
+        );
+      case "youTubeLink":
+        return (
+          <span className="underline italic text-small">
+            {product.youTubeLink ? (
+              <Link href={product.youTubeLink} target="_blank">
+                {translations.seeVideo}
+              </Link>
+            ) : (
+              "----"
+            )}
+          </span>
+        );
       case "spanishName":
         return <>{cellValue}</>;
       case "englishName":
         return <>{cellValue}</>;
       case "price":
-        return <>{cellValue}</>;
+        return (
+          <span className="font-bold text-master-900/70 ">
+            ${product.price}
+          </span>
+        );
       case "state":
         return (
           <Chip
@@ -53,7 +87,7 @@ export const ProductsTable = ({
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content="Edit product" placement="left">
+            <Tooltip content={translations.editProductTooltip} placement="left">
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <Link
                   prefetch={true}

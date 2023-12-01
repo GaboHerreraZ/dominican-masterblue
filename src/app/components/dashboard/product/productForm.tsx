@@ -1,14 +1,14 @@
 import { Product } from "@/domain/model/product";
 import { Input, Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { Divider } from "@nextui-org/divider";
 import { Switch } from "@nextui-org/switch";
 import { useProductStore } from "@/store/useProductStore";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ModalButton } from "@/app/utils/modal";
-import { DeleteIcon, SaveIcon } from "@/app/utils/iconsUtils";
+import { DeleteIcon, PlusIcon, SaveIcon } from "@/app/utils/iconsUtils";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
@@ -28,8 +28,14 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     register,
     handleSubmit,
     setValue,
+    control,
   } = useForm<Product>({ defaultValues: product });
   const [state, setState] = useState(product.state);
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "colors",
+  });
 
   const updateProduct = useProductStore((state) => state.update);
   const createProduct = useProductStore((state) => state.create);
@@ -68,46 +74,51 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
   return (
     <>
-      <form className=" py-5 w-full" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className=" py-5 w-full overflow-x-hidden"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <header className="flex gap-2">
-          <Button
-            type="submit"
-            variant="bordered"
-            size="sm"
-            radius="none"
-            color="primary"
-            className="flex gap-0"
-            startContent={<SaveIcon size={15} />}
-            isDisabled={!isValid}
-          >
-            {translations.saveProduct}
-          </Button>
-          <ModalButton
-            title={`${translations.titleDeleteModal} ${product.spanishName}`}
-            isDanger={true}
-            message={translations.deleteMessage}
-            callBack={deleteProductById}
-            startContent={<DeleteIcon size={15} />}
-          >
-            {translations.deleteProduct}
-          </ModalButton>
-          <Switch
-            defaultSelected={product.state}
-            onChange={(e: any) => {
-              setValue("state", e.target.checked);
-              setState(e.target.checked);
-            }}
-            size="sm"
-            color="success"
-          >
-            <span className="text-small italic font-bold text-master-900/70">
-              {state ? translations.active : translations.inactive}
-            </span>
-          </Switch>
+          <section className="flex gap-2">
+            <Button
+              type="submit"
+              variant="bordered"
+              size="sm"
+              radius="none"
+              color="primary"
+              className="flex gap-0"
+              startContent={<SaveIcon size={15} />}
+              isDisabled={!isValid}
+            >
+              {translations.saveProduct}
+            </Button>
+            <ModalButton
+              title={`${translations.titleDeleteModal} ${product.spanishName}`}
+              isDanger={true}
+              message={translations.deleteMessage}
+              callBack={deleteProductById}
+              startContent={<DeleteIcon size={15} />}
+            >
+              {translations.deleteProduct}
+            </ModalButton>
+            <Switch
+              defaultSelected={product.state}
+              onChange={(e: any) => {
+                setValue("state", e.target.checked);
+                setState(e.target.checked);
+              }}
+              size="sm"
+              color="success"
+            >
+              <span className="text-small italic font-bold text-master-900/70">
+                {state ? translations.active : translations.inactive}
+              </span>
+            </Switch>
+          </section>
         </header>
 
-        <div className="flex flex-col md:flex-row gap-2 mt-5 shadow-lg p-5">
-          <div className="w-full md:w-1/3 py-2">
+        <div className="grid grid-cols-3 w-full md:flex-row gap-2 mt-5 shadow-lg border-1 p-5">
+          <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium  text-master-900/70 font-bold">
                 {translations.generalInformation}
@@ -185,7 +196,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             </section>
           </div>
 
-          <div className="w-full md:w-1/3 py-2 ">
+          <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium text-master-900/70 font-bold">
                 {translations.specifications}
@@ -286,7 +297,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
             </section>
           </div>
 
-          <div className="w-full md:w-1/3 py-2 ">
+          <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium text-master-900/70 font-bold">
                 {translations.additionalInformation}
@@ -316,6 +327,52 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   color="primary"
                 />
               </div>
+            </section>
+          </div>
+
+          <div className="py-2 ">
+            <h4 className="text-medium  text-master-900/70 font-bold">
+              {translations.availableColors}
+            </h4>
+            <Divider className="px-2 my-1" />
+            <section className="flex gap-1 items-center">
+              {fields.map((field, index) => (
+                <div key={field.id} className="text-center">
+                  <Button
+                    variant="light"
+                    radius="full"
+                    isIconOnly
+                    color="danger"
+                    size="sm"
+                    className="mb-2"
+                    onClick={() => remove(index)}
+                  >
+                    <DeleteIcon size={15} />
+                  </Button>
+
+                  <Input
+                    classNames={{
+                      base: "rounded-full",
+                      input: "rounded-full h-5 w-5 ",
+                      innerWrapper: "rounded-full p-0",
+                      inputWrapper: "bg-transparent shadow-none hover:bg-none",
+                    }}
+                    size="sm"
+                    {...register(`colors.${index}.color` as const)}
+                    type="color"
+                  />
+                </div>
+              ))}
+              <Button
+                className="self-center"
+                variant="light"
+                radius="full"
+                isIconOnly
+                onClick={() => append({ color: "#000000" })}
+                size="sm"
+              >
+                <PlusIcon size={15} />
+              </Button>
             </section>
           </div>
         </div>
