@@ -25,7 +25,7 @@ export const BreadcrumbsPage = () => {
   pathNames = pathNames.filter((path) => path !== lng);
 
   return (
-    <div className="px-5 mt-5">
+    <div className="px-5 mt-10 md:mt-5">
       <Breadcrumbs
         underline="focus"
         variant="light"

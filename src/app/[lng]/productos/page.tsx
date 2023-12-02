@@ -1,15 +1,8 @@
 import { ProductContainer } from "@/app/components/product/productContainer";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import GetTranslations from "@/app/utils/translationsPage";
-import ProductService from "@/service/productService";
-import { ProductStoreInitializer } from "@/store/productStoreInitializer";
-import { useProductStore } from "@/store/useProductStore";
-
-const GetProducts = async () => {
-  const { findAll } = ProductService();
-  const response = await findAll();
-  return response;
-};
+import { Translations, useTranslationStore } from "@/store/translationStore";
+import { TranslationStoreInitializer } from "@/store/translationStoreInitializer";
 
 const GetTranslationsProduct = async (
   lng: string
@@ -23,19 +16,19 @@ export default async function ProductsPage({
 }: {
   params: { lng: string };
 }) {
-  const productsPromise = await GetProducts();
-  const translationsPromise = await GetTranslationsProduct(lng);
+  const productTranslations = await GetTranslationsProduct(lng);
 
-  const [products, translations] = await Promise.all([
-    productsPromise,
-    translationsPromise,
-  ]);
+  const translations: Translations = {
+    lng,
+    productTranslations: productTranslations,
+  };
 
-  useProductStore.setState({ products });
+  useTranslationStore.setState(translations);
+
   return (
     <div>
-      <ProductStoreInitializer products={products} />
-      <ProductContainer lng={lng} />
+      <TranslationStoreInitializer translations={translations} />
+      <ProductContainer />
     </div>
   );
 }

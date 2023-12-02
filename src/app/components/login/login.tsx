@@ -9,8 +9,15 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { Credential } from "@/domain/model/credential";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/lib/firebase";
+import { LoginTranslations } from "../../models/loginTranslations";
+import Image from "next/image";
+import loginImage from "../../../../public/img/jpg/mejoras.jpg";
 
-export const Login = () => {
+export const Login = ({
+  translations,
+}: {
+  translations: LoginTranslations;
+}) => {
   type Inputs = {
     email: string;
     password: string;
@@ -58,12 +65,24 @@ export const Login = () => {
 
   return (
     <section className="flex h-screen w-full">
-      <section className=" bg-master-900/70 md:flex md:place-content-center md:place-items-center hidden w-1/2">
-        <h4 className="font-bold">LOGO</h4>
+      <section className="relative md:block hidden md:w-1/2">
+        <Image
+          src={loginImage}
+          alt="image-login"
+          priority={true}
+          fill
+          sizes="100%"
+          style={{
+            objectFit: "cover",
+          }}
+        />
       </section>
-      <section className="flex place-content-center place-items-center  w-full md:w-1/2">
+      <section className="grid  place-content-center place-items-center  w-full md:w-1/2">
+        <h3 className="text-center mb-5 font-bold text-2xl text-master-900/70">
+          Dominican Masterblue
+        </h3>
         <form
-          className="shadow-md p-4 grid grid-cols-1 justify-center items-center gap-4"
+          className="shadow-lg p-5 grid grid-cols-1 justify-center items-center gap-4"
           onSubmit={handleSubmit(onSubmit)}
         >
           <Input
@@ -72,8 +91,8 @@ export const Login = () => {
             type="email"
             variant="underlined"
             color="primary"
-            label="Email"
-            placeholder="Enter your email"
+            label={translations.email}
+            placeholder={translations.emailPlaceHolder}
             errorMessage={errors.email ? "Please enter a valid email" : ""}
             isInvalid={errors.email ? true : false}
           />
@@ -84,8 +103,8 @@ export const Login = () => {
             className="max-w-xs"
             variant="underlined"
             color="primary"
-            label="Password"
-            placeholder="Enter your password"
+            label={translations.password}
+            placeholder={translations.passwordPlaceHolder}
             errorMessage={
               errors.password ? "Please enter a valid password" : ""
             }
@@ -107,7 +126,7 @@ export const Login = () => {
             radius="none"
             variant="bordered"
           >
-            Login
+            {translations.login}
           </Button>
         </form>
       </section>

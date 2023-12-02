@@ -11,7 +11,7 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
+      if (user?.email) {
         setUserValid(true);
       } else {
         navigation.push("/login");

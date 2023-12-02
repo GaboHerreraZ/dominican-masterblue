@@ -1,6 +1,6 @@
 import { useTranslation } from "@/app/i18n";
 import { Button } from "@nextui-org/button";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import render from "../../../../public/img/jpg/render.jpg";
 import desing from "../../../../public/img/jpg/design.jpg";
 import kitchen from "../../../../public/img/jpg/restore-kitchen.jpg";
@@ -22,10 +22,9 @@ export const HomeServices = async ({ lng }: { lng: string }) => {
         <div className="flex justify-center relative">
           <Image
             alt="imagen-prueba"
-            className="absolute hover:scale-110  transition-all duration-500 ease-in-out "
+            className="transition-all duration-500 ease-in-out "
             src={desing}
-            layout="intrinsic"
-            objectFit="cover"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <article className="flex flex-col px-10 items-center justify-center bg-gray-200/50 ">
@@ -74,24 +73,26 @@ export const HomeServices = async ({ lng }: { lng: string }) => {
             </Button>
           </div>
         </article>
-        <div className="flex order-1 md:order-2 justify-center relative">
+        <div className="flex order-1 md:order-2 justify-center relative h-[500px]">
           <Image
             alt="imagen-prueba"
-            className="absolute hover:scale-110  transition-all duration-500 ease-in-out "
+            className="transition-all duration-500 ease-in-out "
             src={kitchen}
-            layout="intrinsic"
-            objectFit="cover"
+            sizes="100%"
+            fill
+            style={{ objectFit: "cover" }}
           />
         </div>
       </section>
       <section className="grid md:grid-cols-2 grid-cols-1 h-full ">
-        <div className="flex justify-center relative">
+        <div className="flex justify-center relative h-[500px]">
           <Image
             alt="imagen-prueba"
-            className="absolute hover:scale-110  transition-all duration-500 ease-in-out "
+            className=" transition-all duration-500 ease-in-out "
             src={render}
-            layout="intrinsic"
-            objectFit="cover"
+            fill
+            sizes="100%"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <article className="flex flex-col px-10 items-center justify-center bg-gray-200/50 ">

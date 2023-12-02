@@ -2,7 +2,7 @@ import { useTranslation } from "@/app/i18n";
 import { LeftQuoteIcon, RightQuoteIcon } from "@/app/utils/iconsUtils";
 import { Button } from "@nextui-org/button";
 import { Card, CardFooter } from "@nextui-org/react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 import chair from "../../../../public/img/jpg/chair.jpg";
 import dinningRoom from "../../../../public/img/jpg/dinning-room.jpg";
@@ -13,7 +13,7 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2">
-      <article className="flex flex-col px-10 items-center justify-center ">
+      <article className="flex flex-col py-10 px-10 items-center justify-center ">
         <p className="italic text-center m-0 text-4xl ">
           {t("productDescription")}
         </p>
@@ -51,8 +51,9 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
               alt="chair"
               className="absolute "
               src={chair}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -83,8 +84,9 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
               alt="dinning-room"
               className="absolute "
               src={dinningRoom}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -115,8 +117,9 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
               alt="furniture"
               className="absolute "
               src={furniture}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -147,8 +150,9 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
               alt="closet"
               className="absolute "
               src={furniture}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">

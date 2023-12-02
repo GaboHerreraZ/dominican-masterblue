@@ -8,7 +8,6 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/table";
-
 import { columns } from "@/app/components/dashboard/product/const";
 import { Key } from "react";
 import { EditIcon } from "@/app/utils/iconsUtils";
@@ -50,15 +49,17 @@ export const ProductsTable = ({ lng }: { lng: string }) => {
         );
       case "youTubeLink":
         return (
-          <span className="underline italic text-small">
+          <>
             {product.youTubeLink ? (
-              <Link href={product.youTubeLink} target="_blank">
-                {translations?.seeVideo}
-              </Link>
+              <span className="underline italic text-small">
+                <Link href={product.youTubeLink} target="_blank">
+                  {translations?.seeVideo}
+                </Link>
+              </span>
             ) : (
-              "----"
+              <></>
             )}
-          </span>
+          </>
         );
       case "spanishName":
         return <>{cellValue}</>;

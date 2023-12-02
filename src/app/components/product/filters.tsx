@@ -4,7 +4,7 @@ import { Slider } from "@nextui-org/slider";
 import { FilterIcon } from "@/app/utils/iconsUtils";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@nextui-org/button";
-import { ProductTranslations } from "@/app/models/productTranslations";
+import { useTranslationStore } from "@/store/translationStore";
 
 const categories = [
   { label: "Desk", value: "desk", description: "Desk" },
@@ -20,13 +20,14 @@ const colors = [
   { label: "Chairs", value: "chairs", description: "Chairs", color: "#091A7A" },
 ];
 
-export const FiltersProduct = ({
-  translations,
-}: {
-  translations: ProductTranslations;
-}) => {
+export const FiltersProduct = () => {
+  const translations = useTranslationStore(
+    (state) => state.productTranslations
+  );
+
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
@@ -59,7 +60,7 @@ export const FiltersProduct = ({
         endContent={<FilterIcon fill="#091A7A" size={30} />}
         onClick={() => toggleSidebar()}
       >
-        {translations.filterBy}
+        {translations?.filterBy}
       </Button>
 
       <section
@@ -73,9 +74,9 @@ export const FiltersProduct = ({
         >
           <Select
             variant={"underlined"}
-            label={translations.category}
+            label={translations?.category}
             radius="none"
-            placeholder={translations.categoryDescription}
+            placeholder={translations?.categoryDescription}
             selectionMode="multiple"
             color="primary"
             listboxProps={{
@@ -104,16 +105,16 @@ export const FiltersProduct = ({
             step={1}
             maxValue={5000}
             minValue={0}
-            label={translations.price}
-            aria-label={translations.price}
+            label={translations?.price}
+            aria-label={translations?.price}
             defaultValue={[200, 1500]}
             formatOptions={{ style: "currency", currency: "USD" }}
             className="w-full"
           />
           <Select
             variant={"underlined"}
-            label={translations.colors}
-            placeholder={translations.colorDescription}
+            label={translations?.colors}
+            placeholder={translations?.colorDescription}
             selectionMode="multiple"
             color="primary"
             items={colors}

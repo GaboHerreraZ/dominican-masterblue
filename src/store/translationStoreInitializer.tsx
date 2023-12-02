@@ -1,5 +1,5 @@
 "use client";
-import { use, useRef } from "react";
+import { useRef } from "react";
 import { Translations, useTranslationStore } from "@/store/translationStore";
 export function TranslationStoreInitializer({
   translations,

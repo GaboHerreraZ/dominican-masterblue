@@ -1,6 +1,7 @@
 import { useTranslation } from "@/app/i18n";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import { DashboardTranslations } from "../models/dashboardTranslations";
+import { LoginTranslations } from "../models/loginTranslations";
 
 export default function GetTranslations() {
   const GetProductTranslations = async (
@@ -91,8 +92,23 @@ export default function GetTranslations() {
     return dashboardTranslations;
   };
 
+  const GetLoginTranslations = async (lng: string) => {
+    const { t } = await useTranslation(lng, "login");
+
+    const loginTranslations: LoginTranslations = {
+      email: t("email"),
+      emailPlaceHolder: t("emailPlaceHolder"),
+      password: t("password"),
+      passwordPlaceHolder: t("passwordPlaceHolder"),
+      login: t("login"),
+    };
+
+    return loginTranslations;
+  };
+
   return {
     GetProductTranslations,
     GetDashboardTranslations,
+    GetLoginTranslations,
   };
 }

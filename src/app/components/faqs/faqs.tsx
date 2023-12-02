@@ -2,7 +2,7 @@
 import { QuestionIcon } from "@/app/utils/iconsUtils";
 import { Faqs } from "@/domain/model/faq";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import mejoras from "../../../../public/img/jpg/mejoras.jpg";
 
 export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
@@ -15,8 +15,9 @@ export const FaqsComponent = ({ faqs }: { faqs: Faqs }) => {
         <Image
           alt="imagen-prueba"
           src={mejoras}
-          layout="fill"
-          objectFit="cover"
+          fill
+          sizes="100%"
+          style={{ objectFit: "cover" }}
         />
         <div className="absolute bg-white bg-opacity-70 h-full w-full"></div>
         <div className="absolute flex flex-col items-center justify-center w-full h-full">

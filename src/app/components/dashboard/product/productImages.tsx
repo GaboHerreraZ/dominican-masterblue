@@ -2,7 +2,7 @@ import { Product } from "@/domain/model/product";
 import { Button } from "@nextui-org/button";
 import { useDropzone } from "react-dropzone";
 import { useState, useCallback } from "react";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import { CloseIcon, DeleteIcon, SaveIcon } from "@/app/utils/iconsUtils";
 import { storage } from "@/lib/firebase";
 import {
@@ -149,8 +149,8 @@ export const ProductImages = ({ product }: { product: Product }) => {
   };
 
   return (
-    <section className="flex h-[500px]">
-      <div className="block  w-1/2  ">
+    <section className="grid  md:flex h-[500px]">
+      <div className="block  md:w-1/2  ">
         <div className="w-full  h-[100px] border-dashed border-1 border-master-900/70 ">
           {productState.images?.length === 6 ? (
             <p className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70">
@@ -159,7 +159,7 @@ export const ProductImages = ({ product }: { product: Product }) => {
           ) : (
             <div
               {...getRootProps()}
-              className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70"
+              className="grid p-0 md:p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70"
             >
               <input {...getInputProps()} />
               {isDragActive ? (
@@ -211,8 +211,6 @@ export const ProductImages = ({ product }: { product: Product }) => {
                   <CloseIcon size={20} />
                 </Button>
                 <Image
-                  layout="intrinsic"
-                  objectFit="cover"
                   key={f.name}
                   alt="image-to-download"
                   width={100}
@@ -224,7 +222,7 @@ export const ProductImages = ({ product }: { product: Product }) => {
           })}
         </div>
       </div>
-      <div className="flex flex-col place-items-center w-1/2 px-5">
+      <div className="flex flex-col place-items-center md:w-1/2 px-5">
         <h4 className="text-center p-2 text-master-900/70 font-bold italic text-lg">
           {translations?.imagesUploaded}
         </h4>
@@ -242,8 +240,10 @@ export const ProductImages = ({ product }: { product: Product }) => {
                 <Image
                   key={i}
                   src={url.url}
-                  layout="fill"
-                  objectFit="cover"
+                  alt={url.name}
+                  fill
+                  sizes="100%"
+                  style={{ objectFit: "cover" }}
                   className="absolute"
                 ></Image>
                 <div className="absolute  place-items-center w-full h-full bg-black/70 hidden group-hover:grid top-0 z-1">

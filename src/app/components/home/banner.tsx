@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import interiores from "../../../../public/img/png/interiores.png";
 import mejoras from "../../../../public/img/jpg/mejoras.jpg";
 
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 function SampleNextArrow(props: any) {
   const { onClick } = props;
@@ -54,8 +54,9 @@ export const Banner = () => {
           <Image
             alt="imagen-prueba"
             src={interiores}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
 
@@ -63,40 +64,45 @@ export const Banner = () => {
           <Image
             alt="imagen-prueba"
             src={mejoras}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="h-[500px]">
           <Image
             alt="imagen-prueba"
             src={interiores}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="h-[500px]">
           <Image
             alt="imagen-prueba"
             src={mejoras}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="h-[500px]">
           <Image
             alt="imagen-prueba"
             src={interiores}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
         <div className="h-[500px]">
           <Image
             alt="imagen-prueba"
             src={mejoras}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100%s"
+            style={{ objectFit: "cover" }}
           />
         </div>
       </Slider>

@@ -47,7 +47,7 @@ export const useAuthStore = create(
         },
         singOut: async () => {
           await singOutUseCase.execute();
-          set(() => ({ isAuth: false }));
+          set(() => ({ isAuth: false, user: null, errors: null }));
         },
       };
     },

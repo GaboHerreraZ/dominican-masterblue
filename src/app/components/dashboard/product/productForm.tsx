@@ -116,7 +116,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
           </section>
         </header>
 
-        <div className="grid grid-cols-3 w-full md:flex-row gap-2 mt-5 shadow-lg border-1 p-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 w-full md:flex-row gap-2 mt-5 shadow-lg border-1 p-5">
           <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium  text-master-900/70 font-bold">

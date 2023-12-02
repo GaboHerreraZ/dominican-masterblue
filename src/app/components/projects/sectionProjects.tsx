@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import cocina from "../../../../public/img/jpg/cocina.jpg";
 import oficina from "../../../../public/img/jpg/oficina.jpg";
 import vivienda from "../../../../public/img/jpg/vivienda.jpg";
@@ -29,14 +29,15 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
         >
           <Link
             href={""}
-            className="relative flex h-full place-content-center   w-full "
+            className="relative flex h-full place-content-center w-full "
           >
             <Image
               alt="kitchen"
               className="absolute "
               src={cocina}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -67,8 +68,9 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
               alt="office"
               className="absolute "
               src={oficina}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -99,8 +101,9 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
               alt="house"
               className="absolute "
               src={vivienda}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
@@ -131,8 +134,9 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
               alt="hotel"
               className="absolute "
               src={hotel}
-              layout="intrinsic"
-              objectFit="cover"
+              fill
+              sizes="100%s"
+              style={{ objectFit: "cover" }}
             />
           </Link>
           <CardFooter className="justify-between before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-none bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">

@@ -1,25 +1,33 @@
 import { Card, CardFooter } from "@nextui-org/card";
-import Image from "next/legacy/image";
-import comedor from "../../../../public/img/jpg/comedor.jpg";
+import Image from "next/image";
 import { Button } from "@nextui-org/button";
-import { useTranslation } from "@/app/i18n";
+import { useTranslationStore } from "@/store/translationStore";
+import { Product } from "@/domain/model/product";
 
-export const Product = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng, "products");
+export const ProductCard = ({ product }: { product: Product }) => {
+  const { productTranslations, lng } = useTranslationStore.getState();
 
   return (
-    <Card isFooterBlurred radius="none">
+    <Card
+      aria-label={product.englishName}
+      isFooterBlurred
+      radius="none"
+      className="relative h-[300px]"
+    >
       <Image
         alt="desk"
         className="absolute "
-        src={comedor}
-        layout="intrinsic"
-        objectFit="cover"
+        src={product.urlImage}
+        fill
+        sizes="100%s"
+        style={{ objectFit: "cover" }}
       />
       <CardFooter className="w-[calc(100%_-_8px)] before:bg-white/25 border-white/20 border-1 overflow-hidden py-1 absolute  rounded-none bottom-1  shadow-small ml-1 z-10">
         <article className="w-full">
-          <p className=" text-xl  text-white">Desk</p>
-          <p className=" text-small font-bold text-white">$1000</p>
+          <p className=" text-xl  text-white">
+            {lng === "es" ? product.spanishName : product.englishName}
+          </p>
+          <p className=" text-small font-bold text-white">{product.price}</p>
         </article>
         <Button
           className="text-tiny text-white bg-black/20"
@@ -28,7 +36,7 @@ export const Product = async ({ lng }: { lng: string }) => {
           radius="none"
           size="sm"
         >
-          {t("seeDetails")}
+          {productTranslations?.seeMore}
         </Button>
       </CardFooter>
     </Card>

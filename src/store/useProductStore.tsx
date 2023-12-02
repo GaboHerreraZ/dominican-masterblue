@@ -20,9 +20,10 @@ interface ProductState {
   findById: (productId: string) => Promise<Product>;
   deleteImage: (image: string) => Promise<boolean>;
   markImage: (image: string, name: string) => Promise<boolean>;
+  setProducts: (products: Product[]) => void;
 }
 
-export const useProductStore = create<ProductState>()(() => {
+export const useProductStore = create<ProductState>()((set) => {
   const productImplementationRepository = new ProductImplementationRepository();
   const createProductUseCase = new CreateProductUseCase(
     productImplementationRepository
@@ -50,7 +51,11 @@ export const useProductStore = create<ProductState>()(() => {
   return {
     products: [],
     translations: {} as ProductTranslations,
-    findAll: async () => await findAllProductUseCase.execute(),
+    findAll: async () => {
+      const products = await findAllProductUseCase.execute();
+      set(() => ({ products }));
+      return products;
+    },
     create: async (product: Product) => {
       const response = await createProductUseCase.execute(product);
       return response.id;
@@ -67,5 +72,6 @@ export const useProductStore = create<ProductState>()(() => {
       await deleteImageProductUseCase.execute(image),
     markImage: async (image: string, name: string) =>
       await markImageProductUseCase.execute({ image, name }),
+    setProducts: (products: Product[]) => set((state) => ({ products: [] })),
   };
 });
