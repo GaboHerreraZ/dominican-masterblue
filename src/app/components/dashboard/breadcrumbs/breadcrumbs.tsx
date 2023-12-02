@@ -1,5 +1,6 @@
 "use client";
 import { HomeIcon, ProductsIcon } from "@/app/utils/iconsUtils";
+import { useTranslationStore } from "@/store/translationStore";
 import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/breadcrumbs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,7 +18,8 @@ const routes: any = {
   },
 };
 
-export const BreadcrumbsPage = ({ lng }: { lng: string }) => {
+export const BreadcrumbsPage = () => {
+  const lng = useTranslationStore((state) => state.lng);
   const paths = usePathname();
   let pathNames = paths.split("/").filter((path) => path);
   pathNames = pathNames.filter((path) => path !== lng);
@@ -37,7 +39,7 @@ export const BreadcrumbsPage = ({ lng }: { lng: string }) => {
           >
             {routes[path] ? (
               <Link prefetch={true} href={`/dashboard/${routes[path].link}`}>
-                {path}
+                {routes[path].label}
               </Link>
             ) : (
               path

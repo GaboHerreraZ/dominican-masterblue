@@ -1,16 +1,19 @@
 "use client";
-import { useRef } from "react";
-import { useProductStore } from "./useProductStore";
-import { ProductTranslations } from "@/app/models/productTranslations";
+import { use, useRef } from "react";
+import { Translations, useTranslationStore } from "@/store/translationStore";
 export function TranslationStoreInitializer({
   translations,
 }: {
-  translations: ProductTranslations;
+  translations: Translations;
 }) {
   const initialized = useRef(false);
 
   if (!initialized.current) {
-    useProductStore.setState({ translations });
+    useTranslationStore.setState({
+      lng: translations.lng,
+      productTranslations: translations.productTranslations,
+      dashboardTranslations: translations.dashboardTranslations,
+    });
     initialized.current = true;
   }
 

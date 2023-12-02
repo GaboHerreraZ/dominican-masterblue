@@ -1,0 +1,88 @@
+import { DashboardTranslations } from "@/app/models/dashboardTranslations";
+import { ProductTranslations } from "@/app/models/productTranslations";
+import { create } from "zustand";
+
+export type Translations = {
+  lng: string | null;
+  productTranslations?: ProductTranslations;
+  dashboardTranslations?: DashboardTranslations;
+};
+
+export const useTranslationStore = create<Translations>(() => {
+  return {
+    lng: null,
+    productTranslations: {
+      title: "",
+      newProduct: "",
+      filterBy: "",
+      noNofilterSelected: "",
+      orderBy: "",
+      category: "",
+      categoryDescription: "",
+      price: "",
+      colors: "",
+      colorDescription: "",
+      recently: "",
+      lowPrice: "",
+      highPrice: "",
+      seeMore: "",
+      active: "",
+      inactive: "",
+      productDetail: "",
+      productDescription: "",
+      productInformation: "",
+      productPhotos: "",
+      saveProduct: "",
+      deleteProduct: "",
+      generalInformation: "",
+      generalInformationDescription: "",
+      spanishName: "",
+      englishName: "",
+      spanishDescription: "",
+      englishDescription: "",
+      specifications: "",
+      specificationsDescription: "",
+      width: "",
+      height: "",
+      weight: "",
+      length: "",
+      quantity: "",
+      youtubeLink: "",
+      additionalInformation: "",
+      additionalInformationDescription: "",
+      material: "",
+      spanishNamePlaceHolder: "",
+      englishNamePlaceHolder: "",
+      spanishDescriptionPlaceHolder: "",
+      englishDescriptionPlaceHolder: "",
+      materialPlaceHolder: "",
+      youtubeLinkPlaceHolder: "",
+      saveOk: "",
+      updatedOk: "",
+      deleteOk: "",
+      deleteMessage: "",
+      titleDeleteModal: "",
+      fillOutGeneralInformation: "",
+      markAsMain: "",
+      imagesUploaded: "",
+      imageSizeTooLarge: "",
+      errorUploadingImages: "",
+      isDragActive: "",
+      dragDescription: "",
+      maxImages: "",
+      deleteImageOk: "",
+      markAsMainOk: "",
+      seeVideo: "",
+      editProductTooltip: "",
+      availableColours: "",
+    },
+    dashboardTranslations: {
+      productTitle: "",
+      productDescription: "",
+      listProductTitle: "",
+      logOut: "",
+      moduleProductsTitle: "",
+      moduleProductsDescription: "",
+    },
+  };
+});

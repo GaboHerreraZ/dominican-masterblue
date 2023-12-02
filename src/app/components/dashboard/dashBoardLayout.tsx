@@ -5,13 +5,7 @@ import { Button } from "@nextui-org/button";
 import { BarsIcon } from "@/app/utils/iconsUtils";
 import { BreadcrumbsPage } from "@/app/components/dashboard/breadcrumbs/breadcrumbs";
 
-export const DashBoardLayout = ({
-  children,
-  lng,
-}: {
-  children: ReactNode;
-  lng: string;
-}) => {
+export const DashBoardLayout = ({ children }: { children: ReactNode }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -30,9 +24,9 @@ export const DashBoardLayout = ({
             <BarsIcon size={40} />
           </Button>
         </div>
-        <Sidebar lng={lng} show={show} setter={setShow} />
+        <Sidebar show={show} setter={setShow} />
         <main className="w-full min-h-screen">
-          <BreadcrumbsPage lng={lng} />
+          <BreadcrumbsPage />
           {children}
         </main>
       </div>

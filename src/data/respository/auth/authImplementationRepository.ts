@@ -1,10 +1,16 @@
 import { Credential } from "@/domain/model/credential";
 import { AuthRepository } from "@/domain/repository/authRepository";
 import { auth } from "@/lib/firebase";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+  UserCredential,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 
 export class AuthImplementationRepository implements AuthRepository {
-  async loginWithEmailAndPassword(credentials: Credential): Promise<any> {
+  async loginWithEmailAndPassword(
+    credentials: Credential
+  ): Promise<UserCredential> {
     return signInWithEmailAndPassword(
       auth,
       credentials.email,

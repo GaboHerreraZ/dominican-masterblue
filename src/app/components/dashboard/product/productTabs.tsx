@@ -6,18 +6,16 @@ import { Tab, Tabs } from "@nextui-org/tabs";
 import { FormIcon, GalleryIcon } from "@/app/utils/iconsUtils";
 import { Chip } from "@nextui-org/chip";
 import { useState } from "react";
-import { ProductTranslations } from "@/app/models/productTranslations";
 import { Button } from "@nextui-org/button";
 import { useProductStore } from "@/store/useProductStore";
 import useSWR from "swr";
-export const ProductTabs = ({
-  id,
-  translations,
-}: {
-  id: string;
-  translations: ProductTranslations;
-}) => {
+import { useTranslationStore } from "@/store/translationStore";
+
+export const ProductTabs = ({ id }: { id: string }) => {
   const [selected, setSelected] = useState("data");
+  const translations = useTranslationStore(
+    (state) => state.productTranslations
+  );
 
   const findById = useProductStore((state) => state.findById);
   const { data: product } = useSWR<Product>(id, findById, { suspense: true });
@@ -45,18 +43,18 @@ export const ProductTabs = ({
         title={
           <div className="flex items-center space-x-2">
             <FormIcon size={20} />
-            <span>{translations.generalInformation}</span>
+            <span>{translations?.generalInformation}</span>
           </div>
         }
       >
-        <ProductForm product={product} translations={translations} />
+        <ProductForm product={product} />
       </Tab>
       <Tab
         key="photos"
         title={
           <div className="flex items-center space-x-2">
             <GalleryIcon size={20} />
-            <span>{translations.productPhotos}</span>
+            <span>{translations?.productPhotos}</span>
             <Chip size="sm" variant="faded">
               {product?.images ? product.images.length : 0}
             </Chip>
@@ -65,7 +63,7 @@ export const ProductTabs = ({
       >
         {product.id === "nuevo" ? (
           <div className="w-full text-center my-5  p-3 text-master-900/70 font-bold italic">
-            <h1>{translations.fillOutGeneralInformation}</h1>
+            <h1>{translations?.fillOutGeneralInformation}</h1>
             <Button
               size="sm"
               variant="bordered"
@@ -73,11 +71,11 @@ export const ProductTabs = ({
               color="primary"
               onPress={() => setSelected("data")}
             >
-              {translations.generalInformation}
+              {translations?.generalInformation}
             </Button>
           </div>
         ) : (
-          <ProductImages translations={translations} product={product} />
+          <ProductImages product={product} />
         )}
       </Tab>
     </Tabs>

@@ -1,13 +1,14 @@
-"use client";
-import {
-  AddProductIcon,
-  ListProductsIcon,
-  ProductsIcon,
-} from "@/app/utils/iconsUtils";
+import { ListProductsIcon, ProductsIcon } from "@/app/utils/iconsUtils";
+import { useTranslationStore } from "@/store/translationStore";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import Link from "next/link";
 
-export const Menu = ({ lng }: { lng: string }) => {
+export const Menu = () => {
+  const dashboardTranslations = useTranslationStore(
+    (state) => state.dashboardTranslations
+  );
+  const lng = useTranslationStore((state) => state.lng);
+
   return (
     <section className="p-2 ">
       <Accordion
@@ -21,8 +22,8 @@ export const Menu = ({ lng }: { lng: string }) => {
         <AccordionItem
           key="1"
           aria-label="Products"
-          title="Products"
-          subtitle="Manage your products"
+          title={dashboardTranslations?.productTitle}
+          subtitle={dashboardTranslations?.productDescription}
           classNames={{
             subtitle: "text-slate-400 text-[10px]",
           }}
@@ -35,7 +36,7 @@ export const Menu = ({ lng }: { lng: string }) => {
                 className="hover:underline"
                 href={`/${lng}/dashboard/productos`}
               >
-                List of products
+                {dashboardTranslations?.listProductTitle}
               </Link>
             </li>
           </ul>

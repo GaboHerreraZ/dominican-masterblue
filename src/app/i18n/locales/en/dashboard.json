@@ -1,4 +1,8 @@
 {
   "moduleProductsTitle": "Products",
-  "moduleProductsDescription": "Manage all products in the store, create, edit and delete general information and images."
+  "moduleProductsDescription": "Manage all products in the store, create, edit and delete general information and images.",
+  "productTitle": "Products",
+  "productDescription": "Manage all products",
+  "listProductTitle": "Product List",
+  "logOut": "Log Out"
 }

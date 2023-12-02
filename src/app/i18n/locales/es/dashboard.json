@@ -1,4 +1,8 @@
 {
   "moduleProductsTitle": "Productos",
-  "moduleProductsDescription": "Administra todos los productos de la tienda, crear, editar y eliminar información general e imagenes."
+  "moduleProductsDescription": "Administra todos los productos de la tienda, crear, editar y eliminar información general e imagenes.",
+  "productTitle": "Productos",
+  "productDescription": "Administra todos los productos",
+  "listProductTitle": "Lista de productos",
+  "logOut": "Cerrar sesión"
 }

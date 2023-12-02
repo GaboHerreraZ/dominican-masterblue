@@ -1,5 +1,6 @@
 import { useTranslation } from "@/app/i18n";
 import { ProductTranslations } from "@/app/models/productTranslations";
+import { DashboardTranslations } from "../models/dashboardTranslations";
 
 export default function GetTranslations() {
   const GetProductTranslations = async (
@@ -70,13 +71,28 @@ export default function GetTranslations() {
       markAsMainOk: t("markAsMainOk"),
       seeVideo: t("seeVideo"),
       editProductTooltip: t("editProductTooltip"),
-      availableColors: t("availableColors"),
+      availableColours: t("availableColours"),
     };
 
     return productTranslations;
   };
 
+  const GetDashboardTranslations = async (lng: string) => {
+    const { t } = await useTranslation(lng, "dashboard");
+
+    const dashboardTranslations: DashboardTranslations = {
+      productTitle: t("productTitle"),
+      productDescription: t("productDescription"),
+      listProductTitle: t("listProductTitle"),
+      logOut: t("logOut"),
+      moduleProductsTitle: t("moduleProductsTitle"),
+      moduleProductsDescription: t("moduleProductsDescription"),
+    };
+    return dashboardTranslations;
+  };
+
   return {
     GetProductTranslations,
+    GetDashboardTranslations,
   };
 }

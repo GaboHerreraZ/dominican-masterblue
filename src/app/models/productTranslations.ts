@@ -61,5 +61,5 @@ export interface ProductTranslations {
   markAsMainOk: string;
   seeVideo: string;
   editProductTooltip: string;
-  availableColors: string;
+  availableColours: string;
 }

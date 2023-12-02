@@ -1,4 +1,3 @@
-import { ProductTranslations } from "@/app/models/productTranslations";
 import { Product } from "@/domain/model/product";
 import { Button } from "@nextui-org/button";
 import { useDropzone } from "react-dropzone";
@@ -16,23 +15,19 @@ import { Progress } from "@nextui-org/progress";
 import toast from "react-hot-toast";
 import { useProductStore } from "@/store/useProductStore";
 import { useSWRConfig } from "swr";
+import { useTranslationStore } from "@/store/translationStore";
 
 type ProductFile = File & {
   preview: string;
 };
 
-export const ProductImages = ({
-  product,
-  translations,
-}: {
-  product: Product;
-  translations: ProductTranslations;
-}) => {
+export const ProductImages = ({ product }: { product: Product }) => {
+  const translations = useTranslationStore(
+    (state) => state.productTranslations
+  );
   const [productState, setProduct] = useState<Product>(product);
   const [files, setFiles] = useState<ProductFile[]>([]);
   const [progress, setProgress] = useState(0);
-
-  console.log(productState);
 
   const { mutate } = useSWRConfig();
 
@@ -41,10 +36,10 @@ export const ProductImages = ({
 
   function fileSizeValidator(file: File) {
     if (file.size > 350000) {
-      toast.error(translations.imageSizeTooLarge);
+      toast.error(translations?.imageSizeTooLarge || "");
       return {
         code: "size-too-large",
-        message: translations.imageSizeTooLarge,
+        message: translations?.imageSizeTooLarge || "",
       };
     }
 
@@ -96,7 +91,6 @@ export const ProductImages = ({
           () => {
             deletePreview(image);
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-              console.log("downloadURL", downloadURL);
               setProduct((product) => ({
                 ...product,
                 images: [
@@ -116,9 +110,10 @@ export const ProductImages = ({
 
       try {
         await Promise.all(uploadPromises);
+        toast.success(translations?.saveOk || "");
         mutate(product.id);
       } catch (error) {
-        toast.error(translations.errorUploadingImages);
+        toast.error(translations?.errorUploadingImages || "");
       }
     },
     [files]
@@ -132,7 +127,7 @@ export const ProductImages = ({
         images: product.images?.filter((i) => i.name !== name),
       }));
       mutate(product.id);
-      toast.success(translations.deleteImageOk);
+      toast.success(translations?.deleteImageOk || "");
     }
   };
 
@@ -143,7 +138,7 @@ export const ProductImages = ({
     );
     const response = await markMainImageStore(urlUpdated, image.name);
     if (response) {
-      toast.success(translations.markAsMainOk);
+      toast.success(translations?.markAsMainOk || "");
       mutate(product.id);
       setProduct((product) => ({
         ...product,
@@ -159,7 +154,7 @@ export const ProductImages = ({
         <div className="w-full  h-[100px] border-dashed border-1 border-master-900/70 ">
           {productState.images?.length === 6 ? (
             <p className="grid p-10 cursor-pointer place-items-center h-full italic font-bold text-medium text-master-900/70">
-              {translations.maxImages}
+              {translations?.maxImages}
             </p>
           ) : (
             <div
@@ -169,11 +164,11 @@ export const ProductImages = ({
               <input {...getInputProps()} />
               {isDragActive ? (
                 <p className="text-center text-xl">
-                  {translations.isDragActive}
+                  {translations?.isDragActive}
                 </p>
               ) : (
                 <p className="text-center text-xl">
-                  {translations.dragDescription}
+                  {translations?.dragDescription}
                 </p>
               )}
             </div>
@@ -199,7 +194,7 @@ export const ProductImages = ({
           onClick={handleUpload}
           startContent={<SaveIcon size={15} />}
         >
-          {translations.saveProduct}
+          {translations?.saveProduct}
         </Button>
         <div className="flex flex-wrap gap-2 overflow-y-auto w-full mt-5 ">
           {files.map((f: ProductFile, i: number) => {
@@ -231,7 +226,7 @@ export const ProductImages = ({
       </div>
       <div className="flex flex-col place-items-center w-1/2 px-5">
         <h4 className="text-center p-2 text-master-900/70 font-bold italic text-lg">
-          {translations.imagesUploaded}
+          {translations?.imagesUploaded}
         </h4>
         <div className="flex flex-wrap justify-center">
           {productState.images?.map((url, i) => {
@@ -261,7 +256,7 @@ export const ProductImages = ({
                     onClick={() => deleteImage(url.name)}
                     startContent={<DeleteIcon size={10} />}
                   >
-                    {translations.deleteProduct}
+                    {translations?.deleteProduct}
                   </Button>
                   <Button
                     className="self-center"
@@ -272,7 +267,7 @@ export const ProductImages = ({
                     onClick={() => markMainImage(url)}
                     startContent={<DeleteIcon size={10} />}
                   >
-                    {translations.markAsMain}
+                    {translations?.markAsMain}
                   </Button>
                 </div>
               </div>

@@ -58,7 +58,6 @@ export const Login = () => {
 
   return (
     <section className="flex h-screen w-full">
-      {/* {errorsLog && <h1>Gonorreaaaaaa</h1>} */}
       <section className=" bg-master-900/70 md:flex md:place-content-center md:place-items-center hidden w-1/2">
         <h4 className="font-bold">LOGO</h4>
       </section>

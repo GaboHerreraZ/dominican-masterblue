@@ -1,20 +1,19 @@
 import { Menu } from "@/app/components/dashboard/menu";
+import { PowerOffIcon } from "@/app/utils/iconsUtils";
+import { useTranslationStore } from "@/store/translationStore";
 import { useAuthStore } from "@/store/useAuthStore";
-import { Button } from "@nextui-org/react";
+import { Button, Tooltip } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
-export const Sidebar = ({
-  lng,
-  show,
-  setter,
-}: {
-  lng: string;
-  show: boolean;
-  setter: any;
-}) => {
+export const Sidebar = ({ show, setter }: { show: boolean; setter: any }) => {
   const navigation = useRouter();
 
+  const translations = useTranslationStore(
+    (state) => state.dashboardTranslations
+  );
+
   const singOut = useAuthStore((state) => state.singOut);
+  const user = useAuthStore((state) => state.user);
 
   const handleSingOut = async () => {
     await singOut();
@@ -37,17 +36,23 @@ export const Sidebar = ({
   return (
     <>
       <aside className={`${className}${appendClass}`}>
-        <Menu lng={lng} />
-        <div className="flex absolute w-full  justify-center p-2  bottom-0">
-          <Button
-            variant="ghost"
-            radius="none"
-            size="sm"
-            color="default"
-            onClick={handleSingOut}
-          >
-            Cerrar Sesión
-          </Button>
+        <Menu />
+        <div className="flex flex-col items-center gap-2 absolute w-full  justify-center p-2  bottom-0">
+          <span className="font-bold text-white text-small">
+            {user?.user.email}
+          </span>
+          <Tooltip placement="right" content={translations?.logOut}>
+            <Button
+              isIconOnly
+              variant="light"
+              radius="full"
+              size="sm"
+              color="default"
+              onClick={handleSingOut}
+            >
+              <PowerOffIcon size={20} />
+            </Button>
+          </Tooltip>
         </div>
       </aside>
       {show ? <ModalOverlay /> : <> </>}

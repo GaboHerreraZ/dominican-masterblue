@@ -21,7 +21,7 @@ export const ProductDetailDashboard = ({
         </p>
       </header>
       <section className="flex w-full flex-col ">
-        <ProductTabs id={id} translations={translations} />
+        <ProductTabs id={id} />
       </section>
     </div>
   );

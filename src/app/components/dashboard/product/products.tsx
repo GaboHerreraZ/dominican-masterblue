@@ -16,19 +16,16 @@ import { Tooltip } from "@nextui-org/tooltip";
 import { Chip } from "@nextui-org/chip";
 import { Button } from "@nextui-org/button";
 import Link from "next/link";
-import { ProductTranslations } from "@/app/models/productTranslations";
 import Image from "next/image";
 import noImage from "../../../../../public/img/png/no-image.png";
 import { useProductStore } from "@/store/useProductStore";
 import useSWR from "swr";
+import { useTranslationStore } from "@/store/translationStore";
 
-export const ProductsTable = ({
-  lng,
-  translations,
-}: {
-  lng: string;
-  translations: ProductTranslations;
-}) => {
+export const ProductsTable = ({ lng }: { lng: string }) => {
+  const translations = useTranslationStore(
+    (state) => state.productTranslations
+  );
   const findAll = useProductStore((state) => state.findAll);
   const { data: products } = useSWR<Product[]>("productTable", findAll);
 
@@ -56,7 +53,7 @@ export const ProductsTable = ({
           <span className="underline italic text-small">
             {product.youTubeLink ? (
               <Link href={product.youTubeLink} target="_blank">
-                {translations.seeVideo}
+                {translations?.seeVideo}
               </Link>
             ) : (
               "----"
@@ -81,13 +78,16 @@ export const ProductsTable = ({
             size="sm"
             variant="flat"
           >
-            {cellValue ? translations.active : translations.inactive}
+            {cellValue ? translations?.active : translations?.inactive}
           </Chip>
         );
       case "actions":
         return (
           <div className="relative flex items-center gap-2">
-            <Tooltip content={translations.editProductTooltip} placement="left">
+            <Tooltip
+              content={translations?.editProductTooltip}
+              placement="left"
+            >
               <span className="text-lg text-default-400 cursor-pointer active:opacity-50">
                 <Link
                   prefetch={true}
@@ -108,11 +108,11 @@ export const ProductsTable = ({
     <section className="p-5 mt-5 md:px-5 md:py-0">
       <header className="flex w-full justify-between">
         <h4 className="text-3xl text-master-900/70 pb-5 uppercase font-bold">
-          {translations.title}
+          {translations?.title}
         </h4>
         <Button color="primary" radius="none" variant="bordered" size="sm">
           <Link href={"/dashboard/productos/nuevo"}>
-            {translations.newProduct}
+            {translations?.newProduct}
           </Link>
         </Button>
       </header>

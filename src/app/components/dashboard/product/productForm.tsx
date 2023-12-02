@@ -9,18 +9,17 @@ import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ModalButton } from "@/app/utils/modal";
 import { DeleteIcon, PlusIcon, SaveIcon } from "@/app/utils/iconsUtils";
-import { ProductTranslations } from "@/app/models/productTranslations";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
+import { useTranslationStore } from "@/store/translationStore";
 interface ProductFormProps {
   product: Product;
-  translations: ProductTranslations;
 }
 
-export const ProductForm: React.FC<ProductFormProps> = ({
-  product,
-  translations,
-}) => {
+export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
+  const translations = useTranslationStore(
+    (state) => state.productTranslations
+  );
   const { mutate } = useSWRConfig();
 
   const {
@@ -47,7 +46,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     if (!accept) return;
     const response = await deleteProduct(product.id);
     if (response) {
-      toast.success(translations.deleteOk || "");
+      toast.success(translations?.deleteOk || "");
       navigation.push("/dashboard/productos");
     }
   };
@@ -59,7 +58,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
     if (product.id === "nuevo") {
       const response = await createProduct(data);
-      if (response) toast.success(translations.saveOk || "");
+      if (response) toast.success(translations?.saveOk || "");
       navigation.push(`/dashboard/productos/${response}`);
 
       return;
@@ -67,7 +66,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
     const response = await updateProduct(data);
     if (response) {
-      toast.success(translations.updatedOk || "");
+      toast.success(translations?.updatedOk || "");
       mutate(product.id);
     }
   };
@@ -90,16 +89,16 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               startContent={<SaveIcon size={15} />}
               isDisabled={!isValid}
             >
-              {translations.saveProduct}
+              {translations?.saveProduct}
             </Button>
             <ModalButton
-              title={`${translations.titleDeleteModal} ${product.spanishName}`}
+              title={`${translations?.titleDeleteModal} ${product.spanishName}`}
               isDanger={true}
-              message={translations.deleteMessage}
+              message={translations?.deleteMessage || ""}
               callBack={deleteProductById}
               startContent={<DeleteIcon size={15} />}
             >
-              {translations.deleteProduct}
+              {translations?.deleteProduct}
             </ModalButton>
             <Switch
               defaultSelected={product.state}
@@ -111,7 +110,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
               color="success"
             >
               <span className="text-small italic font-bold text-master-900/70">
-                {state ? translations.active : translations.inactive}
+                {state ? translations?.active : translations?.inactive}
               </span>
             </Switch>
           </section>
@@ -121,10 +120,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium  text-master-900/70 font-bold">
-                {translations.generalInformation}
+                {translations?.generalInformation}
               </h4>
               <p className="text-small text-default-400 italic">
-                {translations.generalInformationDescription}
+                {translations?.generalInformationDescription}
               </p>
             </div>
             <Divider className="my-4 px-2" />
@@ -136,8 +135,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   type="text"
                   variant="underlined"
                   color="primary"
-                  label={translations.spanishName}
-                  placeholder={translations.spanishNamePlaceHolder}
+                  label={translations?.spanishName}
+                  placeholder={translations?.spanishNamePlaceHolder}
                   isInvalid={errors.spanishName && true}
                   errorMessage={
                     errors.spanishName && "Nombre en español requerido"
@@ -150,9 +149,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   variant="underlined"
                   color="primary"
                   size="sm"
-                  label={translations.spanishDescription}
+                  label={translations?.spanishDescription}
                   minRows={1}
-                  placeholder={translations.spanishDescriptionPlaceHolder}
+                  placeholder={translations?.spanishDescriptionPlaceHolder}
                   errorMessage={
                     errors.spanishDescription
                       ? "Descripción en español es requerida"
@@ -168,8 +167,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   type="text"
                   variant="underlined"
                   color="primary"
-                  label={translations.englishName}
-                  placeholder={translations.englishNamePlaceHolder}
+                  label={translations?.englishName}
+                  placeholder={translations?.englishNamePlaceHolder}
                   errorMessage={
                     errors.englishName ? "Nombre en inglés requerido" : ""
                   }
@@ -182,9 +181,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   variant="underlined"
                   color="primary"
                   size="sm"
-                  label={translations.englishDescription}
+                  label={translations?.englishDescription}
                   minRows={1}
-                  placeholder={translations.englishDescriptionPlaceHolder}
+                  placeholder={translations?.englishDescriptionPlaceHolder}
                   errorMessage={
                     errors.spanishName
                       ? "Descripción en inglés es requerida"
@@ -199,10 +198,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium text-master-900/70 font-bold">
-                {translations.specifications}
+                {translations?.specifications}
               </h4>
               <p className="text-small text-default-400 italic">
-                {translations.specificationsDescription}
+                {translations?.specificationsDescription}
               </p>
             </div>
             <Divider className="my-4" />
@@ -212,7 +211,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   {...register("price", { required: true })}
                   isRequired
                   type="number"
-                  label={translations.price}
+                  label={translations?.price}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -231,8 +230,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   type="text"
                   variant="underlined"
                   color="primary"
-                  label={translations.material}
-                  placeholder={translations.materialPlaceHolder}
+                  label={translations?.material}
+                  placeholder={translations?.materialPlaceHolder}
                   errorMessage={
                     errors.spanishName ? "Please enter a valid email" : ""
                   }
@@ -242,7 +241,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Input
                   {...register("weight", { required: false })}
                   type="number"
-                  label={translations.weight}
+                  label={translations?.weight}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -257,7 +256,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Input
                   {...register("height", { required: false })}
                   type="number"
-                  label={translations.height}
+                  label={translations?.height}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -270,7 +269,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Input
                   {...register("width", { required: false })}
                   type="number"
-                  label={translations.width}
+                  label={translations?.width}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -283,7 +282,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Input
                   {...register("length", { required: false })}
                   type="number"
-                  label={translations.length}
+                  label={translations?.length}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -300,10 +299,10 @@ export const ProductForm: React.FC<ProductFormProps> = ({
           <div className="py-2">
             <div className="space-y-1">
               <h4 className="text-medium text-master-900/70 font-bold">
-                {translations.additionalInformation}
+                {translations?.additionalInformation}
               </h4>
               <p className="text-small italic text-default-400">
-                {translations.additionalInformationDescription}
+                {translations?.additionalInformationDescription}
               </p>
             </div>
             <Divider className="my-4" />
@@ -313,7 +312,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                   {...register("quantity", { required: true })}
                   isRequired
                   type="number"
-                  label={translations.quantity}
+                  label={translations?.quantity}
                   placeholder="0"
                   variant="underlined"
                   color="primary"
@@ -321,8 +320,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Input
                   {...register("youTubeLink", { required: false })}
                   type="text"
-                  label={translations.youtubeLink}
-                  placeholder={translations.youtubeLinkPlaceHolder}
+                  label={translations?.youtubeLink}
+                  placeholder={translations?.youtubeLinkPlaceHolder}
                   variant="underlined"
                   color="primary"
                 />
@@ -332,7 +331,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
           <div className="py-2 ">
             <h4 className="text-medium  text-master-900/70 font-bold">
-              {translations.availableColors}
+              {translations?.availableColours}
             </h4>
             <Divider className="px-2 my-1" />
             <section className="flex gap-1 items-center">
