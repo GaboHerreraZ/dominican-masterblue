@@ -40,19 +40,16 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex place-content-center h-full">
             <Image
               alt="chair"
               className="absolute "
               src={chair}
               fill
-              sizes="100%s"
+              sizes="100%"
               style={{ objectFit: "cover" }}
             />
           </Link>
@@ -73,19 +70,16 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex h-full place-content-center">
             <Image
               alt="dinning-room"
               className="absolute "
               src={dinningRoom}
               fill
-              sizes="100%s"
+              sizes="100%"
               style={{ objectFit: "cover" }}
             />
           </Link>
@@ -106,19 +100,19 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
           <Link
             href={""}
-            className="relative flex h-full place-content-center   w-full "
+            className="relative flex h-full place-content-center "
           >
             <Image
               alt="furniture"
               className="absolute "
               src={furniture}
               fill
-              sizes="100%s"
+              sizes="100%"
               style={{ objectFit: "cover" }}
             />
           </Link>
@@ -139,19 +133,16 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex h-full place-content-center">
             <Image
               alt="closet"
               className="absolute "
               src={furniture}
               fill
-              sizes="100%s"
+              sizes="100%"
               style={{ objectFit: "cover" }}
             />
           </Link>

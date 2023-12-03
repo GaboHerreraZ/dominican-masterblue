@@ -24,7 +24,7 @@ export default async function ProductPage({
 }: {
   params: { lng: string; product: string };
 }) {
-  const { lng, product } = params;
+  const { product } = params;
   const productById = (await getProductById(product)) as Product;
   return <ProductDetail product={productById} />;
 }

@@ -24,12 +24,12 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
           <Link
             href={""}
-            className="relative flex h-full place-content-center w-full "
+            className="relative flex h-full place-content-center "
           >
             <Image
               alt="kitchen"
@@ -57,13 +57,10 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex h-full place-content-center">
             <Image
               alt="office"
               className="absolute "
@@ -90,13 +87,10 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex h-full place-content-center">
             <Image
               alt="house"
               className="absolute "
@@ -123,13 +117,10 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
           isFooterBlurred
           radius="none"
           classNames={{
-            base: "w-full",
+            base: "w-full h-[350px]",
           }}
         >
-          <Link
-            href={""}
-            className="relative flex h-full place-content-center   w-full "
-          >
+          <Link href={""} className="relative flex h-full place-content-center">
             <Image
               alt="hotel"
               className="absolute "
