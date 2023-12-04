@@ -12,7 +12,7 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
   const { t } = await useTranslation(lng, "home");
 
   return (
-    <div className="py-20 bg-gray-200/50">
+    <div className="py-20 mt-10 bg-gray-200/50">
       <p className="italic text-center m-0 text-4xl ">
         {t("projectDescription")}
       </p>

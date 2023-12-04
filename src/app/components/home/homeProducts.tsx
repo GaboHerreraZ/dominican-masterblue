@@ -12,8 +12,8 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
   const { t } = await useTranslation(lng, "home");
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2">
-      <article className="flex flex-col py-10 px-10 items-center justify-center ">
+    <section className="grid grid-cols-1 ">
+      <article className="flex flex-col mt-10 md:px-24 md:mx-24 items-center justify-center ">
         <p className="italic text-center m-0 text-4xl ">
           {t("productDescription")}
         </p>
@@ -35,7 +35,7 @@ export const HomeProducts = async ({ lng }: { lng: string }) => {
           <RightQuoteIcon fill="#091a7ab3" size={100} />
         </span>
       </article>
-      <section className="grid grid-cols-1 md:grid-cols-2">
+      <section className="grid grid-cols-1 gap-0 md:px-24 md:mx-24  md:gap-10 md:grid-cols-2">
         <Card
           isFooterBlurred
           radius="none"

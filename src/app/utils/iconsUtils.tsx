@@ -807,3 +807,23 @@ export const PowerOffIcon = ({ size }: { size: number }) => (
     />
   </svg>
 );
+
+export const OkIcon = ({ size }: { size: number }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    role="img"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-labelledby="circleOkIconTitle"
+    stroke="#091a7ab3"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    fill="none"
+    color="#091a7ab3"
+  >
+    <title id="circleOkIconTitle">OK</title>{" "}
+    <polyline points="7 13 10 16 17 9" /> <circle cx="12" cy="12" r="10" />{" "}
+  </svg>
+);

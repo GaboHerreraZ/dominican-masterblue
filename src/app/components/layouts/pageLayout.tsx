@@ -1,6 +1,6 @@
 "use client";
 import { WhatsAppLink } from "@/app/utils/iconsUtils";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 import Navigation from "@/app/components/navigation/navigation";
 import { Footer } from "@/app/components/footer/footer";
 import { usePathname } from "next/navigation";
@@ -23,12 +23,12 @@ export const PageLayout = ({
           {children}
         </>
       ) : (
-        <>
+        <React.Fragment>
           <Navigation lng={lng} />
           {children}
           <WhatsAppLink lng={lng} />
           <Footer lng={lng} />
-        </>
+        </React.Fragment>
       )}
     </>
   );
