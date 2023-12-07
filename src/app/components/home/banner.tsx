@@ -1,7 +1,10 @@
+import { useTranslation } from "@/app/i18n";
 import furniture from "../../../../public/img/jpg/restore-kitchen.jpg";
 import Image from "next/image";
 
-export const Banner = () => {
+export const Banner = async ({ lng }: { lng: string }) => {
+  const { t } = await useTranslation(lng, "home");
+
   return (
     <div className="h-[800px] relative  w-full">
       <Image
@@ -12,13 +15,13 @@ export const Banner = () => {
         alt="home"
         className=""
       />
-      <div className="flex place-items-center place-content-end  bg-gradient-to-b from-black/20 to-black/70 absolute h-full w-full">
-        <div className="text-end px-4  text-white lg:mx-[250px] md:mx-[150px]">
+      <div className="flex backdrop-contrast-150 place-items-center place-content-center  bg-gradient-to-b from-black/20 to-black/70 absolute h-full w-full">
+        <div className="text-center px-4  text-white">
           <p className="text-3xl md:text-5xl font-bold mb-2">
-            Bienvenido al Mundo del Diseño Único
+            {t("bannerTitle")}
           </p>
           <p className="text-2xl md:text-3xl italic">
-            Transformamos Espacios, Creamos Experiencias
+            {t("bannerDescription")}
           </p>
         </div>
       </div>

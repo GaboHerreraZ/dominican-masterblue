@@ -8,7 +8,7 @@ import { Card, CardFooter } from "@nextui-org/card";
 import Link from "next/link";
 import { useTranslation } from "@/app/i18n";
 
-export const SectionProjects = async ({ lng }: { lng: string }) => {
+export const HomeProjects = async ({ lng }: { lng: string }) => {
   const { t } = await useTranslation(lng, "home");
 
   return (
@@ -19,7 +19,7 @@ export const SectionProjects = async ({ lng }: { lng: string }) => {
       <h4 className="mb-7 m-0 text-center font-bold text-2xl text-master-900/70">
         {t("projectTitle")}
       </h4>
-      <section className="flex flex-col  md:flex-row  justify-between w-full md:h-60">
+      <section className="flex flex-col  md:flex-row  justify-between w-full ">
         <Card
           isFooterBlurred
           radius="none"

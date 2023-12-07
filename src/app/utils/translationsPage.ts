@@ -2,6 +2,8 @@ import { useTranslation } from "@/app/i18n";
 import { ProductTranslations } from "@/app/models/productTranslations";
 import { DashboardTranslations } from "../models/dashboardTranslations";
 import { LoginTranslations } from "../models/loginTranslations";
+import { UsTranslations } from "../models/UsTranslations";
+import { FooterTranslations } from "../models/footerTranslations";
 
 export default function GetTranslations() {
   const GetProductTranslations = async (
@@ -106,9 +108,68 @@ export default function GetTranslations() {
     return loginTranslations;
   };
 
+  const GetUsTranslations = async (lng: string) => {
+    const { t } = await useTranslation(lng, "us");
+
+    const translations: UsTranslations = {
+      achitecture: t("achitecture"),
+      bannerDescription: t("bannerDescription"),
+      bannerTitle: t("bannerTitle"),
+      contactDescription: t("contactDescription"),
+      contactInvitation: t("contactInvitation"),
+      contactUs: t("contactUs"),
+      design: t("design"),
+      email: t("email"),
+      message: t("message"),
+      name: t("name"),
+      phone: t("phone"),
+      remodeling: t("remodeling"),
+      seeMore: t("seeMore"),
+      serviceTitle: t("serviceTitle"),
+      value1: t("value1"),
+      value1Description: t("value1Description"),
+      value2: t("value2"),
+      value2Description: t("value2Description"),
+      value3: t("value3"),
+      value3Description: t("value3Description"),
+      value4: t("value4"),
+      value4Description: t("value4Description"),
+      whoWeAre: t("whoWeAre"),
+      whoWeAreDescription1: t("whoWeAreDescription1"),
+      whoWeAreDescription2: t("whoWeAreDescription2"),
+      thanksForContacting: t("thanksForContacting"),
+      contactSoon: t("contactSoon"),
+    };
+
+    return translations;
+  };
+
+  const GetFooterTranslations = async (lng: string) => {
+    const { t } = await useTranslation(lng, "footer");
+
+    const translations: FooterTranslations = {
+      contact: t("contact"),
+      description: t("description"),
+      address: t("address"),
+      addressDescription: t("addressDescription"),
+      schedule: t("schedule"),
+      weekSchedule: t("weekSchedule"),
+      weekendSchedule: t("weekendSchedule"),
+      us: t("us"),
+      whoWeAre: t("whoWeAre"),
+      ourProducts: t("ourProducts"),
+      ourServices: t("ourServices"),
+      meetUs: t("meetUs"),
+      doYouNeedHelp: t("doYouNeedHelp"),
+    };
+    return translations;
+  };
+
   return {
     GetProductTranslations,
     GetDashboardTranslations,
     GetLoginTranslations,
+    GetUsTranslations,
+    GetFooterTranslations,
   };
 }

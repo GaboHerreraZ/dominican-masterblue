@@ -19,7 +19,7 @@ export default async function Navigation({ lng }: { lng: string }) {
   const menuItems: MenuNav[] = [
     {
       title: t("about-us"),
-      link: `/${lng}/sobre-nosotros`,
+      link: `/${lng}/nosotros`,
       type: "text",
     },
     {
