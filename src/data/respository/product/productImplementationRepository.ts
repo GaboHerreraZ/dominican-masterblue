@@ -5,7 +5,9 @@ import apiService from "@/lib/apiService";
 
 export class ProductImplementationRepository implements ProductRepository {
   async filterProduct(filter: Filter): Promise<Product[]> {
-    return await apiService.post<Product[]>("product/filter", filter);
+    return await apiService.post<Product[]>("product/filter", filter, {
+      cache: "no-store",
+    });
   }
 
   async create(product: Product): Promise<Product> {
@@ -25,7 +27,7 @@ export class ProductImplementationRepository implements ProductRepository {
   }
 
   async findAll(): Promise<Product[]> {
-    return await apiService.get<Product[]>("product");
+    return await apiService.get<Product[]>("product", { cache: "no-store" });
   }
 
   async findById(id: string): Promise<Product> {

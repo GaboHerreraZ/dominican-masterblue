@@ -7,8 +7,8 @@ import furniture from "../../../../public/img/jpg/design.jpg";
 import Image from "next/image";
 import React from "react";
 import { ProductStoreInitializer } from "@/store/productStoreInitializer";
-import ProductService from "@/service/productService";
 import { Product } from "@/domain/model/product";
+import { useProductStore } from "@/store/useProductStore";
 
 const GetTranslationsProduct = async (
   lng: string
@@ -18,9 +18,9 @@ const GetTranslationsProduct = async (
 };
 
 const GetProducts = async (): Promise<Product[]> => {
-  const { findAll } = ProductService();
-  const response = await findAll();
-  return response;
+  const { filterProducts, filter, products } = useProductStore.getState();
+  await filterProducts(filter);
+  return products;
 };
 
 export default async function ProductsPage({
