@@ -9,8 +9,8 @@ export const Footer = async ({ lng }: { lng: string }) => {
 
   return (
     <footer className="bg-[#1c2022]  w-full">
-      <section className="grid grid-cols-1  justify-center md:grid-cols-4 mx-40 py-20">
-        <article className="px-10">
+      <section className="grid grid-cols-1  justify-center md:grid-cols-4 mx-5 md:mx-40 py-20">
+        <article className="px-1 md:px-10">
           <h4 className="text-white  py-10  font-bold uppercase">
             <Link href={"/"}>
               Dominican Master<span className="text-master-500">Blue</span>
@@ -20,7 +20,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
             {translations.description}
           </p>
         </article>
-        <article className="grid text-white px-10">
+        <article className="grid text-white px-1 md:px-10 ">
           <h4 className="font-bold py-10 uppercase">{translations.contact}</h4>
           <p className="py-1 text-slate-400">+52 31255525</p>
           <p className="py-1 text-slate-400">{translations.address}</p>
@@ -31,7 +31,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
           <p className="py-1 text-slate-400">{translations.weekSchedule}</p>
           <p className="py-1 text-slate-400">{translations.weekendSchedule}</p>
         </article>
-        <article className=" text-white px-10">
+        <article className=" text-white px-1 md:px-10">
           <h4 className="font-bold self-start py-10 uppercase">
             <Link href={`/${lng}/nosotros`}>{translations.us}</Link>
           </h4>
@@ -43,7 +43,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
           </p>
           <p className="py-1 text-slate-400">{translations.ourServices}</p>
         </article>
-        <article className="text-white px-10">
+        <article className="text-white px-1 md:px-10">
           <h4 className="font-bold self-start py-10 uppercase">
             {translations.meetUs}
           </h4>
@@ -61,7 +61,10 @@ export const Footer = async ({ lng }: { lng: string }) => {
       <section>
         <p className="text-slate-400 text-small py-1 text-center">
           Designed by
-          <Link className="underline" href={"https://gabrielherrerazdev.com/"}>
+          <Link
+            className="ml-1 underline"
+            href={"https://gabrielherrerazdev.com/"}
+          >
             GabrielHerreraDev
           </Link>
         </p>

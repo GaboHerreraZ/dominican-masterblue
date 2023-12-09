@@ -13,7 +13,7 @@ import {
 } from "firebase/storage";
 import { Progress } from "@nextui-org/progress";
 import toast from "react-hot-toast";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 import { useSWRConfig } from "swr";
 import { useTranslationStore } from "@/store/translationStore";
 
@@ -31,8 +31,8 @@ export const ProductImages = ({ product }: { product: Product }) => {
 
   const { mutate } = useSWRConfig();
 
-  const deleteImageStore = useProductStore((state) => state.deleteImage);
-  const markMainImageStore = useProductStore((state) => state.markImage);
+  const deleteImageStore = useProductAdminStore((state) => state.deleteImage);
+  const markMainImageStore = useProductAdminStore((state) => state.markImage);
 
   function fileSizeValidator(file: File) {
     if (file.size > 350000) {

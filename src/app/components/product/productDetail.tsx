@@ -1,6 +1,6 @@
 "use client";
 import { Product } from "@/domain/model/product";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 import { Button } from "@nextui-org/react";
 
 export const ProductDetail = ({ product }: { product: Product }) => {

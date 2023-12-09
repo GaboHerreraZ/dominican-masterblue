@@ -17,7 +17,7 @@ import { Button } from "@nextui-org/button";
 import Link from "next/link";
 import Image from "next/image";
 import noImage from "../../../../../public/img/png/no-image.png";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 import useSWR from "swr";
 import { useTranslationStore } from "@/store/translationStore";
 
@@ -25,7 +25,7 @@ export const ProductsTable = ({ lng }: { lng: string }) => {
   const translations = useTranslationStore(
     (state) => state.productTranslations
   );
-  const findAll = useProductStore((state) => state.findAll);
+  const findAll = useProductAdminStore((state) => state.findAll);
   const { data: products } = useSWR<Product[]>("productTable", findAll);
 
   if (!products) return;

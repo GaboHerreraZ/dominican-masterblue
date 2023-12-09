@@ -75,6 +75,11 @@ export const useTranslationStore = create<Translations>(() => {
       seeVideo: "",
       editProductTooltip: "",
       availableColours: "",
+      bannerDescription: "",
+      bannerTitle: "",
+      subcategory: "",
+      subcategoryDescription: "",
+      filters: "",
     },
     dashboardTranslations: {
       productTitle: "",

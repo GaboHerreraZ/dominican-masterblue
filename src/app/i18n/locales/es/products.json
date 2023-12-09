@@ -4,6 +4,8 @@
   "orderBy": "Ordernar por",
   "category": "Categoría",
   "categoryDescription": "Seleccione categoría",
+  "subcategory": "Subcategoría",
+  "subcategoryDescription": "Seleccione subcategoría",
   "price": "Precio",
   "colors": "Colores",
   "colorDescription": "Seleccione colores",
@@ -63,5 +65,8 @@
   "deleteImageOk": "La imagen ha sido eliminada correctamente",
   "markAsMainOk": "La imagen ha sido marcada como principal",
   "seeVideo": "Ver video",
-  "editProductTooltip": "Editar producto"
+  "editProductTooltip": "Editar producto",
+  "bannerTitle": "Explora Nuestra Colección Exclusiva",
+  "bannerDescription": "Muebles que Transforman, Detalles que Marcan la Diferencia",
+  "filters": "Filtros de búsqueda"
 }

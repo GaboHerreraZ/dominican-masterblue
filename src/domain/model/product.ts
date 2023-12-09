@@ -14,7 +14,8 @@ export interface Product {
   quantity: number;
   colors?: { color: string }[];
   youTubeLink?: string;
-  category?: string;
+  category: string;
+  subCategory: string;
   images?: { name: string; url: string }[];
   mainImage?: string;
   urlImage: string;

@@ -7,7 +7,7 @@ import { FormIcon, GalleryIcon } from "@/app/utils/iconsUtils";
 import { Chip } from "@nextui-org/chip";
 import { useState } from "react";
 import { Button } from "@nextui-org/button";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 import useSWR from "swr";
 import { useTranslationStore } from "@/store/translationStore";
 
@@ -17,7 +17,7 @@ export const ProductTabs = ({ id }: { id: string }) => {
     (state) => state.productTranslations
   );
 
-  const findById = useProductStore((state) => state.findById);
+  const findById = useProductAdminStore((state) => state.findById);
   const { data: product } = useSWR<Product>(id, findById, { suspense: true });
   if (!product) {
     return;

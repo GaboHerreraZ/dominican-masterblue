@@ -62,4 +62,9 @@ export interface ProductTranslations {
   seeVideo: string;
   editProductTooltip: string;
   availableColours: string;
+  bannerTitle: string;
+  bannerDescription: string;
+  subcategory: string;
+  subcategoryDescription: string;
+  filters: string;
 }

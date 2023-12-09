@@ -75,6 +75,11 @@ export default function GetTranslations() {
       seeVideo: t("seeVideo"),
       editProductTooltip: t("editProductTooltip"),
       availableColours: t("availableColours"),
+      bannerTitle: t("bannerTitle"),
+      bannerDescription: t("bannerDescription"),
+      subcategory: t("subcategory"),
+      subcategoryDescription: t("subcategoryDescription"),
+      filters: t("filters"),
     };
 
     return productTranslations;

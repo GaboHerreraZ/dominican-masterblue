@@ -1,7 +1,7 @@
 import { ProductDetail } from "@/app/components/product/productDetail";
 import { Product } from "@/domain/model/product";
 import ProductService from "@/service/productService";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 
 export async function generateStaticParams() {
   const { findAll } = ProductService();
@@ -14,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 const getProductById = async (id: string) => {
-  const { products } = useProductStore.getState();
+  const { products } = useProductAdminStore.getState();
   const product = products.find((product) => product.id === id);
   return product;
 };

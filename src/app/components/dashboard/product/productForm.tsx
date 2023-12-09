@@ -4,7 +4,7 @@ import { Button } from "@nextui-org/button";
 import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
 import { Divider } from "@nextui-org/divider";
 import { Switch } from "@nextui-org/switch";
-import { useProductStore } from "@/store/useProductStore";
+import { useProductAdminStore } from "@/store/useProductAdminStore";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ModalButton } from "@/app/utils/modal";
@@ -12,6 +12,8 @@ import { DeleteIcon, PlusIcon, SaveIcon } from "@/app/utils/iconsUtils";
 import { useState } from "react";
 import { useSWRConfig } from "swr";
 import { useTranslationStore } from "@/store/translationStore";
+import { categories, subcategories } from "@/app/utils/const";
+import { Select, SelectItem } from "@nextui-org/select";
 interface ProductFormProps {
   product: Product;
 }
@@ -20,6 +22,8 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
   const translations = useTranslationStore(
     (state) => state.productTranslations
   );
+
+  const lng = useTranslationStore((state) => state.lng);
   const { mutate } = useSWRConfig();
 
   const {
@@ -28,7 +32,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
     handleSubmit,
     setValue,
     control,
-  } = useForm<Product>({ defaultValues: product });
+  } = useForm<Product>({
+    defaultValues: product,
+  });
   const [state, setState] = useState(product.state);
 
   const { fields, append, remove } = useFieldArray({
@@ -36,9 +42,9 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
     name: "colors",
   });
 
-  const updateProduct = useProductStore((state) => state.update);
-  const createProduct = useProductStore((state) => state.create);
-  const deleteProduct = useProductStore((state) => state.delete);
+  const updateProduct = useProductAdminStore((state) => state.update);
+  const createProduct = useProductAdminStore((state) => state.create);
+  const deleteProduct = useProductAdminStore((state) => state.delete);
 
   const navigation = useRouter();
 
@@ -208,7 +214,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
             <section className="flex flex-wrap ">
               <div className="flex flex-grow  gap-4 ">
                 <Input
-                  {...register("price", { required: true })}
+                  {...register("price", { required: true, min: 0 })}
                   isRequired
                   type="number"
                   label={translations?.price}
@@ -306,7 +312,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
               </p>
             </div>
             <Divider className="my-4" />
-            <section className="flex flex-wrap ">
+            <section className="flex flex-col  flex-wrap ">
               <div className="flex flex-grow  gap-4 ">
                 <Input
                   {...register("quantity", { required: true })}
@@ -325,6 +331,82 @@ export const ProductForm: React.FC<ProductFormProps> = ({ product }) => {
                   variant="underlined"
                   color="primary"
                 />
+              </div>
+              <div className="flex flex-grow gap-4">
+                <Select
+                  {...register("category", {
+                    required: true,
+                  })}
+                  defaultSelectedKeys={[product.category]}
+                  variant={"underlined"}
+                  label={translations?.category}
+                  radius="none"
+                  placeholder={translations?.categoryDescription}
+                  selectionMode="single"
+                  color="primary"
+                  classNames={{
+                    popoverContent: "rounded-none",
+                  }}
+                  listboxProps={{
+                    itemClasses: {
+                      base: [
+                        "text-default-500",
+                        "transition-opacity",
+                        "data-[hover=true]:text-foreground",
+                        "data-[hover=true]:bg-default-100",
+                        "dark:data-[hover=true]:bg-default-50",
+                        "data-[selectable=true]:focus:bg-default-50",
+                        "data-[pressed=true]:opacity-70",
+                        "data-[focus-visible=true]:ring-default-500",
+                      ],
+                    },
+                  }}
+                >
+                  {categories.map((category) => (
+                    <SelectItem key={category.key} value={category.key}>
+                      {lng === "es"
+                        ? category.spanishLabel
+                        : category.englishLabel}
+                    </SelectItem>
+                  ))}
+                </Select>
+                <Select
+                  {...register("subCategory", {
+                    required: true,
+                  })}
+                  variant={"underlined"}
+                  label={translations?.subcategory}
+                  defaultSelectedKeys={[product.subCategory]}
+                  radius="none"
+                  placeholder={translations?.subcategoryDescription}
+                  selectionMode="single"
+                  color="primary"
+                  classNames={{
+                    popoverContent: "rounded-none",
+                  }}
+                  listboxProps={{
+                    itemClasses: {
+                      base: [
+                        "text-default-500",
+                        "transition-opacity",
+                        "data-[hover=true]:text-foreground",
+                        "data-[hover=true]:bg-default-100",
+                        "dark:data-[hover=true]:bg-default-50",
+                        "data-[selectable=true]:focus:bg-default-50",
+                        "data-[pressed=true]:opacity-70",
+                        "data-[focus-visible=true]:ring-default-500",
+                      ],
+                    },
+                  }}
+                >
+                  {subcategories.map((category) => (
+                    <SelectItem key={category.key} value={category.key}>
+                      {lng === "es"
+                        ? category.spanishLabel
+                        : category.englishLabel}
+                    </SelectItem>
+                  ))}
+                </Select>
               </div>
             </section>
           </div>

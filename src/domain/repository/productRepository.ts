@@ -1,6 +1,8 @@
+import { Filter } from "../model/filter";
 import { Product } from "../model/product";
 
 export abstract class ProductRepository {
+  abstract filterProduct(filter: Filter): Promise<Product[]>;
   abstract findAll(): Promise<Product[]>;
   abstract findById(id: string): Promise<Product>;
   abstract create(product: Product): Promise<Product>;

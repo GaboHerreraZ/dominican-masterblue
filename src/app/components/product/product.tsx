@@ -12,7 +12,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
       aria-label={product.englishName}
       isFooterBlurred
       radius="none"
-      className="relative h-[300px]"
+      className="relative h-[300px] hover:scale-[1.03] transition-all duration-300 ease-in-out]"
     >
       <Image
         alt="desk"
@@ -27,7 +27,9 @@ export const ProductCard = ({ product }: { product: Product }) => {
           <p className=" text-xl  text-white">
             {lng === "es" ? product.spanishName : product.englishName}
           </p>
-          <p className=" text-small font-bold text-white">{product.price}</p>
+          <p className="font-bold text-master-900/70 italic">
+            ${product.price}
+          </p>
         </article>
         <Button
           className="text-tiny text-white bg-black/20"

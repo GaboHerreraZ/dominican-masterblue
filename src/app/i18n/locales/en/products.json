@@ -4,6 +4,8 @@
   "orderBy": "Order By",
   "category": "Category",
   "categoryDescription": "Select the category",
+  "subcategory": "Subcategory",
+  "subcategoryDescription": "Select the category",
   "price": "Price",
   "colors": "Colors",
   "colorDescription": "Select the colors",
@@ -63,5 +65,8 @@
   "deleteImageOk": "The image has been deleted successfully",
   "markAsMainOk": "The image has been marked as main successfully",
   "seeVideo": "See video",
-  "editProductTooltip": "Edit product"
+  "editProductTooltip": "Edit product",
+  "bannerTitle": "Explore Our Exclusive Collection",
+  "bannerDescription": "Furniture that Transforms, Details that Make a Difference",
+  "filters": "Search filters"
 }
