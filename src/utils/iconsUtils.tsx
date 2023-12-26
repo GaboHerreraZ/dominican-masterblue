@@ -13,7 +13,7 @@ export const WhatsAppLink = async ({ lng }: { lng: string }) => {
       content={t("whatsapp")}
     >
       <Link
-        href=""
+        href={`https://api.whatsapp.com/send?phone=18299604730&text=Hola+Dominican+MasterBlue,+quiero+tener+más+información`}
         target="_blank"
         className="fixed bottom-5 right-10 animate-bounce z-50 text-[#67C15E]"
       >

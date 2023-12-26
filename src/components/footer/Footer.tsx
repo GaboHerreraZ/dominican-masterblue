@@ -22,7 +22,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
         </article>
         <article className="grid text-white px-1 md:px-10 ">
           <h4 className="font-bold py-10 uppercase">{translations.contact}</h4>
-          <p className="py-1 text-slate-400">+52 31255525</p>
+          <p className="py-1 text-slate-400">+1 (829)960-4730</p>
           <p className="py-1 text-slate-400">{translations.address}</p>
           <p className="py-1 text-slate-400">
             {translations.addressDescription}
@@ -35,12 +35,15 @@ export const Footer = async ({ lng }: { lng: string }) => {
           <h4 className="font-bold self-start py-10 uppercase">
             <Link href={`/${lng}/nosotros`}>{translations.us}</Link>
           </h4>
-          <p className="py-1 text-slate-400">
+          <h5 className="py-1 text-slate-400">
             <Link href={`/nosotros`}>{translations.whoWeAre}</Link>
-          </p>
-          <p className="py-1 text-slate-400">
+          </h5>
+          <h5 className="py-1 text-slate-400">
             <Link href={"/productos"}>{translations.ourProducts}</Link>
-          </p>
+          </h5>
+          <h5 className="py-1 text-slate-400">
+            <Link href={"/contacto"}>{translations.contact}</Link>
+          </h5>
           <p className="py-1 text-slate-400">{translations.ourServices}</p>
         </article>
         <article className="text-white px-1 md:px-10">
@@ -52,8 +55,22 @@ export const Footer = async ({ lng }: { lng: string }) => {
           </p>
           <p className="py-1 text-slate-400">dominicanmasterblue@gmail.com</p>
           <div className="flex gap-2">
-            <FaFacebook size={28} />
-            <AiFillInstagram size={30} />
+            <Link
+              href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
+              target="_blank"
+              about="Facebook"
+              className="text-white"
+            >
+              <FaFacebook size={28} />
+            </Link>
+            <Link
+              href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
+              target="_blank"
+              about="Instagram"
+              className="text-white"
+            >
+              <AiFillInstagram size={30} />
+            </Link>
           </div>
         </article>
       </section>
