@@ -1,5 +1,6 @@
 export interface Product {
   id: string;
+  slug: string;
   spanishName: string;
   englishName: string;
   price: number;
@@ -16,7 +17,7 @@ export interface Product {
   youTubeLink?: string;
   category: string;
   subCategory: string;
-  images?: { name: string; url: string }[];
+  images: { name: string; url: string }[];
   mainImage?: string;
   urlImage: string;
 }

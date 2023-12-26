@@ -1,4 +1,4 @@
-import { ProductTranslations } from "@/app/models/productTranslations";
+import { ProductTranslations } from "@/models/productTranslations";
 import { ProductImplementationRepository } from "@/data/respository/product/productImplementationRepository";
 import { Product } from "@/domain/model/product";
 import { CreateProductUseCase } from "@/domain/useCase/product/createUseCase";
