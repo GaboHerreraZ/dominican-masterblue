@@ -13,6 +13,8 @@ import { ProductButtonBack } from "@/components/product/product/ProductButtonBac
 import { UsTranslations } from "@/models/UsTranslations";
 import { ContactUs } from "@/components/us";
 
+export const dynamic = "force-dynamic";
+
 interface Props {
   params: {
     lng: string;
