@@ -1,4 +1,4 @@
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import render from "../../../public/img/jpg/render.jpg";
@@ -7,7 +7,7 @@ import kitchen from "../../../public/img/jpg/restore-kitchen.jpg";
 import React from "react";
 
 export const HomeServices = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng, "home");
+  const { t } = await getTranslation(lng, "home");
 
   const tipsServices = {
     design: {

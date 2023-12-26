@@ -56,7 +56,7 @@ export const ProductImages = ({ product, translations }: Props) => {
     });
   };
 
-  const onDrop = useCallback((acceptedFiles: any) => {
+  const onDrop = (acceptedFiles: any) => {
     const newFiles: ProductFile[] = acceptedFiles.map((file: File) =>
       Object.assign(file, {
         preview: URL.createObjectURL(file),
@@ -64,7 +64,7 @@ export const ProductImages = ({ product, translations }: Props) => {
     );
 
     setFiles((files) => [...files, ...newFiles]);
-  }, []);
+  };
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,

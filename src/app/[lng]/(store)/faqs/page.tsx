@@ -1,5 +1,5 @@
 import { FaqsComponent } from "@/components/faqs/Faqs";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { Faqs } from "@/domain/model/faq";
 
 export default async function FaqsPage({
@@ -7,7 +7,7 @@ export default async function FaqsPage({
 }: {
   params: { lng: string };
 }) {
-  const { t } = await useTranslation(lng, "faqs");
+  const { t } = await getTranslation(lng, "faqs");
 
   const faqs: Faqs = {
     title: t("titleDescription"),

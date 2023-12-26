@@ -6,10 +6,10 @@ import hotel from "../../../public/img/jpg/hotel.jpg";
 import { Button } from "@nextui-org/button";
 import { Card, CardFooter } from "@nextui-org/card";
 import Link from "next/link";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 
 export const HomeProjects = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng, "home");
+  const { t } = await getTranslation(lng, "home");
 
   return (
     <div className="py-20 mt-10 bg-gray-200/50">

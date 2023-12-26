@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { Tooltip } from "@nextui-org/react";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { IoLogoWhatsapp } from "react-icons/io";
 
 export const WhatsAppLink = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng);
+  const { t } = await getTranslation(lng);
   return (
     <Tooltip
       key="left"

@@ -6,7 +6,7 @@ import { ProductsList } from "@/components/product/product/Products";
 import { FiltersProduct } from "@/components/product/filters/Filters";
 import { OrderByFilter } from "@/components/product/filters/OrderByFilter";
 import { Filter } from "@/domain/model/filter";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { Metadata } from "next";
 
 export const dynamic = "force-dynamic";
@@ -50,7 +50,7 @@ export async function generateMetadata({
 }: {
   params: { lng: string };
 }): Promise<Metadata> {
-  const { t } = await useTranslation(lng, "seo");
+  const { t } = await getTranslation(lng, "seo");
 
   return {
     metadataBase: new URL(

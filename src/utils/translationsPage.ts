@@ -1,4 +1,4 @@
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { ProductTranslations } from "@/models/productTranslations";
 import { DashboardTranslations } from "../models/dashboardTranslations";
 import { LoginTranslations } from "../models/loginTranslations";
@@ -9,7 +9,7 @@ export default function GetTranslations() {
   const GetProductTranslations = async (
     lng: string
   ): Promise<ProductTranslations> => {
-    const { t } = await useTranslation(lng, "products");
+    const { t } = await getTranslation(lng, "products");
 
     const productTranslations: ProductTranslations = {
       filterBy: t("filterBy"),
@@ -112,7 +112,7 @@ export default function GetTranslations() {
   };
 
   const GetDashboardTranslations = async (lng: string) => {
-    const { t } = await useTranslation(lng, "dashboard");
+    const { t } = await getTranslation(lng, "dashboard");
 
     const dashboardTranslations: DashboardTranslations = {
       productTitle: t("productTitle"),
@@ -126,7 +126,7 @@ export default function GetTranslations() {
   };
 
   const GetLoginTranslations = async (lng: string) => {
-    const { t } = await useTranslation(lng, "login");
+    const { t } = await getTranslation(lng, "login");
 
     const loginTranslations: LoginTranslations = {
       email: t("email"),
@@ -140,7 +140,7 @@ export default function GetTranslations() {
   };
 
   const GetUsTranslations = async (lng: string) => {
-    const { t } = await useTranslation(lng, "us");
+    const { t } = await getTranslation(lng, "us");
 
     const translations: UsTranslations = {
       achitecture: t("achitecture"),
@@ -174,7 +174,7 @@ export default function GetTranslations() {
   };
 
   const GetFooterTranslations = async (lng: string) => {
-    const { t } = await useTranslation(lng, "footer");
+    const { t } = await getTranslation(lng, "footer");
 
     const translations: FooterTranslations = {
       contact: t("contact"),

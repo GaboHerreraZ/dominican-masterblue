@@ -1,4 +1,4 @@
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa";
 import { Button } from "@nextui-org/button";
 import { Card, CardFooter } from "@nextui-org/react";
@@ -9,7 +9,7 @@ import dinningRoom from "../../../public/img/jpg/dinning-room.jpg";
 import furniture from "../../../public/img/jpg/furniture.jpg";
 
 export const HomeProducts = async ({ lng }: { lng: string }) => {
-  const { t } = await useTranslation(lng, "home");
+  const { t } = await getTranslation(lng, "home");
 
   return (
     <section className="grid grid-cols-1 ">

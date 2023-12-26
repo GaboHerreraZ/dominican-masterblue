@@ -7,7 +7,7 @@ import { WhatsAppLink } from "@/utils/iconsUtils";
 import { Footer } from "@/components/footer";
 import { NavBar } from "@/components/navigation/navbar/Nabvar";
 import { Metadata } from "next";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 
 const arsenal = Arsenal({
   subsets: ["latin", "latin-ext"],
@@ -21,7 +21,7 @@ export async function generateMetadata({
 }: {
   params: { lng: string };
 }): Promise<Metadata> {
-  const { t } = await useTranslation(lng, "seo");
+  const { t } = await getTranslation(lng, "seo");
 
   return {
     metadataBase: new URL("https://www.dominicanmasterblue.com"),

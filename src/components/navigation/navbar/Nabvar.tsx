@@ -1,5 +1,5 @@
 import { MenuNav } from "../interface/menuNav";
-import { useTranslation } from "@/i18n";
+import { getTranslation } from "@/i18n";
 import { Menu } from "./Menu";
 import furniture from "../../../../public/img/jpg/restore-kitchen.jpg";
 import home from "../../../../public/img/jpg-end/home.jpg";
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const NavBar = async ({ lng }: Props) => {
-  const { t } = await useTranslation(lng, "navigation");
+  const { t } = await getTranslation(lng, "navigation");
 
   const menuItems: MenuNav[] = [
     {
