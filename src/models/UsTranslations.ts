@@ -1,9 +1,4 @@
 export interface UsTranslations {
-  email: string;
-  name: string;
-  message: string;
-  phone: string;
-  contactUs: string;
   whoWeAre: string;
   whoWeAreDescription1: string;
   whoWeAreDescription2: string;
@@ -20,8 +15,4 @@ export interface UsTranslations {
   remodeling: string;
   achitecture: string;
   seeMore: string;
-  contactDescription: string;
-  contactInvitation: string;
-  thanksForContacting: string;
-  contactSoon: string;
 }

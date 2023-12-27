@@ -12,8 +12,16 @@ import interior from "../../../public/img/jpg-end/interior-design.jpg";
 import remodeling from "../../../public/img/jpg-end/remodeling.jpg";
 
 import { ContactUs } from "./ContactUs";
+import { UsTranslations } from "@/models/UsTranslations";
+import { ContactTranslations } from "@/models/contactTranslations";
 
-export const Us = ({ translations }: { translations: any }) => {
+export const Us = ({
+  translations,
+  contactTranslations,
+}: {
+  translations: UsTranslations;
+  contactTranslations: ContactTranslations;
+}) => {
   return (
     <React.Fragment>
       <article className="flex flex-col w-full gap-5 items-center py-4 md:p-16">
@@ -155,7 +163,7 @@ export const Us = ({ translations }: { translations: any }) => {
         </div>
       </section>
 
-      <ContactUs translations={translations} />
+      <ContactUs translations={contactTranslations} />
     </React.Fragment>
   );
 };

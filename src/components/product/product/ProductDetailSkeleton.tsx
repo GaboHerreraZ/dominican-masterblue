@@ -2,7 +2,7 @@ import { Skeleton } from "@nextui-org/skeleton";
 
 export const ProductDetailSkeleton = () => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 mt-10 gap-4 px-40  w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 my-10 gap-4 px-40  w-full">
       <div className="px-10">
         <Skeleton>
           <div className="h-[400px]   bg-default-300"></div>

@@ -12,6 +12,7 @@ import { ProductRecommended } from "@/components/product/product/ProductRecommen
 import { ProductButtonBack } from "@/components/product/product/ProductButtonBack";
 import { UsTranslations } from "@/models/UsTranslations";
 import { ContactUs } from "@/components/us";
+import { ContactTranslations } from "@/models/contactTranslations";
 
 export const dynamic = "force-dynamic";
 
@@ -40,13 +41,20 @@ const getProductBySlug = async (slug: string) => {
 async function getTranslationsProduct(
   lng: string
 ): Promise<ProductTranslations> {
-  const { GetProductTranslations } = GetTranslations();
-  return await GetProductTranslations(lng);
+  const { getProductTranslations } = GetTranslations();
+  return await getProductTranslations(lng);
 }
 
 async function getTranslationsUs(lng: string): Promise<UsTranslations> {
-  const { GetUsTranslations } = GetTranslations();
-  return await GetUsTranslations(lng);
+  const { getUsTranslations } = GetTranslations();
+  return await getUsTranslations(lng);
+}
+
+async function getTranslationsContact(
+  lng: string
+): Promise<ContactTranslations> {
+  const { getContactTranslations } = GetTranslations();
+  return await getContactTranslations(lng);
 }
 
 export async function generateMetadata({
@@ -83,12 +91,15 @@ export default async function ProductPage({ params: { lng, product } }: Props) {
   const productBySlugPromise = getProductBySlug(product);
   const translationsPromise = getTranslationsProduct(lng);
   const translationsUsPromise = getTranslationsUs(lng);
+  const translationsContactPromise = getTranslationsContact(lng);
 
-  const [productBySlug, translations, usTranslations] = await Promise.all([
-    productBySlugPromise,
-    translationsPromise,
-    translationsUsPromise,
-  ]);
+  const [productBySlug, translations, usTranslations, contactTranslations] =
+    await Promise.all([
+      productBySlugPromise,
+      translationsPromise,
+      translationsUsPromise,
+      translationsContactPromise,
+    ]);
 
   return (
     <main className="m-0">
@@ -111,7 +122,7 @@ export default async function ProductPage({ params: { lng, product } }: Props) {
         </section>
       </div>
       <ProductRecommended lng={lng} translations={translations} />
-      <ContactUs translations={usTranslations} />
+      <ContactUs translations={contactTranslations} />
     </main>
   );
 }

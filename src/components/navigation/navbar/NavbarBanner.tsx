@@ -12,7 +12,7 @@ export const NavbarBanner = ({ menuNav }: { menuNav?: MenuNav }) => {
         alt="home"
         className=""
       />
-      <div className="flex backdrop-contrast-150 pt-10 place-items-center place-content-center  bg-gradient-to-b from-black/20 to-black/70 absolute h-full w-full">
+      <div className="flex backdrop-contrast-150 pt-10 place-items-center place-content-center  bg-gradient-to-b from-black/20 to-black/90 absolute h-full w-full">
         <div className="text-center px-4 mt-10 text-white">
           <p className="text-3xl md:text-5xl font-bold mb-2">
             {menuNav?.bannerTitle}

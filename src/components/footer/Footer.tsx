@@ -4,8 +4,8 @@ import GetTranslations from "@/utils/translationsPage";
 import Link from "next/link";
 
 export const Footer = async ({ lng }: { lng: string }) => {
-  const { GetFooterTranslations } = await GetTranslations();
-  const translations = await GetFooterTranslations(lng);
+  const { getFooterTranslations } = await GetTranslations();
+  const translations = await getFooterTranslations(lng);
 
   return (
     <footer className="bg-[#1c2022]  w-full">
@@ -36,22 +36,25 @@ export const Footer = async ({ lng }: { lng: string }) => {
             <Link href={`/${lng}/nosotros`}>{translations.us}</Link>
           </h4>
           <h5 className="py-1 text-slate-400">
-            <Link href={`/nosotros`}>{translations.whoWeAre}</Link>
+            <Link href={`/${lng}/nosotros`}>{translations.whoWeAre}</Link>
           </h5>
           <h5 className="py-1 text-slate-400">
-            <Link href={"/productos"}>{translations.ourProducts}</Link>
+            <Link href={`/${lng}/productos`}>{translations.ourProducts}</Link>
           </h5>
           <h5 className="py-1 text-slate-400">
-            <Link href={"/contacto"}>{translations.contact}</Link>
+            <Link href={`/${lng}/contacto`}>{translations.contact}</Link>
           </h5>
-          <p className="py-1 text-slate-400">{translations.ourServices}</p>
+
+          <h5 className="py-1 text-slate-400">
+            <Link href={`/${lng}/servicios`}>{translations.ourServices}</Link>
+          </h5>
         </article>
         <article className="text-white px-1 md:px-10">
           <h4 className="font-bold self-start py-10 uppercase">
             {translations.meetUs}
           </h4>
           <p className="py-1 text-slate-400">
-            <Link href={"/contacto"}>{translations.doYouNeedHelp}</Link>
+            <Link href={`/${lng}/contacto`}>{translations.doYouNeedHelp}</Link>
           </p>
           <p className="py-1 text-slate-400">dominicanmasterblue@gmail.com</p>
           <div className="flex gap-2">

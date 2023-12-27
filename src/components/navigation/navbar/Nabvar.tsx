@@ -4,6 +4,7 @@ import { Menu } from "./Menu";
 import furniture from "../../../../public/img/jpg/restore-kitchen.jpg";
 import home from "../../../../public/img/jpg-end/home.jpg";
 import aboutUs from "../../../../public/img/jpg-end/about-us.jpg";
+import contact from "../../../../public/img/jpg-end/contact.jpg";
 
 interface Props {
   lng: string;
@@ -46,7 +47,7 @@ export const NavBar = async ({ lng }: Props) => {
       link: `/${lng}/contacto`,
       bannerTitle: t("bannerContactTitle"),
       bannerDescription: t("bannerContactDescription"),
-      image: furniture,
+      image: contact,
     },
   ];
 

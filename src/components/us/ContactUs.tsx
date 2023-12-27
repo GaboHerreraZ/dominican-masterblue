@@ -4,16 +4,16 @@ import { Input, Textarea } from "@nextui-org/input";
 
 import { Button } from "@nextui-org/button";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { UsTranslations } from "@/models/UsTranslations";
 import React from "react";
 import EmailService from "@/service/emailService";
 import Image from "next/image";
 import design from "../../../public/img/jpg/design.jpg";
+import { ContactTranslations } from "@/models/contactTranslations";
 
 export const ContactUs = ({
   translations,
 }: {
-  translations: UsTranslations;
+  translations: ContactTranslations;
 }) => {
   const {
     formState: { errors, isValid, isSubmitSuccessful },
@@ -62,8 +62,8 @@ export const ContactUs = ({
                   variant="flat"
                   color="primary"
                   label={translations.name}
-                  errorMessage={errors.name ? "Please enter a valid email" : ""}
-                  isInvalid={errors.name ? true : false}
+                  errorMessage={errors.name && translations.errorName}
+                  isInvalid={errors.name && true}
                 />
                 <Input
                   {...register("email", { required: true })}
@@ -74,10 +74,8 @@ export const ContactUs = ({
                   variant="flat"
                   color="primary"
                   label={translations.email}
-                  errorMessage={
-                    errors.email ? "Please enter a valid email" : ""
-                  }
-                  isInvalid={errors.email ? true : false}
+                  errorMessage={errors.email && translations.errorEmail}
+                  isInvalid={errors.email && true}
                 />
                 <Input
                   {...register("phone", { required: true })}
@@ -88,10 +86,8 @@ export const ContactUs = ({
                   size="sm"
                   color="primary"
                   label={translations.phone}
-                  errorMessage={
-                    errors.phone ? "Please enter a valid email" : ""
-                  }
-                  isInvalid={errors.phone ? true : false}
+                  errorMessage={errors.phone && translations.errorPhone}
+                  isInvalid={errors.phone && true}
                 />
                 <Textarea
                   {...register("message", { required: true })}
@@ -103,10 +99,8 @@ export const ContactUs = ({
                   size="sm"
                   label={translations?.message}
                   minRows={1}
-                  errorMessage={
-                    errors.message ? "Descripción en inglés es requerida" : ""
-                  }
-                  isInvalid={errors.message ? true : false}
+                  errorMessage={errors.message && translations.errorMessage}
+                  isInvalid={errors.message && true}
                 />
                 <div className="text-center">
                   <Button
@@ -116,7 +110,7 @@ export const ContactUs = ({
                     radius="none"
                     variant="solid"
                   >
-                    {translations.contactUs}
+                    {translations.contactUsButton}
                   </Button>
                 </div>
               </form>

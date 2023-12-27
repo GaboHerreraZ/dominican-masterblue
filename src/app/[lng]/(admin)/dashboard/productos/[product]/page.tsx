@@ -14,6 +14,8 @@ export async function generateStaticParams() {
 }
 
 async function getProductBySlug(slug: string) {
+  if (slug === "nuevo") return { id: "nuevo" } as Product;
+
   const { findById } = ProductService();
   return await findById(slug);
 }
@@ -21,8 +23,8 @@ async function getProductBySlug(slug: string) {
 async function getTranslationsProduct(
   lng: string
 ): Promise<ProductTranslations> {
-  const { GetProductTranslations } = GetTranslations();
-  return await GetProductTranslations(lng);
+  const { getProductTranslations } = GetTranslations();
+  return await getProductTranslations(lng);
 }
 
 export default async function ProductDetail({

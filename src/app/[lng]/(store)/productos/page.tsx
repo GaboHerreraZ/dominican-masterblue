@@ -27,8 +27,8 @@ interface Props {
 const GetTranslationsProduct = async (
   lng: string
 ): Promise<ProductTranslations> => {
-  const { GetProductTranslations } = GetTranslations();
-  return await GetProductTranslations(lng);
+  const { getProductTranslations } = GetTranslations();
+  return await getProductTranslations(lng);
 };
 
 const getProducts = async (filters: Filter): Promise<Product[]> => {
@@ -59,7 +59,8 @@ export async function generateMetadata({
     title: t("titleProducts"),
     description: t("descriptionProducts"),
     verification: {
-      google: "",
+      google:
+        "google-site-verification=I7msbVupafxpHYu74C85WNUgR0m3oRR8SsK1hfsejqc",
     },
   };
 }

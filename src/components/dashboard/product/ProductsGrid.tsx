@@ -25,7 +25,7 @@ export const ProductsGrid = ({ products, lng, translations }: Props) => {
           size="sm"
           startContent={<IoMdAddCircle size={20} />}
         >
-          <Link href={"/dashboard/productos/nuevo"} prefetch={false}>
+          <Link href={"/dashboard/productos/nuevo"}>
             {translations?.newProduct}
           </Link>
         </Button>

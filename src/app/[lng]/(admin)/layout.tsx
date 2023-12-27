@@ -19,9 +19,9 @@ const arsenal = Arsenal({
 });
 
 export default async function RootLayout({ children, params: { lng } }: Props) {
-  const { GetDashboardTranslations } = GetTranslations();
+  const { getDashboardTranslations } = GetTranslations();
 
-  const translations = await GetDashboardTranslations(lng);
+  const translations = await getDashboardTranslations(lng);
 
   return (
     <html

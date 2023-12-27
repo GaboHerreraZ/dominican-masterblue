@@ -14,8 +14,8 @@ const getProducts = async () => {
 };
 
 const getTranslations = async (lng: string) => {
-  const { GetProductTranslations } = GetTranslations();
-  return await GetProductTranslations(lng);
+  const { getProductTranslations } = GetTranslations();
+  return await getProductTranslations(lng);
 };
 
 export default async function Products({

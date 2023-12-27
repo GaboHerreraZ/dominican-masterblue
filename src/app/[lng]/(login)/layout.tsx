@@ -4,6 +4,8 @@ import { Arsenal } from "next/font/google";
 import { Providers } from "../provider";
 import { dir } from "i18next";
 import { LoginLayout } from "@/components/layouts";
+import { Metadata } from "next";
+import { getTranslation } from "@/i18n";
 
 type Props = {
   children: ReactNode;
@@ -14,6 +16,24 @@ const arsenal = Arsenal({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "700"],
 });
+
+export async function generateMetadata({
+  params: { lng },
+}: {
+  params: { lng: string };
+}): Promise<Metadata> {
+  const { t } = await getTranslation(lng, "seo");
+
+  return {
+    metadataBase: new URL(`https://www.dominicanmasterblue.com/${lng}/login`),
+    title: `${t("titleLogin")} | Dominican Master Blue`,
+    description: t("descriptionLogin"),
+    verification: {
+      google:
+        "google-site-verification=I7msbVupafxpHYu74C85WNUgR0m3oRR8SsK1hfsejqc",
+    },
+  };
+}
 
 export default function RootLayout({ children, params: { lng } }: Props) {
   return (

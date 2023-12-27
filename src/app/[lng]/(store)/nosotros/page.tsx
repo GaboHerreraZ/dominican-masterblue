@@ -6,7 +6,16 @@ export default async function AboutUsPage({
 }: {
   params: { lng: string };
 }) {
-  const { GetUsTranslations } = GetTranslations();
-  const translations = await GetUsTranslations(lng);
-  return <Us translations={translations} />;
+  const { getUsTranslations, getContactTranslations } = GetTranslations();
+  const translationsPromise = getUsTranslations(lng);
+  const contacttranslationsPromise = getContactTranslations(lng);
+
+  const [translations, contactTranslations] = await Promise.all([
+    translationsPromise,
+    contacttranslationsPromise,
+  ]);
+
+  return (
+    <Us translations={translations} contactTranslations={contactTranslations} />
+  );
 }

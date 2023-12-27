@@ -6,8 +6,8 @@ export default async function LoginPage({
 }: {
   params: { lng: string };
 }) {
-  const { GetLoginTranslations } = GetTranslations();
+  const { getLoginTranslations } = GetTranslations();
 
-  const translations = await GetLoginTranslations(lng);
+  const translations = await getLoginTranslations(lng);
   return <Login translations={translations} />;
 }

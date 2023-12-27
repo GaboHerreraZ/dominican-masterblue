@@ -2,6 +2,7 @@ import { Product } from "@/domain/model/product";
 import { Divider } from "@nextui-org/divider";
 import { Button } from "@nextui-org/button";
 import { ProductTranslations } from "@/models/productTranslations";
+import Link from "next/link";
 
 interface Props {
   lng: string;
@@ -109,14 +110,14 @@ export const ProductDetailDescription = ({
           </tbody>
         </table>
       </div>
-      <Button
-        className="w-full"
-        color="primary"
-        variant="bordered"
-        radius="none"
-      >
-        {translations.requestInformation}
-      </Button>
+      <div className="w-full text-center">
+        <Link
+          href={`/${lng}/contacto?product=${product.slug}`}
+          className=" text-center bg-master-900/70 text-white px-5 py-2"
+        >
+          {translations.requestInformation}
+        </Link>
+      </div>
     </div>
   );
 };

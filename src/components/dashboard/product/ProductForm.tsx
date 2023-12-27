@@ -59,9 +59,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   };
 
   const onSubmit: SubmitHandler<Product> = async (data) => {
-    if (!isValid) {
-      return;
-    }
+    if (!isValid) return;
 
     if (product.id === "nuevo") {
       const response = await createProduct(data);

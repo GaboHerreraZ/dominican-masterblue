@@ -1,4 +1,22 @@
 {
-  "bannerTitle": "Conéctate con Nosotros",
-  "bannerDescription": "Estamos Aquí para Dar Vida a tus Ideas"
+  "contactDescription": "Descubre la Excelencia en Ebanistería y Remodelación en Republica Dominicana (Punta Cana). Tu Visión, Nuestra Prioridad.",
+  "contactInvitation": "¿Listo para Transformar Tu Espacio?",
+  "errorName": "Por favor, agrega un nombre",
+  "name": "Nombre",
+  "email": "Correo",
+  "errorEmail": "Por favor, agrega un email válido",
+  "phone": "Teléfono / Whatsapp",
+  "errorPhone": "Por favor, agrega un número de teléfono",
+  "message": "Mensaje",
+  "errorMessage": "Por favor, agrega un mensaje",
+  "contactUsButton": "¡Contáctanos Ahora!",
+  "thanksForContacting": "Gracias por comunicarte con nosotros!!!",
+  "contactSoon": "Pronto estaremos en contacto contigo para brindarte una asesoría personalizada.",
+  "service": "Servicio",
+  "title": "Obtén Más Información",
+  "subTitle": "Completa los campos a continuación para recibir detalles adicionales",
+  "description": "Estamos encantados de proporcionarte la información que necesitas. Por favor, comparte tus datos de contacto y nos pondremos en contacto contigo con los detalles solicitados. ¡Gracias por tu interés!",
+  "whileContacting": "Mientras nos ponemos en contacto contigo, puedes ir explorando nuestros productos y servicios:",
+  "seeServices": "Ver Servicios",
+  "seeProducts": "Ver Productos"
 }

@@ -4,9 +4,10 @@ import { DashboardTranslations } from "../models/dashboardTranslations";
 import { LoginTranslations } from "../models/loginTranslations";
 import { UsTranslations } from "../models/UsTranslations";
 import { FooterTranslations } from "../models/footerTranslations";
+import { ContactTranslations } from "@/models/contactTranslations";
 
 export default function GetTranslations() {
-  const GetProductTranslations = async (
+  const getProductTranslations = async (
     lng: string
   ): Promise<ProductTranslations> => {
     const { t } = await getTranslation(lng, "products");
@@ -111,7 +112,7 @@ export default function GetTranslations() {
     return productTranslations;
   };
 
-  const GetDashboardTranslations = async (lng: string) => {
+  const getDashboardTranslations = async (lng: string) => {
     const { t } = await getTranslation(lng, "dashboard");
 
     const dashboardTranslations: DashboardTranslations = {
@@ -125,7 +126,7 @@ export default function GetTranslations() {
     return dashboardTranslations;
   };
 
-  const GetLoginTranslations = async (lng: string) => {
+  const getLoginTranslations = async (lng: string) => {
     const { t } = await getTranslation(lng, "login");
 
     const loginTranslations: LoginTranslations = {
@@ -139,19 +140,12 @@ export default function GetTranslations() {
     return loginTranslations;
   };
 
-  const GetUsTranslations = async (lng: string) => {
+  const getUsTranslations = async (lng: string) => {
     const { t } = await getTranslation(lng, "us");
 
     const translations: UsTranslations = {
       achitecture: t("achitecture"),
-      contactDescription: t("contactDescription"),
-      contactInvitation: t("contactInvitation"),
-      contactUs: t("contactUs"),
       design: t("design"),
-      email: t("email"),
-      message: t("message"),
-      name: t("name"),
-      phone: t("phone"),
       remodeling: t("remodeling"),
       seeMore: t("seeMore"),
       serviceTitle: t("serviceTitle"),
@@ -166,14 +160,12 @@ export default function GetTranslations() {
       whoWeAre: t("whoWeAre"),
       whoWeAreDescription1: t("whoWeAreDescription1"),
       whoWeAreDescription2: t("whoWeAreDescription2"),
-      thanksForContacting: t("thanksForContacting"),
-      contactSoon: t("contactSoon"),
     };
 
     return translations;
   };
 
-  const GetFooterTranslations = async (lng: string) => {
+  const getFooterTranslations = async (lng: string) => {
     const { t } = await getTranslation(lng, "footer");
 
     const translations: FooterTranslations = {
@@ -194,11 +186,40 @@ export default function GetTranslations() {
     return translations;
   };
 
+  const getContactTranslations = async (lng: string) => {
+    const { t } = await getTranslation(lng, "contact");
+
+    const translations: ContactTranslations = {
+      contactDescription: t("contactDescription"),
+      contactInvitation: t("contactInvitation"),
+      errorName: t("errorName"),
+      name: t("name"),
+      email: t("email"),
+      errorEmail: t("errorEmail"),
+      phone: t("phone"),
+      errorPhone: t("errorPhone"),
+      message: t("message"),
+      errorMessage: t("errorMessage"),
+      contactUsButton: t("contactUsButton"),
+      thanksForContacting: t("thanksForContacting"),
+      contactSoon: t("contactSoon"),
+      title: t("title"),
+      subTitle: t("subTitle"),
+      description: t("description"),
+      service: t("service"),
+      whileContacting: t("whileContacting"),
+      seeServices: t("seeServices"),
+      seeProducts: t("seeProducts"),
+    };
+    return translations;
+  };
+
   return {
-    GetProductTranslations,
-    GetDashboardTranslations,
-    GetLoginTranslations,
-    GetUsTranslations,
-    GetFooterTranslations,
+    getProductTranslations,
+    getDashboardTranslations,
+    getLoginTranslations,
+    getUsTranslations,
+    getFooterTranslations,
+    getContactTranslations,
   };
 }

@@ -37,9 +37,9 @@ export const ProductsTable = ({ products, translations, lng }: Props) => {
         aria-label="table products"
       >
         <TableHeader>
-          {listColumns.map((column: any) => (
+          {listColumns.map((column: any, idx) => (
             <TableColumn
-              key={column.slug}
+              key={idx}
               align={column.slug === "actions" ? "center" : "start"}
             >
               {column.name}
@@ -47,8 +47,8 @@ export const ProductsTable = ({ products, translations, lng }: Props) => {
           ))}
         </TableHeader>
         <TableBody>
-          {products.map((product) => (
-            <TableRow key={product.id}>
+          {products.map((product, idx) => (
+            <TableRow key={idx}>
               <TableCell key={1}>
                 <Image
                   aria-label={product.spanishName}

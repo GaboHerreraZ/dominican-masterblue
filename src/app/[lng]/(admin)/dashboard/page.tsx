@@ -3,9 +3,9 @@ import { Module } from "@/models/module";
 import { ModuleCard } from "@/components/dashboard/product/Module";
 import GetTranslations from "@/utils/translationsPage";
 
-const GetDashboardTranslations = async (lng: string) => {
-  const { GetDashboardTranslations } = GetTranslations();
-  return await GetDashboardTranslations(lng);
+const getDashboardTranslations = async (lng: string) => {
+  const { getDashboardTranslations } = GetTranslations();
+  return await getDashboardTranslations(lng);
 };
 
 export default async function DashBoard({
@@ -13,7 +13,7 @@ export default async function DashBoard({
 }: {
   params: { lng: string };
 }) {
-  const translations = await GetDashboardTranslations(lng);
+  const translations = await getDashboardTranslations(lng);
 
   const modules: Module[] = [
     {

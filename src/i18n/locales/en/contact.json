@@ -1,4 +1,22 @@
 {
-  "bannerTitle": "Connect with us",
-  "bannerDescription": "We are here to bring your ideas to life"
+  "contactDescription": "Discover Excellence in Cabinetry and Remodeling in the Dominican Republic (Punta Cana). Your Vision, Our Priority.",
+  "contactInvitation": "Ready to Transform Your Space?",
+  "errorName": "Please, enter your name",
+  "name": "Name",
+  "email": "Email",
+  "errorEmail": "Please, enter a valid email address",
+  "phone": "Phone / Whatsapp",
+  "errorPhone": "Please, enter a phone number",
+  "message": "Message",
+  "errorMessage": "Please, enter a message",
+  "contactUsButton": "Contact us now!",
+  "thanksForContacting": "Thank you for communicating with us!!!",
+  "contactSoon": "We will soon be in contact with you to provide you with advice personalized.",
+  "service": "Service",
+  "title": "Get More Information",
+  "subTitle": "Complete the fields below to receive additional details",
+  "description": "We are happy to provide you with the information you need. Please share your contact details and we will contact you with the requested details. Thanks for your interest!",
+  "whileContacting": "While we contact you, you can explore our products and services:",
+  "seeServices": "Go to Services",
+  "seeProducts": "Go to Products"
 }
