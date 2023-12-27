@@ -140,7 +140,7 @@ export const ContactForm = ({ translations, lng }: Props) => {
               isInvalid={errors.message && true}
             />
           </div>
-          <div className="mt-2">
+          <div className="mt-2 text-center">
             <Button
               type="submit"
               color="primary"

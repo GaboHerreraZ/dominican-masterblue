@@ -15,14 +15,14 @@ export default async function Contact({
   const translations = await getContactTranslation(lng);
 
   return (
-    <section className="mx-40 my-20 flex flex-col gap-4">
+    <section className=" mx-10 sm:mx-40 my-10 sm:my-20 flex flex-col gap-4">
       <h1 className="text-center font-bold text-master-900/70 text-3xl uppercase">
         {translations.title}
       </h1>
       <h3 className="text-center font-bold text-master-900/70 text-xl">
         {translations.subTitle}
       </h3>
-      <p className="text-xl text-slate-400 text-center mx-20 ">
+      <p className="text-xl text-slate-400 text-center mx-5 sm:mx-20 ">
         {translations.description}
       </p>
       <Suspense>
