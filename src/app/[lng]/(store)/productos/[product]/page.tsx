@@ -82,7 +82,7 @@ export async function generateMetadata({
       url: `https://www.dominicanmasterblue.com/${lng}/productos/${productFinded.slug}`,
       images: [
         {
-          url: productFinded?.mainImage || "",
+          url: productFinded?.urlImage || "",
           width: 800,
           height: 600,
         },
