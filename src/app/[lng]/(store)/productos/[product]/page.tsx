@@ -78,8 +78,14 @@ export async function generateMetadata({
         lng === "es"
           ? productFinded.spanishDescription
           : productFinded.englishDescription,
+      siteName: "Dominican Master Blue",
+      url: `https://www.dominicanmasterblue.com/${lng}/productos/${productFinded.slug}`,
       images: [
-        `https://dominicanmasterblue.com/${lng}/productos/${productFinded.mainImage}`,
+        {
+          url: productFinded?.mainImage || "",
+          width: 800,
+          height: 600,
+        },
       ],
     },
     verification: {
