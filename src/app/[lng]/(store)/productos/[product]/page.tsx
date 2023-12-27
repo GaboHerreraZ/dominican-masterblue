@@ -78,7 +78,9 @@ export async function generateMetadata({
         lng === "es"
           ? productFinded.spanishDescription
           : productFinded.englishDescription,
-      images: [`/productos/${productFinded.mainImage}`],
+      images: [
+        `https://dominicanmasterblue.com/${lng}/productos/${productFinded.mainImage}`,
+      ],
     },
     verification: {
       google:
