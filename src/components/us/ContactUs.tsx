@@ -37,12 +37,12 @@ export const ContactUs = ({
         src={design}
         alt="home"
       />
-      <div className="w-full py-24 h-full absolute backdrop-contrast-150  bg-gradient-to-b from-black/40 to-black/80  grid grid-cols-1 md:grid-cols-2 items-center  justify-center ">
+      <div className="w-full py-10 sm:py-24 h-full absolute backdrop-contrast-150  bg-gradient-to-b from-black/40 to-black/80  grid grid-cols-1 md:grid-cols-2 items-center  justify-center ">
         <article className="font-bold text-white ">
-          <p className="text-4xl px-20 text-justify">
+          <p className="text-2xl sm:text-4xl px-20 text-center sm:text-justify">
             {translations.contactDescription}
           </p>
-          <p className="text-5xl mt-5 px-20  text-center">
+          <p className="text-3xl sm:text-5xl mt-5 px-20  text-center">
             {translations.contactInvitation}
           </p>
         </article>

@@ -28,7 +28,7 @@ export const ProductCard = ({ product, translations }: Props) => {
       aria-label={product.englishName}
       isFooterBlurred
       radius="none"
-      className="relative h-full transition-all duration-500 ease-in-out"
+      className="relative h-[300px] transition-all duration-500 ease-in-out"
     >
       <Image
         alt="desk"

@@ -14,7 +14,7 @@ interface Props {
 
 export const ProductsList = ({ products, translations }: Props) => {
   return (
-    <section className="grid grid-cols-1 h-[300px] gap-4 mt-10  md:grid-cols-4 justify-between ">
+    <section className="grid grid-cols-1 gap-4 mt-10  md:grid-cols-4 justify-between ">
       {products?.map((product) => (
         <ProductCard
           translations={translations}

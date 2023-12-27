@@ -24,7 +24,7 @@ export const ProductRecommended = async ({ translations, lng }: Props) => {
   return (
     <>
       {products.length > 0 && (
-        <div className="px-20 py-10 bg-gray-200/50">
+        <div className="px-20 py-10 mt-5 bg-gray-200/50">
           <h2 className=" text-center  font-bold text-master-900/70 text-2xl">
             {translations.ourRecommended}
           </h2>
