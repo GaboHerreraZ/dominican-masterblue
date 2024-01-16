@@ -1,11 +1,11 @@
 import React from "react";
 
 import { ContactUs } from "./ContactUs";
-import { UsTranslations } from "@/models/usTranslations";
 import { ContactTranslations } from "@/models/contactTranslations";
 import { SERVICES, VALUES } from "@/utils/const";
 import { UsService } from "./UsService";
 import { UsValues } from "./UsValues";
+import { UsTranslations } from "@/models/usTranslations";
 
 export const Us = ({
   translations,
