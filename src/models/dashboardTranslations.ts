@@ -5,4 +5,5 @@ export interface DashboardTranslations {
   logOut: string;
   moduleProductsTitle: string;
   moduleProductsDescription: string;
+  dashboardDescription: string;
 }

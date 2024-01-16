@@ -3,6 +3,12 @@ import { Module } from "@/models/module";
 import { ModuleCard } from "@/components/dashboard/product/Module";
 import GetTranslations from "@/utils/translationsPage";
 
+const languages = ["en", "es"];
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
 const getDashboardTranslations = async (lng: string) => {
   const { getDashboardTranslations } = GetTranslations();
   return await getDashboardTranslations(lng);

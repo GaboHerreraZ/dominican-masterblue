@@ -1,4 +1,3 @@
-import { HomeProjects } from "@/components/home/HomeProjects";
 import { HomeServices } from "@/components/home/HomeServices";
 import { HomeProducts } from "@/components/home/HomeProducts";
 import { ContactUs } from "../us";
@@ -14,7 +13,6 @@ export const Home = async ({ lng }: { lng: string }) => {
     <>
       <HomeServices lng={lng} />
       <HomeProducts lng={lng} />
-      <HomeProjects lng={lng} />
       <ContactUs translations={t} />
     </>
   );

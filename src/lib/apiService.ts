@@ -1,3 +1,4 @@
+import apiService from "@/lib/apiService";
 const apiUrl = process.env.NEXT_PUBLIC_URL_API;
 
 type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
@@ -75,4 +76,6 @@ class ApiService {
   }
 }
 
-export default new ApiService();
+const service = new ApiService();
+
+export default service;

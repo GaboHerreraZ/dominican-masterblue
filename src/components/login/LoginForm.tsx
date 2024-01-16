@@ -59,10 +59,10 @@ export const LoginForm = ({
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [reset, navigation]);
 
   return (
-    <div className="bg-[#1c2022] py-20 px-10 rounded">
+    <div className="bg-master-secondary py-20 px-10 rounded">
       <h2 className="text-center mb-5 font-bold text-3xl text-white">
         Dominican Master<span className="text-blue-400">blue</span>
       </h2>
@@ -74,6 +74,7 @@ export const LoginForm = ({
           {...register("email", { required: true })}
           isRequired
           type="email"
+          size="sm"
           variant="flat"
           radius="none"
           color="primary"
@@ -89,6 +90,7 @@ export const LoginForm = ({
           className="max-w-xs"
           variant="flat"
           radius="none"
+          size="sm"
           color="primary"
           label={translations.password}
           placeholder={translations.passwordPlaceHolder}

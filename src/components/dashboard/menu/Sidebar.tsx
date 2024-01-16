@@ -33,7 +33,7 @@ export const Sidebar = ({ show, setter, lng, translations }: Props) => {
   );
 
   const className =
-    "bg-[#1c2022] w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:relative top-0 bottom-0 left-0 z-40";
+    "bg-master-secondary w-[280px] transition-[margin-left] ease-in-out duration-500 fixed md:relative top-0 bottom-0 left-0 z-40";
   const appendClass = show ? " ml-0" : " ml-[-250px] md:ml-0";
 
   return (

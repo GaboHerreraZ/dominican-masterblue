@@ -16,6 +16,10 @@ export default async function AboutUsPage({
   ]);
 
   return (
-    <Us translations={translations} contactTranslations={contactTranslations} />
+    <Us
+      lng={lng}
+      translations={translations}
+      contactTranslations={contactTranslations}
+    />
   );
 }

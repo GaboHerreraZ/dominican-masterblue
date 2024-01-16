@@ -31,7 +31,7 @@ export const ProductsTable = ({ products, translations, lng }: Props) => {
     <>
       <Table
         classNames={{
-          th: "first:rounded-none last:rounded-none text-white bg-[#1c2022] ",
+          th: "first:rounded-none last:rounded-none text-white bg-master-secondary",
         }}
         radius="none"
         aria-label="table products"

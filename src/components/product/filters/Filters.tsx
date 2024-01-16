@@ -1,24 +1,16 @@
 "use client";
-import { CheckboxGroup, Checkbox } from "@nextui-org/checkbox";
-import { Slider } from "@nextui-org/slider";
-import { FaFilter } from "react-icons/fa6";
+import { IoFilterSharp } from "react-icons/io5";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@nextui-org/button";
-import {
-  Category,
-  SubCategory,
-  categories,
-  subcategories,
-} from "@/utils/const";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Filter } from "@/domain/model/filter";
 import { ProductTranslations } from "@/models/productTranslations";
-import {
-  createPageUrl,
-  getCookieFilter,
-  setCookieFilter,
-} from "../actions/actions";
+import { createPageUrl } from "../actions/actions";
+import { PriceFilter } from "./Price";
+import { SubCategoryFilter } from "./SubCategory";
+import { useFilterStore } from "@/store/useFilterStore";
+import { SUBCATEGORIES } from "@/utils/const";
 
 interface Props {
   translations: ProductTranslations;
@@ -32,6 +24,10 @@ export const FiltersProduct = ({ translations }: Props) => {
   const path = usePathname().split("/")[1];
   const router = useRouter();
 
+  const setSubCategory = useFilterStore((state) => state.setSubCategory);
+  const filter = useFilterStore((state) => state.filter);
+  const resetFilter = useFilterStore((state) => state.reset);
+
   const { control, getValues, setValue } = useForm<Filter>({
     defaultValues: {},
   });
@@ -40,31 +36,43 @@ export const FiltersProduct = ({ translations }: Props) => {
     setIsClient(true);
   }, []);
 
+  useEffect(() => {
+    const filterProducts = async () => {
+      const url = await createPageUrl(path, searchParams, filter);
+      router.push(url);
+    };
+
+    filterProducts();
+    // setValue("subcategories", filter.subcategories);
+  }, [filter, path, router, searchParams]);
+
   const onSubmit = async () => {
-    const filters = getValues();
-    setCookieFilter(filters);
-    const url = await createPageUrl(path, searchParams, filters);
-    router.push(url);
+    let filters = getValues();
+
+    const subcategory = SUBCATEGORIES.filter((s) => {
+      const subcategories = filters.subcategories.map(
+        (subcategory) => `${subcategory}`
+      );
+
+      return subcategories.includes(s.key);
+    });
+
+    setSubCategory(subcategory);
+    filters = {
+      ...filters,
+      category: filter.category,
+    };
   };
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
 
   const toggleSidebar = async () => {
-    const cookie = await getCookieFilter();
-    if (cookie.price) {
-      setValue("price", cookie.price);
-    }
-
-    if (cookie.categories) {
-      setValue("categories", cookie.categories);
-    }
-
-    if (cookie.subcategories) {
-      setValue("subcategories", cookie.subcategories);
-    }
-
     setSidebarOpen(!isSidebarOpen);
+  };
+
+  const clearFilter = () => {
+    resetFilter();
   };
 
   const onClose = useCallback(() => {
@@ -91,10 +99,10 @@ export const FiltersProduct = ({ translations }: Props) => {
             size="sm"
             radius="none"
             color="primary"
-            variant="bordered"
-            aria-label="Filter by"
-            className="text-master-900 font-bold"
-            endContent={<FaFilter size={20} />}
+            variant="light"
+            aria-label="Filter"
+            className="text-master-900 font-bold uppercase text-md"
+            endContent={<IoFilterSharp size={20} />}
             onClick={() => toggleSidebar()}
           >
             {translations?.filterBy}
@@ -107,109 +115,38 @@ export const FiltersProduct = ({ translations }: Props) => {
           >
             <div
               ref={sidebarRef}
-              className="flex w-72 p-5   bg-[#1c2022]   h-full flex-col  gap-5"
+              className="flex w-72 p-5 bg-master-secondary   h-full flex-col  gap-5"
             >
               <h4 className="text-white font-bold uppercase">
                 {translations?.filters}
               </h4>
               <form>
-                <Controller
+                <SubCategoryFilter
                   control={control}
-                  name="categories"
-                  defaultValue={[]}
-                  render={({ field: { onChange, value } }) => (
-                    <CheckboxGroup
-                      className="mb-10"
-                      label={translations?.category}
-                      classNames={{
-                        label: "text-white font-bold uppercase",
-                      }}
-                      radius="none"
-                      color="primary"
-                      defaultValue={value}
-                      onChange={(value) => {
-                        onChange(value);
-                        onSubmit();
-                      }}
-                    >
-                      {categories.map((category: Category, idx: number) => (
-                        <Checkbox
-                          classNames={{ label: "text-white" }}
-                          key={idx}
-                          value={category.key}
-                        >
-                          {path === "en"
-                            ? category.englishLabel
-                            : category.spanishLabel}
-                        </Checkbox>
-                      ))}
-                    </CheckboxGroup>
-                  )}
-                />
-                <Controller
-                  control={control}
-                  name="subcategories"
-                  defaultValue={[]}
-                  render={({ field: { onChange, value } }) => (
-                    <CheckboxGroup
-                      className="mb-10"
-                      label={translations?.subcategory}
-                      classNames={{
-                        label: "text-white font-bold uppercase",
-                      }}
-                      radius="none"
-                      color="primary"
-                      defaultValue={value}
-                      onChange={(value) => {
-                        onChange(value);
-                        onSubmit();
-                      }}
-                    >
-                      {subcategories.map(
-                        (category: SubCategory, idx: number) => (
-                          <Checkbox
-                            classNames={{ label: "text-white" }}
-                            key={idx}
-                            value={category.key}
-                          >
-                            {path === "en"
-                              ? category.englishLabel
-                              : category.spanishLabel}
-                          </Checkbox>
-                        )
-                      )}
-                    </CheckboxGroup>
-                  )}
+                  label={translations.subcategory}
+                  labelNoCategory={translations.noCategory}
+                  path={path}
+                  onSubmit={onSubmit}
                 />
 
-                <Controller
+                <PriceFilter
                   control={control}
-                  name="price"
-                  defaultValue={[0, 10000]}
-                  render={({ field: { onChange, value } }) => (
-                    <Slider
-                      onChange={(value) => {
-                        onChange(value);
-                        onSubmit();
-                      }}
-                      value={value}
-                      size="sm"
-                      step={500}
-                      maxValue={10000}
-                      minValue={0}
-                      classNames={{
-                        label: "text-white font-bold uppercase",
-                        value: "text-white font-bold uppercase",
-                      }}
-                      label={translations?.price}
-                      aria-label={translations?.price}
-                      defaultValue={[0, 10000]}
-                      formatOptions={{ style: "currency", currency: "USD" }}
-                      className="w-full"
-                    />
-                  )}
+                  onSubmit={onSubmit}
+                  label={translations?.price}
                 />
               </form>
+
+              <Button
+                size="sm"
+                radius="none"
+                color="primary"
+                variant="solid"
+                aria-label="Clear Filter"
+                className="text-white font-bold  text-sm"
+                onClick={() => clearFilter()}
+              >
+                {translations.clearFilter}
+              </Button>
             </div>
           </section>
         </section>

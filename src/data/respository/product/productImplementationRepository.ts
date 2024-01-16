@@ -1,14 +1,12 @@
-import { Filter } from "@/domain/model/filter";
+import { SimpleFilter } from "@/domain/model/filter";
 import { Product } from "@/domain/model/product";
 import { ProductRepository } from "@/domain/repository/productRepository";
 import apiService from "@/lib/apiService";
 
 export class ProductImplementationRepository implements ProductRepository {
-  async filterProduct(filter: Filter): Promise<Product[]> {
+  async filterProduct(filter: SimpleFilter): Promise<Product[]> {
     return await apiService.post<Product[]>("product/filter", filter, {
-      next: {
-        revalidate: 60,
-      },
+      cache: "no-store",
     });
   }
 
@@ -30,13 +28,13 @@ export class ProductImplementationRepository implements ProductRepository {
 
   async findAll(): Promise<Product[]> {
     return await apiService.get<Product[]>("product", {
-      next: { revalidate: 0 },
+      cache: "no-store",
     });
   }
 
   async findById(id: string): Promise<Product> {
     return await apiService.get<Product>(`product/${id}`, {
-      next: { revalidate: 0 },
+      cache: "no-store",
     });
   }
 

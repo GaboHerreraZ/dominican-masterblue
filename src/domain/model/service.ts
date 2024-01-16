@@ -1,7 +1,13 @@
 export interface Service {
-  id: string;
-  name: string;
-  price: number;
+  title: string;
   description: string;
-  image: string;
+  image: any;
+  link: string;
+  tips?: Tips[];
+  right: boolean;
+}
+
+interface Tips {
+  title: string;
+  description: string;
 }

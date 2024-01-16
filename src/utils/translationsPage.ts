@@ -2,7 +2,7 @@ import { getTranslation } from "@/i18n";
 import { ProductTranslations } from "@/models/productTranslations";
 import { DashboardTranslations } from "../models/dashboardTranslations";
 import { LoginTranslations } from "../models/loginTranslations";
-import { UsTranslations } from "../models/UsTranslations";
+import { UsTranslations } from "../models/usTranslations";
 import { FooterTranslations } from "../models/footerTranslations";
 import { ContactTranslations } from "@/models/contactTranslations";
 
@@ -107,6 +107,9 @@ export default function GetTranslations() {
       detail: t("detail"),
       back: t("back"),
       ourRecommended: t("ourRecommended"),
+      noCategory: t("noCategory"),
+      clearFilter: t("clearFilter"),
+      products: t("products"),
     };
 
     return productTranslations;
@@ -122,6 +125,7 @@ export default function GetTranslations() {
       logOut: t("logOut"),
       moduleProductsTitle: t("moduleProductsTitle"),
       moduleProductsDescription: t("moduleProductsDescription"),
+      dashboardDescription: t("dashboardDescription"),
     };
     return dashboardTranslations;
   };
@@ -160,6 +164,20 @@ export default function GetTranslations() {
       whoWeAre: t("whoWeAre"),
       whoWeAreDescription1: t("whoWeAreDescription1"),
       whoWeAreDescription2: t("whoWeAreDescription2"),
+      ourValues: t("ourValues"),
+      servicesDescription: t("servicesDescription"),
+      interiorDesignTip1Title: t("interiorDesignTip1Title"),
+      interiorDesignTip1Description: t("interiorDesignTip1Description"),
+      interiorDesignTip2Title: t("interiorDesignTip2Title"),
+      interiorDesignTip2Description: t("interiorDesignTip2Description"),
+      interiorDesignTip3Title: t("interiorDesignTip3Title"),
+      interiorDesignTip3Description: t("interiorDesignTip3Description"),
+      interiorDesignTip4Title: t("interiorDesignTip4Title"),
+      interiorDesignTip4Description: t("interiorDesignTip4Description"),
+      interiorDesignTip5Title: t("interiorDesignTip5Title"),
+      interiorDesignTip5Description: t("interiorDesignTip5Description"),
+      interiorDesignTip6Title: t("interiorDesignTip6Title"),
+      interiorDesignTip6Description: t("interiorDesignTip6Description"),
     };
 
     return translations;

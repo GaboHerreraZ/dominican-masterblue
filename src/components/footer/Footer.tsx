@@ -8,7 +8,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
   const translations = await getFooterTranslations(lng);
 
   return (
-    <footer className="bg-[#1c2022]  w-full">
+    <footer className="bg-master-secondary  w-full">
       <section className="grid grid-cols-1  justify-center md:grid-cols-4 mx-5 md:mx-40 py-20">
         <article className="px-1 md:px-10">
           <h4 className="text-white  py-10  font-bold uppercase">
@@ -45,9 +45,9 @@ export const Footer = async ({ lng }: { lng: string }) => {
             <Link href={`/${lng}/contacto`}>{translations.contact}</Link>
           </h5>
 
-          <h5 className="py-1 text-slate-400">
+          {/*  <h5 className="py-1 text-slate-400">
             <Link href={`/${lng}/servicios`}>{translations.ourServices}</Link>
-          </h5>
+          </h5> */}
         </article>
         <article className="text-white px-1 md:px-10">
           <h4 className="font-bold self-start py-10 uppercase">

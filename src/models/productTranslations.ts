@@ -93,4 +93,7 @@ export interface ProductTranslations {
   attribute: string;
   back: string;
   ourRecommended: string;
+  noCategory: string;
+  clearFilter: string;
+  products: string;
 }

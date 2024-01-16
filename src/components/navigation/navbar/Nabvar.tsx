@@ -1,7 +1,7 @@
 import { MenuNav } from "../interface/menuNav";
 import { getTranslation } from "@/i18n";
 import { Menu } from "./Menu";
-import furniture from "../../../../public/img/jpg/restore-kitchen.jpg";
+import furniture from "../../../../public/img/jpg-end/kitchen.jpg";
 import home from "../../../../public/img/jpg-end/home.jpg";
 import aboutUs from "../../../../public/img/jpg-end/about-us.jpg";
 import contact from "../../../../public/img/jpg-end/contact.jpg";
@@ -28,13 +28,13 @@ export const NavBar = async ({ lng }: Props) => {
       bannerDescription: t("bannerUsDescription"),
       image: aboutUs,
     },
-    {
+    /*   {
       title: t("services"),
       link: `/${lng}/servicios`,
       bannerTitle: t("bannerServiceTitle"),
       bannerDescription: t("bannerServiceDescription"),
       image: furniture,
-    },
+    }, */
     {
       title: t("products"),
       link: `/${lng}/productos`,

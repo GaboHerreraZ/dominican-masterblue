@@ -7,5 +7,7 @@
   "titleContactUs": "Contáctanos",
   "descriptionContact": "Conéctate con nosotros, estamos aquí para ti.",
   "titleLogin": "Iniciar Sesión",
-  "descriptionLogin": "Inicia sesión para acceder a tu cuenta."
+  "descriptionLogin": "Inicia sesión para acceder a tu cuenta.",
+  "titleDashboard": "Dashboard",
+  "descriptionDashboard": "Gestiona los productos y detalles de tu tienda"
 }

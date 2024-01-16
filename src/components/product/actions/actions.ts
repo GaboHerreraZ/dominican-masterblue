@@ -48,16 +48,16 @@ export const createPageUrl = async (
   searchParams: ReadonlyURLSearchParams,
   filter: Filter
 ) => {
-  const { categories, subcategories, price } = filter;
+  const { category, subcategories, price } = filter;
   let url = `/${path}/productos?`;
   const params = new URLSearchParams(searchParams);
 
-  categories && categories.length > 0
-    ? params.set("categorias", categories.join(","))
-    : params.delete("categorias");
+  category && category.key !== null
+    ? params.set("categoria", `${category.key}`)
+    : params.delete("categoria");
 
   subcategories && subcategories.length > 0
-    ? params.set("subcategorias", subcategories.join(","))
+    ? params.set("subcategorias", subcategories.map((s) => s.key).join(","))
     : params.delete("subcategorias");
 
   price && price.length > 0

@@ -4,5 +4,6 @@
   "productTitle": "Productos",
   "productDescription": "Administra todos los productos",
   "listProductTitle": "Lista de productos",
-  "logOut": "Cerrar sesión"
+  "logOut": "Cerrar sesión",
+  "dashboardDescription": "Gestiona los productos y detalles de tu tienda"
 }

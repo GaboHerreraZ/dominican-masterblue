@@ -37,9 +37,8 @@ const services = [
 export const ContactForm = ({ translations, lng }: Props) => {
   const searchParams = useSearchParams();
 
-  const params = new URLSearchParams(searchParams).toString();
-
-  const slug = params.split("=")[1];
+  const service = searchParams.get("servicio") || null;
+  const slug = searchParams.get("producto") || null;
 
   const {
     formState: { errors, isValid, isSubmitSuccessful },
@@ -49,8 +48,12 @@ export const ContactForm = ({ translations, lng }: Props) => {
     defaultValues: {
       message: slug
         ? `Hola, 
-      Quería solicitar más inforamción sobre el producto: 
+      Quería solicitar más información sobre el producto: 
       https://dominicanmasterblue.com/${lng}/productos/${slug}`
+        : service
+        ? `Hola, 
+        Quería solicitar más información sobre el servicio: 
+        ${service}`
         : "",
     },
   });

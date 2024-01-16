@@ -9,12 +9,14 @@ import { ProductDetailDescription } from "@/components/product/product/ProductDe
 import { ProductDetailMobileImages } from "@/components/product/product/ProductDetailMobileImages";
 import { ProductDetailImages } from "@/components/product/product/ProductDetailImages";
 import { ProductRecommended } from "@/components/product/product/ProductRecommended";
-import { ProductButtonBack } from "@/components/product/product/ProductButtonBack";
-import { UsTranslations } from "@/models/UsTranslations";
+import { BreadCrumbs } from "@/components/product/product/BreadCrumbs";
 import { ContactUs } from "@/components/us";
 import { ContactTranslations } from "@/models/contactTranslations";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+const languages = ["en", "es"];
 
 interface Props {
   params: {
@@ -25,11 +27,13 @@ interface Props {
 
 export async function generateStaticParams() {
   const { findAll } = ProductService();
-  const response = await findAll();
-  const params = response.map((product) => ({
-    params: { product: product.slug },
-  }));
-
+  const products = await findAll();
+  const params: any = [];
+  languages.forEach((lng) => {
+    products.forEach((product) => {
+      params.push({ lng, product: product.slug });
+    });
+  });
   return params;
 }
 
@@ -43,11 +47,6 @@ async function getTranslationsProduct(
 ): Promise<ProductTranslations> {
   const { getProductTranslations } = GetTranslations();
   return await getProductTranslations(lng);
-}
-
-async function getTranslationsUs(lng: string): Promise<UsTranslations> {
-  const { getUsTranslations } = GetTranslations();
-  return await getUsTranslations(lng);
 }
 
 async function getTranslationsContact(
@@ -98,21 +97,22 @@ export async function generateMetadata({
 export default async function ProductPage({ params: { lng, product } }: Props) {
   const productBySlugPromise = getProductBySlug(product);
   const translationsPromise = getTranslationsProduct(lng);
-  const translationsUsPromise = getTranslationsUs(lng);
   const translationsContactPromise = getTranslationsContact(lng);
 
-  const [productBySlug, translations, usTranslations, contactTranslations] =
-    await Promise.all([
-      productBySlugPromise,
-      translationsPromise,
-      translationsUsPromise,
-      translationsContactPromise,
-    ]);
+  const [productBySlug, translations, contactTranslations] = await Promise.all([
+    productBySlugPromise,
+    translationsPromise,
+    translationsContactPromise,
+  ]);
 
   return (
     <main className="m-0">
       <div className="mt-10 mb-5 sm:mx-20 sm:px-[120px]">
-        <ProductButtonBack translations={translations} lng={lng} />
+        <BreadCrumbs
+          translations={translations}
+          product={productBySlug}
+          lng={lng}
+        />
       </div>
       <div className="flex flex-col gap-10 md:flex-row sm:mx-20 sm:px-20">
         <section className="hidden sm:block md:w-1/2">

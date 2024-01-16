@@ -1,5 +1,5 @@
 import { ProductImplementationRepository } from "@/data/respository/product/productImplementationRepository";
-import { Filter } from "@/domain/model/filter";
+import { SimpleFilter } from "@/domain/model/filter";
 import { FilterProductUseCase } from "@/domain/useCase/product/filterProductUseCase";
 import { FindAllProductUseCase } from "@/domain/useCase/product/findAllUseCase";
 import { FindProductByIdUseCase } from "@/domain/useCase/product/findByIdUseCase";
@@ -22,8 +22,8 @@ export default function ProductService() {
     return await getProductByIdUseCase.execute(id);
   }
 
-  async function findByFilter(filter: Filter) {
-    return getProductsByFilter.execute(filter);
+  async function findByFilter(simpleFilter: SimpleFilter) {
+    return getProductsByFilter.execute(simpleFilter);
   }
 
   return {

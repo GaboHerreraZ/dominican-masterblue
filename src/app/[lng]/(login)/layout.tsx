@@ -12,6 +12,12 @@ type Props = {
   params: { lng: string };
 };
 
+const languages = ["en", "es"];
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
 const arsenal = Arsenal({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "700"],

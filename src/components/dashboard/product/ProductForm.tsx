@@ -4,15 +4,15 @@ import { IoIosSave, IoMdAddCircle } from "react-icons/io";
 import { Product } from "@/domain/model/product";
 import { Input, Textarea } from "@nextui-org/input";
 import { Button } from "@nextui-org/button";
-import { SubmitHandler, useFieldArray, useForm } from "react-hook-form";
+import { SubmitHandler, set, useFieldArray, useForm } from "react-hook-form";
 import { Divider } from "@nextui-org/divider";
 import { Switch } from "@nextui-org/switch";
 import { useProductAdminStore } from "@/store/useProductAdminStore";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import { ModalButton } from "@/utils/modal";
-import { useState } from "react";
-import { categories, subcategories } from "@/utils/const";
+import { use, useEffect, useState } from "react";
+import { SubCategory, CATEGORIES, SUBCATEGORIES } from "@/utils/const";
 import { Select, SelectItem } from "@nextui-org/select";
 import { ProductTranslations } from "@/models/productTranslations";
 
@@ -36,7 +36,15 @@ export const ProductForm: React.FC<ProductFormProps> = ({
   } = useForm<Product>({
     defaultValues: product,
   });
+
+  const [productSubcategory, setProductSubcategory] = useState([
+    product.subCategory,
+  ]);
+
   const [state, setState] = useState(product.state);
+  const [subcategories, setSubcategory] = useState<SubCategory[]>(
+    SUBCATEGORIES.filter((s) => s.category === product.category)
+  );
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -58,13 +66,23 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     }
   };
 
+  const onChangeCategory = (value: any) => {
+    const category = value.target.value;
+    const subcategoriesFiltered = SUBCATEGORIES.filter(
+      (subcategory) => subcategory.category === category
+    );
+    setProductSubcategory(() => []);
+
+    setSubcategory(subcategoriesFiltered);
+  };
+
   const onSubmit: SubmitHandler<Product> = async (data) => {
     if (!isValid) return;
 
     if (product.id === "nuevo") {
       const response = await createProduct(data);
       if (response) toast.success(translations?.saveOk || "");
-      navigation.push(`/dashboard/productos/${response}`);
+      navigation.push(`/dashboard/productos/${data.slug}`);
 
       return;
     }
@@ -347,8 +365,11 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Select
                   {...register("category", {
                     required: true,
+                    onChange: (value) => onChangeCategory(value),
                   })}
-                  defaultSelectedKeys={[product.category]}
+                  defaultSelectedKeys={
+                    product.category ? [product.category] : []
+                  }
                   variant={"underlined"}
                   label={translations?.category}
                   radius="none"
@@ -373,7 +394,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                     },
                   }}
                 >
-                  {categories.map((category) => (
+                  {CATEGORIES.map((category) => (
                     <SelectItem key={category.key} value={category.key}>
                       {lng === "es"
                         ? category.spanishLabel
@@ -384,10 +405,12 @@ export const ProductForm: React.FC<ProductFormProps> = ({
                 <Select
                   {...register("subCategory", {
                     required: true,
+                    onChange: (value) =>
+                      setProductSubcategory(() => [value.target.value]),
                   })}
                   variant={"underlined"}
                   label={translations?.subcategory}
-                  defaultSelectedKeys={[product.subCategory]}
+                  selectedKeys={productSubcategory}
                   radius="none"
                   placeholder={translations?.subcategoryDescription}
                   selectionMode="single"

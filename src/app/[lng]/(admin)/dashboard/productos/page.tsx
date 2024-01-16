@@ -3,10 +3,19 @@ import ProductService from "@/service/productService";
 import GetTranslations from "@/utils/translationsPage";
 import { Metadata } from "next";
 
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Products",
   description: "List of products",
 };
+
+const languages = ["en", "es"];
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
 
 const getProducts = async () => {
   const { findAll } = ProductService();

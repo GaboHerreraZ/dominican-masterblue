@@ -25,6 +25,7 @@ export const OrderByFilter = ({ translations }: Props) => {
     const index: number = Number(value.target.value);
     const order = orderBy[index].value as OrderBy;
     const params = new URLSearchParams(searchParams);
+    params.set("orden", order);
     router.push(`${url}${params.toString()}`);
   };
 
@@ -32,6 +33,7 @@ export const OrderByFilter = ({ translations }: Props) => {
     <Select
       aria-label={translations?.orderBy}
       onChange={onChangeOrder}
+      size="sm"
       radius="none"
       className="md:max-w-[250px]"
       variant={"underlined"}

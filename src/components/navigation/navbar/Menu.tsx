@@ -83,7 +83,7 @@ export const Menu = ({
       {item ? (
         <NavbarBanner menuNav={item} />
       ) : (
-        <div className="h-[150px] relative bg-[#1c2022]  w-full"></div>
+        <div className="h-[150px] relative bg-master-secondary  w-full"></div>
       )}
     </>
   );

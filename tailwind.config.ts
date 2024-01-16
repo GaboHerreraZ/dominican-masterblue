@@ -10,6 +10,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      backgroundColor: {
+        "master-secondary": "#1c2022",
+      },
       colors: {
         master: {
           100: "#D6E4FF",

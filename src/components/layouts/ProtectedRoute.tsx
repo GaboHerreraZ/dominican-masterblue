@@ -19,7 +19,7 @@ export const ProtectedRoute = ({ children }: { children: ReactNode }) => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [navigation]);
 
   return <>{isUserValid && children}</>;
 };

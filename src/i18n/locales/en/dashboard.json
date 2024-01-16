@@ -4,5 +4,6 @@
   "productTitle": "Products",
   "productDescription": "Manage all products",
   "listProductTitle": "Product List",
-  "logOut": "Log Out"
+  "logOut": "Log Out",
+  "dashboardDescription": "Manage the products and details of your store"
 }

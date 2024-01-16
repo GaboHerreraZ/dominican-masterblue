@@ -1,5 +1,5 @@
 {
-  "filterBy": "Filtrar por",
+  "filterBy": "Filtrar",
   "noNofilterSelected": "Ningún filtro seleccionado",
   "orderBy": "Ordernar por",
   "category": "Categoría",
@@ -94,5 +94,8 @@
   "characteristics": "Características",
   "detail": "Detalles",
   "back": "Regresar",
-  "ourRecommended": "Nuestros recomendados para ti"
+  "ourRecommended": "Nuestros recomendados para ti",
+  "noCategory": "Debe seleccionar una categoría",
+  "clearFilter": "Limpiar Filtros",
+  "products": "Productos"
 }

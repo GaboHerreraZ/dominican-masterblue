@@ -7,5 +7,7 @@
   "titleContactUs": "Contact Us",
   "descriptionContact": "Connect with us, we are here for you.",
   "titleLogin": "Log In",
-  "descriptionLogin": "Log in to your account"
+  "descriptionLogin": "Log in to your account",
+  "titleDashboard": "Dashboard",
+  "descriptionDashboard": "Manage the products and details of your store"
 }

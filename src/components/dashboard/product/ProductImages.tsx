@@ -124,7 +124,7 @@ export const ProductImages = ({ product, translations }: Props) => {
         toast.error(translations?.errorUploadingImages || "");
       }
     },
-    [files]
+    [files, product.id, translations.errorUploadingImages, translations.saveOk]
   );
 
   const deleteImage = async (name: string) => {

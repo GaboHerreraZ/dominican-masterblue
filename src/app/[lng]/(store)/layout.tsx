@@ -50,7 +50,7 @@ export default async function RootLayout({
 }) {
   return (
     <html
-      className={`${arsenal.className} scroll-smooth`}
+      className={`${arsenal.className} scroll-smooth antialiased`}
       lang={lng}
       dir={dir(lng)}
     >

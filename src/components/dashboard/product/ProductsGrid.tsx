@@ -18,17 +18,17 @@ export const ProductsGrid = ({ products, lng, translations }: Props) => {
         <h4 className="text-3xl text-master-900/70 pb-5 uppercase font-bold">
           {translations?.title}
         </h4>
-        <Button
-          color="primary"
-          radius="none"
-          variant="bordered"
-          size="sm"
-          startContent={<IoMdAddCircle size={20} />}
-        >
-          <Link href={"/dashboard/productos/nuevo"}>
+        <Link href={"/dashboard/productos/nuevo"}>
+          <Button
+            color="primary"
+            radius="none"
+            variant="bordered"
+            size="sm"
+            startContent={<IoMdAddCircle size={20} />}
+          >
             {translations?.newProduct}
-          </Link>
-        </Button>
+          </Button>
+        </Link>
       </header>
       <ProductsTable
         lng={lng}

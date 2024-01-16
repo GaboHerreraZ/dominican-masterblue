@@ -15,4 +15,18 @@ export interface UsTranslations {
   remodeling: string;
   achitecture: string;
   seeMore: string;
+  ourValues: string;
+  servicesDescription: string;
+  interiorDesignTip1Title: string;
+  interiorDesignTip1Description: string;
+  interiorDesignTip2Title: string;
+  interiorDesignTip2Description: string;
+  interiorDesignTip3Title: string;
+  interiorDesignTip3Description: string;
+  interiorDesignTip4Title: string;
+  interiorDesignTip4Description: string;
+  interiorDesignTip5Title: string;
+  interiorDesignTip5Description: string;
+  interiorDesignTip6Title: string;
+  interiorDesignTip6Description: string;
 }

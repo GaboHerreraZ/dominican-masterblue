@@ -4,12 +4,21 @@ import GetTranslations from "@/utils/translationsPage";
 import ProductService from "@/service/productService";
 import { ProductTabs } from "@/components/dashboard/product/ProductTabs";
 
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
+
+const languages = ["en", "es"];
+
 export async function generateStaticParams() {
   const { findAll } = ProductService();
   const products = await findAll();
-  const params = products.map((product: Product) => ({
-    params: { product: product.slug },
-  }));
+  const params: any = [];
+  languages.forEach((lng) => {
+    products.forEach((product) => {
+      params.push({ lng, product: product.slug });
+    });
+  });
+
   return params;
 }
 
