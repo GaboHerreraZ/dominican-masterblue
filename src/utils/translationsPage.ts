@@ -2,7 +2,7 @@ import { getTranslation } from "@/i18n";
 import { ProductTranslations } from "@/models/productTranslations";
 import { DashboardTranslations } from "../models/dashboardTranslations";
 import { LoginTranslations } from "../models/loginTranslations";
-import { UsTranslations } from "../models/usTranslations";
+import { UsTranslations } from "../models/usTranslationss";
 import { FooterTranslations } from "../models/footerTranslations";
 import { ContactTranslations } from "@/models/contactTranslations";
 

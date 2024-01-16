@@ -5,7 +5,7 @@ import { ContactTranslations } from "@/models/contactTranslations";
 import { SERVICES, VALUES } from "@/utils/const";
 import { UsService } from "./UsService";
 import { UsValues } from "./UsValues";
-import { UsTranslations } from "@/models/usTranslations";
+import { UsTranslations } from "@/models/usTranslationss";
 
 export const Us = ({
   translations,
