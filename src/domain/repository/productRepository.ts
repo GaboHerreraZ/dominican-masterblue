@@ -8,6 +8,6 @@ export abstract class ProductRepository {
   abstract create(product: Product): Promise<Product>;
   abstract update(product: Product, id: string): Promise<boolean>;
   abstract delete(id: string): Promise<boolean>;
-  abstract deleteImage(image: string): Promise<boolean>;
-  abstract markImage(image: string, name: string): Promise<boolean>;
+  abstract deleteImage(image: string, product: Product): Promise<boolean>;
+  abstract markImage(image: string, name: string, id: string): Promise<boolean>;
 }

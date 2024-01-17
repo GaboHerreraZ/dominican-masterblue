@@ -12,6 +12,44 @@ import customer from "../../public/img/jpg-end/customer.jpg";
 
 import { Value } from "@/domain/model/value";
 
+export const CATEGORIES_FILTER: TypeCategory[] = [
+  "room",
+  "kitchen",
+  "bathroom",
+  "livingRoom",
+  "childrenRoom",
+];
+
+export const SUBCATEGORIES_FILTER: TypeSubCategory[] = [
+  "upholsteredBeds",
+  "customBeds",
+  "lamps",
+  "toyFurniture",
+  "gameTablesAndChairs",
+  "montessoriBeds",
+  "closets",
+  "furnitures",
+  "shelves",
+  "nightstand",
+  "tvFurniture",
+  "desk",
+  "queenBed",
+  "kingBed",
+  "fullBed",
+  "upholsteredBed",
+  "mirrors",
+  "wickerLamps",
+  "stoppers",
+  "furnitureAccessories",
+  "cabinets",
+  "livingRoomSets",
+  "centerTable",
+  "diningRoom",
+  "diningChairs",
+  "appliques",
+  "coatings",
+];
+
 export type TypeCategory =
   | "room"
   | "kitchen"

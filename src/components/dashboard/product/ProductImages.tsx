@@ -128,7 +128,7 @@ export const ProductImages = ({ product, translations }: Props) => {
   );
 
   const deleteImage = async (name: string) => {
-    const response = await deleteImageStore(name);
+    const response = await deleteImageStore(name, product);
     if (response) {
       setProduct((product) => ({
         ...product,
@@ -143,7 +143,11 @@ export const ProductImages = ({ product, translations }: Props) => {
       "https://firebasestorage.googleapis.com",
       ""
     );
-    const response = await markMainImageStore(urlUpdated, image.name);
+    const response = await markMainImageStore(
+      urlUpdated,
+      image.name,
+      product.id
+    );
     if (response) {
       toast.success(translations?.markAsMainOk || "");
       setProduct((product) => ({

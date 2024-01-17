@@ -86,7 +86,7 @@ export const ProductForm: React.FC<ProductFormProps> = ({
 
       return;
     }
-
+    data.slug = product.slug;
     const response = await updateProduct(data);
     if (response) {
       toast.success(translations?.updatedOk || "");

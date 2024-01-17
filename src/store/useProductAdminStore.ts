@@ -9,6 +9,7 @@ import { FindProductByIdUseCase } from "@/domain/useCase/product/findByIdUseCase
 import { MarkImageProductUseCase } from "@/domain/useCase/product/markImageUseCase";
 import { UpdateProductUseCase } from "@/domain/useCase/product/updateUseCase";
 import { create } from "zustand";
+import { Db } from "@/lib/db";
 
 interface ProductState {
   products: Product[];
@@ -18,13 +19,18 @@ interface ProductState {
   update: (product: Product) => Promise<boolean>;
   delete: (productId: string) => Promise<boolean>;
   findById: (productId: string) => Promise<Product>;
-  deleteImage: (image: string) => Promise<boolean>;
-  markImage: (image: string, name: string) => Promise<boolean>;
+  deleteImage: (image: string, product: Product) => Promise<boolean>;
+  markImage: (image: string, name: string, id: string) => Promise<boolean>;
   setProducts: (products: Product[]) => void;
 }
 
 export const useProductAdminStore = create<ProductState>()((set) => {
-  const productImplementationRepository = new ProductImplementationRepository();
+  const productDb = new Db<Omit<Product, "id">>("products");
+
+  const productImplementationRepository = new ProductImplementationRepository(
+    productDb
+  );
+
   const createProductUseCase = new CreateProductUseCase(
     productImplementationRepository
   );
@@ -68,10 +74,10 @@ export const useProductAdminStore = create<ProductState>()((set) => {
       if (productId === "nuevo") return { id: "nuevo" } as Product;
       return await findByIdProductUseCase.execute(productId);
     },
-    deleteImage: async (image: string) =>
-      await deleteImageProductUseCase.execute(image),
-    markImage: async (image: string, name: string) =>
-      await markImageProductUseCase.execute({ image, name }),
+    deleteImage: async (image: string, product: Product) =>
+      await deleteImageProductUseCase.execute({ image, product }),
+    markImage: async (image: string, name: string, id: string) =>
+      await markImageProductUseCase.execute({ image, name, id }),
     setProducts: (products: Product[]) => set((state) => ({ products: [] })),
   };
 });
