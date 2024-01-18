@@ -19,25 +19,27 @@ export const CategoryFilter = ({ path }: Props) => {
   };
 
   return (
-    <nav className="w-full py-1 md:py-2 bg-master-secondary">
+    <nav className="w-full    relative">
       <Button
         variant="light"
         color="primary"
         isIconOnly
-        className="mx-10 md:hidden text-white"
+        className="mx-10 md:hidden text-master-secondary z-20"
         onClick={() => setOpen(!open)}
       >
-        {open ? <IoClose size={40} /> : <FaBars size={30} />}
+        {open ? (
+          <IoClose className="text-white" size={30} />
+        ) : (
+          <FaBars size={30} />
+        )}
       </Button>
       <ul
-        className={`flex justify-center gap-4 md:gap-10 flex-col md:flex-row   transition-height duration-500 text-md md:text-xl text-white font-bold ${
-          open
-            ? "h-60 opacity-100 md:h-12 "
-            : "h-0 opacity-0  md:h-12 md:opacity-100"
+        className={`flex h-60 sm:h-14 bg-black/80 absolute sm:static w-full z-10 top-0 justify-center gap-4 md:gap-10 flex-col md:flex-row   transition-all duration-500 text-md md:text-xl text-white font-bold ${
+          open ? "left-0" : "-left-full sm:left-0"
         } `}
       >
         {CATEGORIES.map((category: Category, idx: number) => (
-          <button onClick={() => filterByCategory(category)} key={idx}>
+          <button onClick={() => filterByCategory(category)} key={category.key}>
             {path === "en" ? category.englishLabel : category.spanishLabel}
           </button>
         ))}

@@ -20,13 +20,6 @@ export const EmailSuccess = ({
       <div className="flex gap-2 flex-col sm:flex-row">
         <Link
           className="bg-master-900/70 text-white px-5 py-2"
-          href={`/${lng}/servicios`}
-        >
-          {translations.seeServices}
-        </Link>
-
-        <Link
-          className="bg-master-900/70 text-white px-5 py-2"
           href={`/${lng}/productos`}
         >
           {translations.seeProducts}
