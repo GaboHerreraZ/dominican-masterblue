@@ -19,22 +19,20 @@ export const UsService = async ({ service, lng }: Props) => {
         src={service.image}
         alt={service.title}
       />
-      <div className="text-white font-bold absolute group top-0 h-full grid w-full backdrop-contrast-150  bg-gradient-to-b from-black/20 to-black md:hover:bg-master-secondary/50">
+      <div className="text-white font-bold absolute group top-0 h-full grid w-full backdrop-contrast-150   md:hover:bg-master-secondary/50">
         <article className="h-full flex flex-col justify-center ">
           <ul className="group-hover:grid hidden md:grid-cols-1 lg:grid-cols-2 items-center md:translate-x-full md:group-hover:translate-x-0 transition-all duration-1000  justify-center md:gap-5">
             {service.tips!.map((tip, index) => (
               <li key={index} className=" md:text-medium px-2 md:px-5 ">
-                <h3 className="font-bold uppercase md:text-md lg:text-lg text-white">
+                <h3 className="font-bold uppercase md:text-md lg:text-lg text-master">
                   {usT(tip.title)}
                 </h3>
-                <p className="text-slate-400 md:text-md">
-                  {usT(tip.description)}
-                </p>
+                <p className="text-white md:text-md">{usT(tip.description)}</p>
               </li>
             ))}
           </ul>
           <footer className=" flex flex-col justify-end items-center group-hover:hidden   transition-opacity duration-1000">
-            <h3 className="text-xl text-center  font-bold uppercase text-white ">
+            <h3 className="text-xl text-center  font-bold uppercase text-master ">
               {t(service.title)}
             </h3>
             <div className="border-t-4 h-2 text-center border-white w-5"></div>

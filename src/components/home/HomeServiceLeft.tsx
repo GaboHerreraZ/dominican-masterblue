@@ -23,7 +23,6 @@ export const HomeServiceLeft = async ({
           sizes="100%"
           style={{ objectFit: "cover" }}
         />
-        <div className="bg-gradient-to-b from-transparent to-black/90 absolute h-full w-full"></div>
       </div>
       <article className="flex flex-col w-full  md:w-1/3 p-4 md:p-10 group bg-master-secondary hover:bg-white transition-background duration-1000   justify-center">
         <p className="text-2xl text-white  group-hover:text-master-900/70   before:content-['<<'] after:content-['>>'] uppercase mb-5 text-center font-bold ">

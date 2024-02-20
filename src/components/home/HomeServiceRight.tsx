@@ -46,7 +46,6 @@ export const HomeServiceRight = async ({
           fill
           style={{ objectFit: "cover" }}
         />
-        <div className="bg-gradient-to-b from-transparent to-black/90 absolute h-full w-full"></div>
       </div>
     </section>
   );

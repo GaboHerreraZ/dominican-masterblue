@@ -8,6 +8,11 @@ import { NavbarBanner } from "./NavbarBanner";
 import Link from "next/link";
 import { AiFillInstagram } from "react-icons/ai";
 import { FaFacebook } from "react-icons/fa6";
+import Image from "next/image";
+import { Select, SelectItem } from "@nextui-org/select";
+
+import logo from "../../../../public/img/png/logo_dominican_master_blue.png";
+import { Lang } from "./Lang";
 
 export const Menu = ({
   items,
@@ -27,12 +32,12 @@ export const Menu = ({
       <div className="w-full absolute top-0 left-0 z-10 bg-black/80  sm:bg-transparent">
         <div className="lg:mx-[200px] md:mx-[100px] px-4 md:px-0 py-4 md:py-5 z-10  relative ">
           <div className="flex justify-between w-full pb-2  sm:border-b-1 border-b-white/20">
-            <div className="flex gap-5">
+            <div className="flex items-center gap-5">
               <Link
                 href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
                 target="_blank"
                 about="Instagram"
-                className="text-white"
+                className="text-master"
               >
                 <AiFillInstagram size={30} />
               </Link>
@@ -40,15 +45,19 @@ export const Menu = ({
                 href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
                 target="_blank"
                 about="Facebook"
-                className="text-white"
+                className="text-master"
               >
                 <FaFacebook size={29} />
               </Link>
+              <Lang />
             </div>
             <Link href={"/"}>
-              <p className="text-xl text-white font-bold uppercase">
-                Dominican Master<span className="text-master-400">Blue</span>
-              </p>
+              <Image
+                src={logo}
+                alt="Logo dominican master blue"
+                width={100}
+                height={100}
+              />
             </Link>
           </div>
         </div>
@@ -83,7 +92,7 @@ export const Menu = ({
       {item ? (
         <NavbarBanner menuNav={item} />
       ) : (
-        <div className="h-[150px] relative bg-master-secondary  w-full"></div>
+        <div className="h-[150px] relative  w-full"></div>
       )}
     </>
   );

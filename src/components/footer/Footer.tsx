@@ -3,6 +3,9 @@ import { AiFillInstagram } from "react-icons/ai";
 import GetTranslations from "@/utils/translationsPage";
 import Link from "next/link";
 
+import logo from "../../../public/img/png/logo_dominican_master_blue.png";
+import Image from "next/image";
+
 export const Footer = async ({ lng }: { lng: string }) => {
   const { getFooterTranslations } = await GetTranslations();
   const translations = await getFooterTranslations(lng);
@@ -11,9 +14,14 @@ export const Footer = async ({ lng }: { lng: string }) => {
     <footer className="bg-master-secondary  w-full">
       <section className="grid grid-cols-1  justify-center md:grid-cols-4 mx-5 md:mx-40 py-20">
         <article className="px-1 md:px-10">
-          <h4 className="text-white  py-10  font-bold uppercase">
+          <h4 className="text-white  py-5 flex justify-center  font-bold uppercase">
             <Link href={"/"}>
-              Dominican Master<span className="text-master-500">Blue</span>
+              <Image
+                src={logo}
+                alt="Logo dominican master blue"
+                width={150}
+                height={100}
+              />
             </Link>
           </h4>
           <p className="py-1 text-slate-400 text-justify ">

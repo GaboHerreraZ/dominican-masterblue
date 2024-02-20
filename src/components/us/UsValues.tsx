@@ -27,7 +27,7 @@ export const UsValues = async ({
           src={image}
           alt={title1 + title2}
         />
-        <div className="absolute  h-full  w-full backdrop-contrast-150   bg-gradient-to-b from-black/30 to-black/70 "></div>
+        <div className="absolute  h-full  w-full backdrop-contrast-150    "></div>
       </header>
       <footer className="w-full px-2 md:px-0  mt-4">
         <h1 className="italic text-2xl  md:text-md text-master-900/70 font-bold  uppercase opacity-100 transition-opacity duration-1000 group-hover:opacity-0">
