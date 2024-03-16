@@ -4,5 +4,7 @@ export default async function Home({
 }: {
   params: { lng: string };
 }) {
-  return <HomeDefault lng={lng} />;
+  console.log(1, lng);
+  // return <HomeDefault lng={lng} />;
+  return <>hola</>;
 }

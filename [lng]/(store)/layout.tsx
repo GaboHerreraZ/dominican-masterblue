@@ -48,6 +48,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { lng: string };
 }) {
+  console.log("entré", lng);
   return (
     <html
       className={`${arsenal.className} scroll-smooth antialiased`}
@@ -55,12 +56,13 @@ export default async function RootLayout({
       dir={dir(lng)}
     >
       <body className="">
-        <NavBar lng={lng} />
+        {/*  <NavBar lng={lng} />
         <Providers>
           {children}
           <WhatsAppLink lng={lng} />
           <Footer lng={lng} />
-        </Providers>
+        </Providers> */}
+        {children}
       </body>
     </html>
   );
