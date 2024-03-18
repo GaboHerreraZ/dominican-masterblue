@@ -1,0 +1,1 @@
+export { getSubcategories } from './get-subcategories'

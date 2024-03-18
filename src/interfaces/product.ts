@@ -19,4 +19,5 @@ export interface Product {
   categoryId: string;
   subcategoryId: string;
   productImage: ProductImage[];
+  images?: FileList;
 }

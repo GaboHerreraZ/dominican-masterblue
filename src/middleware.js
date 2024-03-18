@@ -11,7 +11,6 @@ export const config = {
 };
 
 export function middleware(req) {
-  console.log("req", req);
   return lngMiddleware(req, NextResponse.next);
 
   // return NextResponse.next();

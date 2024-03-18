@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { fallbackLng, languages, cookieName } from "@/i18n/settings";
 
 export function lngMiddleware(req, next) {
-  if (req.nextUrl.pathname === "/admin") {
+  if (req.nextUrl.pathname.includes('/admin')) {
     return next();
   }
 
