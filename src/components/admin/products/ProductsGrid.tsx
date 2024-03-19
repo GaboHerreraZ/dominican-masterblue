@@ -23,6 +23,7 @@ const columns: Column[] = [
   { label: "Cantidad" },
   { label: "Categoría" },
   { label: "Subcategoría" },
+  { label: "Acciones" },
 ];
 
 interface Props {

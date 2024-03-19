@@ -17,7 +17,7 @@ export const Table = ({ columns, children, totalPages }: Props) => {
               {columns.map((column, index) => (
                 <th
                   key={index}
-                  className="px-5 py-3 border-b-[1px] border-gold bg-slate-950 text-left text-xs font-semibold text-gold uppercase tracking-wider"
+                  className="px-5 py-3 border-b-[1px] border-gold bg-slate-950 text-left text-xs font-semibold text-white uppercase tracking-wider"
                 >
                   {column.label}
                 </th>

@@ -96,7 +96,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
 
   const handleDeleteImage = async (id: number, folder: string) => {
     toggleLoading(true);
-    const { ok, data } = await deleteImage(id, folder);
+    const { ok } = await deleteImage(id, folder);
     ok
       ? toastSuccess("Imagen eliminada correctamente")
       : toastError("Error eliminando la imagen");
@@ -115,24 +115,24 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         </header>
         <div className="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           <Input
-            {...register("spanishDescription", { required: true })}
-            placeholder="spanishDescription"
-            error={errors.spanishDescription && "spanishDescription requerido"}
+            {...register("spanishName", { required: true })}
+            placeholder="Nombre"
+            error={errors.spanishName && "Nombre en español requerido"}
           />
           <Input
-            {...register("spanishName", { required: true })}
-            placeholder="spanishName"
-            error={errors.spanishName && "spanishName requerido"}
+            {...register("spanishDescription", { required: true })}
+            placeholder="Descripción"
+            error={errors.spanishDescription && "Descripción requerido"}
+          />
+          <Input
+            {...register("englishName", { required: true })}
+            placeholder="Nombre en ingles"
+            error={errors.spanishName && "Nombre en ingles requerido"}
           />
           <Input
             {...register("englishDescription", { required: true })}
-            placeholder="englishDescription"
-            error={errors.englishDescription && "englishDescription requerido"}
-          />
-          <Input
-            {...register("spanishName", { required: true })}
-            placeholder="spanishName"
-            error={errors.spanishName && "spanishName requerido"}
+            placeholder="Descripción en ingles"
+            error={errors.englishDescription && "Descripción en ingles requerido"}
           />
           <Input
             {...register("slug", {
@@ -140,7 +140,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
               pattern: /^[a-zA-Z0-9-]+(?:-[a-zA-Z0-9]+)*$/,
             })}
             placeholder="Slug"
-            error={errors.slug && "Slug requerido ej: anillo-dorado"}
+            error={errors.slug && "Slug requerido ej: muebles-oficina"}
           />
           <Input
             {...register("material", { required: true })}
@@ -150,8 +150,8 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <Input
             type="number"
             {...register("price", { required: true })}
-            placeholder="Price"
-            error={errors.price && "Price requerido"}
+            placeholder="Precio"
+            error={errors.price && "Precio requerido"}
           />
           <Input
             type="number"
@@ -159,37 +159,36 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Cantidad"
           />
           <Input
-            {...register("youtubeLink", {
-              required: true,
-              pattern:
-                /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/|shorts\/)?([A-Za-z0-9\-_]{11})/,
-            })}
-            placeholder="youtubeLink"
-            error={errors.youtubeLink && "youtubeLink requerida"}
-          />
-          <Input
             type="number"
             {...register("length", { required: true })}
-            placeholder="length"
-            error={errors.length && "length requerido"}
+            placeholder="Longitud"
+            error={errors.length && "Longitud requerido"}
           />
           <Input
             type="number"
             {...register("weight", { required: true })}
-            placeholder="weight"
-            error={errors.length && "weight requerido"}
+            placeholder="Peso"
+            error={errors.length && "Peso requerido"}
           />
           <Input
             type="number"
             {...register("width", { required: true })}
-            placeholder="width"
-            error={errors.length && "width requerido"}
+            placeholder="Ancho"
+            error={errors.length && "Ancho requerido"}
           />
           <Input
             type="number"
             {...register("height", { required: true })}
-            placeholder="height"
-            error={errors.length && "height requerido"}
+            placeholder="Altura"
+            error={errors.length && "Altura requerido"}
+          />
+          <Input
+            {...register("youtubeLink", {
+              pattern:
+                /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/|shorts\/)?([A-Za-z0-9\-_]{11})/,
+            })}
+            placeholder="youtubeLink"
+            error={errors.youtubeLink && "Link no válido"}
           />
 
           <Select
@@ -206,7 +205,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             options={subcategories}
           />
 
-          <Checkbox {...register("state")} placeholder="state" />
+          <Checkbox {...register("state")} placeholder="Estado" />
         </div>
         <h1 className="border-b-[1px] mt-5 border-gray-300 text-xl font-extrabold  uppercase">
           Adjuntar Imagenes
