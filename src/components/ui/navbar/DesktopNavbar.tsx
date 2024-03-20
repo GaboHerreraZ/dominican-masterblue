@@ -36,7 +36,7 @@ export const DesktopNavbar = async ({ lng }: { lng: string }) => {
         style={{ objectFit: "cover" }}
       />
       <Link
-        className="flex justify-center md:justify-start absolute top-3 left-4 py-4"
+        className="flex z-20 cursor-pointer justify-center md:justify-start absolute top-3 left-4 py-4"
         href="/"
       >
         <Image src={logoMenu} alt="logo" width={220} height={150} />

@@ -42,8 +42,6 @@ export async function generateMetadata({
 }
 
 export default function RootLayout({ children, params: { lng } }: Props) {
-  console.log("entré", lng);
-
   return (
     <html
       className={`${arsenal.className} scroll-smooth`}

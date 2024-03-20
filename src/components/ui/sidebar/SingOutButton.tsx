@@ -2,7 +2,6 @@
 
 import { useLoadingStore } from "@/store";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
-import { FaPowerOff } from "react-icons/fa";
 
 export const SingOutButton = ({ onClick }: { onClick: () => void }) => {
   const supabase = createClientComponentClient();
@@ -16,8 +15,10 @@ export const SingOutButton = ({ onClick }: { onClick: () => void }) => {
   };
 
   return (
-    <button onClick={handleSignOut} className="text-gold mt-0 flex gap-2">
-      <FaPowerOff size={25} />
+    <button
+      onClick={handleSignOut}
+      className="border-[1px] border-gold px-2 rounded hover:bg-black/5  transition-all duration-500 text-white"
+    >
       <label className="cursor-pointer">Cerrar Sesión</label>
     </button>
   );

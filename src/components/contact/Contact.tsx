@@ -44,7 +44,7 @@ export const ContactForm = ({ translations }: Props) => {
       <p className="text-center md:px-20 text-lg">{translations.subTitle2} </p>
 
       <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-5">
+        <div className="grid grid-cols-1  md:grid-cols-2 gap-0 md:gap-5">
           <Input
             {...register("subject", { required: true })}
             placeholder={translations.subject}
@@ -72,9 +72,7 @@ export const ContactForm = ({ translations }: Props) => {
         />
         {isSubmitSuccessful && (
           <div className="flex mt-5 p-5 w-full rounded bg-gold/40 text-gold">
-            <p>
-              {translations.thanksForContacting}
-            </p>
+            <p>{translations.thanksForContacting}</p>
           </div>
         )}
 

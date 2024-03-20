@@ -47,8 +47,6 @@ export async function generateMetadata({
 }
 
 export default async function RootLayout({ children, params: { lng } }: Props) {
-  console.log("entré", lng);
-
   const { getDashboardTranslations } = GetTranslations();
 
   const translations = await getDashboardTranslations(lng);

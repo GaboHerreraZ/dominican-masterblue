@@ -1,17 +1,17 @@
-import { NextResponse } from "next/server";
 import acceptLanguage from "accept-language";
 import { languages } from "@/i18n/settings";
 import { lngMiddleware } from "./middleware/lng";
+import { updateSession } from "./middleware/session";
+import { NextResponse } from "next/server";
 
 acceptLanguage.languages(languages);
 
 export const config = {
-  // matcher: '/:lng*'
   matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js).*)"],
 };
 
-export function middleware(req) {
-  return lngMiddleware(req, NextResponse.next);
+export async function middleware(req) {
+  await updateSession(req);
 
-  // return NextResponse.next();
+  return lngMiddleware(req, NextResponse.next);
 }

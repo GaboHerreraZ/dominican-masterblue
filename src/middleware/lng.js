@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { fallbackLng, languages, cookieName } from "@/i18n/settings";
 
 export function lngMiddleware(req, next) {
-  if (req.nextUrl.pathname.includes('/admin')) {
+  if (req.nextUrl.pathname.includes("/admin")) {
     return next();
   }
 
@@ -22,11 +22,7 @@ export function lngMiddleware(req, next) {
     return NextResponse.redirect(new URL(`/${lng}${path}`, req.url));
   }
 
-  console.log(1);
-
   if (req.headers.has("referer")) {
-    console.log("referer", lng);
-
     const refererUrl = new URL(req.headers.get("referer"));
     const lngInReferer = languages.find((l) =>
       refererUrl.pathname.startsWith(`/${l}`)
@@ -35,8 +31,6 @@ export function lngMiddleware(req, next) {
     if (lngInReferer) response.cookies.set(cookieName, lngInReferer);
     return response;
   }
-
-  console.log(1);
 
   return next();
 }
