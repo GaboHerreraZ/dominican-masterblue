@@ -16,7 +16,7 @@ export const SideBar = () => {
   return (
     <aside
       className={clsx(
-        " fixed text-title z-10 border-r-[1px] border-default bg-slate-950  h-screen pr-5 transition-all duration-500",
+        " fixed text-title z-10 border-r-[1px] border-gold bg-slate-950  h-screen pr-5 transition-all duration-500",
         {
           "translate-x-0": isSideMenuOpen,
           "-translate-x-full": !isSideMenuOpen,
@@ -24,11 +24,11 @@ export const SideBar = () => {
       )}
     >
       <div className="text-end">
-        <button className="text-white" onClick={toggleSideMenu}>
+        <button className="text-gold" onClick={toggleSideMenu}>
           <IoClose size={30} />
         </button>
       </div>
-      <div className="grid  text-white font-bold  ">
+      <div className="grid  text-gold font-bold  ">
         <ul className="flex flex-col gap-3 w-full px-2 mt-4">
           <li>
             <Link href="/admin" className="flex gap-2 items-center">
@@ -43,33 +43,6 @@ export const SideBar = () => {
               <h1>Artículos</h1>
             </Link>
           </li>
-          {/* <li>
-            <Link href="/admin/usuarios" className="flex gap-2 items-center">
-              <FaUsers size={20} />
-              <h1>Usuarios</h1>
-            </Link>
-          </li>
-          <li>
-            <Link href="/admin/ordenes" className="flex gap-2 items-center">
-              <PiListChecksFill size={20} />
-              <h1>Ordenes</h1>
-            </Link>
-          </li>
-          <li>
-            <Link href="/admin/categorias" className="flex gap-2 items-center">
-              <MdCategory size={20} />
-              <h1>Categorías</h1>
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/admin/subcategorias"
-              className="flex gap-2 items-center"
-            >
-              <BiSolidCategoryAlt size={20} />
-              <h1>Subcategorias</h1>
-            </Link>
-          </li> */}
         </ul>
       </div>
     </aside>

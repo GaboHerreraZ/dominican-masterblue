@@ -10,7 +10,7 @@ export const TopMenu = ({ children }: { children: React.ReactNode }) => {
     <div className="block w-full min-h-screen">
       <nav className="flex  justify-between bg-slate-950 w-full px-2 md:px-5 py-2">
         <div className="  text-title ">
-          <button onClick={toggleSideMenu} className="px-1 text-white">
+          <button onClick={toggleSideMenu} className="px-1 text-gold">
             <IoMenu size={30} />
           </button>
         </div>

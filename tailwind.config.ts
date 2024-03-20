@@ -13,6 +13,7 @@ const config: Config = {
         "master-secondary": "#1c2022",
       },
       colors: {
+        gold: "#C48B21",
         master: {
           100: "#D6E4FF",
           200: "#ADC8FF",
@@ -31,8 +32,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    
-  ],
+  plugins: [],
 };
 export default config;

@@ -5,9 +5,11 @@ generator client {
 
 
 model Category {
-  id        String @id @default(uuid())
+  id        Int @id @default(autoincrement())
   name      String
-  description String
+  spanishDescription String
+  englishDescription String
+  link     String
   Product  Product[]
 
   @@schema("public")
@@ -15,9 +17,10 @@ model Category {
 
 
 model Subcategory {
-  id        String @id @default(uuid())
+  id        Int @id @default(autoincrement())
   name      String
-  description String
+  spanishDescription String
+  englishDescription String
   Product  Product[]
 
   @@schema("public")
@@ -51,9 +54,9 @@ model Product {
   height    Int
 
   category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
+  categoryId  Int
   subcategory Subcategory @relation(fields: [subcategoryId], references: [id])
-  subcategoryId String
+  subcategoryId Int
 
   productImage ProductImage[] 
 

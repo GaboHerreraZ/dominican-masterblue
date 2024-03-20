@@ -16,7 +16,7 @@ export const SingOutButton = ({ onClick }: { onClick: () => void }) => {
   };
 
   return (
-    <button onClick={handleSignOut} className="text-white mt-0 flex gap-2">
+    <button onClick={handleSignOut} className="text-gold mt-0 flex gap-2">
       <FaPowerOff size={25} />
       <label className="cursor-pointer">Cerrar Sesión</label>
     </button>

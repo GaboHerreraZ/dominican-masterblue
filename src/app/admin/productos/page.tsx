@@ -8,10 +8,10 @@ interface Props {
 }
 
 export default async function ProductsPage({ searchParams }: Props) {
-   const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const page = searchParams.page ? parseInt(searchParams.page) : 1;
 
   const data = Promise.all([
-    getProducts({page: page, take: 2}),
+    getProducts({ page: page, take: 2 }),
     getCategories(),
     getSubcategories(),
   ]);
@@ -19,14 +19,12 @@ export default async function ProductsPage({ searchParams }: Props) {
   const [products, categories, subcategories] = await data;
   return (
     <section className="container md:mx-auto px-2 lg:px-10">
-       <ProductGrid
+      <ProductGrid
         products={products!.products}
         categories={categories}
         subcategories={subcategories}
         totalPages={products!.totalPages}
-      /> 
-      
-      
+      />
     </section>
   );
 }

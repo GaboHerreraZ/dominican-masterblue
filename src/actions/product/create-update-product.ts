@@ -36,19 +36,20 @@ export const createUpdateProduct = async (formData: FormData) => {
           state: rest.state === "true",
         };
 
-        if (images) {          
+        if (images) {
           const listImage = formData.getAll("images") as File[];
           listImage.forEach((file) => {
             const path = `products/${rest.slug}/${file.name}`;
+            console.log(path);
             imagesPromise.push({
               urlPath: path,
               folder: `${rest.id}`,
               promise: uploadImage(path, file),
             });
           });
-          
+
           await Promise.all(imagesPromise.map((item) => item.promise));
-          
+
           imagesPromise.forEach((image) => {
             urlImages.push({
               folder: image.folder,
@@ -128,6 +129,7 @@ export const uploadImage = async (path: string, file: File) => {
       upsert: true,
     });
 
+  console.log(error);
   return data;
 };
 

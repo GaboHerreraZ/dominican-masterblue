@@ -7,5 +7,5 @@ interface Props {
 export default function StoreHomePage({ params: { lng } }: Props) {
   console.log(lng);
 
-  return <>StoreHomePage</>;
+  return <div className="h-[1500px]">StoreHomePage</div>;
 }

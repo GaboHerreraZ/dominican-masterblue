@@ -132,7 +132,9 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <Input
             {...register("englishDescription", { required: true })}
             placeholder="Descripción en ingles"
-            error={errors.englishDescription && "Descripción en ingles requerido"}
+            error={
+              errors.englishDescription && "Descripción en ingles requerido"
+            }
           />
           <Input
             {...register("slug", {
@@ -159,37 +161,16 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Cantidad"
           />
           <Input
-            type="number"
-            {...register("length", { required: true })}
-            placeholder="Longitud"
-            error={errors.length && "Longitud requerido"}
-          />
-          <Input
-            type="number"
-            {...register("weight", { required: true })}
-            placeholder="Peso"
-            error={errors.length && "Peso requerido"}
-          />
-          <Input
-            type="number"
-            {...register("width", { required: true })}
-            placeholder="Ancho"
-            error={errors.length && "Ancho requerido"}
-          />
-          <Input
-            type="number"
-            {...register("height", { required: true })}
-            placeholder="Altura"
-            error={errors.length && "Altura requerido"}
-          />
-          <Input
             {...register("youtubeLink", {
               pattern:
                 /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/|shorts\/)?([A-Za-z0-9\-_]{11})/,
             })}
-            placeholder="youtubeLink"
-            error={errors.youtubeLink && "Link no válido"}
+            placeholder="Youtube Link"
           />
+          <Input type="number" {...register("length")} placeholder="Longitud" />
+          <Input type="number" {...register("weight")} placeholder="Peso" />
+          <Input type="number" {...register("width")} placeholder="Ancho" />
+          <Input type="number" {...register("height")} placeholder="Altura" />
 
           <Select
             error={errors.categoryId && "Categoría requerida"}
