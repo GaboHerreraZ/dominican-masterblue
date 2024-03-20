@@ -1,4 +1,4 @@
-import { Navbar, NavbarCategory } from "@/components";
+import { DesktopNavbar, MobileNavbar, NavbarCategory } from "@/components";
 
 export default async function ShopLayout({
   children,
@@ -11,7 +11,8 @@ export default async function ShopLayout({
 }) {
   return (
     <main className="w-full min-h-screen">
-      <Navbar lng={lng} />
+      <DesktopNavbar lng={lng} />
+      <MobileNavbar lng={lng} />
       <NavbarCategory lng={lng} />
       {children}
     </main>

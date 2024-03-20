@@ -3,26 +3,5 @@
   "services": "Servicios",
   "contact": "Contacto",
   "login": "Iniciar Sesión",
-
-  "faqs": "FAQs",
-  "products": "Productos",
-  "desk": "Muebles",
-  "deskDescription": "Muebles para cualquier ocasión",
-  "chair": "Sillas",
-  "chairDescription": "Sillas para cualquier ocasión",
-  "paint": "Pintura",
-  "paintDescription": "Pintura para cualquier ocasión",
-  "remodeling": "Remodelación",
-  "remodelingDescription": "Remodelación para cualquier ocasión",
-  "message": "La simplicidad es la clave de la verdadera elegancia",
-  "bannerUsTitle": "Nuestra Historia, Tu Inspiración",
-  "bannerUsDescription": "Innovación y Pasión en Cada Proyecto",
-  "bannerProjectTitle": "Explora Nuestra Colección Exclusiva",
-  "bannerProjectDescription": "Muebles que Transforman, Detalles que Marcan la Diferencia",
-  "bannerServiceTitle": "",
-  "bannerServiceDescription": "",
-  "bannerContactTitle": "Contacto",
-  "bannerContactDescription": "Conéctate con nosotros, estamos aquí para ti.",
-  "bannerHomeTitle": "Bienvenido al Mundo del Diseño Único",
-  "bannerHomeDescription": "Transformamos Espacios, Creamos Experiencias"
+  "message": "La simplicidad es la clave de la verdadera elegancia"
 }
