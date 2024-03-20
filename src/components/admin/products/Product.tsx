@@ -14,10 +14,12 @@ import { createUpdateProduct, deleteImage } from "@/actions";
 import Input from "@/components/ui/input/Input";
 import Select from "@/components/ui/select/Select";
 import Checkbox from "@/components/ui/checkbox/Checkbox";
+import { Category } from "@/interfaces/category";
+import Link from "next/link";
 
 interface Props {
   product: Partial<Product>;
-  categories: Base[];
+  categories: Category[];
   subcategories: Base[];
 }
 
@@ -70,8 +72,8 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
     formData.append("weight", rest.weight.toString());
     formData.append("width", rest.width.toString());
     formData.append("height", rest.height.toString());
-    formData.append("categoryId", rest.categoryId);
-    formData.append("subcategoryId", rest.subcategoryId);
+    formData.append("categoryId", rest.categoryId.toString());
+    formData.append("subcategoryId", rest.subcategoryId.toString());
 
     if (images) {
       for (let i = 0; i < images.length; i++) {
@@ -109,6 +111,9 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <header className="flex justify-between items-center border-b-[1px] border-gray-300 mb-5">
           <h1 className="text-xl font-extrabold  uppercase">Producto</h1>
+          <Link className="button-gold mb-2" href="/admin/productos">
+            Volver
+          </Link>
           <button type="submit" className="button-gold mb-2">
             Guardar
           </button>
@@ -145,13 +150,13 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             error={errors.slug && "Slug requerido ej: muebles-oficina"}
           />
           <Input
-            {...register("material", { required: true })}
+            {...register("material")}
             placeholder="Material"
             error={errors.material && "Material requerido"}
           />
           <Input
             type="number"
-            {...register("price", { required: true })}
+            {...register("price")}
             placeholder="Precio"
             error={errors.price && "Precio requerido"}
           />

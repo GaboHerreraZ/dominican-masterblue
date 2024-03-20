@@ -16,8 +16,8 @@ export interface Product {
   weight: number;
   width: number;
   height: number;
-  categoryId: string;
-  subcategoryId: string;
+  categoryId: number;
+  subcategoryId: number;
   productImage: ProductImage[];
   images?: FileList;
 }

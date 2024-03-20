@@ -16,7 +16,7 @@ export const SideBar = () => {
   return (
     <aside
       className={clsx(
-        " fixed text-title z-10 border-r-[1px] border-gold bg-slate-950  h-screen pr-5 transition-all duration-500",
+        " fixed text-title z-50 border-r-[1px] border-gold bg-slate-950  h-screen pr-5 transition-all duration-500",
         {
           "translate-x-0": isSideMenuOpen,
           "-translate-x-full": !isSideMenuOpen,

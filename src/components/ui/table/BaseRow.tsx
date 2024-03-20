@@ -2,7 +2,7 @@ import { Base } from "@/interfaces/base";
 
 interface Props {
   base: Base[];
-  id: string;
+  id: number;
 }
 
 export const BaseRow = ({ base, id }: Props) => {
