@@ -38,7 +38,7 @@ datasource db {
 model Product {
 
   id        String @id @default(uuid())
-  sku      String
+  sku      String  @unique
   spanishDescription String
   englishDescription String
   spanishName String

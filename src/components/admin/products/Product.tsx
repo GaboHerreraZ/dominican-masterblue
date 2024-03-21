@@ -37,7 +37,6 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
     const formData = new FormData();
     const { images, ...rest } = data;
 
-
     if (images?.length === 0 && product.productImage?.length === 0) {
       toastError("Se requiere al menos una imagen");
       return;
@@ -140,7 +139,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <Input
             {...register("englishName", { required: true })}
             placeholder="Nombre en ingles"
-            error={errors.spanishName && "Nombre en ingles requerido"}
+            error={errors.englishName && "Nombre en ingles requerido"}
           />
           <Input
             {...register("englishDescription", { required: true })}
@@ -157,15 +156,8 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Slug"
             error={errors.slug && "Slug requerido ej: muebles-oficina"}
           />
-          <Input
-            {...register("material")}
-            placeholder="Material"
-          />
-          <Input
-            type="number"
-            {...register("price")}
-            placeholder="Precio"
-          />
+          <Input {...register("material")} placeholder="Material" />
+          <Input type="number" {...register("price")} placeholder="Precio" />
           <Input
             type="number"
             {...register("quantity")}
@@ -197,7 +189,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             options={subcategories}
           />
 
-          <Checkbox {...register("state")} placeholder="Estado" />
+          <Checkbox {...register("state")} placeholder="Disponible" />
         </div>
         <h1 className="border-b-[1px] mt-5 border-gray-300 text-xl font-extrabold  uppercase">
           Adjuntar Imagenes

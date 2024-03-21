@@ -17,10 +17,9 @@ import { BiSolidEdit } from "react-icons/bi";
 
 const columns: Column[] = [
   { label: "Imagen" },
-  { label: "Nombre" },
+  { label: "Sku" },
   { label: "Slug" },
-  { label: "Material" },
-  { label: "Cantidad" },
+  { label: "Estado" },
   { label: "Categoría" },
   { label: "Subcategoría" },
   { label: "Acciones" },
@@ -56,14 +55,13 @@ export const ProductGrid = ({
                 image={product.productImage[0].url}
                 label={product.spanishName}
               />
+              <TextRow label={product.sku} />
               <TextRow label={product.slug} />
               <StateRow
                 state={product.state}
                 trueLabel="Disponible"
                 falseLabel="No disponible"
               />
-              <TextRow label={product.material} />
-              <TextRow label={product.quantity} />
               <BaseRow base={categories} id={product.categoryId} />
               <BaseRow base={subcategories} id={product.subcategoryId} />
               <ActionRow
