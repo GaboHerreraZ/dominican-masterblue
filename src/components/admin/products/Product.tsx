@@ -164,13 +164,11 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <Input
             {...register("material")}
             placeholder="Material"
-            error={errors.material && "Material requerido"}
           />
           <Input
             type="number"
             {...register("price")}
             placeholder="Precio"
-            error={errors.price && "Precio requerido"}
           />
           <Input
             type="number"

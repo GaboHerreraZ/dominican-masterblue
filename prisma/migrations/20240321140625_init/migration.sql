@@ -1,17 +1,20 @@
 -- CreateTable
 CREATE TABLE "public"."Category" (
-    "id" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "spanishDescription" TEXT NOT NULL,
+    "englishDescription" TEXT NOT NULL,
+    "link" TEXT NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "public"."Subcategory" (
-    "id" TEXT NOT NULL,
+    "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "spanishDescription" TEXT NOT NULL,
+    "englishDescription" TEXT NOT NULL,
 
     CONSTRAINT "Subcategory_pkey" PRIMARY KEY ("id")
 );
@@ -19,6 +22,7 @@ CREATE TABLE "public"."Subcategory" (
 -- CreateTable
 CREATE TABLE "public"."Product" (
     "id" TEXT NOT NULL,
+    "sku" TEXT NOT NULL,
     "spanishDescription" TEXT NOT NULL,
     "englishDescription" TEXT NOT NULL,
     "spanishName" TEXT NOT NULL,
@@ -33,8 +37,8 @@ CREATE TABLE "public"."Product" (
     "weight" INTEGER NOT NULL,
     "width" INTEGER NOT NULL,
     "height" INTEGER NOT NULL,
-    "categoryId" TEXT NOT NULL,
-    "subcategoryId" TEXT NOT NULL,
+    "categoryId" INTEGER NOT NULL,
+    "subcategoryId" INTEGER NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );

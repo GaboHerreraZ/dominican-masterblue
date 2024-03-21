@@ -2,7 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import supabase from "@/lib/supabase";
-import { Product as PrismaProduct } from "@prisma/client";
+import { Product } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 export const createUpdateProduct = async (formData: FormData) => {
@@ -18,7 +18,7 @@ export const createUpdateProduct = async (formData: FormData) => {
           promise: Promise<any>;
         }[] = [];
         const urlImages: { url: string; folder: string }[] = [];
-        let product: PrismaProduct;
+        let product: Product;
         const idParse = id ? (id as unknown as string) : "";
 
         const productParse = {
@@ -94,8 +94,8 @@ export const createUpdateProduct = async (formData: FormData) => {
           });
         }
         revalidatePath("/admin/productos");
-        revalidatePath(`/admin/producto/${product.id}`);
-        revalidatePath(`/producto/${product.id}`);
+        revalidatePath(`/admin/producto/${product.sku}`);
+        revalidatePath(`/producto/${product.slug}`);
         revalidatePath("/admin");
 
         return {
