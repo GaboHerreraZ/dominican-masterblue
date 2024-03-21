@@ -1,7 +1,6 @@
 import {
   ActionRow,
   BaseRow,
-  DateRow,
   ImageRow,
   StateRow,
   Table,
@@ -50,7 +49,7 @@ export const ProductGrid = ({
       <Table columns={columns} totalPages={totalPages}>
         <>
           {products.map((product) => (
-            <tr key={product.id}>
+            <tr key={product.sku}>
               <ImageRow
                 image={product.productImage[0].url}
                 label={product.spanishName}
@@ -68,7 +67,7 @@ export const ProductGrid = ({
                 actions={[
                   {
                     icon: <BiSolidEdit size={25} />,
-                    href: `/admin/producto/${product.id}`,
+                    href: `/admin/producto/${product.sku}`,
                     id: product.id,
                   },
                 ]}

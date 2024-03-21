@@ -13,17 +13,17 @@ const getMasterData = async () => {
 };
 
 export default async function ProductoPage({
-  params: { id },
+  params: { sku },
 }: {
-  params: { id: string };
+  params: { sku: string };
 }) {
   const { categories, subcategories } = await getMasterData();
   const product =
-    id === "nuevo"
+    sku === "nuevo"
       ? {
           productImage: [],
         }
-      : await getProduct(id);
+      : await getProduct(sku);
 
   return (
     <section className="container md:mx-auto px-2 lg:px-10">

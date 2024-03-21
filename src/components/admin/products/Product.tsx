@@ -77,19 +77,20 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       }
     }
 
-    const { ok, product: productCreated } = await createUpdateProduct(formData);
+    const { ok, product: productCreated, error } = await createUpdateProduct(formData);
 
     ok
       ? toastSuccess(
-          `Producto ${product.id ? "actualizado" : "creado"} correctamente`
+          `Producto ${product.sku ? "actualizado" : "creado"} correctamente`
         )
-      : toastError(
-          `Error al ${product.id ? "actualizar" : "crear"} el producto`
+      : 
+        toastError(
+          `El código ${error} de referencia ya existe`
         );
 
     toggleLoading(false);
 
-    if (ok) router.replace(`/admin/producto/${productCreated?.id}`);
+    if (ok) router.replace(`/admin/producto/${productCreated?.sku}`);
   };
 
   const handleDeleteImage = async (id: number, folder: string) => {
