@@ -58,6 +58,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       formData.append("id", product.id ?? "");
     }
 
+    formData.append("sku", rest.sku);
     formData.append("spanishDescription", rest.spanishDescription);
     formData.append("englishDescription", rest.englishDescription);
     formData.append("spanishName", rest.spanishName);
@@ -111,14 +112,25 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <header className="flex justify-between items-center border-b-[1px] border-gray-300 mb-5">
           <h1 className="text-xl font-extrabold  uppercase">Producto</h1>
-          <Link className="button-gold mb-2" href="/admin/productos">
-            Volver
-          </Link>
-          <button type="submit" className="button-gold mb-2">
-            Guardar
-          </button>
+          <div className="mb-2">
+            <Link
+              className="button-secundary mr-2 h-[34px] "
+              href="/admin/productos"
+            >
+              Volver
+            </Link>
+            <button type="submit" className="button-gold">
+              Guardar
+            </button>
+          </div>
         </header>
         <div className="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
+          <Input
+            {...register("sku", { required: true })}
+            placeholder="Sku"
+            error={errors.sku && "Referencia requerida"}
+          />
+
           <Input
             {...register("spanishName", { required: true })}
             placeholder="Nombre"

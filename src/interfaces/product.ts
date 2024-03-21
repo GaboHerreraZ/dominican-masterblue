@@ -2,6 +2,7 @@ import { ProductImage } from "@prisma/client";
 
 export interface Product {
   id: string;
+  sku: string;
   spanishDescription: string;
   englishDescription: string;
   spanishName: string;

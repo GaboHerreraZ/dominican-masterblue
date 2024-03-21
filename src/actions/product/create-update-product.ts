@@ -28,8 +28,8 @@ export const createUpdateProduct = async (formData: FormData) => {
           weight: parseInt(rest.weight.toString()),
           width: parseInt(rest.width.toString()),
           height: parseInt(rest.height.toString()),
-          categoryId: rest.categoryId.toString(),
-          subcategoryId: rest.subcategoryId.toString(),
+          categoryId: parseInt(rest.categoryId),
+          subcategoryId: parseInt(rest.subcategoryId),
           quantity: parseInt(rest.quantity.toString())
             ? parseInt(rest.quantity.toString())
             : 0,
@@ -40,10 +40,9 @@ export const createUpdateProduct = async (formData: FormData) => {
           const listImage = formData.getAll("images") as File[];
           listImage.forEach((file) => {
             const path = `products/${rest.slug}/${file.name}`;
-            console.log(path);
             imagesPromise.push({
               urlPath: path,
-              folder: `${rest.id}`,
+              folder: `${rest.sku}/${file.name}`,
               promise: uploadImage(path, file),
             });
           });
@@ -123,13 +122,10 @@ export const createUpdateProduct = async (formData: FormData) => {
 };
 
 export const uploadImage = async (path: string, file: File) => {
-  const { data, error } = await supabase.storage
-    .from("products")
-    .upload(path, file, {
-      upsert: true,
-    });
+  const { data } = await supabase.storage.from("products").upload(path, file, {
+    upsert: true,
+  });
 
-  console.log(error);
   return data;
 };
 

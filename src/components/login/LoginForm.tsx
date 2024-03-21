@@ -87,7 +87,7 @@ export const LoginForm = () => {
               )}
             </div>
 
-            <div className="mb-3">
+            <div className="mt-3">
               <button
                 type="submit"
                 className="mb-1.5 block w-full text-center button-gold text-gold "
