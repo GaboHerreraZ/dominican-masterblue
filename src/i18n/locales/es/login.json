@@ -1,7 +1,11 @@
 {
-  "email": "Correo",
-  "emailPlaceHolder": "Ingrese el correo",
-  "password": "Contraseña",
-  "passwordPlaceHolder": "Ingrese la contraseña",
-  "login": "Iniciar Sesión"
+  "title": "Bienvenidos",
+  "subTitle": "Por favor ingresa tus datos",
+  "emailPlaceHolder": "Ingresa tu email",
+  "errorEmail": "Email requerido",
+  "password": "Ingresa tu contraseña",
+  "passwordPlaceHolder": "Ingresa tu contraseña",
+  "errorPassword": "Contraseña requerida",
+  "login": "Iniciar Sesión",
+  "invalidLogin": "Contraseña incorrecta"
 }

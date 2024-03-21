@@ -23,11 +23,21 @@ export const createUpdateProduct = async (formData: FormData) => {
 
         const productParse = {
           ...rest,
-          price: parseFloat(rest.price.toString()),
-          length: parseInt(rest.length.toString()),
-          weight: parseInt(rest.weight.toString()),
-          width: parseInt(rest.width.toString()),
-          height: parseInt(rest.height.toString()),
+          price: parseFloat(rest.price.toString())
+            ? parseFloat(rest.price.toString())
+            : 0,
+          length: parseInt(rest.length.toString())
+            ? parseFloat(rest.length.toString())
+            : 0,
+          weight: parseInt(rest.weight.toString())
+            ? parseFloat(rest.weight.toString())
+            : 0,
+          width: parseInt(rest.width.toString())
+            ? parseFloat(rest.width.toString())
+            : 0,
+          height: parseInt(rest.height.toString())
+            ? parseFloat(rest.height.toString())
+            : 0,
           categoryId: parseInt(rest.categoryId),
           subcategoryId: parseInt(rest.subcategoryId),
           quantity: parseInt(rest.quantity.toString())

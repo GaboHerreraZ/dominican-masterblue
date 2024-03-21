@@ -37,10 +37,6 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
     const formData = new FormData();
     const { images, ...rest } = data;
 
-    if (data.state && Number(data.quantity) === 0) {
-      toastError("El producto no puede estar disponible si la cantidad es 0");
-      return;
-    }
 
     if (images?.length === 0 && product.productImage?.length === 0) {
       toastError("Se requiere al menos una imagen");

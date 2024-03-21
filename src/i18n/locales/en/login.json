@@ -1,7 +1,10 @@
 {
-  "email": "E-mail",
+  "title": "Welcome",
+  "subTitle": "Please enter your data",
   "emailPlaceHolder": "Enter your E-mail",
-  "password": "Password",
+  "errorEmail": "E-mail required",
   "passwordPlaceHolder": "Enter your password",
-  "login": "Log In"
+  "errorPassword": "Password required",
+  "login": "Log In",
+  "invalidLogin": "Incorrect password"
 }

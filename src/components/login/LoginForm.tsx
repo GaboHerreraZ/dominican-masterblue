@@ -1,15 +1,19 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 
 import Input from "@/components/ui/input/Input";
 import { Login } from "@/interfaces/login";
+import { LoginLng } from "@/interfaces/i18n/loginLng";
 import { useLoadingStore } from "@/store";
 import { signInWithPassword } from "@/actions";
 
-export const LoginForm = () => {
+interface Props {
+  translations: LoginLng
+}
+
+export const LoginForm = ({translations}: Props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const toggleLoading = useLoadingStore((state) => state.toggleLoading);
@@ -34,7 +38,7 @@ export const LoginForm = () => {
     if (error) {
       const message =
         error.message === "Invalid login credentials"
-          ? "Contraseña incorrecta"
+          ? translations.invalidLogin
           : error.message;
       setErrorMessage(message);
       return;
@@ -55,10 +59,10 @@ export const LoginForm = () => {
         <div className="w-full p-5 ">
           <header className=" flex flex-col items-center justify-center text-center">
             <h1 className="text-2xl font-semibold text-gold text-center">
-              Bienvenido
+              {translations.title}
             </h1>
             <small className="text-lg text-slate-950 text-center">
-              Por favor ingresa tus datos
+              {translations.subTitle}
             </small>
           </header>
 
@@ -66,19 +70,19 @@ export const LoginForm = () => {
             <div className="grid gap-2">
               <Input
                 {...register("email", { required: true })}
-                placeholder="Ingresa tu email"
-                error={errors.email && "Email requerido"}
+                placeholder={translations.emailPlaceHolder}
+                error={errors.email && translations.errorEmail}
               />
 
               <Input
                 {...register("password", { required: true })}
-                placeholder="Ingresa tu contraseña"
+                placeholder={translations.passwordPlaceHolder}
                 type="password"
                 autoComplete="current-password"
-                error={errors.email && "Contraseña requerido"}
+                error={errors.email && translations.errorPassword}
               />
             </div>
-
+            
             <div>
               {errorMessage && (
                 <p className="bg-red-700 text-center text-white p-2 my-2">
@@ -92,7 +96,7 @@ export const LoginForm = () => {
                 type="submit"
                 className="mb-1.5 block w-full text-center button-gold text-gold "
               >
-                Iniciar Sesión
+                {translations.login}
               </button>
             </div>
           </form>
