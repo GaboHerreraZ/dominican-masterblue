@@ -1,4 +1,4 @@
-import { DesktopNavbar, MobileNavbar, NavbarCategory } from "@/components";
+import { DesktopNavbar, MobileNavbar, NavbarCategory, Footer } from "@/components";
 
 export default async function ShopLayout({
   children,
@@ -15,6 +15,7 @@ export default async function ShopLayout({
       <MobileNavbar lng={lng} />
       <NavbarCategory lng={lng} />
       {children}
+      <Footer/>
     </main>
   );
 }
