@@ -14,12 +14,11 @@ import { createUpdateProduct, deleteImage } from "@/actions";
 import Input from "@/components/ui/input/Input";
 import Select from "@/components/ui/select/Select";
 import Checkbox from "@/components/ui/checkbox/Checkbox";
-import { Category } from "@/interfaces/category";
 import Link from "next/link";
 
 interface Props {
   product: Partial<Product>;
-  categories: Category[];
+  categories: Base[];
   subcategories: Base[];
 }
 
