@@ -77,20 +77,21 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       }
     }
 
-    const { ok, product: productCreated, error } = await createUpdateProduct(formData);
+    const {
+      ok,
+      product: productCreated,
+      error,
+    } = await createUpdateProduct(formData);
 
     ok
       ? toastSuccess(
           `Producto ${product.sku ? "actualizado" : "creado"} correctamente`
         )
-      : 
-        toastError(
-          `El código ${error} de referencia ya existe`
-        );
+      : toastError(`El código ${error} de referencia ya existe`);
 
     toggleLoading(false);
 
-    if (ok) router.replace(`/admin/producto/${productCreated?.sku}`);
+    if (ok) router.replace(`/admin/product/${productCreated?.sku}`);
   };
 
   const handleDeleteImage = async (id: number, folder: string) => {
@@ -111,7 +112,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <div className="mb-2">
             <Link
               className="button-secundary mr-2 h-[34px] "
-              href="/admin/productos"
+              href="/admin/products"
             >
               Volver
             </Link>
@@ -214,16 +215,15 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         <div className="flex gap-4 mt-3">
           {product?.productImage?.map((url, index) => (
             <div key={index} className="grid gap-2 ">
-              {
-                product?.productImage?.length === 1 ? '' : (
+              {product?.productImage?.length! > 1 && (
                 <button
                   onClick={() => handleDeleteImage(url.id, url.folder)}
                   className="text-red-500 flex justify-center"
                 >
                   <FaRegTrashAlt size={15} />
-                </button>)
-              }
-              
+                </button>
+              )}
+
               <Image src={url.url} alt={url.url} width={150} height={150} />
             </div>
           ))}

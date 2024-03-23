@@ -103,9 +103,9 @@ export const createUpdateProduct = async (formData: FormData) => {
             },
           });
         }
-        revalidatePath("/admin/productos");
-        revalidatePath(`/admin/producto/${product.sku}`);
-        revalidatePath(`/producto/${product.slug}`);
+        revalidatePath("/admin/products");
+        revalidatePath(`/admin/product/${product.sku}`);
+        revalidatePath(`/product/${product.slug}`);
         revalidatePath("/admin");
 
         return {
@@ -123,12 +123,13 @@ export const createUpdateProduct = async (formData: FormData) => {
       ok: prismaTx.ok,
       product: prismaTx.product,
     };
-  } catch (error: any) { //!
+  } catch (error: any) {
+    //!
     //! console.log('error al crear',error.meta.target);
     return {
       ok: false,
       message: "Error creando o actualizando el producto",
-      error: error.meta.target[0]
+      error: error.meta.target[0],
     };
   }
 };

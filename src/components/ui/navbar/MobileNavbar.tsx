@@ -7,7 +7,7 @@ export const MobileNavbar = async ({ lng }: { lng: string }) => {
   const mainMenu = [
     {
       name: t("about-us"),
-      link: "/about",
+      link: "/about-us",
     },
     {
       name: t("services"),

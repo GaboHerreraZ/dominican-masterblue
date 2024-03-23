@@ -22,7 +22,7 @@ export const CategorySelector = ({ categories, category, lng }: Props) => {
 
   const handleChange = (event: any) => {
     setSelectedCategory(event.target.value);
-    router.replace(`/productos/${event.target.value}`);
+    router.replace(`/products/${event.target.value}`);
   };
 
   return (

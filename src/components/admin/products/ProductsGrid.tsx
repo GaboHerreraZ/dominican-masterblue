@@ -41,7 +41,7 @@ export const ProductGrid = ({
     <div className="mt-5">
       <header className="flex justify-between items-center border-b-[1px] border-gray-300">
         <h1 className="text-xl font-extrabold mb-5 uppercase">Productos</h1>
-        <Link className="button-gold" href="/admin/producto/nuevo">
+        <Link className="button-gold" href="/admin/product/nuevo">
           Agregar Producto
         </Link>
       </header>

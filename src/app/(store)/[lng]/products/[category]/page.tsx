@@ -41,7 +41,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   return {
     metadataBase: new URL(
-      `https://dominicanmasterblue.com/${lng}/productos/${category}`
+      `https://dominicanmasterblue.com/${lng}/products/${category}`
     ),
     title: `Muebles para ${category}`,
     description:
@@ -51,7 +51,7 @@ export async function generateMetadata({
       description:
         "Descubre muebles únicos para tu hogar, oficina y cocinas: camas, lámparas y más. Diseños exclusivos para cada estilo. Encuentra la pieza perfecta aquí.",
       siteName: "Dominican MasterBlue",
-      url: `https://dominicanmasterblue.com/${lng}/${category}`,
+      url: `https://dominicanmasterblue.com/${lng}/products/${category}`,
     },
     verification: {
       google:

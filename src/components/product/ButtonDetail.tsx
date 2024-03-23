@@ -15,7 +15,7 @@ export const ButtonDetail = ({ id, name }: { id: string; name: string }) => {
     const urlRest = new URLSearchParams(params).toString();
     const url = urlRest ? `?${urlRest}` : "";
     setBreadcrumb(`${path}${url}`, name);
-    router.replace(`/producto/${id}`);
+    router.replace(`/product/${id}`);
   };
 
   return (

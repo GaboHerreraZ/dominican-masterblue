@@ -98,10 +98,7 @@ export const ProductFilters = ({
             />
           </div>
           <div className="mt-2 flex pr-2 justify-end">
-            <Link
-              className="button-gold"
-              href="http://localhost:3000/en/productos/todos"
-            >
+            <Link className="button-gold" href="/products/todos">
               {translations.clearFilter}
             </Link>
           </div>

@@ -38,7 +38,7 @@ export const SideBar = () => {
           </li>
 
           <li>
-            <Link href="/admin/productos" className="flex gap-2 items-center">
+            <Link href="/admin/products" className="flex gap-2 items-center">
               <IoDiamond size={20} />
               <h1>Productos</h1>
             </Link>

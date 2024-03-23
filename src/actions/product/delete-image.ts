@@ -23,9 +23,9 @@ export const deleteImage = async (id: number, path: string) => {
       };
     });
 
-    revalidatePath("/admin/productos");
-    revalidatePath(`/admin/producto/${id}`);
-    revalidatePath(`/producto/${id}`);
+    revalidatePath("/admin/products");
+    revalidatePath(`/admin/product/${id}`);
+    revalidatePath(`/product/${id}`);
 
     return {
       ok: true,
