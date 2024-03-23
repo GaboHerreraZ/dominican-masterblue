@@ -15,7 +15,7 @@ export default async function ShopLayout({
       <MobileNavbar lng={lng} />
       <NavbarCategory lng={lng} />
       {children}
-      <Footer/>
+      <Footer lng={lng}/>
     </main>
   );
 }

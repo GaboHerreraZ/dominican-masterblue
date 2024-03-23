@@ -79,8 +79,6 @@ export default async function ProductsPage({
     order: productOrder,
   });
 
-  console.log("datos", products);
-
   return <ProductContainer lng={lng} products={products?.products!} />;
 }
 

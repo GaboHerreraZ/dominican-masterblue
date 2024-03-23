@@ -21,9 +21,10 @@ interface Props {
   categories: Category[];
   subcategories: Base[];
   lng: string;
+  translations: any;
 }
 
-export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
+export const ProductFilters = ({ categories, subcategories, lng, translations }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathName = usePathname();
@@ -61,7 +62,7 @@ export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
           )}
         >
           <div className="flex border-b-[1px] border-gray-200 justify-between items-center px-2 font-bold">
-            <h1 className="text-slate-950 text-2xl">Filtrar Búsqueda</h1>
+            <h1 className="text-slate-950 text-2xl">{translations.filterBy}</h1>
             <button onClick={handleOpen} className="cursor-pointer  p-2">
               <IoMdClose
                 size={30}
@@ -72,7 +73,7 @@ export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
 
           <div className="mt-10">
             <h1 className="text-xl font-bold my-5 border-b-[1px] border-b-slate-100 text-slate-950 mx-2">
-              Categorías
+            {translations.categories}
             </h1>
             <CategorySelector
               lng={lng}
@@ -82,7 +83,7 @@ export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
           </div>
           <div className="mt-10">
             <h1 className="text-xl font-bold  border-b-[1px] border-b-slate-100 text-slate-950 mx-2">
-              Subcategorías
+              {translations.subcategories}
             </h1>
             <BaseSelector
               base={subcategories}
@@ -94,9 +95,9 @@ export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
           <div className="mt-2 flex pr-2 justify-end">
             <Link
               className="button-gold"
-              href="https://bellartejoyeria.com/genero/all"
+              href="http://localhost:3000/en/productos/todos"
             >
-              Limpiar Filtros
+              {translations.clearFilter}
             </Link>
           </div>
         </aside>
@@ -112,9 +113,9 @@ export const ProductFilters = ({ categories, subcategories, lng }: Props) => {
         <div className="flex justify-between">
           <button className="flex gap-1 cursor-pointer" onClick={handleOpen}>
             <TbFilterSearch size={25} />
-            <label className="cursor-pointer font-bold">Filtrar por</label>
+            <label className="cursor-pointer font-bold">{translations.filterBy}</label>
           </button>
-          <ProductOrder />
+          <ProductOrder translations={translations}/>
         </div>
       </section>
     </>

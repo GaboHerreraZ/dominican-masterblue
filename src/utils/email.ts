@@ -7,7 +7,7 @@ export const createContactEmail = (contact: Contact) => {
   <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Contacto BellArte Joyería</title>
+      <title>Contacto Dominican Masterblue</title>
       <style>
           body {
               font-family: 'Arial', sans-serif;
@@ -51,7 +51,7 @@ export const createContactEmail = (contact: Contact) => {
   </head>
   <body>
       <div class="container">
-          <img class="logo-img" src="https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/bellarte-icono.png?t=2024-03-13T20%3A05%3A15.227Z" alt="BellArte Joyería" />
+          <img class="logo-img" src="https://neemxhjfpkzimvlwwlpe.supabase.co/storage/v1/object/public/publicImage/bellarte-icono.png?t=2024-03-13T20%3A05%3A15.227Z" alt="Dominican Masterblue" />
           <h2>¡Hola!</h2>
           <p>Hemos recibido un nuevo mensaje de contacto. Aquí están los detalles:</p>
   
@@ -67,7 +67,7 @@ export const createContactEmail = (contact: Contact) => {
               <p>${contact.message}</p>
           </div>
   
-          <p>¡Gracias por ponerte en contacto con BellArte Joyería!</p>
+          <p>¡Gracias por ponerte en contacto con Dominican Masterblue!</p>
       </div>
   </body>
   </html>

@@ -5,7 +5,11 @@ import { ORDERBY } from "@/utils/constant";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export const ProductOrder = () => {
+interface Props {
+  translations: any
+}
+
+export const ProductOrder = ({translations}: Props) => {
   const [order, setOrder] = useState<Order>();
 
   const searchParams = useSearchParams();
@@ -34,7 +38,7 @@ export const ProductOrder = () => {
   return (
     <div className="group relative w-[220px]">
       <h1 className="text-md  w-full ">
-        Ordenar: <span className="font-bold">{order?.name}</span>
+        {translations.orderBy}: <span className="font-bold">{order?.name}</span>
       </h1>
       <div className="z-50 invisible group-hover:visible  w-full opacity-0 group-hover:opacity-100 absolute group-hover:text-gold  transition-all duration-500">
         <ul className="border-[1px] w-full bg-white  border-gray-200 ">

@@ -214,12 +214,16 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         <div className="flex gap-4 mt-3">
           {product?.productImage?.map((url, index) => (
             <div key={index} className="grid gap-2 ">
-              <button
-                onClick={() => handleDeleteImage(url.id, url.folder)}
-                className="text-red-500 flex justify-center"
-              >
-                <FaRegTrashAlt size={15} />
-              </button>
+              {
+                product?.productImage?.length === 1 ? '' : (
+                <button
+                  onClick={() => handleDeleteImage(url.id, url.folder)}
+                  className="text-red-500 flex justify-center"
+                >
+                  <FaRegTrashAlt size={15} />
+                </button>)
+              }
+              
               <Image src={url.url} alt={url.url} width={150} height={150} />
             </div>
           ))}

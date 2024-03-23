@@ -68,15 +68,15 @@ export const getProducts = async ({
       },
     });
 
-    console.log("products prisma", products);
+    // console.log("products prisma", products);
 
     const totalCount = await prisma.product.count();
 
-    console.log("products totalCount", totalCount);
+    // console.log("products totalCount", totalCount);
 
     const totalPages = Math.ceil(totalCount / take);
 
-    console.log("products totalPages", totalCount);
+    // console.log("products totalPages", totalCount);
 
     return {
       currentPage: page,
@@ -84,7 +84,7 @@ export const getProducts = async ({
       products,
     };
   } catch (e) {
-    console.log("error", e);
+    // console.log("error", e);
     return null;
   }
 };

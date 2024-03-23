@@ -1,15 +1,13 @@
 {
-  "contact": "Contácto",
-  "description": "Somos referentes en Republica Dominicana (Punta Cana) en el diseño de interiores, arquitectura 3D y ebanistería. Nos destacamos por fusionar elegancia y funcionalidad en cada proyecto.",
+  "information": "INFORMACIÓN",
+  "terms": "Terminos y condiciones",
   "address": "Avenida Estado Unidos",
   "addressDescription": "Nave 1 y 2 Frente a Cocotal",
   "schedule": "Horario de atención",
   "weekSchedule": "Lun a Vier: 8:am - 6:00pm",
   "weekendSchedule": "Sab: 8:am - 1:00pm",
-  "us": "Nosotros",
-  "whoWeAre": "¿Quiénes Somos?",
-  "ourProducts": "Nuestros Productos",
-  "ourServices": "Nuestros Servicios",
-  "meetUs": "Conócenos",
-  "doYouNeedHelp": "¿Necesitas Asesoría?"
+  "contactUs": "CONTÁCTANOS",
+  "e-mail": "Correo Electrónico",
+  "socialNetworks": "REDES SOCIALES",
+  "developer": "© 2021 Dominican Masterblue. Diseñado por"
 }

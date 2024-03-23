@@ -1,15 +1,13 @@
 {
-  "contact": "Contact",
-  "description": "We are leaders in the Dominican Republic (Punta Cana) in interior design, 3D architecture and cabinetmaking. We stand out for fusing elegance and functionality in each project.",
+  "information": "INFORMATION",
+  "terms": "Terms and Conditions",
   "address": "United States Avenue",
   "addressDescription": "Warehouse 1 and 2 in front of Cocotal",
   "schedule": "Opening Hours",
   "weekSchedule": "Mon a Fri: 8:am - 6:00pm",
   "weekendSchedule": "Sat: 8:am - 1:00pm",
-  "us": "Us",
-  "whoWeAre": "About Us?",
-  "ourProducts": "Our Products",
-  "ourServices": "Our Services",
-  "meetUs": "Meet Us",
-  "doYouNeedHelp": "Do you need Advice?"
+  "contactUs": "CONTACT US",
+  "e-mail": "E-mail address",
+  "socialNetworks": "SOCIAL NETWORKS",
+  "developer": "© 2021 Dominican Masterblue. Designed by"
 }
