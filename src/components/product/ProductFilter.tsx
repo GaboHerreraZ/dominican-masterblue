@@ -24,7 +24,12 @@ interface Props {
   translations: any;
 }
 
-export const ProductFilters = ({ categories, subcategories, lng, translations }: Props) => {
+export const ProductFilters = ({
+  categories,
+  subcategories,
+  lng,
+  translations,
+}: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathName = usePathname();
@@ -73,7 +78,7 @@ export const ProductFilters = ({ categories, subcategories, lng, translations }:
 
           <div className="mt-10">
             <h1 className="text-xl font-bold my-5 border-b-[1px] border-b-slate-100 text-slate-950 mx-2">
-            {translations.categories}
+              {translations.categories}
             </h1>
             <CategorySelector
               lng={lng}
@@ -110,12 +115,14 @@ export const ProductFilters = ({ categories, subcategories, lng, translations }:
       </div>
 
       <section className="w-full mt-20 container px-12 md:px-0 m-5  mx-auto">
-        <div className="flex justify-between">
+        <div className="flex flex-col md:flex-row  justify-between">
           <button className="flex gap-1 cursor-pointer" onClick={handleOpen}>
             <TbFilterSearch size={25} />
-            <label className="cursor-pointer font-bold">{translations.filterBy}</label>
+            <label className="cursor-pointer font-bold">
+              {translations.filterBy}
+            </label>
           </button>
-          <ProductOrder translations={translations}/>
+          <ProductOrder lng={lng} translations={translations} />
         </div>
       </section>
     </>

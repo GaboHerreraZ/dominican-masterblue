@@ -4,17 +4,21 @@ import { Order } from "@/interfaces/order";
 import { ORDERBY } from "@/utils/constant";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { LuListOrdered } from "react-icons/lu";
 
 interface Props {
-  translations: any
+  translations: any;
+  lng: string;
 }
 
-export const ProductOrder = ({translations}: Props) => {
+export const ProductOrder = ({ translations, lng }: Props) => {
   const [order, setOrder] = useState<Order>();
 
   const searchParams = useSearchParams();
   const pathName = usePathname();
   const router = useRouter();
+
+  const translateOrder: any = ORDERBY[lng] || ORDERBY.en;
 
   const handleOrder = (order: Order) => {
     setOrder(order);
@@ -37,12 +41,13 @@ export const ProductOrder = ({translations}: Props) => {
 
   return (
     <div className="group relative w-[220px]">
-      <h1 className="text-md  w-full ">
+      <h1 className="flex mt-4 md:mt-0 font-bold gap-1 items-center text-md  w-full ">
+        <LuListOrdered size={25} />
         {translations.orderBy}: <span className="font-bold">{order?.name}</span>
       </h1>
       <div className="z-50 invisible group-hover:visible  w-full opacity-0 group-hover:opacity-100 absolute group-hover:text-gold  transition-all duration-500">
         <ul className="border-[1px] w-full bg-white  border-gray-200 ">
-          {ORDERBY.map((item, idx) => (
+          {translateOrder.map((item: any, idx: number) => (
             <li
               key={item.id + idx}
               className="hover:bg-slate-950 hover:Text-gold px-4"

@@ -13,7 +13,7 @@ export const Menu = ({ options, message }: Props) => {
 
   return (
     <div
-      className={clsx("transition-all duration-500 fixed top-0  w-full", {
+      className={clsx("transition-all duration-500 fixed top-0 z-50 w-full", {
         "translate-x-0  min-h-screen": isSideMenuOpen,
         "-translate-x-full": !isSideMenuOpen,
       })}

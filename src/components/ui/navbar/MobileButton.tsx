@@ -8,7 +8,7 @@ export const MobileButton = () => {
   const isSideMenuOpen = useNavbarStore((state) => state.isSideMenuOpen);
 
   return (
-    <div className="absolute z-50 right-4 flex  items-center">
+    <div className="absolute z-[100] right-4 flex  items-center">
       <button className=" md:hidden grid text-white" onClick={toogleSideMenu}>
         {!isSideMenuOpen ? <FaBars size={30} /> : <IoClose size={30} />}
       </button>

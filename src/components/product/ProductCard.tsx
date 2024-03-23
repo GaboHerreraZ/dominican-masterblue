@@ -17,7 +17,7 @@ export const ProductCard = ({
     <div className="grid">
       <div className="relative z-10 group w-[280px] min-h-[320px] bg-white shadow-md rounded  my-3  box-border">
         <Image
-          className="rounded w-full  transition-all duration-700 "
+          className="rounded w-full z-10 transition-all duration-700 "
           src={product.productImage[0].url}
           alt={name}
           sizes="100%"

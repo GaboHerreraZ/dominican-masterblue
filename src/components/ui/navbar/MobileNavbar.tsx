@@ -23,7 +23,7 @@ export const MobileNavbar = async ({ lng }: { lng: string }) => {
     },
   ];
   return (
-    <div className="block md:hidden z-50 ">
+    <div className="grid md:hidden ">
       <Menu options={mainMenu} message={t("message")} />
     </div>
   );
