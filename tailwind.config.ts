@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-const { nextui } = require("@nextui-org/react");
 const config: Config = {
   content: [
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
@@ -14,6 +13,7 @@ const config: Config = {
         "master-secondary": "#1c2022",
       },
       colors: {
+        gold: "#C48B21",
         master: {
           100: "#D6E4FF",
           200: "#ADC8FF",
@@ -32,20 +32,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [
-    nextui({
-      prefix: "nextui",
-      defaultTheme: "light",
-      themes: {
-        light: {
-          colors: {
-            primary: {
-              DEFAULT: "#091a7ab3",
-            },
-          },
-        },
-      },
-    }),
-  ],
+  plugins: [],
 };
 export default config;

@@ -1,0 +1,78 @@
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+
+model Category {
+  id        Int @id @default(autoincrement())
+  name      String
+  spanishDescription String
+  englishDescription String
+  link     String
+  Product  Product[]
+
+  @@schema("public")
+}
+
+
+model Subcategory {
+  id        Int @id @default(autoincrement())
+  name      String
+  spanishDescription String
+  englishDescription String
+  Product  Product[]
+
+  @@schema("public")
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("NEXT_PUBLIC_DATABASE_URL")
+  directUrl = env("NEXT_PUBLIC_DIRECT_URL")
+  schemas   = ["public"]
+}
+
+
+
+model Product {
+
+  id        String @id @default(uuid())
+  sku      String  @unique
+  slug      String @unique
+  spanishDescription String
+  englishDescription String
+  spanishName String
+  englishName String
+  material String
+  price     Float
+  quantity  Int
+  state Boolean
+  youtubeLink String
+  length    Int
+  weight    Int
+  width     Int
+  height    Int
+
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  subcategory Subcategory @relation(fields: [subcategoryId], references: [id])
+  subcategoryId Int
+
+  productImage ProductImage[] 
+
+
+  @@schema("public")
+
+}
+
+model ProductImage {
+  id        Int @id @default(autoincrement())
+  url       String
+  folder    String
+
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+
+  @@schema("public")
+}

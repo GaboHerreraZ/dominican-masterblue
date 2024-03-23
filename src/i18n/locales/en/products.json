@@ -1,10 +1,11 @@
 {
-  "filterBy": "Filter",
+  "filterBy": "Filter By",
   "noNofilterSelected": "No filter selected",
   "orderBy": "Order By",
-  "category": "Category",
+  "categories": "Categories",
+  "subcategories": "Subcategories",
+
   "categoryDescription": "Select the category",
-  "subcategory": "Subcategory",
   "subcategoryDescription": "Select the category",
   "price": "Price",
   "priceValidation": "Please, add the price",

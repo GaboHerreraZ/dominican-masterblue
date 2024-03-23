@@ -1,121 +1,107 @@
 "use client";
-import { Input } from "@nextui-org/input";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { useEffect, useState } from "react";
-import { Button } from "@nextui-org/button";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useAuthStore } from "@/store/useAuthStore";
-import { Credential } from "@/domain/model/credential";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "@/lib/firebase";
-import { LoginTranslations } from "@/models/loginTranslations";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useForm } from "react-hook-form";
 
-type Inputs = {
-  email: string;
-  password: string;
-};
+import Input from "@/components/ui/input/Input";
+import { Login } from "@/interfaces/login";
+import { LoginLng } from "@/interfaces/i18n/loginLng";
+import { useLoadingStore } from "@/store";
+import { signInWithPassword } from "@/actions";
 
-export const LoginForm = ({
-  translations,
-}: {
-  translations: LoginTranslations;
-}) => {
+interface Props {
+  translations: LoginLng
+}
+
+export const LoginForm = ({translations}: Props) => {
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const toggleLoading = useLoadingStore((state) => state.toggleLoading);
+
+  const router = useRouter();
+
   const {
-    formState: { errors, isValid },
+    formState: { errors },
     register,
-    reset,
     handleSubmit,
-  } = useForm<Inputs>();
+  } = useForm<Login>();
 
-  const navigation = useRouter();
+  const onSubmit = async (login: Login) => {
+    toggleLoading(true);
+    const { data, error } = await signInWithPassword(
+      login.email,
+      login.password
+    );
 
-  const [isVisible, setIsVisible] = useState(false);
+    toggleLoading(false);
 
-  const toggleVisibility = () => setIsVisible(!isVisible);
+    if (error) {
+      const message =
+        error.message === "Invalid login credentials"
+          ? translations.invalidLogin
+          : error.message;
+      setErrorMessage(message);
+      return;
+    }
 
-  const signInWithEmailAndPassword = useAuthStore(
-    (state) => state.signInWithEmailAndPassword
-  );
+    const { role } = data.user!;
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    if (!isValid) return;
-    const credentials: Credential = {
-      email: data.email,
-      password: data.password,
-    };
-    await signInWithEmailAndPassword(credentials);
+    if (role === "admin") {
+      router.push("/admin");
+    } else {
+      router.replace("/");
+    }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        navigation.push("/dashboard");
-        reset({
-          email: "",
-          password: "",
-        });
-      }
-    });
-
-    return () => unsubscribe();
-  }, [reset, navigation]);
-
   return (
-    <div className="bg-master-secondary py-20 px-10 rounded">
-      <h2 className="text-center mb-5 font-bold text-3xl text-white">
-        Dominican Master<span className="text-blue-400">blue</span>
-      </h2>
-      <form
-        className="min-w-[300px] grid grid-cols-1 justify-center items-center gap-4"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <Input
-          {...register("email", { required: true })}
-          isRequired
-          type="email"
-          size="sm"
-          variant="flat"
-          radius="none"
-          color="primary"
-          label={translations.email}
-          placeholder={translations.emailPlaceHolder}
-          errorMessage={errors.email ? "Please enter a valid email" : ""}
-          isInvalid={errors.email ? true : false}
-        />
-        <Input
-          isRequired
-          type={isVisible ? "text" : "password"}
-          {...register("password", { required: true })}
-          className="max-w-xs"
-          variant="flat"
-          radius="none"
-          size="sm"
-          color="primary"
-          label={translations.password}
-          placeholder={translations.passwordPlaceHolder}
-          errorMessage={errors.password ? "Please enter a valid password" : ""}
-          isInvalid={errors.email ? true : false}
-          endContent={
-            <button
-              className="focus:outline-none text-white"
-              type="button"
-              onClick={toggleVisibility}
-            >
-              {isVisible ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
-            </button>
-          }
-        />
-        <Button
-          type="submit"
-          color="primary"
-          size="sm"
-          radius="none"
-          variant="faded"
-        >
-          {translations.login}
-        </Button>
-      </form>
+    <div className="grid px-2  md:p-0 mt-20 w-full items-center md:justify-center py-10">
+      <div className="flex  w-full md:w-[280px] flex-col  md:flex-row shadow rounded ">
+        <div className="w-full p-5 ">
+          <header className=" flex flex-col items-center justify-center text-center">
+            <h1 className="text-2xl font-semibold text-gold text-center">
+              {translations.title}
+            </h1>
+            <small className="text-lg text-slate-950 text-center">
+              {translations.subTitle}
+            </small>
+          </header>
+
+          <form className="mt-1" onSubmit={handleSubmit(onSubmit)}>
+            <div className="grid gap-2">
+              <Input
+                {...register("email", { required: true })}
+                placeholder={translations.emailPlaceHolder}
+                error={errors.email && translations.errorEmail}
+              />
+
+              <Input
+                {...register("password", { required: true })}
+                placeholder={translations.passwordPlaceHolder}
+                type="password"
+                autoComplete="current-password"
+                error={errors.email && translations.errorPassword}
+              />
+            </div>
+            
+            <div>
+              {errorMessage && (
+                <p className="bg-red-700 text-center text-white p-2 my-2">
+                  {errorMessage}
+                </p>
+              )}
+            </div>
+
+            <div className="mt-3">
+              <button
+                type="submit"
+                className="mb-1.5 block w-full text-center button-gold text-gold "
+              >
+                {translations.login}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
