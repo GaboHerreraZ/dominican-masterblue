@@ -26,20 +26,12 @@ export const DesktopNavbar = async ({ lng }: { lng: string }) => {
   ];
 
   return (
-    <nav className="grid items-center h-[80px]  relative">
-      <Image
-        className="w-full"
-        src={backgroundImage}
-        alt="background image"
-        fill
-        sizes="100%"
-        style={{ objectFit: "cover" }}
-      />
+    <nav className="grid items-center h-[80px] bg-[#b5afa4]  relative">
       <Link
-        className="flex z-20 cursor-pointer justify-center md:justify-start absolute top-3 left-4 py-4"
+        className="flex z-20 cursor-pointer justify-center md:justify-start absolute top-0 left-4 py-2"
         href="/"
       >
-        <Image src={logoMenu} alt="logo" width={220} height={150} />
+        <Image src={logoMenu} alt="logo" width={300} height={150} />
       </Link>
       <ul className="hidden md:flex  absolute w-full text-white font-bold text-xl    justify-center py-4 gap-10">
         {mainMenu.map((item) => (
