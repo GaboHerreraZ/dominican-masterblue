@@ -24,7 +24,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
         <div className="mt-10 md:mt-0">
           <h1 className="font-bold text-xl">{t('information')}</h1>
           <div className="grid mt-5">
-            <Link href="/terminos-y-condiciones">T{t('terms')}</Link>
+            <Link href="/terminos-y-condiciones">{t('terms')}</Link>
             <p>+1 (829)960-4730</p>
             <p>{t('address')}</p>
             <p>{t('addressDescription')}</p>

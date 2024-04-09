@@ -73,7 +73,7 @@ export default async function ProductsPage({
   const products = await getProducts({
     page: productPage,
     take: 10,
-    category: category === "all" ? undefined : category,
+    category: category === "all" ? undefined : decodeURIComponent(category),
     subcategory,
     orderBy: productOrderBy,
     order: productOrder,

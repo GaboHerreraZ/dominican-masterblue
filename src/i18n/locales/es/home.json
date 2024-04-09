@@ -27,7 +27,6 @@
   "childrensRoom": "Habitación de Niños",
   "bathRoom": "Baño",
   "dinningRoom": "Comedores",
-  "furniture": "Muebles",
   "closet": "Closets",
   "tipsDesignTitle": "Descubre el Arte del Diseño de Interiores",
   "tipsDesign1": "Historias Únicas",
@@ -46,5 +45,14 @@
   "tipsRemodelation3": "Excelencia en Restauración",
   "tipsRemodelation3Description": "Experimente nuestra excelencia en restauración. Desde la elección de materiales hasta la ejecución del proyecto, cada detalle refleja calidad y dedicación.",
   "tipsRemodelation4": "Renovación con Propósito",
-  "tipsRemodelation4Description": "Cada proyecto se realiza con el objetivo de crear espacios que no solo sean visualmente atractivos, sino también funcionales y significativos."
+  "tipsRemodelation4Description": "Cada proyecto se realiza con el objetivo de crear espacios que no solo sean visualmente atractivos, sino también funcionales y significativos.",
+
+  "titleFindIn": "ALGUNOS DE NUESTROS PRODUCTOS",
+  "chairs" : "Sillas",
+  "tables" : "Mesas",
+  "beds" : "Camas",
+  "furniture" : "Muebles",
+  "lamps" : "Lamparas",
+  "offices" : "Oficinas"
+
 }

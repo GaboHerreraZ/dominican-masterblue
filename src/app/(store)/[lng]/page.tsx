@@ -1,3 +1,5 @@
+import { FindInDominican } from "@/components/home";
+
 interface Props {
   params: {
     lng: string;
@@ -5,5 +7,9 @@ interface Props {
 }
 
 export default function StoreHomePage({ params: { lng } }: Props) {
-  return <div>StoreHomePage {lng}</div>;
+  return (
+    <>
+      <FindInDominican lng={lng}/>
+    </>
+  );
 }
