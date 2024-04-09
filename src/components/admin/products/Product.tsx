@@ -15,7 +15,7 @@ import Input from "@/components/ui/input/Input";
 import Select from "@/components/ui/select/Select";
 import Checkbox from "@/components/ui/checkbox/Checkbox";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 interface Props {
   product: Partial<Product>;
@@ -34,6 +34,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm<Product>({ defaultValues: product });
 
@@ -47,7 +48,6 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
 
     if (images) {
       for (let i = 0; i < images.length; i++) {
-        console.log(images[i].name);
         if (!regex.test(images[i].name))
           return toastError("Solo se permiten archivos de imagen");
       }
@@ -108,7 +108,11 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         )
       : toastError(`El código ${error} de referencia ya existe`);
 
-    if (ok) router.replace(`/admin/product/${productCreated?.sku}`);
+    if (ok) {
+
+      resetField("images");
+      router.replace(`/admin/product/${productCreated?.sku}`);
+    }
 
     toggleLoading(false);
 
