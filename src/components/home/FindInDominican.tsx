@@ -4,68 +4,52 @@ import { ZoomImage } from "./ZoomImage";
 
 const images = [
   {
-    className: "sillas",
+    className: "kitchen",
     urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican4.jpg?t=2024-04-09T15%3A13%3A48.879Z",
-    label: "chairs",
+      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/kitchen.jpg?t=2024-04-15T13%3A38%3A22.861Z",
+    label: "kitchen",
     link: "http://localhost:3000/es/products/all?subcategoria=%2Clamp",
-    alt: "Anillos en BellArte",
   },
 
   {
-    className: "mesas",
+    className: "bathroom",
     urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican3.jpg?t=2024-04-09T15%3A14%3A49.229Z",
-    label: "tables",
+      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/bathroom.jpg?t=2024-04-15T13%3A37%3A41.998Z",
+    label: "bathRoom",
     link: "http://localhost:3000/es/products/all?subcategoria=%2Clamp",
-    alt: "Cadenas en BellArte",
   },
 
   {
-    className: "camas",
+    className: "room",
     urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican6.jpg",
-    label: "beds",
+      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/room.jpg",
+    label: "room",
     link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
-    alt: "Camas en Dominican",
   },
-
   {
-    className: "muebles",
+    className: "livingRoom",
     urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican5.jpg?t=2024-04-09T15%3A19%3A33.984Z",
-    label: "furniture",
+      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/living-room.jpg?t=2024-04-15T13%3A36%3A47.618Z",
+    label: "livingRoom",
     link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
-    alt: "Muebles en Dominican",
   },
 
   {
-    className: "lamparas",
+    className: "office",
     urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican2.jpg?t=2024-04-09T15%3A18%3A01.021Z",
-    label: "lamps",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
-    alt: "Lamparas en Dominican",
-  },
-
-  {
-    className: "oficinas",
-    urlImage:
-      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/dominican1.jpg?t=2024-04-09T15%3A18%3A59.501Z",
+      "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/office.jpg?t=2024-04-15T13%3A36%3A09.234Z",
     label: "offices",
     link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
-    alt: "Oficinas en Dominican",
   },
 ];
 
 export const FindInDominican = async ({ lng }: { lng: string }) => {
-
-  const {t} = await getTranslation(lng, 'home')
+  const { t } = await getTranslation(lng, "home");
 
   return (
     <section className="grid justify-center py-10 bg-gold/10">
       <h1 className="font-bold py-10 text-gold text-center text-3xl">
-        {t('titleFindIn')}
+        {t("titleFindIn")}
       </h1>
 
       <div className="wrapper">

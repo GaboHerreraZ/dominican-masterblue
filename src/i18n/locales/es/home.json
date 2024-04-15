@@ -48,11 +48,7 @@
   "tipsRemodelation4Description": "Cada proyecto se realiza con el objetivo de crear espacios que no solo sean visualmente atractivos, sino también funcionales y significativos.",
 
   "titleFindIn": "ALGUNOS DE NUESTROS PRODUCTOS",
-  "chairs" : "Sillas",
-  "tables" : "Mesas",
-  "beds" : "Camas",
-  "furniture" : "Muebles",
-  "lamps" : "Lamparas",
-  "offices" : "Oficinas"
-
+  "livingRoom": "Sala",
+  "offices": "Oficinas",
+  "room": "Habitación"
 }

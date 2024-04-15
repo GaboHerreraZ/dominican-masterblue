@@ -8,20 +8,24 @@ interface Props {
   urlImage: string;
   label: string;
   link: string;
-  alt: string;
-  lng: string
+  lng: string;
 }
 
-export const ZoomImage = async ({ className, urlImage, label, alt, link, lng }: Props) => {
-
-  const {t} = await getTranslation(lng, 'home')
+export const ZoomImage = async ({
+  className,
+  urlImage,
+  label,
+  link,
+  lng,
+}: Props) => {
+  const { t } = await getTranslation(lng, "home");
 
   return (
     <div className={clsx("relative overflow-hidden h-full w-full", className)}>
       <div className=" group absolute h-full w-full ">
         <Image
           src={urlImage}
-          alt={alt}
+          alt={label}
           sizes="100%"
           fill
           style={{ objectFit: "cover" }}
@@ -30,7 +34,7 @@ export const ZoomImage = async ({ className, urlImage, label, alt, link, lng }: 
         <div className="absolute w-full flex justify-center bottom-4">
           <Link
             href={link}
-            className="bg-gold/45 px-3 py-1 rounded  text-white text-xl"
+            className="bg-gold/75 px-3 py-1 rounded  text-white text-lg"
           >
             {t(label)}
           </Link>

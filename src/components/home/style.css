@@ -1,59 +1,53 @@
 .wrapper {
   display: grid;
   grid-template-areas:
-    "sillas sillas mesas mesas camas"
-    "sillas sillas lamparas oficinas muebles";
+    "kitchen kitchen bathroom bathroom room"
+    "kitchen kitchen livingRoom office office";
   height: 70vh;
   width: 80vw;
   grid-gap: 10px;
 }
 
-.sillas {
-  grid-area: sillas;
+.kitchen {
+  grid-area: kitchen;
   width: 100%;
 }
 
-.mesas {
-  grid-area: mesas;
+.bathroom {
+  grid-area: bathroom;
 }
 
-.pulseras {
-  grid-area: pulseras;
+.office {
+  grid-area: office;
 }
 
-.oficinas {
-  grid-area: oficinas;
+.livingRoom {
+  grid-area: livingRoom;
 }
 
-.muebles {
-  grid-area: muebles;
-}
-
-.camas {
-  grid-area: camas;
+.room {
+  grid-area: room;
 }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
   .wrapper {
     grid-template-areas:
-      "sillas"
-      "mesas"
-      "camas"
-      "pulseras"
-      "oficinas"
-      "muebles";
+      "kitchen"
+      "bathroom"
+      "room"
+      "livingRoom"
+      "office";
     height: 1500px;
     width: 100vw;
-    grid-gap: 10px;
+    grid-gap: 5px;
   }
 
-  .sillas,
-  .mesas,
-  .pulseras,
-  .oficinas,
-  .muebles,
-  .camas {
+  .kitchen,
+  .bathroom,
+  .office,
+  .livingRoom,
+  .room {
     height: 250px;
   }
 }
