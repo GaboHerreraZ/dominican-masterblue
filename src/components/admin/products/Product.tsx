@@ -14,22 +14,27 @@ import { createUpdateProduct, deleteImage } from "@/actions";
 import Input from "@/components/ui/input/Input";
 import Select from "@/components/ui/select/Select";
 import Checkbox from "@/components/ui/checkbox/Checkbox";
-import { Category } from "@/interfaces/category";
 import Link from "next/link";
+import { useState } from "react";
 
 interface Props {
   product: Partial<Product>;
-  categories: Category[];
+  categories: Base[];
   subcategories: Base[];
 }
 
 export const ProductPage = ({ product, categories, subcategories }: Props) => {
+
+
   const router = useRouter();
   const toggleLoading = useLoadingStore((state) => state.toggleLoading);
+
+  const [validate, setValidate] = useState(false);
 
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm<Product>({ defaultValues: product });
 
@@ -37,17 +42,31 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
     const formData = new FormData();
     const { images, ...rest } = data;
 
+    if (rest.youtubeLink.length > 0) setValidate(true);
+
+    const regex = /^[\w\s\.]+\.(jpg|jpeg|png|gif|bmp|tiff|ico|svg|webp)$/;
+
+    if (images) {
+      for (let i = 0; i < images.length; i++) {
+        if (!regex.test(images[i].name))
+          return toastError("Solo se permiten archivos de imagen");
+      }
+    }
+
     if (images?.length === 0 && product.productImage?.length === 0) {
       toastError("Se requiere al menos una imagen");
       return;
     }
 
-    if (product.productImage?.length === 4) {
-      toastError("No se pueden subir más de 4 imagenes");
-      return;
+    const totalImagenes = images?.length! + product.productImage?.length!;
+
+    if (totalImagenes > 4) {
+      toastError("No se pueden subir mas de 4 imagenes");
+      return 
     }
 
     toggleLoading(true);
+
 
     if (product.id) {
       formData.append("id", product.id ?? "");
@@ -89,9 +108,14 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         )
       : toastError(`El código ${error} de referencia ya existe`);
 
+    if (ok) {
+
+      resetField("images");
+      router.replace(`/admin/product/${productCreated?.sku}`);
+    }
+
     toggleLoading(false);
 
-    if (ok) router.replace(`/admin/product/${productCreated?.sku}`);
   };
 
   const handleDeleteImage = async (id: number, folder: string) => {
@@ -167,10 +191,12 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           />
           <Input
             {...register("youtubeLink", {
+              required: validate,
               pattern:
                 /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/(watch\?v=|embed\/|v\/|shorts\/)?([A-Za-z0-9\-_]{11})/,
             })}
             placeholder="Youtube Link"
+            error={errors.youtubeLink && "link no valido"}
           />
           <Input type="number" {...register("length")} placeholder="Longitud" />
           <Input type="number" {...register("weight")} placeholder="Peso" />
@@ -223,7 +249,6 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
                   <FaRegTrashAlt size={15} />
                 </button>
               )}
-
               <Image src={url.url} alt={url.url} width={150} height={150} />
             </div>
           ))}

@@ -19,15 +19,12 @@
   "contactDescription": "Designing a space is like composing a melody; Each element must harmonize to create a unique experience.",
   "projectTitle": "Explour our projects",
   "projectDescription": "Where Creativity Takes Center Stage",
-  "kitchen": "Kitchens",
   "office": "Offices",
   "house": "Houses",
   "hotel": "Hotels",
   "bedRooms": "Bedroom",
   "dinningRoom": "Dinning Rooms",
   "childrensRoom": "Children's Room",
-  "bathRoom": "Bathroom",
-  "furniture": "Furnitures",
   "closet": "Closets",
   "tipsDesignTitle": "Descubre el Arte del Diseño de Interiores",
   "tipsDesign1": "Historias Únicas",
@@ -46,5 +43,12 @@
   "tipsRemodelation3": "Excelencia en Restauración",
   "tipsRemodelation3Description": "Experimente nuestra excelencia en restauración. Desde la elección de materiales hasta la ejecución del proyecto, cada detalle refleja calidad y dedicación.",
   "tipsRemodelation4": "Renovación con Propósito",
-  "tipsRemodelation4Description": "Cada proyecto se realiza con el objetivo de crear espacios que no solo sean visualmente atractivos, sino también funcionales y significativos."
+  "tipsRemodelation4Description": "Cada proyecto se realiza con el objetivo de crear espacios que no solo sean visualmente atractivos, sino también funcionales y significativos.",
+
+  "titleFindIn": "SOME OF OUR PRODUCTS",
+  "bathRoom": "Bathroom",
+  "kitchen": "Kitchens",
+  "livingRoom": "Living Room",
+  "offices": "Offices",
+  "room": "Rooms"
 }

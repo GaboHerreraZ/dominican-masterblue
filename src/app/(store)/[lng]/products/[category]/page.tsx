@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getCategories, getProducts } from "@/actions";
-import { Category } from "@/interfaces/category";
 import { ProductContainer } from "@/components";
+import { Base } from "@/interfaces/base";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 0;
@@ -26,7 +26,7 @@ export async function generateStaticParams() {
   const params: { lng: string; category: string }[] = [];
 
   languages.forEach((lng) => {
-    categories.forEach((category: Category) => {
+    categories.forEach((category: Base) => {
       params.push({ lng, category: category.link });
     });
   });
@@ -73,7 +73,7 @@ export default async function ProductsPage({
   const products = await getProducts({
     page: productPage,
     take: 10,
-    category: category === "todos" ? undefined : category,
+    category: category === "all" ? undefined : decodeURIComponent(category),
     subcategory,
     orderBy: productOrderBy,
     order: productOrder,
@@ -81,37 +81,3 @@ export default async function ProductsPage({
 
   return <ProductContainer lng={lng} products={products?.products!} />;
 }
-
-/* export default async function GenderPage({
-  params: { gender },
-  searchParams: { page, categoria, subcategoria, order, orderBy },
-}: Props) {
-  let wholesalerUser = false;
-  const productPage = page ? parseInt(page) : 1;
-
-  const category = categoria ? categoria.split(",") : [];
-  const subcategory = subcategoria ? subcategoria.split(",") : [];
-
-  const productOrder = order ? order : "asc";
-  const productOrderBy = orderBy ? orderBy : "name";
-
-  const { id } = await getUser();
-  if (id) {
-    const user = await getUserByAuthId(id);
-    wholesalerUser = user?.wholesaler!;
-  }
-
-  const products = await getProducts({
-    page: productPage,
-    take: 10,
-    gender: gender === "all" ? undefined : (gender as Gender),
-    category,
-    subcategory,
-    orderBy: productOrderBy,
-    order: productOrder,
-    wholesaler: wholesalerUser,
-  });
-
-  return <ProductContainer products={products?.products!} />;
-}
- */

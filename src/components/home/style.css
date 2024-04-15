@@ -1,0 +1,53 @@
+.wrapper {
+  display: grid;
+  grid-template-areas:
+    "kitchen kitchen bathroom bathroom room"
+    "kitchen kitchen livingRoom office office";
+  height: 70vh;
+  width: 80vw;
+  grid-gap: 10px;
+}
+
+.kitchen {
+  grid-area: kitchen;
+  width: 100%;
+}
+
+.bathroom {
+  grid-area: bathroom;
+}
+
+.office {
+  grid-area: office;
+}
+
+.livingRoom {
+  grid-area: livingRoom;
+}
+
+.room {
+  grid-area: room;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .wrapper {
+    grid-template-areas:
+      "kitchen"
+      "bathroom"
+      "room"
+      "livingRoom"
+      "office";
+    height: 1500px;
+    width: 100vw;
+    grid-gap: 5px;
+  }
+
+  .kitchen,
+  .bathroom,
+  .office,
+  .livingRoom,
+  .room {
+    height: 250px;
+  }
+}

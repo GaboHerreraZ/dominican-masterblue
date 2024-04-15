@@ -3,4 +3,5 @@ export interface Base {
   name: string;
   spanishDescription: string;
   englishDescription: string;
+  link: string;
 }

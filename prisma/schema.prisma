@@ -21,6 +21,8 @@ model Subcategory {
   name      String
   spanishDescription String
   englishDescription String
+  link     String @default("")
+ 
   Product  Product[]
 
   @@schema("public")

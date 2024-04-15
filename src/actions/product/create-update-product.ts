@@ -124,8 +124,6 @@ export const createUpdateProduct = async (formData: FormData) => {
       product: prismaTx.product,
     };
   } catch (error: any) {
-    //!
-    //! console.log('error al crear',error.meta.target);
     return {
       ok: false,
       message: "Error creando o actualizando el producto",

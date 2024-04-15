@@ -67,7 +67,7 @@ export const ProductGrid = ({
                 actions={[
                   {
                     icon: <BiSolidEdit size={25} />,
-                    href: `/admin/producto/${product.sku}`,
+                    href: `/admin/product/${product.sku}`,
                     id: product.id,
                   },
                 ]}

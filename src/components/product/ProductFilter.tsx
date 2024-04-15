@@ -15,10 +15,9 @@ import {
 } from "next/navigation";
 import { ProductOrder } from "./ProductOrder";
 import Link from "next/link";
-import { Category } from "@/interfaces/category";
 
 interface Props {
-  categories: Category[];
+  categories: Base[];
   subcategories: Base[];
   lng: string;
   translations: any;
@@ -98,7 +97,7 @@ export const ProductFilters = ({
             />
           </div>
           <div className="mt-2 flex pr-2 justify-end">
-            <Link className="button-gold" href="/products/todos">
+            <Link className="button-gold" href="/products/all">
               {translations.clearFilter}
             </Link>
           </div>

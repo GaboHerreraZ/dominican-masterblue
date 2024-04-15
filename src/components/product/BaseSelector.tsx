@@ -36,8 +36,8 @@ export const BaseSelector = ({
           <input
             onChange={handleChange}
             type="checkbox"
-            value={b.name}
-            checked={baseSelected.includes(b.name)}
+            value={b.link}
+            checked={baseSelected.includes(b.link)}
             id={b.name}
             className="appearance-none h-6 w-6 bg-white border-[1px] border-slate-200 rounded-full checked:bg-gold checked:scale-75 transition-all duration-200 peer"
           />
