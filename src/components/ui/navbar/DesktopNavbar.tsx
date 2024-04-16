@@ -6,6 +6,7 @@ import { LogIn } from "./LogIn";
 import logoMenu from "../../../../public/png/logo_menu.png";
 import { MobileButton } from "./MobileButton";
 import { DesktopMenuNavbar } from "./DesktopMenuNavbar";
+import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 export const DesktopNavbar = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "navigation");
@@ -33,7 +34,7 @@ export const DesktopNavbar = async ({ lng }: { lng: string }) => {
       >
         <Image src={logoMenu} alt="logo" width={300} height={150} />
       </Link>
-      <ul className="hidden md:flex  absolute w-full text-gold font-bold text-xl    justify-center py-4 gap-10">
+      {/* <ul className="hidden md:flex  absolute w-full text-gold font-bold text-xl    justify-center py-4 gap-10">
         {mainMenu.map((item) => (
           <DesktopMenuNavbar
             key={item.link}
@@ -41,7 +42,29 @@ export const DesktopNavbar = async ({ lng }: { lng: string }) => {
             name={item.name}
           />
         ))}
-      </ul>
+      </ul> */}
+      <div className="hidden md:flex  absolute w-full text-gold font-bold text-xl    justify-center py-4 gap-10">
+        <div className="w-full flex gap-5 justify-center items-center grid-flow-row">
+          <Link
+            href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
+            target="_blank"
+          >
+            <FaFacebook size={20} />
+          </Link>
+          <Link
+            href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
+            target="_blank"
+          >
+            <FaInstagram size={20} />
+          </Link>
+          <Link
+            href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
+            target="_blank"
+          >
+            <FaWhatsapp size={20} />
+          </Link>
+        </div>
+      </div>
       <LogIn label={t("login")} />
       <MobileButton />
     </nav>
