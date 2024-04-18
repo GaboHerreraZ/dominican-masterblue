@@ -10,10 +10,10 @@ import { useLoadingStore } from "@/store";
 import { signInWithPassword } from "@/actions";
 
 interface Props {
-  translations: LoginLng
+  translations: LoginLng;
 }
 
-export const LoginForm = ({translations}: Props) => {
+export const LoginForm = ({ translations }: Props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const toggleLoading = useLoadingStore((state) => state.toggleLoading);
@@ -47,7 +47,7 @@ export const LoginForm = ({translations}: Props) => {
     const { role } = data.user!;
 
     if (role === "admin") {
-      router.push("/admin");
+      router.replace("/admin");
     } else {
       router.replace("/");
     }
@@ -82,7 +82,7 @@ export const LoginForm = ({translations}: Props) => {
                 error={errors.email && translations.errorPassword}
               />
             </div>
-            
+
             <div>
               {errorMessage && (
                 <p className="bg-red-700 text-center text-white p-2 my-2">

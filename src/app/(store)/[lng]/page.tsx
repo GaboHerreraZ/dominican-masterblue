@@ -9,7 +9,7 @@ interface Props {
 export default function StoreHomePage({ params: { lng } }: Props) {
   return (
     <>
-      <Banner />
+      <Banner lng={lng} />
       <FindInDominican lng={lng} />
     </>
   );
