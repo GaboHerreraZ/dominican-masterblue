@@ -1,4 +1,4 @@
-import { ProductImage } from "@prisma/client";
+import { Category, ProductImage } from "@prisma/client";
 
 export interface Product {
   id: string;
@@ -18,6 +18,8 @@ export interface Product {
   width: number;
   height: number;
   categoryId: number;
+  category?: Category;
+  subcategory?: Category;
   subcategoryId: number;
   productImage: ProductImage[];
   images?: FileList;

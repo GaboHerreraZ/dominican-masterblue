@@ -8,6 +8,8 @@ export const getProductBySlug = async (slug: string) => {
     },
     include: {
       productImage: true,
+      category: true,
+      subcategory: true,
     },
   });
 };

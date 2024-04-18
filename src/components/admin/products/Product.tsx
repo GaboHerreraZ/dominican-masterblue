@@ -204,10 +204,30 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Youtube Link"
             error={errors.youtubeLink && "link no valido"}
           />
-          <Input type="number" {...register("length")} placeholder="Longitud" />
-          <Input type="number" {...register("weight")} placeholder="Peso" />
-          <Input type="number" {...register("width")} placeholder="Ancho" />
-          <Input type="number" {...register("height")} placeholder="Altura" />
+          <Input
+            type="number"
+            {...register("weight", { required: true })}
+            placeholder="Peso"
+            error={errors.weight && "Peso requerido"}
+          />
+          <Input
+            type="number"
+            {...register("length", { required: true })}
+            placeholder="Longitud"
+            error={errors.length && "Longitud requerida"}
+          />
+          <Input
+            type="number"
+            {...register("width", { required: true })}
+            placeholder="Ancho"
+            error={errors.width && "Ancho requerido"}
+          />
+          <Input
+            type="number"
+            {...register("height", { required: true })}
+            placeholder="Altura"
+            error={errors.height && "Altura requerida"}
+          />
 
           <Select
             error={errors.categoryId && "Categoría requerida"}
