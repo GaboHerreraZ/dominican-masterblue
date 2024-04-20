@@ -3,12 +3,13 @@ import logo from "../../../../public/png/logo.png";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 import { getTranslation } from "@/i18n";
+import { FaWhatsapp } from "react-icons/fa6";
 
 export const Footer = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "footer");
 
   return (
-    <footer className="md:px-0 px-5 pt-10 shadow-2xl mt-20">
+    <footer className="md:px-0 px-5 pt-10 shadow-2xl mt-20 bg-gold/10">
       <div className="grid md:px-20 md:mx-20 grid-cols-1 md:grid-cols-4 justify-center ">
         <div>
           <Link href="/">
@@ -34,7 +35,10 @@ export const Footer = async ({ lng }: { lng: string }) => {
         <div className="mt-10 md:mt-0">
           <h1 className="font-bold text-xl">{t("contactUs")}</h1>
           <div className="grid mt-5">
-            <Link href="">Whatsapp</Link>
+            <Link href="/contact">{t("contact")}</Link>
+            <Link href="https://wa.me/18299604730?text=Hola%20Dominican%20MasterBlue%2C%20quer%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n">
+              Whatsapp
+            </Link>
             <Link href="">{t("e-mail")}</Link>
           </div>
         </div>
@@ -50,7 +54,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
           </div>
         </div>
       </div>
-      <div className="w-full flex gap-5 mt-10 justify-center items-center grid-flow-row">
+      <div className="w-full flex gap-5 mt-10 justify-center items-center grid-flow-row text-gold">
         <Link
           href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
           target="_blank"
@@ -63,12 +67,24 @@ export const Footer = async ({ lng }: { lng: string }) => {
         >
           <FaInstagram size={20} />
         </Link>
+        <Link
+          href="https://wa.me/18299604730?text=Hola%20Dominican%20MasterBlue%2C%20quer%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n"
+          target="_blank"
+        >
+          <FaWhatsapp size={20} />
+        </Link>
       </div>
 
       <div className="md:px-40 border-t-[1px] mt-5  border-gray-200">
         <p className="py-4 text-md">
           {t("developer")}
-          <Link href="https://gabrielherrerazdev.com/en"> GaboGhz</Link>
+          <Link
+            href="https://gabrielherrerazdev.com/en"
+            className="underline italic"
+          >
+            {" "}
+            GaboGhz
+          </Link>
         </p>
       </div>
     </footer>

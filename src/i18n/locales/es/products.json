@@ -91,11 +91,17 @@
   "wardrobe": "Armario",
   "requestInformation": "Solicita Información",
   "attribute": "Atributo",
-  "characteristics": "Características",
+  "characteristics": "Características del Producto",
   "detail": "Detalles",
   "back": "Regresar",
   "ourRecommended": "Nuestros recomendados para ti",
   "noCategory": "Debe seleccionar una categoría",
   "clearFilter": "Limpiar Filtros",
-  "products": "Productos"
+  "products": "Productos",
+  "description": "Descripción",
+  "available": "Disponible",
+  "notAvailable": "No Disponible",
+  "category": "Categoría",
+  "subcategory": "Subcategoría",
+  "youtubeTitle": "Conóce nuestro producto"
 }

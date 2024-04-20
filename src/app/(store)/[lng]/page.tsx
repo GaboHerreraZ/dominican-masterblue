@@ -1,4 +1,4 @@
-import { FindInDominican } from "@/components/home";
+import { FindInDominican, Banner } from "@/components/home";
 
 interface Props {
   params: {
@@ -9,7 +9,8 @@ interface Props {
 export default function StoreHomePage({ params: { lng } }: Props) {
   return (
     <>
-      <FindInDominican lng={lng}/>
+      <Banner lng={lng} />
+      <FindInDominican lng={lng} />
     </>
   );
 }

@@ -24,7 +24,7 @@ export const ProductCard = ({
           fill
           style={{ objectFit: "cover" }}
         />
-        <div className="absolute top-0   w-[280px] opacity-0 min-h-[320px] group-hover:opacity-100 h-0 transition-all duration-500 ">
+        <div className="absolute top-0   w-[280px] opacity-0 min-h-[320px] group-hover:opacity-100 h-0 transition-all duration-700 ">
           <div className=" relative h-full rounded w-full z-20">
             {product.productImage[1]?.url && (
               <Image

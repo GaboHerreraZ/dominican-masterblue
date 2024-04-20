@@ -18,7 +18,7 @@ export const Breadcrumb = () => {
   return (
     <>
       {client && home && (
-        <div className="flex justify-start items-center px-20 text-gray-400 my-4">
+        <div className="flex container mx-auto justify-start items-center px-20 text-gray-400 my-4">
           <Link href={home}>
             <IoHome />
           </Link>

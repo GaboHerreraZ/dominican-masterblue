@@ -57,11 +57,11 @@ export const Pagination = ({ totalPages }: Props) => {
                 }
               )}
             >
-              <Link href={createPageUrl(currentPage + 1)}>{page}</Link>
+              <Link href={createPageUrl(page)}>{page}</Link>
             </li>
           ))}
         </ul>
-        <Link href={createPageUrl(totalPages)} className="text-slate-950">
+        <Link href={createPageUrl(currentPage + 1)} className="text-slate-950">
           <FaChevronCircleRight size={30} />
         </Link>
       </nav>

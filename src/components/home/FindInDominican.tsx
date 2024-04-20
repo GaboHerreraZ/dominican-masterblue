@@ -8,7 +8,7 @@ const images = [
     urlImage:
       "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/kitchen.jpg?t=2024-04-15T13%3A38%3A22.861Z",
     label: "kitchen",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Clamp",
+    link: "/products/kitchen",
   },
 
   {
@@ -16,22 +16,21 @@ const images = [
     urlImage:
       "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/bathroom.jpg?t=2024-04-15T13%3A37%3A41.998Z",
     label: "bathRoom",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Clamp",
+    link: "/products/bathroom",
   },
-
   {
     className: "room",
     urlImage:
       "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/room.jpg",
     label: "room",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
+    link: "/products/room",
   },
   {
     className: "livingRoom",
     urlImage:
       "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/living-room.jpg?t=2024-04-15T13%3A36%3A47.618Z",
     label: "livingRoom",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
+    link: "/products/living-room",
   },
 
   {
@@ -39,7 +38,7 @@ const images = [
     urlImage:
       "https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/office.jpg?t=2024-04-15T13%3A36%3A09.234Z",
     label: "offices",
-    link: "http://localhost:3000/es/products/all?subcategoria=%2Cdesk",
+    link: "/products/office",
   },
 ];
 

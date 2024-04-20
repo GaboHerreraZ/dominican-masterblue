@@ -14,6 +14,7 @@ const config: Config = {
       },
       colors: {
         gold: "#C48B21",
+        secondary: "#333333",
         master: {
           100: "#D6E4FF",
           200: "#ADC8FF",

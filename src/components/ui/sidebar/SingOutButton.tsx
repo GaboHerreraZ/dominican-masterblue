@@ -17,7 +17,7 @@ export const SingOutButton = ({ onClick }: { onClick: () => void }) => {
   return (
     <button
       onClick={handleSignOut}
-      className="border-[1px] border-gold px-2 rounded hover:bg-black/5  transition-all duration-500 text-white"
+      className="border-[1px] border-gold px-2 hover:bg-black/5  transition-all duration-500 text-white"
     >
       <label className="cursor-pointer">Cerrar Sesión</label>
     </button>

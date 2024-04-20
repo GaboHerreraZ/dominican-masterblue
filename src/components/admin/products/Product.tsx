@@ -23,9 +23,20 @@ interface Props {
   subcategories: Base[];
 }
 
+const IMAGES_TYPE = [
+  "image/jpg",
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/bmp",
+  "image/tiff",
+  "image/ico",
+  "image/svg",
+  "image/webp",
+  "image/avif",
+];
+
 export const ProductPage = ({ product, categories, subcategories }: Props) => {
-
-
   const router = useRouter();
   const toggleLoading = useLoadingStore((state) => state.toggleLoading);
 
@@ -44,17 +55,15 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
 
     if (rest.youtubeLink.length > 0) setValidate(true);
 
-    const regex = /^[\w\s\.]+\.(jpg|jpeg|png|gif|bmp|tiff|ico|svg|webp)$/;
-
     if (images) {
       for (let i = 0; i < images.length; i++) {
-        if (!regex.test(images[i].name))
+        if (!IMAGES_TYPE.includes(images[i].type))
           return toastError("Solo se permiten archivos de imagen");
       }
     }
 
-    if (images?.length === 0 && product.productImage?.length === 0) {
-      toastError("Se requiere al menos una imagen");
+    if (product.productImage?.length === 0 && images && images?.length < 2) {
+      toastError("Se requiere al menos dos imagenes");
       return;
     }
 
@@ -62,11 +71,10 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
 
     if (totalImagenes > 4) {
       toastError("No se pueden subir mas de 4 imagenes");
-      return 
+      return;
     }
 
     toggleLoading(true);
-
 
     if (product.id) {
       formData.append("id", product.id ?? "");
@@ -109,13 +117,11 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
       : toastError(`El código ${error} de referencia ya existe`);
 
     if (ok) {
-
       resetField("images");
       router.replace(`/admin/product/${productCreated?.sku}`);
     }
 
     toggleLoading(false);
-
   };
 
   const handleDeleteImage = async (id: number, folder: string) => {
@@ -198,10 +204,30 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
             placeholder="Youtube Link"
             error={errors.youtubeLink && "link no valido"}
           />
-          <Input type="number" {...register("length")} placeholder="Longitud" />
-          <Input type="number" {...register("weight")} placeholder="Peso" />
-          <Input type="number" {...register("width")} placeholder="Ancho" />
-          <Input type="number" {...register("height")} placeholder="Altura" />
+          <Input
+            type="number"
+            {...register("weight", { required: true })}
+            placeholder="Peso"
+            error={errors.weight && "Peso requerido"}
+          />
+          <Input
+            type="number"
+            {...register("length", { required: true })}
+            placeholder="Longitud"
+            error={errors.length && "Longitud requerida"}
+          />
+          <Input
+            type="number"
+            {...register("width", { required: true })}
+            placeholder="Ancho"
+            error={errors.width && "Ancho requerido"}
+          />
+          <Input
+            type="number"
+            {...register("height", { required: true })}
+            placeholder="Altura"
+            error={errors.height && "Altura requerida"}
+          />
 
           <Select
             error={errors.categoryId && "Categoría requerida"}
