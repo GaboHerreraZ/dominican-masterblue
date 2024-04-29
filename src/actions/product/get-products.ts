@@ -8,6 +8,7 @@ interface Props {
   subcategory?: string[];
   orderBy?: string;
   order?: string;
+  state?: string
 }
 
 export const getProducts = async ({
@@ -17,6 +18,7 @@ export const getProducts = async ({
   subcategory,
   orderBy = "spanishName",
   order = "asc",
+  state = "true"
 }: Props) => {
   if (isNaN(Number(page))) page = 1;
   if (page < 1) page = 1;
@@ -44,6 +46,7 @@ export const getProducts = async ({
       take,
       where: !category
         ? {
+            state: state === "true" ? true : false, 
             ...(subcategory?.length && {
               OR: [
                 {
@@ -67,7 +70,24 @@ export const getProducts = async ({
       },
     });
 
-    const totalCount = await prisma.product.count();
+    const totalCount = await prisma.product.count({
+      where: !category
+        ? {
+            state: state === "true" ? true : false, 
+            ...(subcategory?.length && {
+              OR: [
+                {
+                  subcategory: {
+                    link: {
+                      in: subcategory,
+                    },
+                  },
+                },
+              ],
+            }),
+          }
+        : whereClause,
+    });
 
     const totalPages = Math.ceil(totalCount / take);
 
