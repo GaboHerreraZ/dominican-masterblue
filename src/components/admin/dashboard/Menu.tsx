@@ -13,7 +13,7 @@ export const Menu = ({ products }: Props) => {
       <ul className="flex flex-wrap py-2 justify-center md:justify-normal  gap-10 w-full mt-2 ">
         <li>
           <Link
-            href="/admin/products"
+            href="/admin/products/all"
             className="shadow py-4 px-6  flex flex-col gap-2 items-center "
           >
             <h1 className="font-bold text-xl">Productos</h1>

@@ -142,7 +142,7 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
           <div className="mb-2">
             <Link
               className="button-secundary mr-2 h-[34px] "
-              href="/admin/products"
+              href="/admin/products/all"
             >
               Volver
             </Link>

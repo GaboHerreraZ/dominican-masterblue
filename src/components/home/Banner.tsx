@@ -24,7 +24,7 @@ export const Banner = async ({ lng }: { lng: string }) => {
             </p>
             <Link
               className="border-[1px] border-white p-2 font-bold text-xl bg-white/40 hover:bg-white hover:text-gold transition-all duration-300 ease-in-out"
-              href="/"
+              href="/products/all"
             >
               {t("seeProducts")}
             </Link>
