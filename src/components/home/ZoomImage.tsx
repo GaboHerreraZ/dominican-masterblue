@@ -22,14 +22,14 @@ export const ZoomImage = async ({
 
   return (
     <div className={clsx("relative overflow-hidden h-full w-full", className)}>
-      <div className=" group absolute h-full w-full ">
+      <div className=" group absolute h-full w-full intersect:animate-fade-down intersect:animate-duration-1000  ">
         <Image
           src={urlImage}
           alt={label}
           sizes="100%"
           fill
           style={{ objectFit: "cover" }}
-          className="transition-transform duration-1000 ease-in-out transform group-hover:scale-110"
+          className="transition-transform  duration-1000 ease-in-out transform group-hover:scale-110"
         />
         <div className="absolute w-full flex justify-center bottom-4">
           <Link

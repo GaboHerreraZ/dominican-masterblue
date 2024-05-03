@@ -40,19 +40,19 @@ export const DesktopNavbar = async ({ lng }: { lng: string }) => {
             href="https://www.facebook.com/profile.php?id=100094358760633&mibextid=ZbWKwL"
             target="_blank"
           >
-            <FaFacebook size={20} />
+            <FaFacebook size={30} />
           </Link>
           <Link
             href="https://www.instagram.com/ebanisteria_remodelaciones_dmb?igshid=MzRlODBiNWFlZA%3D%3D"
             target="_blank"
           >
-            <FaInstagram size={20} />
+            <FaInstagram size={30} />
           </Link>
           <Link
             href="https://wa.me/18299604730?text=Hola%20Dominican%20MasterBlue%2C%20quer%C3%ADa%20tener%20m%C3%A1s%20informaci%C3%B3n"
             target="_blank"
           >
-            <FaWhatsapp size={20} />
+            <FaWhatsapp size={30} />
           </Link>
         </div>
       </div>

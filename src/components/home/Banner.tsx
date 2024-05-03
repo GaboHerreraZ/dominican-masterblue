@@ -15,7 +15,7 @@ export const Banner = async ({ lng }: { lng: string }) => {
           alt="Dominican master blue home"
         />
         <div className="grid items-center h-full absolute text-white ">
-          <div className="mx-10">
+          <div className="mx-10 intersect:animate-fade-right intersect:animate-delay-700 ">
             <p className="font-extrabold text-4xl md:text-6xl">
               {t("bannerMessage1")}
             </p>
