@@ -1,4 +1,10 @@
-import { FindInDominican, Banner, HomeMessage } from "@/components/home";
+import {
+  FindInDominican,
+  Banner,
+  HomeMessage,
+  HomeServices,
+  HomeWhoWeAre,
+} from "@/components/home";
 
 interface Props {
   params: {
@@ -10,8 +16,10 @@ export default function StoreHomePage({ params: { lng } }: Props) {
   return (
     <>
       <Banner lng={lng} />
+      <HomeWhoWeAre lng={lng} />
       <FindInDominican lng={lng} />
       <HomeMessage lng={lng} />
+      <HomeServices lng={lng} />
     </>
   );
 }

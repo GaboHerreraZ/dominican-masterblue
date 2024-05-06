@@ -46,14 +46,13 @@ export const FindInDominican = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "home");
 
   return (
-    <section className="grid justify-center py-10 bg-gold/10">
-      <h1 className="font-bold py-10 text-gold text-center text-3xl">
+    <section className="grid justify-center py-2 md:py-10 bg-gold/5">
+      <h1 className="font-bold py-2 md:py-10 text-gold text-center text-5xl">
         {t("titleFindIn")}
       </h1>
-
       <div className="wrapper">
         {images.map((image) => (
-          <ZoomImage key={image.label} lng={lng} {...image} />
+          <ZoomImage hasLink key={image.label} lng={lng} {...image} />
         ))}
       </div>
     </section>

@@ -7,14 +7,14 @@ export const Banner = async ({ lng }: { lng: string }) => {
 
   return (
     <div className="w-full ">
-      <div className="relative h-[700px]  ">
+      <div className="relative h-[600px]  ">
         <Image
-          src="https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/home2.jpg?t=2024-04-15T21%3A14%3A50.686Z"
+          src="https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/home.webp?t=2024-05-04T14%3A03%3A13.800Z"
           fill
           style={{ objectFit: "cover" }}
           alt="Dominican master blue home"
         />
-        <div className="grid items-center h-full absolute text-white ">
+        <div className="grid items-center h-full absolute text-white  w-full ">
           <div className="mx-10 intersect:animate-fade-right intersect:animate-delay-700 ">
             <p className="font-extrabold text-4xl md:text-6xl">
               {t("bannerMessage1")}

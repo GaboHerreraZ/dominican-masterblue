@@ -18,7 +18,7 @@ export const ProductDetailVideoDescription = ({
   return (
     <>
       {client && youtubeLink && (
-        <div className="bg-gold/10 py-10">
+        <div className="bg-gold/5 py-10">
           <div className="mx-auto px-0 md:px-40 w-full ">
             <header className="text-center my-10 text-gold font-bold text-3xl  ">
               <h1>{title}</h1>
