@@ -153,11 +153,10 @@ export const ProductPage = ({ product, categories, subcategories }: Props) => {
         </header>
         <div className="grid gap-2 grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           <Input
-            {...register("sku", { required: true })}
+            {...register("sku", { required: true, pattern: /^ref-\S.*/ })}
             placeholder="Sku"
-            error={errors.sku && "Referencia requerida"}
+            error={errors.sku && "Sku requerido ej: ref-01"}
           />
-
           <Input
             {...register("spanishName", { required: true })}
             placeholder="Nombre"

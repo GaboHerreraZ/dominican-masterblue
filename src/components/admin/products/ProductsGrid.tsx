@@ -38,7 +38,7 @@ export const ProductGrid = ({
   totalPages,
 }: Props) => {
   return (
-    <div className="">
+    <div className="px-2 md:px-0">
       <Table columns={columns} totalPages={totalPages}>
         <>
           {products.map((product) => (

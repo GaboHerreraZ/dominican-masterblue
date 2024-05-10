@@ -24,6 +24,7 @@ export const getProducts = async ({
   if (page < 1) page = 1;
 
   const whereClause = {
+    state: state === "true" ? true : false, 
     category: {
       link: category,
     },
