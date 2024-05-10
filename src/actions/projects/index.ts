@@ -1,0 +1,1 @@
+export { getProjectImages } from "./getProjectImages";

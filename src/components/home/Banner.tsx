@@ -1,6 +1,7 @@
-import { getTranslation } from "@/i18n";
 import Image from "next/image";
 import Link from "next/link";
+
+import { getTranslation } from "@/i18n";
 
 export const Banner = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "home");
@@ -23,8 +24,8 @@ export const Banner = async ({ lng }: { lng: string }) => {
               {t("bannerMessage2")}
             </p>
             <Link
-              className="border-[1px] border-white p-2 font-bold text-xl bg-white/40 hover:bg-white hover:text-gold transition-all duration-300 ease-in-out"
               href="/products/all"
+              className="bg-gold/75 px-3 py-2  hover:bg-white/75 hover:text-gold   text-white text-lg transition-all duration-700 ease-in-out"
             >
               {t("seeProducts")}
             </Link>

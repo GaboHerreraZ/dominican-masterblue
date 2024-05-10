@@ -78,3 +78,11 @@ model ProductImage {
 
   @@schema("public")
 }
+
+model ProjectsImages {
+  id        Int @id @default(autoincrement())
+  url       String
+  folder    String
+
+  @@schema("public")
+}

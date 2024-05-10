@@ -37,7 +37,7 @@ export const ZoomImage = async ({
           <div className="absolute w-full flex justify-center bottom-4">
             <Link
               href={link}
-              className="bg-gold/75 px-3 py-1 rounded  text-white text-lg"
+              className="bg-gold/75 px-3 py-1 hover:bg-white/75 hover:text-gold transition-all duration-700 text-white text-lg"
             >
               {t(label)}
             </Link>
