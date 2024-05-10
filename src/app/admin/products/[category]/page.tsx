@@ -15,25 +15,21 @@ interface Props {
   searchParams: {
     page?: string;
     subcategory?: string;
-    state?: string;
+    sku?: string;
   };
 }
 
 export default async function ProductsPage({ params, searchParams }: Props) {
   const category = params.category;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
-  const subcategory = searchParams.subcategory
-    ? searchParams.subcategory.split(",")
-    : [];
-  const state = searchParams.state;
+  const subcategory = searchParams.subcategory || "";
 
   const [products, categories, subcategories, productsSku] = await Promise.all([
     getProducts({
       page: page,
       take: 5,
       category: category === "all" ? undefined : decodeURIComponent(category),
-      subcategory,
-      state,
+      subcategory: subcategory.length ? [subcategory] : [],
     }),
     getCategories(),
     getSubcategories(),
@@ -45,9 +41,8 @@ export default async function ProductsPage({ params, searchParams }: Props) {
     name: product.sku + "-" + product.spanishName,
     spanishDescription: "",
     englishDescription: "",
-    link: product.sku
+    link: product.sku,
   }));
-
 
   return (
     <section className="container md:mx-auto lg:px-10">
@@ -58,11 +53,12 @@ export default async function ProductsPage({ params, searchParams }: Props) {
         </Link>
       </header>
 
-      {/* Filter */}
       <ProductsFilter
         sku={formattedSku}
         categories={categories}
         subcategories={subcategories}
+        searchCategory={category}
+        searchSubcategory={subcategory}
       />
 
       <ProductGrid

@@ -4,11 +4,11 @@ import { Base } from "@/interfaces/base";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 
-import Checkbox from "@/components/ui/checkbox/Checkbox";
-
 interface Props {
   categories: Base[];
   subcategories: Base[];
+  searchCategory: string;
+  searchSubcategory: string;
   sku: {
     id: number;
     name: string;
@@ -23,22 +23,26 @@ export const ProductsFilter = ({
   categories,
   subcategories,
   sku,
+  searchCategory,
+  searchSubcategory,
   className,
 }: Props) => {
-  const { handleSubmit, register, reset } = useForm({
-    defaultValues: {
-      categoryId: "",
-      subcategoryId: "",
-      sku: "",
-      state: "true",
-    },
-  });
   const router = useRouter();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
+  const categoryId = categories.find((e) => e.link === searchCategory)?.id;
+
+  const { handleSubmit, register, reset } = useForm({
+    defaultValues: {
+      categoryId: !categoryId ? "" : `${categoryId}`,
+      subcategoryId: searchSubcategory,
+      sku: "",
+    },
+  });
+
   const onSubmit = (data: any) => {
-    const { categoryId, subcategoryId, sku, state } = data;
+    const { categoryId, subcategoryId, sku } = data;
 
     const category =
       categoryId === ""
@@ -56,14 +60,11 @@ export const ProductsFilter = ({
       params.set("subcategory", "");
     }
 
-    params.set("state", state);
-
     router.replace(`/admin/products/${category.link}?${params.toString()}`);
   };
 
   const handleReset = () => {
-    reset()
-
+    reset();
     router.replace(`/admin/products/all`);
   };
 
@@ -74,44 +75,42 @@ export const ProductsFilter = ({
           <div className="grid grid-cols-1 gap-6 bg-white justify-end">
             <div className="grid md:grid-cols-6 grid-cols-1 md:gap-4 gap-1">
               <Select
-                className="border p-2 rounded text-xs font-semibold uppercase"
+                className="border p-2 rounded text-xs  "
                 options={categories}
-                text="Categoria"
+                placeholder="Categoría"
+                text="Seleccione una por favor..."
                 {...register("categoryId")}
               />
               <Select
-                className="border p-2 rounded text-xs font-semibold uppercase"
+                placeholder="Subcategoría"
+                className="border p-2 rounded text-xs  "
                 options={subcategories}
-                text="Subcategoria"
+                text="Seleccione una por favor..."
                 {...register("subcategoryId")}
               />
 
               <Select
-                className="border p-2 rounded text-xs font-semibold uppercase"
+                className="border p-2 rounded text-xs  "
                 options={sku}
                 text="Referencia"
                 {...register("sku")}
               />
 
-              <Checkbox
-                className="text-xs font-semibold uppercase"
-                placeholder="Disponible"
-                {...register("state")}
-              />
-
-              <button
-                className="p-2 border rounded-md bg-slate-950 text-white text-xs font-semibold uppercase"
-                type="submit"
-              >
-                Buscar
-              </button>
-              <button
-                className="p-2 border rounded-md bg-slate-950 text-white text-xs font-semibold uppercase"
-                type="button"
-                onClick={handleReset}
-              >
-                Limpiar Filtros
-              </button>
+              <div className="grid grid-cols-1  md:grid-cols-2 place-content-center">
+                <button
+                  className="p-2 border rounded-md bg-slate-950 text-white text-xs font-semibold uppercase"
+                  type="submit"
+                >
+                  Buscar
+                </button>
+                <button
+                  className="p-2 border rounded-md bg-slate-950 text-white text-xs font-semibold uppercase"
+                  type="button"
+                  onClick={handleReset}
+                >
+                  Limpiar Filtros
+                </button>
+              </div>
             </div>
           </div>
         </div>
