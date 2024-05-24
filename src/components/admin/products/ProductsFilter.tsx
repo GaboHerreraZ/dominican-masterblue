@@ -9,7 +9,8 @@ interface Props {
   subcategories: Base[];
   searchCategory: string;
   searchSubcategory: string;
-  sku: {
+  searchSku: string;
+  allSku: {
     id: number;
     name: string;
     spanishDescription: string;
@@ -22,9 +23,10 @@ interface Props {
 export const ProductsFilter = ({
   categories,
   subcategories,
-  sku,
+  allSku,
   searchCategory,
   searchSubcategory,
+  searchSku,
   className,
 }: Props) => {
   const router = useRouter();
@@ -32,17 +34,24 @@ export const ProductsFilter = ({
   const params = new URLSearchParams(searchParams);
 
   const categoryId = categories.find((e) => e.link === searchCategory)?.id;
+  const subCategoryId = subcategories.find(
+    (e) => e.link === searchSubcategory
+  )?.id;
+  const skuId = allSku.find((e) => e.link === searchSku)?.id;
 
   const { handleSubmit, register, reset } = useForm({
     defaultValues: {
       categoryId: !categoryId ? "" : `${categoryId}`,
-      subcategoryId: searchSubcategory,
-      sku: "",
+      subcategoryId: !subCategoryId ? "" : `${subCategoryId}`,
+      skuId: !searchSku ? "" : `${skuId}`,
     },
   });
 
   const onSubmit = (data: any) => {
-    const { categoryId, subcategoryId, sku } = data;
+    const { categoryId, subcategoryId, skuId } = data;
+
+    console.log("sku", skuId);
+    console.log("categoryId", categoryId);
 
     const category =
       categoryId === ""
@@ -54,10 +63,20 @@ export const ProductsFilter = ({
         ? { link: "" }
         : subcategories.filter((e) => e.id === +subcategoryId)[0];
 
+    const sku =
+      skuId === "" ? { link: "" } : allSku.filter((e) => e.id === +skuId)[0];
+
+    console.log("sku", sku);
+
     if (subcategory.link) {
       params.set("subcategory", subcategory.link);
     } else {
       params.set("subcategory", "");
+    }
+    if (sku.link) {
+      params.set("sku", sku.link);
+    } else {
+      params.set("sku", "");
     }
 
     router.replace(`/admin/products/${category.link}?${params.toString()}`);
@@ -91,12 +110,13 @@ export const ProductsFilter = ({
 
               <Select
                 className="border p-2 rounded text-xs  "
-                options={sku}
-                text="Referencia"
-                {...register("sku")}
+                placeholder="sku"
+                options={allSku}
+                text="Seleccione una por favor..."
+                {...register("skuId")}
               />
 
-              <div className="grid grid-cols-1  md:grid-cols-2 place-content-center">
+              <div className="grid grid-cols-1  md:grid-cols-2 place-content-center mt-5">
                 <button
                   className="p-2 border rounded-md bg-slate-950 text-white text-xs font-semibold uppercase"
                   type="submit"

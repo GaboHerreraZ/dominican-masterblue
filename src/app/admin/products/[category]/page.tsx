@@ -23,6 +23,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
   const category = params.category;
   const page = searchParams.page ? parseInt(searchParams.page) : 1;
   const subcategory = searchParams.subcategory || "";
+  const sku = searchParams.sku || "";
 
   const [products, categories, subcategories, productsSku] = await Promise.all([
     getProducts({
@@ -30,6 +31,7 @@ export default async function ProductsPage({ params, searchParams }: Props) {
       take: 5,
       category: category === "all" ? undefined : decodeURIComponent(category),
       subcategory: subcategory.length ? [subcategory] : [],
+      sku,
     }),
     getCategories(),
     getSubcategories(),
@@ -54,11 +56,12 @@ export default async function ProductsPage({ params, searchParams }: Props) {
       </header>
 
       <ProductsFilter
-        sku={formattedSku}
+        allSku={formattedSku}
         categories={categories}
         subcategories={subcategories}
         searchCategory={category}
         searchSubcategory={subcategory}
+        searchSku={sku}
       />
 
       <ProductGrid
