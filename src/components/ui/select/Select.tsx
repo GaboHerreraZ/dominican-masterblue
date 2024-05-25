@@ -6,6 +6,7 @@ interface IProps extends InputHTMLAttributes<HTMLSelectElement> {
   className?: string;
   required?: boolean;
   options: Base[];
+  text?: string;
 }
 
 const Select = forwardRef<HTMLSelectElement, IProps>(
@@ -20,6 +21,7 @@ const Select = forwardRef<HTMLSelectElement, IProps>(
             ref={ref}
           >
             <>
+              <option value="">{rest.text}</option>
               {options.map((option) => (
                 <option className="rounded" key={option.id} value={option.id}>
                   {option.name}

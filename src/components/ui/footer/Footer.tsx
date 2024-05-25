@@ -9,7 +9,7 @@ export const Footer = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "footer");
 
   return (
-    <footer className="md:px-0 px-5 pt-10 shadow-2xl mt-20 bg-gold/10">
+    <footer className="md:px-0 px-5 pt-10 shadow-2xl mt-20 bg-gold/5">
       <div className="grid md:px-20 md:mx-20 grid-cols-1 md:grid-cols-4 justify-center ">
         <div>
           <Link href="/">

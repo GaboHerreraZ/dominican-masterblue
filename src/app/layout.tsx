@@ -16,6 +16,12 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html>
+      <head>
+        <script
+          defer
+          src="https://unpkg.com/tailwindcss-intersect@1.x.x/dist/observer.min.js"
+        ></script>
+      </head>
       <body className={darker.className}>
         <Loading />
         <Toaster

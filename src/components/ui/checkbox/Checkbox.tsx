@@ -7,7 +7,7 @@ interface IProps extends InputHTMLAttributes<HTMLInputElement> {
 const Checkbox = forwardRef<HTMLInputElement, IProps>(
   ({ placeholder, className, ...rest }, ref) => {
     return (
-      <div className="flex mt-5  flex-row items-center">
+      <div className={`${className} flex flex-row items-center`}>
         <input
           ref={ref}
           {...rest}

@@ -8,6 +8,7 @@ interface Props {
   subcategory?: string[];
   orderBy?: string;
   order?: string;
+  sku?: string;
 }
 
 export const getProducts = async ({
@@ -17,9 +18,14 @@ export const getProducts = async ({
   subcategory,
   orderBy = "spanishName",
   order = "asc",
+  sku,
 }: Props) => {
   if (isNaN(Number(page))) page = 1;
   if (page < 1) page = 1;
+
+  // console.log("category", category);
+  // console.log("subcategory", subcategory);
+  // console.log("sku", !!sku);
 
   const whereClause = {
     category: {
@@ -35,6 +41,9 @@ export const getProducts = async ({
           },
         },
       ],
+    }),
+    ...(!!sku && {
+      sku,
     }),
   };
 
@@ -55,6 +64,9 @@ export const getProducts = async ({
                 },
               ],
             }),
+            ...(!!sku && {
+              sku,
+            }),
           }
         : whereClause,
       include: {
@@ -67,7 +79,26 @@ export const getProducts = async ({
       },
     });
 
-    const totalCount = await prisma.product.count();
+    const totalCount = await prisma.product.count({
+      where: !category
+        ? {
+            ...(subcategory?.length && {
+              OR: [
+                {
+                  subcategory: {
+                    link: {
+                      in: subcategory,
+                    },
+                  },
+                },
+              ],
+            }),
+            ...(!!sku && {
+              sku,
+            }),
+          }
+        : whereClause,
+    });
 
     const totalPages = Math.ceil(totalCount / take);
 

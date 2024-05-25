@@ -9,6 +9,7 @@ interface Props {
   label: string;
   link: string;
   lng: string;
+  hasLink: boolean;
 }
 
 export const ZoomImage = async ({
@@ -17,28 +18,31 @@ export const ZoomImage = async ({
   label,
   link,
   lng,
+  hasLink = true,
 }: Props) => {
   const { t } = await getTranslation(lng, "home");
 
   return (
     <div className={clsx("relative overflow-hidden h-full w-full", className)}>
-      <div className=" group absolute h-full w-full ">
+      <div className=" group absolute h-full w-full   ">
         <Image
           src={urlImage}
           alt={label}
           sizes="100%"
           fill
           style={{ objectFit: "cover" }}
-          className="transition-transform duration-1000 ease-in-out transform group-hover:scale-110"
+          className="transition-transform  duration-1000 ease-in-out transform group-hover:scale-110"
         />
-        <div className="absolute w-full flex justify-center bottom-4">
-          <Link
-            href={link}
-            className="bg-gold/75 px-3 py-1 rounded  text-white text-lg"
-          >
-            {t(label)}
-          </Link>
-        </div>
+        {hasLink && (
+          <div className="absolute w-full flex justify-center bottom-4">
+            <Link
+              href={link}
+              className="bg-gold/75 px-3 py-1 hover:bg-white/75 hover:text-gold transition-all duration-700 text-white text-lg"
+            >
+              {t(label)}
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

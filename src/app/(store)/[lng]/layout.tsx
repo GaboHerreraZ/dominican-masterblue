@@ -1,4 +1,32 @@
-import { DesktopNavbar, MobileNavbar, NavbarCategory, Footer } from "@/components";
+import {
+  DesktopNavbar,
+  MobileNavbar,
+  NavbarCategory,
+  Footer,
+} from "@/components";
+import { getTranslation } from "@/i18n";
+import { Metadata } from "next";
+
+export async function generateMetadata({
+  params: { lng },
+}: {
+  params: { lng: string };
+}): Promise<Metadata> {
+  const { t } = await getTranslation(lng, "seo");
+
+  return {
+    metadataBase: new URL(`https://dominicanmasterblue.com/${lng}`),
+    title: {
+      template: "%s | Dominican MasterBlue",
+      default: `${t("home")} | Dominican MasterBlue`,
+    },
+    description: t("description"),
+    verification: {
+      google:
+        "google-site-verification=I7msbVupafxpHYu74C85WNUgR0m3oRR8SsK1hfsejqc",
+    },
+  };
+}
 
 export default async function ShopLayout({
   children,
@@ -15,7 +43,7 @@ export default async function ShopLayout({
       <MobileNavbar lng={lng} />
       <NavbarCategory lng={lng} />
       {children}
-      <Footer lng={lng}/>
+      <Footer lng={lng} />
     </main>
   );
 }
