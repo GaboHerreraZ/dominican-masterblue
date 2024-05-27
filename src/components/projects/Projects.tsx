@@ -57,7 +57,7 @@ export const Projects = ({
     if (isInView.isInView && offset <= totalPages * 5) {
       getMoreProjects(offset + 5);
     }
-  }, [isInView]);
+  }, [isInView, totalPages]);
 
   return (
     <section className="image-grid container mx-auto mt-20 " ref={containerRef}>
