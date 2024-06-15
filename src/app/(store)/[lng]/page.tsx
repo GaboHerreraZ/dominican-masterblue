@@ -4,9 +4,8 @@ import {
   HomeMessage,
   HomeServices,
   HomeWhoWeAre,
-  HomeProjects,
-  HomeContact,
 } from "@/components/home";
+import { SharedProjects } from "@/components/shared";
 
 interface Props {
   params: {
@@ -22,8 +21,7 @@ export default function StoreHomePage({ params: { lng } }: Props) {
       <FindInDominican lng={lng} />
       <HomeMessage lng={lng} />
       <HomeServices lng={lng} />
-      <HomeProjects lng={lng} />
-      <HomeContact />
+      <SharedProjects lng={lng} />
     </>
   );
 }
