@@ -5,6 +5,7 @@ import {
   HomeServices,
   HomeWhoWeAre,
   HomeProjects,
+  HomeContact,
 } from "@/components/home";
 
 interface Props {
@@ -22,6 +23,7 @@ export default function StoreHomePage({ params: { lng } }: Props) {
       <HomeMessage lng={lng} />
       <HomeServices lng={lng} />
       <HomeProjects lng={lng} />
+      <HomeContact />
     </>
   );
 }

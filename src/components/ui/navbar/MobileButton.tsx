@@ -9,7 +9,7 @@ export const MobileButton = () => {
 
   return (
     <div className="absolute z-[100] right-4 flex  items-center">
-      <button className=" md:hidden grid text-white" onClick={toogleSideMenu}>
+      <button className=" md:hidden grid text-gold" onClick={toogleSideMenu}>
         {!isSideMenuOpen ? <FaBars size={30} /> : <IoClose size={30} />}
       </button>
     </div>

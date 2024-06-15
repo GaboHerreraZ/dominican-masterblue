@@ -7,7 +7,7 @@ export const HomeProjects = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "home");
 
   return (
-    <section className="my-20  py-5">
+    <section className="my-20 bg-gold/10 py-5">
       <div className="container mx-auto w-full text-center">
         <div className="flex mt-5 justify-center intersect:animate-fade-down">
           <RiDoubleQuotesL size={30} />
