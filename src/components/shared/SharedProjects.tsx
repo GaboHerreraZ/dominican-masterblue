@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 
-export const HomeProjects = async ({ lng }: { lng: string }) => {
+export const SharedProjects = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "home");
 
   return (

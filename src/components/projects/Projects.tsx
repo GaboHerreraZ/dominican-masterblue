@@ -6,16 +6,17 @@ import { debounce } from "lodash";
 
 import { getProjectImages } from "@/actions/projects";
 import "./style.css";
+import { RiDoubleQuotesL, RiDoubleQuotesR } from "react-icons/ri";
 
 interface Props {
-  lng: string;
+  translations: any;
   projects: { id: number; url: string; folder: string }[];
   currentOffset: number;
   totalPages: number;
 }
 
 export const Projects = ({
-  lng,
+  translations,
   currentOffset,
   projects,
   totalPages,
@@ -60,18 +61,33 @@ export const Projects = ({
   }, [isInView, totalPages]);
 
   return (
-    <section className="image-grid container mx-auto mt-20 " ref={containerRef}>
-      {loadedProjects.map((project) => (
-        <div className="image-item relative h-[500px]" key={project.id}>
-          <Image
-            src={project.url}
-            alt="project"
-            sizes="100%"
-            fill
-            objectFit="cover"
-          />
+    <section ref={containerRef}>
+      <header className="py-10 px-5 md:px-0 bg-gold/10">
+        <div className="text-center text-5xl font-bold text-gold my-2">
+          <h1>{translations.title}</h1>
         </div>
-      ))}
+        <div className="flex justify-center intersect:animate-fade-down">
+          <p className="text-md text-center scale-50 intersect:scale-100  md:text-2xl font-bold italic">
+            {translations.subTitle}
+          </p>
+        </div>
+        <div className="flex mt-5 justify-center  ">
+          <div className="h-1 w-[100px] bg-gold "></div>
+        </div>
+      </header>
+      <div className="image-grid container mx-auto mt-20">
+        {loadedProjects.map((project) => (
+          <div className="image-item relative h-[500px]" key={project.id}>
+            <Image
+              src={project.url}
+              alt="project"
+              sizes="100%"
+              fill
+              objectFit="cover"
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

@@ -26,28 +26,6 @@ export const HomeWhoWeAre = async ({ lng }: { lng: string }) => {
             <span className="font-bold">{t("whoWeAreDescription1")}</span>
             {t("whoWeAreDescription2")}
           </p>
-          {/*<div className="flex gap-10 mt-4 py-5">
-            <div className="grid justify-center">
-              <div className="h-14 w-14">
-                <Honestity />
-              </div>
-              <h6>Honestidad</h6>
-            </div>
-
-            <div className="grid justify-center">
-              <div className="flex justify-center h-14 w-14 ">
-                <Reliability />
-              </div>
-              <h6>Confiabilidad</h6>
-            </div>
-
-            <div className="grid justify-center">
-              <div className="h-14 w-14 ">
-                <Responsability />
-              </div>
-              <h6>Responsabilidad</h6>
-            </div>
-          </div>*/}
         </div>
       </div>
     </section>
