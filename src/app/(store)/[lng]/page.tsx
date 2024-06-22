@@ -5,7 +5,7 @@ import {
   HomeServices,
   HomeWhoWeAre,
 } from "@/components/home";
-import { SharedProjects } from "@/components/shared";
+import { SharedContact, SharedProjects } from "@/components/shared";
 
 interface Props {
   params: {
@@ -22,6 +22,7 @@ export default function StoreHomePage({ params: { lng } }: Props) {
       <HomeMessage lng={lng} />
       <HomeServices lng={lng} />
       <SharedProjects lng={lng} />
+      <SharedContact lng={lng} />
     </>
   );
 }

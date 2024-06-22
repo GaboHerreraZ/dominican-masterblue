@@ -22,7 +22,7 @@ export const HomeWhoWeAre = async ({ lng }: { lng: string }) => {
           <h1 className="text-5xl  intersect:animate-fade-down intersect:animate-duration-700 w-full md:w-1/2 font-bold text-gold ">
             {t("whoWeAre")}
           </h1>
-          <p className="mt-2 intersect:animate-fade-down intersect:animate-duration-1000">
+          <p className="mt-2 text-2xl intersect:animate-fade-down intersect:animate-duration-1000">
             <span className="font-bold">{t("whoWeAreDescription1")}</span>
             {t("whoWeAreDescription2")}
           </p>
