@@ -6,7 +6,7 @@ export const HomeWhoWeAre = async ({ lng }: { lng: string }) => {
   const { t } = await getTranslation(lng, "home");
 
   return (
-    <section className="flex w-100 h-[250px] md:h-[500px] my-10 z-10 justify-center m-auto container">
+    <section className="flex my-40  w-100 h-[250px] md:h-[500px] md:my-10 z-10 justify-center m-auto container">
       <div className="relative hidden md:grid md:w-1/3">
         <Image
           src="https://llfscfhwhopxywvxgwcz.supabase.co/storage/v1/object/public/publicImage/home/lamps.webp?t=2024-05-03T19%3A05%3A00.758Z"

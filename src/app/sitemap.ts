@@ -6,8 +6,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const lng = ["en", "es"];
   let siteMaps = lng.map((lng) => [
-    { url: `${baseUrl}/${lng}/products/`, lastModified: new Date() },
+    { url: `${baseUrl}/${lng}/products/all`, lastModified: new Date() },
     { url: `${baseUrl}/${lng}/contact`, lastModified: new Date() },
+    { url: `${baseUrl}/${lng}/projects`, lastModified: new Date() },
   ]);
 
   const products = await getProducts({ page: 1, take: 100 });

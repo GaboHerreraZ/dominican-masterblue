@@ -25,6 +25,15 @@ export async function generateMetadata({
       google:
         "google-site-verification=I7msbVupafxpHYu74C85WNUgR0m3oRR8SsK1hfsejqc",
     },
+    openGraph: {
+      siteName: "Dominican MasterBlue",
+      url: `https://dominicanmasterblue.com/${lng}`,
+      title: `${t("home")} | Dominican MasterBlue`,
+      description: t("description"),
+    },
+    alternates: {
+      canonical: `https://dominicanmasterblue.com/${lng}`,
+    },
   };
 }
 

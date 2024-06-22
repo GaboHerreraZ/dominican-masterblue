@@ -57,6 +57,11 @@ export async function generateMetadata({
       google:
         "google-site-verification=I7msbVupafxpHYu74C85WNUgR0m3oRR8SsK1hfsejqc",
     },
+    alternates: {
+      canonical: `https://dominicanmasterblue.com/${lng}/product/${
+        product!.slug
+      }`,
+    },
   };
 }
 
