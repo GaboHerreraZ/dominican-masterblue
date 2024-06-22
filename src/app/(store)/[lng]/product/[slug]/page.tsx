@@ -1,5 +1,6 @@
 import { getAllProducts, getProductBySlug } from "@/actions";
 import { ProductDetail } from "@/components";
+import { SharedContact, SharedProjects } from "@/components/shared";
 import { Product } from "@/interfaces/product";
 import { Metadata } from "next";
 
@@ -66,5 +67,11 @@ export default async function ProductPage({
 }) {
   const product = await getProductBySlug(slug);
 
-  return <ProductDetail lng={lng} product={product as Product} />;
+  return (
+    <>
+      <ProductDetail lng={lng} product={product as Product} />
+      <SharedProjects lng={lng} />
+      <SharedContact lng={lng} />
+    </>
+  );
 }
